@@ -1,0 +1,53 @@
+site_name: Lesgo!
+site_description: A lightweight node.js serverless framework
+site_author: Sufiyan Rahmat
+site_url: https://reflex-media.github.io/lesgo-docs/
+
+repo_name: reflex-media/lesgo
+repo_url: https://github.com/reflex-media/lesgo
+extra:
+  repo_icon: github
+
+copyright: Copyright &copy; 2019 Reflex Media
+
+theme:
+  name: material
+  palette:
+    primary: white
+    accent: orange
+  logo:
+    icon: cloud
+  feature:
+    tabs: false
+  extra_css:
+    - "stylesheets/extra.css"
+
+extra_css:
+  - "stylesheets/extra.css"
+
+use_directory_urls: false
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+  - codehilite:
+      guess_lang: false
+
+nav:
+  - Prologue:
+      - Contribution Guide: prologue/contributions.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Configuration: getting-started/configuration.md
+      - Directory Structure: getting-started/structure.md
+      - Deployment: getting-started/deployment.md
+  - The Basics:
+      - Middleware: basics/middleware.md
+      - Error Handling: basics/error-handling.md
+      - Logging: basics/logging.md
+  - Digging Deeper:
+      - Helpers: advance/helpers.md
+      - Queues: advance/queues.md
+      - Cron: advance/cron.md
