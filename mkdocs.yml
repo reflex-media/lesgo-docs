@@ -25,7 +25,7 @@ theme:
 extra_css:
   - "stylesheets/extra.css"
 
-use_directory_urls: false
+use_directory_urls: true
 
 markdown_extensions:
   - admonition
@@ -50,4 +50,6 @@ nav:
   - Digging Deeper:
       - Helpers: advance/helpers.md
       - Queues: advance/queues.md
+      - Object Store: advance/object-store.md
       - Cron: advance/cron.md
+      - Unit Tests: advance/unit-tests.md
