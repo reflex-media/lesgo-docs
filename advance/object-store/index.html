@@ -13,7 +13,7 @@
         <meta name="description" content="A lightweight node.js serverless framework">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/basics/error-handling/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/advance/object-store/">
       
       
         <meta name="author" content="Sufiyan Rahmat">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Error Handling - Lesgo!</title>
+        <title>Object Store - Lesgo!</title>
       
     
     
@@ -107,7 +107,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#error-handling" tabindex="1" class="md-skip">
+      <a href="#object-store" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -133,7 +133,7 @@
                 Lesgo!
               </span>
               <span class="md-header-nav__topic">
-                Error Handling
+                Object Store
               </span>
             
           
@@ -356,12 +356,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       The Basics
@@ -379,8 +377,82 @@
 
 
   <li class="md-nav__item">
-    <a href="../middleware/" title="Middleware" class="md-nav__link">
+    <a href="../../basics/middleware/" title="Middleware" class="md-nav__link">
       Middleware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basics/error-handling/" title="Error Handling" class="md-nav__link">
+      Error Handling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basics/logging/" title="Logging" class="md-nav__link">
+      Logging
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Digging Deeper
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Digging Deeper
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../helpers/" title="Helpers" class="md-nav__link">
+      Helpers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../queues/" title="Queues" class="md-nav__link">
+      Queues
     </a>
   </li>
 
@@ -400,11 +472,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Error Handling
+        Object Store
       </label>
     
-    <a href="./" title="Error Handling" class="md-nav__link md-nav__link--active">
-      Error Handling
+    <a href="./" title="Object Store" class="md-nav__link md-nav__link--active">
+      Object Store
     </a>
     
       
@@ -418,8 +490,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#custom-error-classes" title="Custom Error Classes" class="md-nav__link">
-    Custom Error Classes
+  <a href="#fetch-object" title="Fetch Object" class="md-nav__link">
+    Fetch Object
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s3-bucket-permissions-policy" title="S3 Bucket Permissions Policy" class="md-nav__link">
+    S3 Bucket Permissions Policy
   </a>
   
 </li>
@@ -441,79 +520,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../logging/" title="Logging" class="md-nav__link">
-      Logging
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      Digging Deeper
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        Digging Deeper
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../advance/helpers/" title="Helpers" class="md-nav__link">
-      Helpers
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../advance/queues/" title="Queues" class="md-nav__link">
-      Queues
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../advance/object-store/" title="Object Store" class="md-nav__link">
-      Object Store
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../advance/cron/" title="Cron" class="md-nav__link">
+    <a href="../cron/" title="Cron" class="md-nav__link">
       Cron
     </a>
   </li>
@@ -525,7 +532,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advance/unit-tests/" title="Unit Tests" class="md-nav__link">
+    <a href="../unit-tests/" title="Unit Tests" class="md-nav__link">
       Unit Tests
     </a>
   </li>
@@ -557,8 +564,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#custom-error-classes" title="Custom Error Classes" class="md-nav__link">
-    Custom Error Classes
+  <a href="#fetch-object" title="Fetch Object" class="md-nav__link">
+    Fetch Object
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s3-bucket-permissions-policy" title="S3 Bucket Permissions Policy" class="md-nav__link">
+    S3 Bucket Permissions Policy
   </a>
   
 </li>
@@ -579,26 +593,31 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/reflex-media/lesgo/edit/master/docs/basics/error-handling.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/reflex-media/lesgo/edit/master/docs/advance/object-store.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h1>
-<p>It is recommended to always throw an Error class as an exception instead of returning just an error message. You may create your own Error Class within the <code>src/exceptions/</code> directory.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">ValidationError</span> <span class="nx">from</span> <span class="s1">&#39;Errors/ValidationError&#39;</span><span class="p">;</span>
+                <h1 id="object-store">Object Store<a class="headerlink" href="#object-store" title="Permanent link">&para;</a></h1>
+<p>Lesgo! is pre-configured with AWS S3 for object storage.</p>
+<h2 id="fetch-object">Fetch Object<a class="headerlink" href="#fetch-object" title="Permanent link">&para;</a></h2>
+<p>The <code>getObject()</code> function will fetch the object from the Bucket.</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">getObject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;lesgo/utils&#39;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">someFunction</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="k">throw</span> <span class="k">new</span> <span class="nx">ValidationError</span><span class="p">(</span>
-    <span class="s1">&#39;Content type defined as JSON but an invalid JSON was provided&#39;</span><span class="p">,</span>
-    <span class="mi">40001002</span><span class="p">,</span>
-    <span class="mi">400</span>
-  <span class="p">);</span>
-<span class="p">};</span>
+<span class="c1">// Returns a buffered object response. See AWS for more information</span>
+<span class="kr">const</span> <span class="nx">objectFile</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">getObject</span><span class="p">(</span><span class="s1">&#39;Key&#39;</span><span class="p">,</span> <span class="s1">&#39;Bucket&#39;</span><span class="p">);</span>
 </pre></div>
 
 
-<p>Refer to the sample <code>src/core/ping.js</code> for usage.</p>
-<h2 id="custom-error-classes">Custom Error Classes<a class="headerlink" href="#custom-error-classes" title="Permanent link">&para;</a></h2>
-<p>You can define your own Error Classes as required. Refer to the existing <code>src/exceptions/ErrorException.js</code> class.</p>
+<h2 id="s3-bucket-permissions-policy">S3 Bucket Permissions Policy<a class="headerlink" href="#s3-bucket-permissions-policy" title="Permanent link">&para;</a></h2>
+<p>To fetch/put objects to an exisitng S3 bucket, be sure to set up an IAM user with the correct permissions as well as updating the S3 bucket policy. You may override the config by updating these in the environment file.</p>
+<div class="codehilite"><pre><span></span><span class="c1"># Set IAM access key with S3 access</span>
+<span class="nv">AWS_S3_OPTIONS_ACCESS_KEY_ID</span><span class="o">=</span>
+
+<span class="c1"># Set IAM secret key</span>
+<span class="nv">AWS_S3_OPTIONS_SECRET_ACCESS_KEY</span><span class="o">=</span>
+
+<span class="c1"># Set S3 region to connect to</span>
+<span class="nv">AWS_S3_OPTIONS_REGION</span><span class="o">=</span>
+</pre></div>
                 
                   
                 
@@ -619,7 +638,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../middleware/" title="Middleware" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../queues/" title="Queues" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -628,19 +647,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Middleware
+                Queues
               </span>
             </div>
           </a>
         
         
-          <a href="../logging/" title="Logging" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../cron/" title="Cron" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Logging
+                Cron
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

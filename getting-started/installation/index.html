@@ -347,6 +347,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#available-endpoints" title="Available Endpoints" class="md-nav__link">
+    Available Endpoints
+  </a>
+  
+</li>
+      
       
       
       
@@ -508,8 +515,32 @@
 
 
   <li class="md-nav__item">
+    <a href="../../advance/object-store/" title="Object Store" class="md-nav__link">
+      Object Store
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../advance/cron/" title="Cron" class="md-nav__link">
       Cron
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advance/unit-tests/" title="Unit Tests" class="md-nav__link">
+      Unit Tests
     </a>
   </li>
 
@@ -553,6 +584,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#available-endpoints" title="Available Endpoints" class="md-nav__link">
+    Available Endpoints
+  </a>
+  
+</li>
+      
       
       
       
@@ -575,7 +613,7 @@
                 <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
 <p>Set up your local environment.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
-<p>Lesgo! is designed to run on AWS, specifically using the Gateway API for all API endpoints, and Lambda for all functions. </p>
+<p>Lesgo! is designed to run on AWS, specifically using the Gateway API for all API endpoints, and Lambda for all functions.</p>
 <p>Lesgo! also integrates with major AWS services to get a fully functioning and lightweight NodeJS REST application.</p>
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
 <blockquote>
@@ -599,6 +637,16 @@ $ <span class="nb">cd</span> my-service
 
 
 <p>Access local url via browser or Postman (recommended): http://localhost:8181/ping.</p>
+<h2 id="available-endpoints">Available Endpoints<a class="headerlink" href="#available-endpoints" title="Permanent link">&para;</a></h2>
+<p><strong><code>/ping</code></strong><br />
+Send a "liveness-check" request to your endpoint.</p>
+<p><strong><code>/ping/auth</code></strong><br />
+Send a "liveness-check" request with a required authorization.<br />
+<strong>Note</strong>: Set <code>x-api-key</code> in your request header for a valid request.</p>
+<p><strong><code>/ping?sample-error=message</code></strong><br />
+Returns the request with an "error message" response type.</p>
+<p><strong><code>/ping?sample-error=exception</code></strong><br />
+Returns the request with an "error class" response type.</p>
                 
                   
                 

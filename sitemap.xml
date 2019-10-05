@@ -51,7 +51,17 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://reflex-media.github.io/lesgo-docs/advance/object-store/</loc>
+     <lastmod>2019-10-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://reflex-media.github.io/lesgo-docs/advance/cron/</loc>
+     <lastmod>2019-10-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://reflex-media.github.io/lesgo-docs/advance/unit-tests/</loc>
      <lastmod>2019-10-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
