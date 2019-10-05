@@ -11,13 +11,13 @@ The `dispatch()` function will dispatch a message payload to the queue.
 This example usage will send a message to the pre-defined PingQueue.
 
 ```js
-import {dispatcher} from 'lesgo/utils';
+import { dispatcher } from "lesgo/utils";
 
 const payload = {
-  someData: 'someValue',
-}
+  someData: "someValue",
+};
 
-return await dispatch(payload, 'pingQueue');
+return await dispatch(payload, "pingQueue");
 ```
 
 Refer to `src/core/pingQueue.js` for usage example.
