@@ -2,7 +2,7 @@
 
 
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>
     
@@ -13,7 +13,7 @@
         <meta name="description" content="A lightweight node.js serverless framework">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/advance/cron/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/advance/task-scheduling/">
       
       
         <meta name="author" content="Sufiyan Rahmat">
@@ -38,15 +38,15 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
     
     
       
-        <title>Cron - Lesgo!</title>
+        <title>Task Scheduling - Lesgo!</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.572ca0f0.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
       
         <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
       
@@ -57,7 +57,7 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.8c900955.js"></script>
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       
@@ -67,7 +67,6 @@
       
     
     <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
-    
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
@@ -107,7 +106,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#cron" tabindex="1" class="md-skip">
+      <a href="#task-scheduling" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -133,7 +132,7 @@
                 Lesgo!
               </span>
               <span class="md-header-nav__topic">
-                Cron
+                Task Scheduling
               </span>
             
           
@@ -483,9 +482,38 @@
       
     
     
-    <a href="./" title="Cron" class="md-nav__link md-nav__link--active">
-      Cron
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Task Scheduling
+      </label>
+    
+    <a href="./" title="Task Scheduling" class="md-nav__link md-nav__link--active">
+      Task Scheduling
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#defining-schedules" title="Defining Schedules" class="md-nav__link">
+    Defining Schedules
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -524,6 +552,22 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#defining-schedules" title="Defining Schedules" class="md-nav__link">
+    Defining Schedules
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -534,10 +578,28 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/reflex-media/lesgo/edit/master/docs/advance/cron.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/reflex-media/lesgo/edit/master/docs/advance/task-scheduling.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="cron">Cron<a class="headerlink" href="#cron" title="Permanent link">&para;</a></h1>
+                <h1 id="task-scheduling">Task Scheduling<a class="headerlink" href="#task-scheduling" title="Permanent link">&para;</a></h1>
+<p>Lesgo! utilizes the CloudWatch Scheduled Event type to schedule events. This is the equivalent as you would configured a Cron entry on an application server.</p>
+<h2 id="defining-schedules">Defining Schedules<a class="headerlink" href="#defining-schedules" title="Permanent link">&para;</a></h2>
+<p>Define a scheduled event by first inserting a function with the <code>event:schedule</code> type in your serverless function yaml.</p>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">functions</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pingScheduledEvent</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">handler</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">src/app/handlers/scheduledEvent.handler</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Lambda event triggered from Scheduled Cloudwatch Event</span>
+        <span class="l l-Scalar l-Scalar-Plain">events</span><span class="p p-Indicator">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">schedule</span><span class="p p-Indicator">:</span>
+                <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">scheduledEvent</span>
+                <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Trigger lambda function every 5 minute</span>
+                <span class="l l-Scalar l-Scalar-Plain">rate</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">rate(5 minutes)</span>
+                <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+
+
+<p>The above configuration will execute a CloudWatch Scheduled Event every 5 mins. This scheduled event will execute the handler.</p>
+<p>Refer to <code>config/functions/ping.yml</code> for usage sample.</p>
                 
                   
                 
@@ -613,7 +675,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.b41f3d20.js"></script>
+      <script src="../../assets/javascripts/application.5e60981f.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       

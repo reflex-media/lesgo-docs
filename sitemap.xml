@@ -2,67 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://reflex-media.github.io/lesgo-docs/prologue/contributions/</loc>
-     <lastmod>2019-10-07</lastmod>
+     <lastmod>2019-10-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://reflex-media.github.io/lesgo-docs/getting-started/installation/</loc>
-     <lastmod>2019-10-07</lastmod>
+     <lastmod>2019-10-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://reflex-media.github.io/lesgo-docs/getting-started/configuration/</loc>
-     <lastmod>2019-10-07</lastmod>
+     <lastmod>2019-10-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://reflex-media.github.io/lesgo-docs/getting-started/structure/</loc>
-     <lastmod>2019-10-07</lastmod>
+     <lastmod>2019-10-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://reflex-media.github.io/lesgo-docs/getting-started/deployment/</loc>
-     <lastmod>2019-10-07</lastmod>
+     <lastmod>2019-10-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://reflex-media.github.io/lesgo-docs/basics/middleware/</loc>
-     <lastmod>2019-10-07</lastmod>
+     <lastmod>2019-10-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://reflex-media.github.io/lesgo-docs/basics/error-handling/</loc>
-     <lastmod>2019-10-07</lastmod>
+     <lastmod>2019-10-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://reflex-media.github.io/lesgo-docs/basics/logging/</loc>
-     <lastmod>2019-10-07</lastmod>
+     <lastmod>2019-10-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://reflex-media.github.io/lesgo-docs/advance/helpers/</loc>
-     <lastmod>2019-10-07</lastmod>
+     <lastmod>2019-10-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://reflex-media.github.io/lesgo-docs/advance/queues/</loc>
-     <lastmod>2019-10-07</lastmod>
+     <lastmod>2019-10-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://reflex-media.github.io/lesgo-docs/advance/object-store/</loc>
-     <lastmod>2019-10-07</lastmod>
+     <lastmod>2019-10-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://reflex-media.github.io/lesgo-docs/advance/cron/</loc>
-     <lastmod>2019-10-07</lastmod>
+     <loc>https://reflex-media.github.io/lesgo-docs/advance/task-scheduling/</loc>
+     <lastmod>2019-10-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://reflex-media.github.io/lesgo-docs/advance/unit-tests/</loc>
-     <lastmod>2019-10-07</lastmod>
+     <lastmod>2019-10-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
