@@ -51,5 +51,5 @@ nav:
       - Helpers: advance/helpers.md
       - Queues: advance/queues.md
       - Object Store: advance/object-store.md
-      - Cron: advance/cron.md
+      - Task Scheduling: advance/task-scheduling.md
       - Unit Tests: advance/unit-tests.md
