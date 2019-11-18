@@ -11,7 +11,7 @@ The `dispatch()` function will dispatch a message payload to the queue.
 This example usage will send a message to the pre-defined PingQueue.
 
 ```js
-import { dispatch } from "lesgo/utils";
+import { dispatch } from "Utils/queue";
 
 const payload = {
   someData: "someValue",

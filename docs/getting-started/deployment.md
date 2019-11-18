@@ -7,13 +7,13 @@ Serverless Framework handles most of the deployment tasks. Lesgo! uses its own d
 This command will deploy the entire application to a specific environment.
 
 ```bash
-$ yarn deploy -s {environment}
+yarn deploy -s {environment}
 ```
 
 ### Example deploy
 
 ```bash
-$ yarn deploy -s dev
+yarn deploy -s development
 ```
 
 ## Deploy Single Function
@@ -21,13 +21,13 @@ $ yarn deploy -s dev
 This command will deploy only a single function to a specific environment.
 
 ```bash
-$ yarn deploy -s {environment} -f {function_name}
+yarn deploy -s {environment} -f {function_name}
 ```
 
 ### Example deploy
 
 ```bash
-$ yarn deploy -s dev -f Ping
+yarn deploy -s development -f Ping
 ```
 
 ## Other Available Commands
@@ -39,10 +39,10 @@ These commands are also available.
 This command will invoke/trigger a single function.
 
 ```bash
-$ yarn invoke -s {environment} -f {function_name}
+yarn invoke -s {environment} -f {function_name}
 
 # Example
-$ yarn invoke -s dev -f Ping
+yarn invoke -s development -f Ping
 ```
 
 ### Tail log of a function
@@ -50,10 +50,10 @@ $ yarn invoke -s dev -f Ping
 This command allows you to tail the log of a single function.
 
 ```bash
-$ yarn logs -s {environment} -f {function_name}
+yarn logs -s {environment} -f {function_name}
 
 # Example
-$ yarn logs -s dev -f Ping
+yarn logs -s development -f Ping
 ```
 
 ### Build bundle without deployment
@@ -61,8 +61,8 @@ $ yarn logs -s dev -f Ping
 This command allows you to build the bundle without doing actual deployment. This might be useful to note the created bundle files and sizes.
 
 ```bash
-$ yarn build -s {environment}
+yarn build -s {environment}
 
 # Example
-$ yarn build -s dev
+yarn build -s development
 ```

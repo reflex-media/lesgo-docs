@@ -13,10 +13,6 @@
 |   └── utils
 ├── src
 |   ├── config
-|   |   ├── app.js
-|   |   ├── aws.js
-|   |   ├── index.js
-|   |   └── sentry.js
 |   ├── constants
 |   ├── core
 |   ├── exceptions
@@ -71,16 +67,16 @@ The `src/core/` directory contains your application's core business logic.
 The `src/exceptions/` directory contains error classes.
 
 ### Handler Directory
-The `/src/handlers/` directory contains the entry point for all events.
+The `src/handlers/` directory contains the entry point for all events.
 
 ### Middleware Directory
-The `/src/middlewares/` directory contains the request middlewares.
+The `src/middlewares/` directory contains the request middlewares.
 
 ### Service Directory
-The `/src/services/` directory contains class-based services or modules, usually instantiated. These classes are usually made available in the `src/utils/` as helper functions.
+The `src/services/` directory contains class-based services or modules, usually instantiated. These classes are usually made available in the `src/utils/` as helper functions.
 
 ### Util Directory
-The `/src/utils/` direcotry contains helper functions.
+The `src/utils/` directory contains helper functions.
 
 ## Test Directory
-The `/tests/` directory contains test `.spec.js` files for unit testing.
+The `tests/` directory contains test `.spec.js` files for unit testing.

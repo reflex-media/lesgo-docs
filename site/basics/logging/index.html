@@ -248,34 +248,10 @@
       
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
-    
-    <label class="md-nav__link" for="nav-1">
-      Prologue
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-1">
-        Prologue
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../../prologue/contributions/" title="Contribution Guide" class="md-nav__link">
-      Contribution Guide
+    <a href="../.." title="Prologue" class="md-nav__link">
+      Prologue
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
     
@@ -306,18 +282,6 @@
   <li class="md-nav__item">
     <a href="../../getting-started/installation/" title="Installation" class="md-nav__link">
       Installation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../getting-started/configuration/" title="Configuration" class="md-nav__link">
-      Configuration
     </a>
   </li>
 
@@ -447,6 +411,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../advance/cache/" title="Cache" class="md-nav__link">
+      Cache
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../advance/helpers/" title="Helpers" class="md-nav__link">
       Helpers
     </a>
@@ -459,8 +435,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advance/queues/" title="Queues" class="md-nav__link">
-      Queues
+    <a href="../../advance/object-store/" title="Object Store" class="md-nav__link">
+      Object Store
     </a>
   </li>
 
@@ -471,8 +447,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advance/object-store/" title="Object Store" class="md-nav__link">
-      Object Store
+    <a href="../../advance/queues/" title="Queues" class="md-nav__link">
+      Queues
     </a>
   </li>
 
@@ -503,6 +479,18 @@
         
       </ul>
     </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
   </li>
 
     
@@ -539,7 +527,7 @@
                 <h1 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h1>
 <p>Lesgo! is configured with structured logging.</p>
 <p>Structured logs will appear on the console by default.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">logger</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;lesgo/utils&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">logger</span> <span class="nx">from</span> <span class="s1">&#39;Utils/logger&#39;</span><span class="p">;</span>
 
 <span class="nx">logger</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s1">&#39;this is an info log&#39;</span><span class="p">);</span>
 <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;This is an info log&#39;</span><span class="p">);</span>
@@ -548,8 +536,8 @@
 </pre></div>
 
 
-<p>Error logs can also be sent to Sentry. Simply update the relevant config in the <code>/config/environments/</code> directory.</p>
-<div class="codehilite"><pre><span></span><span class="c1"># Enable/disable sentey reporting</span>
+<p>Error logs can also be sent to Sentry. Simply update the relevant DOTenv in the <code>config/environments/</code> directory.</p>
+<div class="codehilite"><pre><span></span><span class="c1"># Enable/disable sentry reporting</span>
 <span class="nv">SENTRY_ENABLED</span><span class="o">=</span><span class="nb">true</span>
 
 <span class="c1"># DSN for sentry reporting. Instructions can be found on your Sentry dashboard</span>
@@ -601,13 +589,13 @@
           </a>
         
         
-          <a href="../../advance/helpers/" title="Helpers" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../advance/cache/" title="Cache" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Helpers
+                Cache
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

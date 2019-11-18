@@ -5,7 +5,7 @@ Lesgo! is configured with structured logging.
 Structured logs will appear on the console by default.
 
 ```js
-import { logger } from 'lesgo/utils';
+import logger from 'Utils/logger';
 
 logger.log('info', 'this is an info log');
 logger.info('This is an info log');
@@ -13,10 +13,10 @@ logger.warn('This is a warning log');
 logger.error('This is an error log');
 ```
 
-Error logs can also be sent to Sentry. Simply update the relevant config in the `/config/environments/` directory.
+Error logs can also be sent to Sentry. Simply update the relevant DOTenv in the `config/environments/` directory.
 
 ```bash
-# Enable/disable sentey reporting
+# Enable/disable sentry reporting
 SENTRY_ENABLED=true
 
 # DSN for sentry reporting. Instructions can be found on your Sentry dashboard

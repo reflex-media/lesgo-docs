@@ -248,34 +248,10 @@
       
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
-    
-    <label class="md-nav__link" for="nav-1">
-      Prologue
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-1">
-        Prologue
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../../prologue/contributions/" title="Contribution Guide" class="md-nav__link">
-      Contribution Guide
+    <a href="../.." title="Prologue" class="md-nav__link">
+      Prologue
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
     
@@ -306,18 +282,6 @@
   <li class="md-nav__item">
     <a href="../../getting-started/installation/" title="Installation" class="md-nav__link">
       Installation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../getting-started/configuration/" title="Configuration" class="md-nav__link">
-      Configuration
     </a>
   </li>
 
@@ -524,6 +488,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../advance/cache/" title="Cache" class="md-nav__link">
+      Cache
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../advance/helpers/" title="Helpers" class="md-nav__link">
       Helpers
     </a>
@@ -536,8 +512,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advance/queues/" title="Queues" class="md-nav__link">
-      Queues
+    <a href="../../advance/object-store/" title="Object Store" class="md-nav__link">
+      Object Store
     </a>
   </li>
 
@@ -548,8 +524,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advance/object-store/" title="Object Store" class="md-nav__link">
-      Object Store
+    <a href="../../advance/queues/" title="Queues" class="md-nav__link">
+      Queues
     </a>
   </li>
 
@@ -580,6 +556,18 @@
         
       </ul>
     </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
   </li>
 
     
@@ -682,13 +670,13 @@
 <p>Middlewares require <a href="https://www.npmjs.com/package/middy">Middy npm</a> to work.</p>
 <p>Middlewares should be written in the <code>src/middlewares/</code> directory.</p>
 <h2 id="available-middlewares">Available Middlewares<a class="headerlink" href="#available-middlewares" title="Permanent link">&para;</a></h2>
-<p>Lesgo! comes with 5 pre-existing middlewares.</p>
+<p>Lesgo! comes with 6 pre-existing middlewares.</p>
 <p>You may also import other ready-made middlewares from the <a href="https://www.npmjs.com/package/middy#available-middlewares">Middy repository</a>.</p>
 <h3 id="normalize-http-request">Normalize Http Request<a class="headerlink" href="#normalize-http-request" title="Permanent link">&para;</a></h3>
 <p>This middleware will normalize the query string parameters and/or json body in the request into a common <code>handler.event.input</code>. This middleware executes <em>before</em> the handler is called.</p>
 <p><strong>Usage</strong></p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">middy</span> <span class="nx">from</span> <span class="s2">&quot;middy&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">normalizeHttpRequest</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;lesgo/middlewares&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">normalizeHttpRequest</span> <span class="nx">from</span> <span class="s2">&quot;Middlewares/normalizeHttpRequest&quot;</span><span class="p">;</span>
 
 <span class="kr">const</span> <span class="nx">originalHandler</span> <span class="o">=</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">input</span><span class="p">;</span>
@@ -704,7 +692,7 @@
 <p>This middleware will normalize records coming from sqs message event. The <code>Records</code> object in the <code>handler.event</code> will be normalized into <code>handler.event.collection</code>. This middleware executes <em>before</em> the handler is called.</p>
 <p><strong>Usage</strong></p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">middy</span> <span class="nx">from</span> <span class="s2">&quot;middy&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">normalizeSQSMessage</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;lesgo/middlewares&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">normalizeSQSMessage</span> <span class="nx">from</span> <span class="s2">&quot;Middlewares/normalizeSQSMessage&quot;</span><span class="p">;</span>
 
 <span class="kr">const</span> <span class="nx">originalHandler</span> <span class="o">=</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">collection</span><span class="p">;</span>
@@ -716,12 +704,12 @@
 </pre></div>
 
 
-<p>Refer to <code>src/handlers/pingQueueProcessor.js</code> for more detailed usage example.</p>
+<p>Refer to <code>src/handlers/samples/pingQueueProcessor.js</code> for more detailed usage example.</p>
 <h3 id="success-http-response">Success Http Response<a class="headerlink" href="#success-http-response" title="Permanent link">&para;</a></h3>
 <p>This middleware will be executed whenever a successful response is expected to be returned. This middleware executes <em>after</em> the request is processed and <em>before</em> the response is returned.</p>
 <p><strong>Usage</strong></p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">middy</span> <span class="nx">from</span> <span class="s2">&quot;middy&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">successHttpResponse</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;lesgo/middlewares&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">successHttpResponse</span> <span class="nx">from</span> <span class="s2">&quot;Middlewares/successHttpResponse&quot;</span><span class="p">;</span>
 
 <span class="kr">const</span> <span class="nx">originalHandler</span> <span class="o">=</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">input</span><span class="p">;</span>
@@ -737,7 +725,7 @@
 <p>This middleware will be executed whenever an error response is expected to be returned. This middleware executes <em>after</em> the request is processed and <em>before</em> the response is returned.</p>
 <p><strong>Usage</strong></p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">middy</span> <span class="nx">from</span> <span class="s2">&quot;middy&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">errorHttpResponse</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;lesgo/middlewares&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">errorHttpResponse</span> <span class="nx">from</span> <span class="s2">&quot;Middlewares/errorHttpResponse&quot;</span><span class="p">;</span>
 
 <span class="kr">const</span> <span class="nx">originalHandler</span> <span class="o">=</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">input</span><span class="p">;</span>
@@ -750,10 +738,10 @@
 
 
 <h3 id="http">Http<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
-<p>This middleware combines the <code>normalizeHttpRequest</code>, <code>successHttpResponse</code>, and <code>successHttpResponse</code> middlewares, and can be used for all http endpoints (configured with API Gateway).</p>
+<p>This middleware combines the <code>normalizeHttpRequest</code>, <code>successHttpResponse</code>, and <code>errorHttpResponse</code> middlewares, and can be used for all http endpoints (configured with API Gateway).</p>
 <p><strong>Usage</strong></p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">middy</span> <span class="nx">from</span> <span class="s2">&quot;middy&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">http</span> <span class="nx">from</span> <span class="s2">&quot;lesgo/middlewares&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">httpMiddleware</span> <span class="nx">from</span> <span class="s2">&quot;Middlewares/httpMiddleware&quot;</span><span class="p">;</span>
 
 <span class="kr">const</span> <span class="nx">originalHandler</span> <span class="o">=</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">input</span><span class="p">;</span>
@@ -761,7 +749,7 @@
 
 <span class="kr">export</span> <span class="kr">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="nx">middy</span><span class="p">(</span><span class="nx">originalHandler</span><span class="p">);</span>
 
-<span class="nx">handler</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">http</span><span class="p">());</span>
+<span class="nx">handler</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">httpMiddleware</span><span class="p">());</span>
 </pre></div>
 
 

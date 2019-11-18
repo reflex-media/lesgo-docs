@@ -36,11 +36,9 @@ markdown_extensions:
       guess_lang: false
 
 nav:
-  - Prologue:
-      - Contribution Guide: prologue/contributions.md
+  - Prologue: index.md
   - Getting Started:
       - Installation: getting-started/installation.md
-      - Configuration: getting-started/configuration.md
       - Directory Structure: getting-started/structure.md
       - Deployment: getting-started/deployment.md
   - The Basics:
@@ -48,8 +46,10 @@ nav:
       - Error Handling: basics/error-handling.md
       - Logging: basics/logging.md
   - Digging Deeper:
+      - Cache: advance/cache.md
       - Helpers: advance/helpers.md
-      - Queues: advance/queues.md
       - Object Store: advance/object-store.md
+      - Queues: advance/queues.md
       - Task Scheduling: advance/task-scheduling.md
       - Unit Tests: advance/unit-tests.md
+  - Contributing: contributing.md

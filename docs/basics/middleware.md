@@ -8,7 +8,7 @@ Middlewares should be written in the `src/middlewares/` directory.
 
 ## Available Middlewares
 
-Lesgo! comes with 5 pre-existing middlewares.
+Lesgo! comes with 6 pre-existing middlewares.
 
 You may also import other ready-made middlewares from the [Middy repository](https://www.npmjs.com/package/middy#available-middlewares).
 
@@ -20,7 +20,7 @@ This middleware will normalize the query string parameters and/or json body in t
 
 ```js
 import middy from "middy";
-import { normalizeHttpRequest } from "lesgo/middlewares";
+import normalizeHttpRequest from "Middlewares/normalizeHttpRequest";
 
 const originalHandler = event => {
   return event.input;
@@ -39,7 +39,7 @@ This middleware will normalize records coming from sqs message event. The `Recor
 
 ```js
 import middy from "middy";
-import { normalizeSQSMessage } from "lesgo/middlewares";
+import normalizeSQSMessage from "Middlewares/normalizeSQSMessage";
 
 const originalHandler = event => {
   return event.collection;
@@ -50,7 +50,7 @@ export const handler = middy(originalHandler);
 handler.use(normalizeSQSMessage());
 ```
 
-Refer to `src/handlers/pingQueueProcessor.js` for more detailed usage example.
+Refer to `src/handlers/samples/pingQueueProcessor.js` for more detailed usage example.
 
 ### Success Http Response
 
@@ -60,7 +60,7 @@ This middleware will be executed whenever a successful response is expected to b
 
 ```js
 import middy from "middy";
-import { successHttpResponse } from "lesgo/middlewares";
+import successHttpResponse from "Middlewares/successHttpResponse";
 
 const originalHandler = event => {
   return event.input;
@@ -79,7 +79,7 @@ This middleware will be executed whenever an error response is expected to be re
 
 ```js
 import middy from "middy";
-import { errorHttpResponse } from "lesgo/middlewares";
+import errorHttpResponse from "Middlewares/errorHttpResponse";
 
 const originalHandler = event => {
   return event.input;
@@ -92,13 +92,13 @@ handler.use(errorHttpResponse());
 
 ### Http
 
-This middleware combines the `normalizeHttpRequest`, `successHttpResponse`, and `successHttpResponse` middlewares, and can be used for all http endpoints (configured with API Gateway).
+This middleware combines the `normalizeHttpRequest`, `successHttpResponse`, and `errorHttpResponse` middlewares, and can be used for all http endpoints (configured with API Gateway).
 
 **Usage**
 
 ```js
 import middy from "middy";
-import http from "lesgo/middlewares";
+import httpMiddleware from "Middlewares/httpMiddleware";
 
 const originalHandler = event => {
   return event.input;
@@ -106,7 +106,7 @@ const originalHandler = event => {
 
 export const handler = middy(originalHandler);
 
-handler.use(http());
+handler.use(httpMiddleware());
 ```
 
 Refer to `src/handlers/ping.js` for usage.

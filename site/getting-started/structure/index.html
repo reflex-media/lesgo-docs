@@ -248,34 +248,10 @@
       
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
-    
-    <label class="md-nav__link" for="nav-1">
-      Prologue
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-1">
-        Prologue
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../../prologue/contributions/" title="Contribution Guide" class="md-nav__link">
-      Contribution Guide
+    <a href="../.." title="Prologue" class="md-nav__link">
+      Prologue
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
     
@@ -308,18 +284,6 @@
   <li class="md-nav__item">
     <a href="../installation/" title="Installation" class="md-nav__link">
       Installation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../configuration/" title="Configuration" class="md-nav__link">
-      Configuration
     </a>
   </li>
 
@@ -586,6 +550,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../advance/cache/" title="Cache" class="md-nav__link">
+      Cache
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../advance/helpers/" title="Helpers" class="md-nav__link">
       Helpers
     </a>
@@ -598,8 +574,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advance/queues/" title="Queues" class="md-nav__link">
-      Queues
+    <a href="../../advance/object-store/" title="Object Store" class="md-nav__link">
+      Object Store
     </a>
   </li>
 
@@ -610,8 +586,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advance/object-store/" title="Object Store" class="md-nav__link">
-      Object Store
+    <a href="../../advance/queues/" title="Queues" class="md-nav__link">
+      Queues
     </a>
   </li>
 
@@ -642,6 +618,18 @@
         
       </ul>
     </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
   </li>
 
     
@@ -814,10 +802,6 @@
 |   └── utils
 ├── src
 |   ├── config
-|   |   ├── app.js
-|   |   ├── aws.js
-|   |   ├── index.js
-|   |   └── sentry.js
 |   ├── constants
 |   ├── core
 |   ├── exceptions
@@ -858,15 +842,15 @@
 <h3 id="exception-directory">Exception Directory<a class="headerlink" href="#exception-directory" title="Permanent link">&para;</a></h3>
 <p>The <code>src/exceptions/</code> directory contains error classes.</p>
 <h3 id="handler-directory">Handler Directory<a class="headerlink" href="#handler-directory" title="Permanent link">&para;</a></h3>
-<p>The <code>/src/handlers/</code> directory contains the entry point for all events.</p>
+<p>The <code>src/handlers/</code> directory contains the entry point for all events.</p>
 <h3 id="middleware-directory">Middleware Directory<a class="headerlink" href="#middleware-directory" title="Permanent link">&para;</a></h3>
-<p>The <code>/src/middlewares/</code> directory contains the request middlewares.</p>
+<p>The <code>src/middlewares/</code> directory contains the request middlewares.</p>
 <h3 id="service-directory">Service Directory<a class="headerlink" href="#service-directory" title="Permanent link">&para;</a></h3>
-<p>The <code>/src/services/</code> directory contains class-based services or modules, usually instantiated. These classes are usually made available in the <code>src/utils/</code> as helper functions.</p>
+<p>The <code>src/services/</code> directory contains class-based services or modules, usually instantiated. These classes are usually made available in the <code>src/utils/</code> as helper functions.</p>
 <h3 id="util-directory">Util Directory<a class="headerlink" href="#util-directory" title="Permanent link">&para;</a></h3>
-<p>The <code>/src/utils/</code> direcotry contains helper functions.</p>
+<p>The <code>src/utils/</code> directory contains helper functions.</p>
 <h2 id="test-directory">Test Directory<a class="headerlink" href="#test-directory" title="Permanent link">&para;</a></h2>
-<p>The <code>/tests/</code> directory contains test <code>.spec.js</code> files for unit testing.</p>
+<p>The <code>tests/</code> directory contains test <code>.spec.js</code> files for unit testing.</p>
                 
                   
                 
@@ -887,7 +871,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../configuration/" title="Configuration" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../installation/" title="Installation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -896,7 +880,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Configuration
+                Installation
               </span>
             </div>
           </a>

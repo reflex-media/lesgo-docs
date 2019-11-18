@@ -7,7 +7,7 @@ Lesgo! is pre-configured with AWS S3 for object storage.
 The `getObject()` function will fetch the object from the Bucket.
 
 ```js
-import { getObject } from 'lesgo/utils';
+import { getObject } from 'Utils/objectStore';
 
 // Returns a buffered object response. See AWS for more information
 const objectFile = await getObject('Key', 'Bucket');

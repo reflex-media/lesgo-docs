@@ -248,34 +248,10 @@
       
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
-    
-    <label class="md-nav__link" for="nav-1">
-      Prologue
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-1">
-        Prologue
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../../prologue/contributions/" title="Contribution Guide" class="md-nav__link">
-      Contribution Guide
+    <a href="../.." title="Prologue" class="md-nav__link">
+      Prologue
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
     
@@ -306,18 +282,6 @@
   <li class="md-nav__item">
     <a href="../../getting-started/installation/" title="Installation" class="md-nav__link">
       Installation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../getting-started/configuration/" title="Configuration" class="md-nav__link">
-      Configuration
     </a>
   </li>
 
@@ -438,8 +402,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../helpers/" title="Helpers" class="md-nav__link">
-      Helpers
+    <a href="../cache/" title="Cache" class="md-nav__link">
+      Cache
     </a>
   </li>
 
@@ -450,8 +414,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../queues/" title="Queues" class="md-nav__link">
-      Queues
+    <a href="../helpers/" title="Helpers" class="md-nav__link">
+      Helpers
     </a>
   </li>
 
@@ -519,6 +483,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../queues/" title="Queues" class="md-nav__link">
+      Queues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../task-scheduling/" title="Task Scheduling" class="md-nav__link">
       Task Scheduling
     </a>
@@ -539,6 +515,18 @@
         
       </ul>
     </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
   </li>
 
     
@@ -599,7 +587,7 @@
 <p>Lesgo! is pre-configured with AWS S3 for object storage.</p>
 <h2 id="fetch-object">Fetch Object<a class="headerlink" href="#fetch-object" title="Permanent link">&para;</a></h2>
 <p>The <code>getObject()</code> function will fetch the object from the Bucket.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">getObject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;lesgo/utils&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">getObject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;Utils/objectStore&#39;</span><span class="p">;</span>
 
 <span class="c1">// Returns a buffered object response. See AWS for more information</span>
 <span class="kr">const</span> <span class="nx">objectFile</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">getObject</span><span class="p">(</span><span class="s1">&#39;Key&#39;</span><span class="p">,</span> <span class="s1">&#39;Bucket&#39;</span><span class="p">);</span>
@@ -637,7 +625,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../queues/" title="Queues" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../helpers/" title="Helpers" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -646,19 +634,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Queues
+                Helpers
               </span>
             </div>
           </a>
         
         
-          <a href="../task-scheduling/" title="Task Scheduling" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../queues/" title="Queues" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Task Scheduling
+                Queues
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
