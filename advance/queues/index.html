@@ -248,34 +248,10 @@
       
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
-    
-    <label class="md-nav__link" for="nav-1">
-      Prologue
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-1">
-        Prologue
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../../prologue/contributions/" title="Contribution Guide" class="md-nav__link">
-      Contribution Guide
+    <a href="../.." title="Prologue" class="md-nav__link">
+      Prologue
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
     
@@ -306,18 +282,6 @@
   <li class="md-nav__item">
     <a href="../../getting-started/installation/" title="Installation" class="md-nav__link">
       Installation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../getting-started/configuration/" title="Configuration" class="md-nav__link">
-      Configuration
     </a>
   </li>
 
@@ -438,8 +402,32 @@
 
 
   <li class="md-nav__item">
+    <a href="../cache/" title="Cache" class="md-nav__link">
+      Cache
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../helpers/" title="Helpers" class="md-nav__link">
       Helpers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../object-store/" title="Object Store" class="md-nav__link">
+      Object Store
     </a>
   </li>
 
@@ -574,18 +562,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../object-store/" title="Object Store" class="md-nav__link">
-      Object Store
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../task-scheduling/" title="Task Scheduling" class="md-nav__link">
       Task Scheduling
     </a>
@@ -606,6 +582,18 @@
         
       </ul>
     </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
   </li>
 
     
@@ -735,7 +723,7 @@
 <p>The <code>dispatch()</code> function will dispatch a message payload to the queue.</p>
 <h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
 <p>This example usage will send a message to the pre-defined PingQueue.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">dispatch</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;lesgo/utils&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">dispatch</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;Utils/queue&quot;</span><span class="p">;</span>
 
 <span class="kr">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">someData</span><span class="o">:</span> <span class="s2">&quot;someValue&quot;</span><span class="p">,</span>
@@ -800,7 +788,7 @@ Send a ping request queued to SQS as a failed job.<br />
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../helpers/" title="Helpers" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../object-store/" title="Object Store" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -809,19 +797,19 @@ Send a ping request queued to SQS as a failed job.<br />
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Helpers
+                Object Store
               </span>
             </div>
           </a>
         
         
-          <a href="../object-store/" title="Object Store" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../task-scheduling/" title="Task Scheduling" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Object Store
+                Task Scheduling
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

@@ -248,34 +248,10 @@
       
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
-    
-    <label class="md-nav__link" for="nav-1">
-      Prologue
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-1">
-        Prologue
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../../prologue/contributions/" title="Contribution Guide" class="md-nav__link">
-      Contribution Guide
+    <a href="../.." title="Prologue" class="md-nav__link">
+      Prologue
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
     
@@ -306,18 +282,6 @@
   <li class="md-nav__item">
     <a href="../../getting-started/installation/" title="Installation" class="md-nav__link">
       Installation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../getting-started/configuration/" title="Configuration" class="md-nav__link">
-      Configuration
     </a>
   </li>
 
@@ -438,6 +402,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../cache/" title="Cache" class="md-nav__link">
+      Cache
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../helpers/" title="Helpers" class="md-nav__link">
       Helpers
     </a>
@@ -450,8 +426,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../queues/" title="Queues" class="md-nav__link">
-      Queues
+    <a href="../object-store/" title="Object Store" class="md-nav__link">
+      Object Store
     </a>
   </li>
 
@@ -462,8 +438,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../object-store/" title="Object Store" class="md-nav__link">
-      Object Store
+    <a href="../queues/" title="Queues" class="md-nav__link">
+      Queues
     </a>
   </li>
 
@@ -535,6 +511,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -585,16 +573,16 @@
 <p>Lesgo! utilizes the CloudWatch Scheduled Event type to schedule events. This is the equivalent as you would configured a Cron entry on an application server.</p>
 <h2 id="defining-schedules">Defining Schedules<a class="headerlink" href="#defining-schedules" title="Permanent link">&para;</a></h2>
 <p>Define a scheduled event by first inserting a function with the <code>event:schedule</code> type in your serverless function yaml.</p>
-<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">functions</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pingScheduledEvent</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">handler</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">src/app/handlers/scheduledEvent.handler</span>
-        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Lambda event triggered from Scheduled Cloudwatch Event</span>
-        <span class="l l-Scalar l-Scalar-Plain">events</span><span class="p p-Indicator">:</span>
-            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">schedule</span><span class="p p-Indicator">:</span>
-                <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">scheduledEvent</span>
-                <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Trigger lambda function every 5 minute</span>
-                <span class="l l-Scalar l-Scalar-Plain">rate</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">rate(5 minutes)</span>
-                <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<div class="codehilite"><pre><span></span>functions:
+    - pingScheduledEvent:
+        handler: src/app/handlers/scheduledEvent.handler
+        description: Lambda event triggered from Scheduled Cloudwatch Event
+        events:
+            - schedule:
+                name: scheduledEvent
+                description: Trigger lambda function every 5 minute
+                rate: rate(5 minutes)
+                enabled: true
 </pre></div>
 
 
@@ -620,7 +608,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../object-store/" title="Object Store" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../queues/" title="Queues" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -629,7 +617,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Object Store
+                Queues
               </span>
             </div>
           </a>

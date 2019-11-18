@@ -248,34 +248,10 @@
       
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
-    
-    <label class="md-nav__link" for="nav-1">
-      Prologue
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-1">
-        Prologue
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../../prologue/contributions/" title="Contribution Guide" class="md-nav__link">
-      Contribution Guide
+    <a href="../.." title="Prologue" class="md-nav__link">
+      Prologue
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
     
@@ -333,13 +309,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements" title="Requirements" class="md-nav__link">
-    Requirements
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#quick-start" title="Quick Start" class="md-nav__link">
     Quick Start
   </a>
@@ -347,9 +316,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#available-endpoints" title="Available Endpoints" class="md-nav__link">
-    Available Endpoints
+  <a href="#configuration" title="Configuration" class="md-nav__link">
+    Configuration
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-configuration" title="Environment Configuration" class="md-nav__link">
+    Environment Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-environment-configurations" title="Available Environment Configurations" class="md-nav__link">
+    Available Environment Configurations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -361,18 +350,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../configuration/" title="Configuration" class="md-nav__link">
-      Configuration
-    </a>
   </li>
 
         
@@ -490,6 +467,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../advance/cache/" title="Cache" class="md-nav__link">
+      Cache
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../advance/helpers/" title="Helpers" class="md-nav__link">
       Helpers
     </a>
@@ -502,8 +491,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advance/queues/" title="Queues" class="md-nav__link">
-      Queues
+    <a href="../../advance/object-store/" title="Object Store" class="md-nav__link">
+      Object Store
     </a>
   </li>
 
@@ -514,8 +503,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advance/object-store/" title="Object Store" class="md-nav__link">
-      Object Store
+    <a href="../../advance/queues/" title="Queues" class="md-nav__link">
+      Queues
     </a>
   </li>
 
@@ -549,6 +538,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -570,13 +571,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements" title="Requirements" class="md-nav__link">
-    Requirements
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#quick-start" title="Quick Start" class="md-nav__link">
     Quick Start
   </a>
@@ -584,9 +578,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#available-endpoints" title="Available Endpoints" class="md-nav__link">
-    Available Endpoints
+  <a href="#configuration" title="Configuration" class="md-nav__link">
+    Configuration
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-configuration" title="Environment Configuration" class="md-nav__link">
+    Environment Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-environment-configurations" title="Available Environment Configurations" class="md-nav__link">
+    Available Environment Configurations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -610,42 +624,66 @@
                 
                 
                 <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
-<p>Set up your local environment.</p>
-<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
-<p>Lesgo! is designed to run on AWS, specifically using the Gateway API for all API endpoints, and Lambda for all functions.</p>
-<p>Lesgo! also integrates with major AWS services to get a fully functioning and lightweight NodeJS REST application.</p>
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><strong>Prerequisites</strong>: Install Serverless Framework globally with: <code>npm install -g serverless</code>.</p>
-</blockquote>
-<p>Create Serverless project</p>
-<div class="codehilite"><pre><span></span>$ sls create --template-url https://github.com/reflex-media/lesgo/tree/master --path my-service
-
-$ <span class="nb">cd</span> my-service
+<div class="admonition info">
+<p class="admonition-title">Prerequisites</p>
+<p>Install Serverless Framework globally with: <code>npm install -g serverless</code>.<br />
+Refer to https://serverless.com/framework/docs/getting-started/ for additional info.</p>
+</div>
+<p>Create Serverless project:</p>
+<div class="codehilite"><pre><span></span>sls create --template-url https://github.com/reflex-media/lesgo/tree/master --path my-service
+<span class="nb">cd</span> my-service
 </pre></div>
 
 
-<p>Install dependencies</p>
-<div class="codehilite"><pre><span></span>$ yarn install
+<p>Install dependencies:</p>
+<div class="codehilite"><pre><span></span>yarn install
 </pre></div>
 
 
-<p>Start local</p>
-<div class="codehilite"><pre><span></span>$ yarn start
+<p>Start local:</p>
+<div class="codehilite"><pre><span></span>yarn start
 </pre></div>
 
 
-<p>Access local url via browser or Postman (recommended): http://localhost:8181/ping.</p>
-<h2 id="available-endpoints">Available Endpoints<a class="headerlink" href="#available-endpoints" title="Permanent link">&para;</a></h2>
-<p><strong><code>/ping</code></strong><br />
-Send a "liveness-check" request to your endpoint.</p>
-<p><strong><code>/ping/auth</code></strong><br />
-Send a "liveness-check" request with a required authorization.<br />
-<strong>Note</strong>: Set <code>x-api-key</code> in your request header for a valid request.</p>
-<p><strong><code>/ping?sample-error=message</code></strong><br />
-Returns the request with an "error message" response type.</p>
-<p><strong><code>/ping?sample-error=exception</code></strong><br />
-Returns the request with an "error class" response type.</p>
+<p>Access local url via browser or Postman: <a href="http://localhost:8181/ping">http://localhost:8181/ping</a>.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>There are 2 levels of configurations for the Lesgo! framework. </p>
+<p>The project configurations are stored in <code>config/</code> directory. These configuration files affect your project set up and build.</p>
+<p>The application configurations are stored in <code>src/config/</code> directory. These are application/business specific configurations.</p>
+<p>Each option is documented, so feel free to look through the files and get familiar with the options available to you.</p>
+<h3 id="environment-configuration">Environment Configuration<a class="headerlink" href="#environment-configuration" title="Permanent link">&para;</a></h3>
+<p>It is often helpful to have different configuration values based on the environment where the application is running. For example, you may wish to use a different SQS queue locally than you do on your production server.</p>
+<p>To make this happen, Lesgo! uses the Serverless DOTenv plugin. DOTenv files are stored in <code>config/environments/</code> directory. The supported environments are currently <code>local</code>, <code>development</code>, <code>staging</code>, <code>production</code>.</p>
+<p>These environment files can be committed to the source control. To overwrite for your local build, you may create a local DOTenv as such example: <code>.env.development.local</code>. This will allow you to overwrite the existing <code>.env.development</code> without having to commit it.</p>
+<h3 id="available-environment-configurations">Available Environment Configurations<a class="headerlink" href="#available-environment-configurations" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1"># Declare the environment</span>
+<span class="nv">APP_ENV</span><span class="o">=</span><span class="s2">&quot;development&quot;</span>
+
+<span class="c1"># Enable/disable debug mode</span>
+<span class="nv">APP_DEBUG</span><span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># Determine the region to deploy to</span>
+<span class="nv">AWS_ACCOUNT_REGION</span><span class="o">=</span><span class="s2">&quot;us-west-1&quot;</span>
+
+<span class="c1"># This name needs to match the aws credentials profile on your local machine</span>
+<span class="nv">AWS_ACCOUNT_PROFILE</span><span class="o">=</span><span class="s2">&quot;slsDevProfile&quot;</span>
+
+<span class="c1"># Set the default timeout for all lambda functions</span>
+<span class="nv">AWS_LAMBDA_TIMEOUT</span><span class="o">=</span><span class="m">3</span>
+
+<span class="c1"># Set the default memory size for all lambda functions</span>
+<span class="nv">AWS_LAMBDA_MEMORY_SIZE</span><span class="o">=</span><span class="m">128</span>
+
+<span class="c1"># Set the default retention period for all cloudwatch logs</span>
+<span class="nv">AWS_LOG_RETENTION_DAYS</span><span class="o">=</span><span class="m">7</span>
+
+<span class="c1"># Define your own custom API Gateway Secret Key</span>
+<span class="nv">AWS_APIGATEWAY_SECRET_KEY</span><span class="o">=</span>
+
+<span class="c1"># Maximum size before gzip compression for response</span>
+<span class="nv">AWS_APIGATEWAY_COMPRESSION_MAX_BYTES</span><span class="o">=</span>
+</pre></div>
                 
                   
                 
@@ -666,7 +704,7 @@ Returns the request with an "error class" response type.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../prologue/contributions/" title="Contribution Guide" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../.." title="Prologue" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -675,19 +713,19 @@ Returns the request with an "error class" response type.</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Contribution Guide
+                Prologue
               </span>
             </div>
           </a>
         
         
-          <a href="../configuration/" title="Configuration" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../structure/" title="Directory Structure" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Configuration
+                Directory Structure
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

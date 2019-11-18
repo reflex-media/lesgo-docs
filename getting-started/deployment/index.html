@@ -248,34 +248,10 @@
       
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
-    
-    <label class="md-nav__link" for="nav-1">
-      Prologue
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-1">
-        Prologue
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../../prologue/contributions/" title="Contribution Guide" class="md-nav__link">
-      Contribution Guide
+    <a href="../.." title="Prologue" class="md-nav__link">
+      Prologue
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
     
@@ -308,18 +284,6 @@
   <li class="md-nav__item">
     <a href="../installation/" title="Installation" class="md-nav__link">
       Installation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../configuration/" title="Configuration" class="md-nav__link">
-      Configuration
     </a>
   </li>
 
@@ -543,6 +507,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../advance/cache/" title="Cache" class="md-nav__link">
+      Cache
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../advance/helpers/" title="Helpers" class="md-nav__link">
       Helpers
     </a>
@@ -555,8 +531,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advance/queues/" title="Queues" class="md-nav__link">
-      Queues
+    <a href="../../advance/object-store/" title="Object Store" class="md-nav__link">
+      Object Store
     </a>
   </li>
 
@@ -567,8 +543,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../advance/object-store/" title="Object Store" class="md-nav__link">
-      Object Store
+    <a href="../../advance/queues/" title="Queues" class="md-nav__link">
+      Queues
     </a>
   </li>
 
@@ -599,6 +575,18 @@
         
       </ul>
     </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
   </li>
 
     
@@ -719,23 +707,23 @@
 <p>Serverless Framework handles most of the deployment tasks. Lesgo! uses its own deployment script to allow for a more custom deployment process.</p>
 <h2 id="deploy-entire-application">Deploy Entire Application<a class="headerlink" href="#deploy-entire-application" title="Permanent link">&para;</a></h2>
 <p>This command will deploy the entire application to a specific environment.</p>
-<div class="codehilite"><pre><span></span>$ yarn deploy -s <span class="o">{</span>environment<span class="o">}</span>
+<div class="codehilite"><pre><span></span>yarn deploy -s <span class="o">{</span>environment<span class="o">}</span>
 </pre></div>
 
 
 <h3 id="example-deploy">Example deploy<a class="headerlink" href="#example-deploy" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span>$ yarn deploy -s dev
+<div class="codehilite"><pre><span></span>yarn deploy -s development
 </pre></div>
 
 
 <h2 id="deploy-single-function">Deploy Single Function<a class="headerlink" href="#deploy-single-function" title="Permanent link">&para;</a></h2>
 <p>This command will deploy only a single function to a specific environment.</p>
-<div class="codehilite"><pre><span></span>$ yarn deploy -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
+<div class="codehilite"><pre><span></span>yarn deploy -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
 </pre></div>
 
 
 <h3 id="example-deploy_1">Example deploy<a class="headerlink" href="#example-deploy_1" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span>$ yarn deploy -s dev -f Ping
+<div class="codehilite"><pre><span></span>yarn deploy -s development -f Ping
 </pre></div>
 
 
@@ -743,28 +731,28 @@
 <p>These commands are also available.</p>
 <h3 id="invoke-a-function">Invoke a function<a class="headerlink" href="#invoke-a-function" title="Permanent link">&para;</a></h3>
 <p>This command will invoke/trigger a single function.</p>
-<div class="codehilite"><pre><span></span>$ yarn invoke -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
+<div class="codehilite"><pre><span></span>yarn invoke -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
 
 <span class="c1"># Example</span>
-$ yarn invoke -s dev -f Ping
+yarn invoke -s development -f Ping
 </pre></div>
 
 
 <h3 id="tail-log-of-a-function">Tail log of a function<a class="headerlink" href="#tail-log-of-a-function" title="Permanent link">&para;</a></h3>
 <p>This command allows you to tail the log of a single function.</p>
-<div class="codehilite"><pre><span></span>$ yarn logs -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
+<div class="codehilite"><pre><span></span>yarn logs -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
 
 <span class="c1"># Example</span>
-$ yarn logs -s dev -f Ping
+yarn logs -s development -f Ping
 </pre></div>
 
 
 <h3 id="build-bundle-without-deployment">Build bundle without deployment<a class="headerlink" href="#build-bundle-without-deployment" title="Permanent link">&para;</a></h3>
 <p>This command allows you to build the bundle without doing actual deployment. This might be useful to note the created bundle files and sizes.</p>
-<div class="codehilite"><pre><span></span>$ yarn build -s <span class="o">{</span>environment<span class="o">}</span>
+<div class="codehilite"><pre><span></span>yarn build -s <span class="o">{</span>environment<span class="o">}</span>
 
 <span class="c1"># Example</span>
-$ yarn build -s dev
+yarn build -s development
 </pre></div>
                 
                   

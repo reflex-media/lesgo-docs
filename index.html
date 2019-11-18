@@ -106,7 +106,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#installation" tabindex="1" class="md-skip">
+      <a href="#lesgo" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -132,7 +132,7 @@
                 Lesgo!
               </span>
               <span class="md-header-nav__topic">
-                Installation
+                Prologue
               </span>
             
           
@@ -247,35 +247,56 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
-    <label class="md-nav__link" for="nav-1">
-      Prologue
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-1">
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         Prologue
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="prologue/contributions/" title="Contribution Guide" class="md-nav__link">
-      Contribution Guide
+    
+    <a href="." title="Prologue" class="md-nav__link md-nav__link--active">
+      Prologue
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-lightweight-nodejs-serverless-framework" title="A lightweight node.js serverless framework" class="md-nav__link">
+    A lightweight node.js serverless framework
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" title="Quick Start" class="md-nav__link">
+    Quick Start
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -306,18 +327,6 @@
   <li class="md-nav__item">
     <a href="getting-started/installation/" title="Installation" class="md-nav__link">
       Installation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="getting-started/configuration/" title="Configuration" class="md-nav__link">
-      Configuration
     </a>
   </li>
 
@@ -436,6 +445,18 @@
 
 
   <li class="md-nav__item">
+    <a href="advance/cache/" title="Cache" class="md-nav__link">
+      Cache
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="advance/helpers/" title="Helpers" class="md-nav__link">
       Helpers
     </a>
@@ -448,8 +469,8 @@
 
 
   <li class="md-nav__item">
-    <a href="advance/queues/" title="Queues" class="md-nav__link">
-      Queues
+    <a href="advance/object-store/" title="Object Store" class="md-nav__link">
+      Object Store
     </a>
   </li>
 
@@ -460,8 +481,8 @@
 
 
   <li class="md-nav__item">
-    <a href="advance/object-store/" title="Object Store" class="md-nav__link">
-      Object Store
+    <a href="advance/queues/" title="Queues" class="md-nav__link">
+      Queues
     </a>
   </li>
 
@@ -495,6 +516,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="contributing/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -516,8 +549,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements" title="Requirements" class="md-nav__link">
-    Requirements
+  <a href="#a-lightweight-nodejs-serverless-framework" title="A lightweight node.js serverless framework" class="md-nav__link">
+    A lightweight node.js serverless framework
   </a>
   
 </li>
@@ -548,29 +581,28 @@
                   <a href="https://github.com/reflex-media/lesgo/edit/master/docs/index.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
-<p>Set up your local environment.</p>
-<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
-<p>Lesgo! is designed to run on AWS, specifically using the Gateway API for all API endpoints, and Lambda for all functions. </p>
-<p>Lesgo! also integrates with major AWS services to get a fully functioning and lightweight NodeJS REST application.</p>
+                <h1 id="lesgo">Lesgo!<a class="headerlink" href="#lesgo" title="Permanent link">&para;</a></h1>
+<h2 id="a-lightweight-nodejs-serverless-framework">A lightweight node.js serverless framework<a class="headerlink" href="#a-lightweight-nodejs-serverless-framework" title="Permanent link">&para;</a></h2>
+<p>Bootstrap your next microservice with a light-weight node.js serverless framework on AWS.</p>
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><strong>Prerequisites</strong>: Install Serverless Framework globally with: <code>npm install -g serverless</code>.</p>
-</blockquote>
-<p>Create Serverless project</p>
-<div class="codehilite"><pre><span></span>$ sls create --template-url https://github.com/reflex-media/lesgo/tree/master --path my-service
-
-$ <span class="nb">cd</span> my-service
+<div class="admonition info">
+<p class="admonition-title">Prerequisites</p>
+<p>Install Serverless Framework globally with: <code>npm install -g serverless</code>.<br />
+Refer to https://serverless.com/framework/docs/getting-started/ for additional info.</p>
+</div>
+<p>Create Serverless project:</p>
+<div class="codehilite"><pre><span></span>sls create --template-url https://github.com/reflex-media/lesgo/tree/master --path my-service
+<span class="nb">cd</span> my-service
 </pre></div>
 
 
-<p>Install dependencies</p>
-<div class="codehilite"><pre><span></span>$ yarn install
+<p>Install dependencies:</p>
+<div class="codehilite"><pre><span></span>yarn install
 </pre></div>
 
 
-<p>Start local</p>
-<div class="codehilite"><pre><span></span>$ yarn start
+<p>Start local:</p>
+<div class="codehilite"><pre><span></span>yarn start
 </pre></div>
 
 
@@ -591,6 +623,27 @@ $ <span class="nb">cd</span> my-service
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+        
+          <a href="getting-started/installation/" title="Installation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Installation
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
