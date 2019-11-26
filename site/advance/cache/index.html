@@ -657,7 +657,38 @@
 </pre></div>
 
 
+<p>ElastiCache is disabled by default. To enable ElastiCache, follow the steps below.</p>
+<ol>
+<li>Uncomment <code>iamRoleStatement</code> for <code>elasticache</code> in <code>serverless.yml</code></li>
+</ol>
+<p><code>yml
+   iamRoleStatements:
+     - Effect: "Allow"
+       Action:
+         - "elasticache:*"
+       Resource: "*"</code></p>
+<ol>
+<li>
+<p>Uncomment <code>elastiCache.yml</code> resource in <code>serverless.yml</code>
+   ```yml
+   resources:</p>
+<ul>
+<li>${file(${self:custom.path.resources}/elastiCache.yml)}
+   ```</li>
+</ul>
+</li>
+<li>
+<p>Deploy application and retrieve ElastiCache node Endpoint on AWS Console.</p>
+</li>
+<li>
+<p>Update relevant environment file in <code>config/environments/</code> directory.
+   <code>bash
+   ELASTICACHE_MEMCACHED_URL="INSERT_ELASTICACHE_NODE_ENDPOINT_HERE"</code></p>
+</li>
+</ol>
+<p>Deploy your application again and you may now use ElastiCache.</p>
 <h2 id="cache-usage">Cache Usage<a class="headerlink" href="#cache-usage" title="Permanent link">&para;</a></h2>
+<p>Import the <code>cache</code> module from <code>Utils/cache</code>.</p>
 <h3 id="retrieving-items-from-the-cache">Retrieving items from the cache<a class="headerlink" href="#retrieving-items-from-the-cache" title="Permanent link">&para;</a></h3>
 <p>You may use the <code>get</code> method on the <code>cache</code> util to fetch items from the cache.</p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">cache</span> <span class="nx">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
@@ -667,6 +698,7 @@
 </pre></div>
 
 
+<p>See usage sample with this url endpoint <code>/ping?sample-cache=get&amp;key=sampleCacheKey</code>.</p>
 <h3 id="storing-items-to-the-cache">Storing items to the cache<a class="headerlink" href="#storing-items-to-the-cache" title="Permanent link">&para;</a></h3>
 <p>You may use the <code>set</code> method on the <code>cache</code> util to store items to the cache.</p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">cache</span> <span class="nx">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
@@ -679,6 +711,7 @@
 </pre></div>
 
 
+<p>See usage sample with this url endpoint <code>/ping?sample-cache=set&amp;key=sampleCacheKey&amp;value=sampleCacheValue</code>.</p>
 <h3 id="deleting-items-from-the-cache">Deleting items from the cache<a class="headerlink" href="#deleting-items-from-the-cache" title="Permanent link">&para;</a></h3>
 <p>You may use the <code>del</code> method on the <code>cache</code> util to delete items from the cache.</p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">cache</span> <span class="nx">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
@@ -686,6 +719,9 @@
 <span class="kr">const</span> <span class="nx">cacheKey</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">del</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">);</span>
 </pre></div>
+
+
+<p>See usage sample with this url endpoint <code>/ping?sample-cache=del&amp;key=sampleCacheKey</code>.</p>
                 
                   
                 
