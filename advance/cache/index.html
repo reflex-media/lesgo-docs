@@ -695,24 +695,21 @@
 
 <p>ElastiCache is disabled by default. To enable ElastiCache, follow the steps below.</p>
 <ol>
-<li>
-<p>Uncomment <code>elastiCache.yml</code> resource in <code>serverless.yml</code>
-   ```yml
-   resources:</p>
-<ul>
-<li>${file(${self:custom.path.resources}/elastiCache.yml)}
-   ```</li>
-</ul>
-</li>
+<li>Uncomment <code>elastiCache.yml</code> resource in <code>serverless.yml</code>  </li>
+</ol>
+<p><code>yml
+   resources:
+     - ${file(${self:custom.path.resources}/elastiCache.yml)}</code></p>
+<ol>
 <li>
 <p>Deploy application and retrieve ElastiCache node Endpoint on AWS Console.</p>
 </li>
 <li>
-<p>Update relevant environment file in <code>config/environments/</code> directory.
-   <code>bash
-   ELASTICACHE_MEMCACHED_URL="INSERT_ELASTICACHE_NODE_ENDPOINT_HERE"</code></p>
+<p>Update relevant environment file in <code>config/environments/</code> directory.  </p>
 </li>
 </ol>
+<p><code>bash
+   ELASTICACHE_MEMCACHED_URL="INSERT_ELASTICACHE_NODE_ENDPOINT_HERE"</code></p>
 <p>Deploy your application again and you may now use ElastiCache.</p>
 <h2 id="cache-usage">Cache Usage<a class="headerlink" href="#cache-usage" title="Permanent link">&para;</a></h2>
 <p>Import the <code>cache</code> module from <code>Utils/cache</code>.</p>
