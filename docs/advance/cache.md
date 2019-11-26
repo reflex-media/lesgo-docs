@@ -3,6 +3,7 @@
 Lesgo! uses AWS ElastiCache for caching.
 
 ## Configuration
+
 This is configurable in the `src/config/cache.js`.
 
 ```js
@@ -23,31 +24,38 @@ export default {
 
 ## Cache Usage
 
-### Retrieving items in the cache
+### Retrieving items from the cache
 
-You may use the `get` method on the `Cache` function to fetch items in the cache.
+You may use the `get` method on the `cache` util to fetch items from the cache.
 
 ```js
 import cache from "Utils/cache";
 
-cache().get("key", (err, data) => {
-  console.log(`Logger: err(${err}) data(${data})`);
-});
-
-cache().end();
+const cacheKey = "foo";
+const data = await cache.get(cacheKey);
 ```
 
-### Storing items in the cache
+### Storing items to the cache
 
-You may use the `set` method on the `Cache` function to store items in the cache.
+You may use the `set` method on the `cache` util to store items to the cache.
 
 ```js
 import cache from "Utils/cache";
 
-const seconds = 10;
-cache().set("key", "value", seconds, (err, data) => {
-  console.log(`Logger: err(${err}) data(${data})`);
-});
+const cacheKey = "foo";
+const cacheValue = "bar";
+const cacheLifetimeInSeconds = 10;
 
-cache().end();
+const data = await cache.set(cacheKey, cacheValue, cacheLifetimeInSeconds);
+```
+
+### Deleting items from the cache
+
+You may use the `del` method on the `cache` util to delete items from the cache.
+
+```js
+import cache from "Utils/cache";
+
+const cacheKey = "foo";
+const data = await cache.del(cacheKey);
 ```
