@@ -14,7 +14,13 @@ const someFunction = () => {
 };
 ```
 
-Refer to the sample `src/core/ping.js` for usage.
+Refer to the sample `src/handlers/samples/errorHandling.js` for usage.
+
+To test the sample usage, uncomment `samples.yml` function in `serverless.yml` and deploy the application to a development environment.
+
+Testable sample url endpoints:
+- Test error message: `/samples/error-handling?type=message`.
+- Test error exception: `/samples/error-handling?type=exception`.
 
 ## Custom Error Classes
 

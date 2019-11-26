@@ -516,6 +516,42 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/vpc/" title="VPC" class="md-nav__link">
+      VPC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
   <li class="md-nav__item">
     <a href="../../contributing/" title="Contributing" class="md-nav__link">
       Contributing
@@ -583,7 +619,11 @@
 </pre></div>
 
 
-<p>Refer to the sample <code>src/core/ping.js</code> for usage.</p>
+<p>Refer to the sample <code>src/handlers/samples/errorHandling.js</code> for usage.</p>
+<p>To test the sample usage, uncomment <code>samples.yml</code> function in <code>serverless.yml</code> and deploy the application to a development environment.</p>
+<p>Testable sample url endpoints:
+- Test error message: <code>/samples/error-handling?type=message</code>.
+- Test error exception: <code>/samples/error-handling?type=exception</code>.</p>
 <h2 id="custom-error-classes">Custom Error Classes<a class="headerlink" href="#custom-error-classes" title="Permanent link">&para;</a></h2>
 <p>You can define your own Error Classes as required. Refer to the existing <code>src/exceptions/ErrorException.js</code> class.</p>
                 

@@ -66,6 +66,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://reflex-media.github.io/lesgo-docs/security/vpc/</loc>
+     <lastmod>2019-11-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://reflex-media.github.io/lesgo-docs/contributing/</loc>
      <lastmod>2019-11-26</lastmod>
      <changefreq>daily</changefreq>

@@ -550,6 +550,42 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/vpc/" title="VPC" class="md-nav__link">
+      VPC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
   <li class="md-nav__item">
     <a href="../../contributing/" title="Contributing" class="md-nav__link">
       Contributing
@@ -659,15 +695,6 @@
 
 <p>ElastiCache is disabled by default. To enable ElastiCache, follow the steps below.</p>
 <ol>
-<li>Uncomment <code>iamRoleStatement</code> for <code>elasticache</code> in <code>serverless.yml</code></li>
-</ol>
-<p><code>yml
-   iamRoleStatements:
-     - Effect: "Allow"
-       Action:
-         - "elasticache:*"
-       Resource: "*"</code></p>
-<ol>
 <li>
 <p>Uncomment <code>elastiCache.yml</code> resource in <code>serverless.yml</code>
    ```yml
@@ -689,6 +716,7 @@
 <p>Deploy your application again and you may now use ElastiCache.</p>
 <h2 id="cache-usage">Cache Usage<a class="headerlink" href="#cache-usage" title="Permanent link">&para;</a></h2>
 <p>Import the <code>cache</code> module from <code>Utils/cache</code>.</p>
+<p>To test the sample usage, uncomment <code>samples.yml</code> function in <code>serverless.yml</code> and deploy the application to a development environment.</p>
 <h3 id="retrieving-items-from-the-cache">Retrieving items from the cache<a class="headerlink" href="#retrieving-items-from-the-cache" title="Permanent link">&para;</a></h3>
 <p>You may use the <code>get</code> method on the <code>cache</code> util to fetch items from the cache.</p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">cache</span> <span class="nx">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
@@ -698,7 +726,7 @@
 </pre></div>
 
 
-<p>See usage sample with this url endpoint <code>/ping?sample-cache=get&amp;key=sampleCacheKey</code>.</p>
+<p>Test sample usage with this url endpoint <code>/samples/cache?method=get&amp;key=sampleCacheKey</code>.</p>
 <h3 id="storing-items-to-the-cache">Storing items to the cache<a class="headerlink" href="#storing-items-to-the-cache" title="Permanent link">&para;</a></h3>
 <p>You may use the <code>set</code> method on the <code>cache</code> util to store items to the cache.</p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">cache</span> <span class="nx">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
@@ -711,7 +739,7 @@
 </pre></div>
 
 
-<p>See usage sample with this url endpoint <code>/ping?sample-cache=set&amp;key=sampleCacheKey&amp;value=sampleCacheValue</code>.</p>
+<p>Test sample usage with this url endpoint <code>/samples/cache?method=set&amp;key=sampleCacheKey&amp;value=sampleCacheValue</code>.</p>
 <h3 id="deleting-items-from-the-cache">Deleting items from the cache<a class="headerlink" href="#deleting-items-from-the-cache" title="Permanent link">&para;</a></h3>
 <p>You may use the <code>del</code> method on the <code>cache</code> util to delete items from the cache.</p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">cache</span> <span class="nx">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
@@ -721,7 +749,7 @@
 </pre></div>
 
 
-<p>See usage sample with this url endpoint <code>/ping?sample-cache=del&amp;key=sampleCacheKey</code>.</p>
+<p>Test sample usage with this url endpoint <code>/samples/cache?method=del&amp;key=sampleCacheKey</code>.</p>
                 
                   
                 

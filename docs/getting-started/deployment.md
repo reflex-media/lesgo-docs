@@ -66,3 +66,17 @@ yarn build -s {environment}
 # Example
 yarn build -s development
 ```
+
+### Destroy
+
+Destroy everything, leave nothing behind.
+
+!!! danger "DANGER!"
+    Note that this action is non-reversible! Everything will disappear from AWS.
+
+```bash
+yarn destroy -s {environment}
+
+# Example
+yarn destroy -s development
+```
