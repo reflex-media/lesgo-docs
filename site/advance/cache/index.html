@@ -444,15 +444,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#retrieving-items-in-the-cache" title="Retrieving items in the cache" class="md-nav__link">
-    Retrieving items in the cache
+  <a href="#retrieving-items-from-the-cache" title="Retrieving items from the cache" class="md-nav__link">
+    Retrieving items from the cache
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#storing-items-in-the-cache" title="Storing items in the cache" class="md-nav__link">
-    Storing items in the cache
+  <a href="#storing-items-to-the-cache" title="Storing items to the cache" class="md-nav__link">
+    Storing items to the cache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-items-from-the-cache" title="Deleting items from the cache" class="md-nav__link">
+    Deleting items from the cache
   </a>
   
 </li>
@@ -586,15 +593,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#retrieving-items-in-the-cache" title="Retrieving items in the cache" class="md-nav__link">
-    Retrieving items in the cache
+  <a href="#retrieving-items-from-the-cache" title="Retrieving items from the cache" class="md-nav__link">
+    Retrieving items from the cache
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#storing-items-in-the-cache" title="Storing items in the cache" class="md-nav__link">
-    Storing items in the cache
+  <a href="#storing-items-to-the-cache" title="Storing items to the cache" class="md-nav__link">
+    Storing items to the cache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-items-from-the-cache" title="Deleting items from the cache" class="md-nav__link">
+    Deleting items from the cache
   </a>
   
 </li>
@@ -644,28 +658,33 @@
 
 
 <h2 id="cache-usage">Cache Usage<a class="headerlink" href="#cache-usage" title="Permanent link">&para;</a></h2>
-<h3 id="retrieving-items-in-the-cache">Retrieving items in the cache<a class="headerlink" href="#retrieving-items-in-the-cache" title="Permanent link">&para;</a></h3>
-<p>You may use the <code>get</code> method on the <code>Cache</code> function to fetch items in the cache.</p>
+<h3 id="retrieving-items-from-the-cache">Retrieving items from the cache<a class="headerlink" href="#retrieving-items-from-the-cache" title="Permanent link">&para;</a></h3>
+<p>You may use the <code>get</code> method on the <code>cache</code> util to fetch items from the cache.</p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">cache</span> <span class="nx">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
 
-<span class="nx">cache</span><span class="p">().</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Logger: err(</span><span class="si">${</span><span class="nx">err</span><span class="si">}</span><span class="sb">) data(</span><span class="si">${</span><span class="nx">data</span><span class="si">}</span><span class="sb">)`</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nx">cache</span><span class="p">().</span><span class="nx">end</span><span class="p">();</span>
+<span class="kr">const</span> <span class="nx">cacheKey</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">);</span>
 </pre></div>
 
 
-<h3 id="storing-items-in-the-cache">Storing items in the cache<a class="headerlink" href="#storing-items-in-the-cache" title="Permanent link">&para;</a></h3>
-<p>You may use the <code>set</code> method on the <code>Cache</code> function to store items in the cache.</p>
+<h3 id="storing-items-to-the-cache">Storing items to the cache<a class="headerlink" href="#storing-items-to-the-cache" title="Permanent link">&para;</a></h3>
+<p>You may use the <code>set</code> method on the <code>cache</code> util to store items to the cache.</p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">cache</span> <span class="nx">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">seconds</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-<span class="nx">cache</span><span class="p">().</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="nx">seconds</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Logger: err(</span><span class="si">${</span><span class="nx">err</span><span class="si">}</span><span class="sb">) data(</span><span class="si">${</span><span class="nx">data</span><span class="si">}</span><span class="sb">)`</span><span class="p">);</span>
-<span class="p">});</span>
+<span class="kr">const</span> <span class="nx">cacheKey</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">cacheValue</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">cacheLifetimeInSeconds</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 
-<span class="nx">cache</span><span class="p">().</span><span class="nx">end</span><span class="p">();</span>
+<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">,</span> <span class="nx">cacheValue</span><span class="p">,</span> <span class="nx">cacheLifetimeInSeconds</span><span class="p">);</span>
+</pre></div>
+
+
+<h3 id="deleting-items-from-the-cache">Deleting items from the cache<a class="headerlink" href="#deleting-items-from-the-cache" title="Permanent link">&para;</a></h3>
+<p>You may use the <code>del</code> method on the <code>cache</code> util to delete items from the cache.</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">cache</span> <span class="nx">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">cacheKey</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">del</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">);</span>
 </pre></div>
                 
                   
