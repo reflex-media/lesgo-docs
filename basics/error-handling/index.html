@@ -583,7 +583,11 @@
 </pre></div>
 
 
-<p>Refer to the sample <code>src/core/ping.js</code> for usage.</p>
+<p>Refer to the sample <code>src/handlers/samples/errorHandling.js</code> for usage.</p>
+<p>To test the sample usage, uncomment <code>samples.yml</code> function in <code>serverless.yml</code> and deploy the application to a development environment.</p>
+<p>Testable sample url endpoints:
+- Test error message: <code>/samples/error-handling?sample-error=message</code>.
+- Test error exception: <code>/samples/error-handling?sample-error=exception</code>.</p>
 <h2 id="custom-error-classes">Custom Error Classes<a class="headerlink" href="#custom-error-classes" title="Permanent link">&para;</a></h2>
 <p>You can define your own Error Classes as required. Refer to the existing <code>src/exceptions/ErrorException.js</code> class.</p>
                 
