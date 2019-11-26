@@ -697,9 +697,11 @@
 <ol>
 <li>Uncomment <code>elastiCache.yml</code> resource in <code>serverless.yml</code>  </li>
 </ol>
-<p><code>yml
-   resources:
-     - ${file(${self:custom.path.resources}/elastiCache.yml)}</code></p>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">resources</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${file(${self:custom.path.resources}/elastiCache.yml)}</span>
+</pre></div>
+
+
 <ol>
 <li>
 <p>Deploy application and retrieve ElastiCache node Endpoint on AWS Console.</p>
