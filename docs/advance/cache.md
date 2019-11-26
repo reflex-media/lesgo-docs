@@ -25,17 +25,23 @@ export default {
 ElastiCache is disabled by default. To enable ElastiCache, follow the steps below.
 
 1. Uncomment `elastiCache.yml` resource in `serverless.yml`
-   ```yml
-   resources:
-     - ${file(${self:custom.path.resources}/elastiCache.yml)}
-   ```
+
+```yml
+resources:
+  - ${file(${self:custom.path.resources}/elastiCache.yml)}
+```
 
 2. Deploy application and retrieve ElastiCache node Endpoint on AWS Console.
 
+```bash
+yarn deploy -s development
+```
+
 3. Update relevant environment file in `config/environments/` directory.
-   ```bash
-   ELASTICACHE_MEMCACHED_URL="INSERT_ELASTICACHE_NODE_ENDPOINT_HERE"
-   ```
+
+```bash
+ELASTICACHE_MEMCACHED_URL="INSERT_ELASTICACHE_NODE_ENDPOINT_HERE"
+```
 
 Deploy your application again and you may now use ElastiCache.
 

@@ -624,24 +624,30 @@
 <h2 id="default-vpc">Default VPC<a class="headerlink" href="#default-vpc" title="Permanent link">&para;</a></h2>
 <p>Should you choose to use the default VPC, follow these steps:</p>
 <ol>
-<li>Comment out <code>vpc.yml</code> and <code>lambda.yml</code> resources in <code>serverless.yml</code>
-    <code>yml
-    # - ${file(${self:custom.path.resources}/vpc.yml)}
-    # - ${file(${self:custom.path.resources}/lambda.yml)}</code></li>
-<li>Comment out <code>vpc</code> in <code>provider</code> in <code>serverless.yml</code>
-    <code>yml
-    # vpc:
-    #   securityGroupIds:
-    #     - Ref: LambdaSecurityGroup
-    #   subnetIds:
-    #     - Ref: PrivateSubnet1
-    #     - Ref: PrivateSubnet2</code></li>
+<li>Comment out <code>vpc.yml</code> and <code>lambda.yml</code> resources in <code>serverless.yml</code></li>
 </ol>
+<div class="codehilite"><pre><span></span># - ${file(${self:custom.path.resources}/vpc.yml)}
+# - ${file(${self:custom.path.resources}/lambda.yml)}
+</pre></div>
+
+
+<ol>
+<li>Comment out <code>vpc</code> in <code>provider</code> in <code>serverless.yml</code></li>
+</ol>
+<div class="codehilite"><pre><span></span># vpc:
+#   securityGroupIds:
+#     - Ref: LambdaSecurityGroup
+#   subnetIds:
+#     - Ref: PrivateSubnet1
+#     - Ref: PrivateSubnet2
+</pre></div>
+
+
 <p>This will now set your lambda and required resources within your own AWS default VPC.</p>
-<div class="admonition note">
+<div class="admonition info">
 <p class="admonition-title">ElastiCache VPC Requirement</p>
-<p>Note that ElastiCache requires you to set a VPC and will no longer work once you use a default VPC.</p>
 </div>
+<p>Note that ElastiCache requires you to set a VPC and will no longer work once you use a default VPC.</p>
 <h2 id="connecting-to-existing-vpc">Connecting to existing VPC<a class="headerlink" href="#connecting-to-existing-vpc" title="Permanent link">&para;</a></h2>
 <p>Coming soon...</p>
                 
