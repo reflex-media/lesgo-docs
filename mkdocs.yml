@@ -47,6 +47,7 @@ nav:
       - Logging: basics/logging.md
   - Digging Deeper:
       - Cache: advance/cache.md
+      - Database: advance/database.md
       - Helpers: advance/helpers.md
       - Object Store: advance/object-store.md
       - Queues: advance/queues.md
