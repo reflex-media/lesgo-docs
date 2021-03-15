@@ -11,20 +11,11 @@ logger.log('info', 'this is an info log');
 logger.info('This is an info log');
 logger.warn('This is a warning log');
 logger.error('This is an error log');
+logger.debug('This is a debug log and will only get logged when APP_DEBUG=true');
 ```
 
-Error logs can also be sent to Sentry. Simply update the relevant DOTenv in the `config/environments/` directory.
-
-```bash
-# Enable/disable sentry reporting
-SENTRY_ENABLED=true
-
-# DSN for sentry reporting. Instructions can be found on your Sentry dashboard
-SENTRY_DSN=
-
-# Minimal error to send to Sentry.
-SENTRY_LEVEL=
-```
+!!! info "PRO TIP"
+    This logger is built for, and works well, with both CloudWatch and DataDog. DataDog will help you monitor your logs, errors, inovations, and alot more in almost real-time with no performance impact!
 
 You may also add additional custom metadata as such:
 

@@ -41,6 +41,7 @@ nav:
       - Installation: getting-started/installation.md
       - Directory Structure: getting-started/structure.md
       - Deployment: getting-started/deployment.md
+      - Available Scripts: getting-started/available-scripts.md
   - The Basics:
       - Middleware: basics/middleware.md
       - Error Handling: basics/error-handling.md

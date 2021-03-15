@@ -2,9 +2,9 @@
 
 Lesgo! is pre-configured with AWS SQS for queues.
 
-## Dispatcher
+## Queue Dispatch Event
 
-The `dispatch()` function will dispatch a message payload to the queue.
+The `Utils/dispatch` function will dispatch a message payload to the queue.
 
 ### Usage
 
@@ -20,57 +20,28 @@ const payload = {
 return await dispatch(payload, "pingQueue");
 ```
 
-Refer to `src/core/pingQueue.js` for usage example.
+## Consuming Dispatached Queued Messages
 
-## Consumer
+Messages sent to SQS can automatically trigger and be executed by a Lambda Function. This can be configured to an event lambda function within the `config/functions`.
 
-The consumer is a lambda function that will process messages payload in the Queue.
-
-Refer to `src/core/pingQueueProcessor.js` for usage example.
-
-### Automatic Consumption
-
-Messages sent to the Queues can be automatically consumed by a Consumer. This can be configured to an event lambda function.
-
-**Configuring automated queue processor**
-
-...
-
-### Scheduled Consumption
-
-Messages sent to a FIFO Queue will need to be manually consumed. This can be configured as a CloudWatch Event.
-
-**Configuring scheduled queue processor**
-
-...
-
-## Configuring Queue
-
-Queues will need to be configured on Serverless via its yaml file before it can be used.
-
-### Add Serverless Resource
-
-## Connecting To Separate SQS Instance
-
-To connect to a different SQS instance, you may override the config by updating these in the environment file.
-
-```bash
-# Set IAM access key with SQS access
-AWS_SQS_OPTIONS_ACCESS_KEY_ID=
-
-# Set IAM secret key
-AWS_SQS_OPTIONS_SECRET_ACCESS_KEY=
-
-# Set SQS region to connect to
-AWS_SQS_OPTIONS_REGION=
+> `config/functions/dequeue.yml`
+```yml
+dequeue:
+  handler: ${self:custom.path.app}/handlers/dequeue.handler
+  description: Receives message from SQS for actual business logic execution
+  timeout: 15
+  events:
+    - sqs: arn:aws:sqs:${self:provider.region}:${env:AWS_ACCOUNT_ID}:${self:provider.stackName}-dequeue
 ```
 
-## Sample Queue Endpoints
+## Batch Processing Queued Messages
 
-**`/ping/queue`**  
-Send a ping request queued to SQS.  
-**Note**: Set `x-api-key` in your request header for a valid request.
+Messages can also be fetched and executed in batches.
 
-**`/ping/queue?failed-queue`**  
-Send a ping request queued to SQS as a failed job.  
-**Note**: Set `x-api-key` in your request header for a valid request.
+...
+
+## Processing Queued Messages with FIFO
+
+Messages can also be consumed in FIFO.
+
+...

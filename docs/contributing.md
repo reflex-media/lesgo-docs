@@ -8,6 +8,9 @@ The Lesgo! source code is managed on GitHub, and live on 3 separate repositories
 [Lesgo! Template](https://github.com/reflex-media/lesgo)  
 This is the main serverless template that developers will in their own project.
 
+[Lesgo-lite! Template](https://github.com/reflex-media/lesgo-lite)  
+An even lighter template with the bare essentials of the Lesgo! Template.
+
 [Lesgo! Framework](https://github.com/reflex-media/lesgo-framework)  
 Most of the core logic exists in this npm package.
 

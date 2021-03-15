@@ -7,13 +7,13 @@ Serverless Framework handles most of the deployment tasks. Lesgo! uses its own d
 This command will deploy the entire application to a specific environment.
 
 ```bash
-yarn deploy -s {environment}
+npm run deploy -- -s {environment}
 ```
 
 ### Example deploy
 
 ```bash
-yarn deploy -s development
+npm run deploy -- -s dev
 ```
 
 ## Deploy Single Function
@@ -21,13 +21,13 @@ yarn deploy -s development
 This command will deploy only a single function to a specific environment.
 
 ```bash
-yarn deploy -s {environment} -f {function_name}
+npm run deploy -- -s {environment} -f {function_name}
 ```
 
 ### Example deploy
 
 ```bash
-yarn deploy -s development -f Ping
+npm run deploy -- -s dev -f ping
 ```
 
 ## Other Available Commands
@@ -39,10 +39,10 @@ These commands are also available.
 This command will invoke/trigger a single function.
 
 ```bash
-yarn invoke -s {environment} -f {function_name}
+npm run invoke -- -s {environment} -f {function_name}
 
 # Example
-yarn invoke -s development -f Ping
+npm run invoke -- -s dev -f ping
 ```
 
 ### Tail log of a function
@@ -50,10 +50,10 @@ yarn invoke -s development -f Ping
 This command allows you to tail the log of a single function.
 
 ```bash
-yarn logs -s {environment} -f {function_name}
+npm run logs -- -s {environment} -f {function_name}
 
 # Example
-yarn logs -s development -f Ping
+npm run logs -- -s dev -f ping
 ```
 
 ### Build bundle without deployment
@@ -61,10 +61,10 @@ yarn logs -s development -f Ping
 This command allows you to build the bundle without doing actual deployment. This might be useful to note the created bundle files and sizes.
 
 ```bash
-yarn build -s {environment}
+npm run build -- -s {environment}
 
 # Example
-yarn build -s development
+npm run build -- -s dev
 ```
 
 ### Destroy
@@ -75,8 +75,8 @@ Destroy everything, leave nothing behind.
     Note that this action is non-reversible! Everything will disappear from AWS.
 
 ```bash
-yarn destroy -s {environment}
+npm run destroy -- -s {environment}
 
 # Example
-yarn destroy -s development
+npm run destroy -- -s dev
 ```

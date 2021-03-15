@@ -9,20 +9,20 @@
 Create Serverless project:
 
 ```bash
-sls create --template-url https://github.com/reflex-media/lesgo/tree/master --path my-service
+sls create --template-url https://github.com/reflex-media/lesgo-lite/tree/master --path my-service
 cd my-service
 ```
 
 Install dependencies:
 
 ```bash
-yarn install
+npm install
 ```
 
 Start local:
 
 ```bash
-yarn start
+npm start
 ```
 
 Access local url via browser or Postman: [http://localhost:8181/ping](http://localhost:8181/ping).
@@ -31,25 +31,25 @@ Access local url via browser or Postman: [http://localhost:8181/ping](http://loc
 
 There are 2 levels of configurations for the Lesgo! framework. 
 
-The project configurations are stored in `config/` directory. These configuration files affect your project set up and build.
+The project (serverless) configurations are stored in `config/` directory as `.yml` files. These configuration files affect your project set up and build.
 
-The application configurations are stored in `src/config/` directory. These are application/business specific configurations.
+The application configurations are stored in `src/config/` directory as `.js` files (We'll move to TypeScript soon, we promise!). These are application/business specific configurations.
 
-Each option is documented, so feel free to look through the files and get familiar with the options available to you.
+Each configuration is documented below, so feel free to look through the files and get familiar with the options relevant to you.
 
 ### Environment Configuration
 
 It is often helpful to have different configuration values based on the environment where the application is running. For example, you may wish to use a different SQS queue locally than you do on your production server.
 
-To make this happen, Lesgo! uses the Serverless DOTenv plugin. DOTenv files are stored in `config/environments/` directory. The supported environments are currently `local`, `development`, `staging`, `production`.
+To make this happen, Lesgo! uses the Serverless DOTenv plugin. DOTenv files are stored in `config/environments/` directory. The supported environments are currently `local`, `dev`, `sandbox`, `prod`.
 
-These environment files can be committed to the source control. To overwrite for your local build, you may create a local DOTenv as such example: `.env.development.local`. This will allow you to overwrite the existing `.env.development` without having to commit it.
+These environment files can be committed to the source control. To overwrite for your local build, you may create a local DOTenv as such example: `.env.dev.local`. This will allow you to overwrite the existing `.env.dev` without having to commit it.
 
 ### Available Environment Configurations
 
 ```bash
-# Declare the environment
-APP_ENV="development"
+# Declare the environment to deploy to
+APP_ENV="dev"
 
 # Enable/disable debug mode
 APP_DEBUG=true
@@ -68,9 +68,6 @@ AWS_LAMBDA_MEMORY_SIZE=128
 
 # Set the default retention period for all cloudwatch logs
 AWS_LOG_RETENTION_DAYS=7
-
-# Define your own custom API Gateway Secret Key
-AWS_APIGATEWAY_SECRET_KEY=
 
 # Maximum size before gzip compression for response
 AWS_APIGATEWAY_COMPRESSION_MAX_BYTES=

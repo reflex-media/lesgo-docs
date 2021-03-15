@@ -9,7 +9,7 @@ All test files exist in the `tests/` directory.
 This command will execute the unit testing.
 
 ```bash
-$ yarn test
+npm test
 ```
 
 ## Run Coverage Report
@@ -17,7 +17,7 @@ $ yarn test
 This command will execute the unit testing and generate a code coverage report.
 
 ```bash
-$ yarn coverage
+npm run coverage
 ```
 
 View the generated html report in `coverage/index.html`.

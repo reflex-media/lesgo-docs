@@ -1,92 +1,129 @@
 # Database
 
-Lesgo! allows you to connect to existing databases via Knex ORM or raw SQL.
+As of today, Lesgo! only supports AWS DynamoDb and AWS Aurora Database Serverless, as these are the only true serverless database services available on AWS.
 
-## Configuration
+## RDS Aurora Serverless Database
 
-The database configuration for your application is located at `src/config/database.js` for Knex ORM and `src/config/db.js` for raw SQL.
+### Configuration
+
+The database configuration for your application is located at `src/config/db.js`.
 
 You may also simply update the respective environment files in `config/environments/*` as such:
 
 ```bash
-DB_HOST=127.0.0.1
-DB_HOST_WRITE=127.0.0.1
-DB_HOST_READ=127.0.0.2
-DB_PORT=3306
-DB_USER="app_user"
-DB_PASSWORD="app_password"
-DB_NAME="app_db"
+# AWS Secret Manager ARN to allow app db user connect to the specified db
+DB_SECRET_ARN=""
+
+# AWS Secret Manager ARN to allow app command db user connect to the specified db 
+# for running "command" like functions like database schema migration
+DB_SECRET_COMMAND_ARN=""
+
+# AWS Secret Manager ARN for the Aurora Serverless database cluster
+DB_RESOURCE_ARN=""
+
+# Database name to connect to
+DB_NAME=""
 ```
 
-## Read & Write Connections
-
-Sometimes you may wish to use one database connection for SELECT statements, and another for INSERT, UPDATE, and DELETE statements. Simply use the right Utils method for this.
-
-Using read / write connection:
-
-```js
-import { db, dbRead } from "Utils/db";
-
-// Fetch data from READ HOST
-const dataRead = await dbRead.query("SELECT * FROM users LIMIT 1");
-// Fetch data from WRITE HOST
-const dataWrite = await db.query("SELECT * FROM users LIMIT 1");
-```
-
-## Running Raw SQL Queries
-
-Once you have configured your database connection, you may run queries using the `Utils/db` module.
-
-### Running A Select Query
+### Basic Queries
 
 To run a basic query, you may use the query method on the `Utils/db`:
 
 ```js
-import { db, connectDb } from "Utils/db";
+import db from 'Utils/db';
 
-// Set up initial connection to database
-connectDb();
-
-// Fetch data
-const data = await db.query("SELECT * FROM users LIMIT 1");
-await db.end();
-
-return data;
+return await db.query("SELECT * FROM users");
 ```
 
-Refer to `src/handlers/samples/db.js` for usage example.
+### Using Prepared Statement
 
-### Using Parameter Bindings
-
-You may also use Parameter Bindings for your queries.
+You should always use prepared statement for your queries.
 
 ```js
-import { db, connectDb } from "Utils/db";
+import db from 'Utils/db';
 
-// Set up initial connection to database
-connectDb();
-
-// Fetch data
-const data = await db.query("SELECT * FROM users WHERE id=? LIMIT 1", [1]);
-await db.end();
-
-return data;
+return await db.query("SELECT * FROM users WHERE id = :id LIMIT 1", {
+  id: 1,
+});
 ```
 
-### Ending Connection
+### Additional methods
 
-Though not necessary, it is recommended to always end the connection once you are done with it by simply calling the `end()` method.
+The `Utils/db` also comes with more specific and granular methods for specific queries.
 
-## Using Knex ORM
+#### db.select
 
-### Defining Models
+This will return an array of Objects
 
-...
+```js
+import db from 'Utils/db';
 
-### Defining Relationships
+return await db.select("SELECT * FROM users WHERE is_deleted = :isDeleted", {
+  isDeleted: false,
+});
+```
 
-...
+#### db.selectFirst
 
-### Retrieving Models
+This will return only a single record
 
-...
+```js
+import db from 'Utils/db';
+
+return await db.selectFirst("SELECT * FROM users WHERE id = :id", {
+  id: 1,
+});
+```
+
+#### db.insert
+
+This will return only the newly inserted primary key
+
+```js
+import db from 'Utils/db';
+
+return await db.insert("INSERT INTO users(username,email,created_at) VALUES (:username, :email:, now())", {
+  username: 'John',
+  email: 'john@mail.com',
+});
+```
+
+## AWS DynamoDb
+
+If you'd prefer a non-relational database, DynamoDb is also supported.
+
+### Configuration
+
+Before you can start to use DynamoDb, you need to set it up under the `config/resources/` directory. Also include the newly created yml file in the `serverless.yml` under the `resources` section.
+
+> `config/resources/dynamodb.yml`
+
+```yml
+Resources:
+  settingsTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    Properties:
+      TableName: ${self:provider.stackName}-settings
+      AttributeDefinitions:
+        - AttributeName: siteId
+          AttributeType: S
+        - AttributeName: checkType
+          AttributeType: S
+      KeySchema:
+        - AttributeName: siteId
+          KeyType: HASH
+        - AttributeName: checkType
+          KeyType: RANGE
+      BillingMode: PAY_PER_REQUEST
+```
+
+> `serverless.yml`
+
+```yml
+resources:
+  - ${file(${self:custom.path.resources}/dynamodb.yml)}
+```
+
+### Basic Queries
+
