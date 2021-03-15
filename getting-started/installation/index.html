@@ -377,6 +377,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../available-scripts/" title="Available Scripts" class="md-nav__link">
+      Available Scripts
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -679,34 +691,34 @@
 Refer to https://serverless.com/framework/docs/getting-started/ for additional info.</p>
 </div>
 <p>Create Serverless project:</p>
-<div class="codehilite"><pre><span></span>sls create --template-url https://github.com/reflex-media/lesgo/tree/master --path my-service
+<div class="codehilite"><pre><span></span>sls create --template-url https://github.com/reflex-media/lesgo-lite/tree/master --path my-service
 <span class="nb">cd</span> my-service
 </pre></div>
 
 
 <p>Install dependencies:</p>
-<div class="codehilite"><pre><span></span>yarn install
+<div class="codehilite"><pre><span></span>npm install
 </pre></div>
 
 
 <p>Start local:</p>
-<div class="codehilite"><pre><span></span>yarn start
+<div class="codehilite"><pre><span></span>npm start
 </pre></div>
 
 
 <p>Access local url via browser or Postman: <a href="http://localhost:8181/ping">http://localhost:8181/ping</a>.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>There are 2 levels of configurations for the Lesgo! framework. </p>
-<p>The project configurations are stored in <code>config/</code> directory. These configuration files affect your project set up and build.</p>
-<p>The application configurations are stored in <code>src/config/</code> directory. These are application/business specific configurations.</p>
-<p>Each option is documented, so feel free to look through the files and get familiar with the options available to you.</p>
+<p>The project (serverless) configurations are stored in <code>config/</code> directory as <code>.yml</code> files. These configuration files affect your project set up and build.</p>
+<p>The application configurations are stored in <code>src/config/</code> directory as <code>.js</code> files (We'll move to TypeScript soon, we promise!). These are application/business specific configurations.</p>
+<p>Each configuration is documented below, so feel free to look through the files and get familiar with the options relevant to you.</p>
 <h3 id="environment-configuration">Environment Configuration<a class="headerlink" href="#environment-configuration" title="Permanent link">&para;</a></h3>
 <p>It is often helpful to have different configuration values based on the environment where the application is running. For example, you may wish to use a different SQS queue locally than you do on your production server.</p>
-<p>To make this happen, Lesgo! uses the Serverless DOTenv plugin. DOTenv files are stored in <code>config/environments/</code> directory. The supported environments are currently <code>local</code>, <code>development</code>, <code>staging</code>, <code>production</code>.</p>
-<p>These environment files can be committed to the source control. To overwrite for your local build, you may create a local DOTenv as such example: <code>.env.development.local</code>. This will allow you to overwrite the existing <code>.env.development</code> without having to commit it.</p>
+<p>To make this happen, Lesgo! uses the Serverless DOTenv plugin. DOTenv files are stored in <code>config/environments/</code> directory. The supported environments are currently <code>local</code>, <code>dev</code>, <code>sandbox</code>, <code>prod</code>.</p>
+<p>These environment files can be committed to the source control. To overwrite for your local build, you may create a local DOTenv as such example: <code>.env.dev.local</code>. This will allow you to overwrite the existing <code>.env.dev</code> without having to commit it.</p>
 <h3 id="available-environment-configurations">Available Environment Configurations<a class="headerlink" href="#available-environment-configurations" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><span class="c1"># Declare the environment</span>
-<span class="nv">APP_ENV</span><span class="o">=</span><span class="s2">&quot;development&quot;</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Declare the environment to deploy to</span>
+<span class="nv">APP_ENV</span><span class="o">=</span><span class="s2">&quot;dev&quot;</span>
 
 <span class="c1"># Enable/disable debug mode</span>
 <span class="nv">APP_DEBUG</span><span class="o">=</span><span class="nb">true</span>
@@ -725,9 +737,6 @@ Refer to https://serverless.com/framework/docs/getting-started/ for additional i
 
 <span class="c1"># Set the default retention period for all cloudwatch logs</span>
 <span class="nv">AWS_LOG_RETENTION_DAYS</span><span class="o">=</span><span class="m">7</span>
-
-<span class="c1"># Define your own custom API Gateway Secret Key</span>
-<span class="nv">AWS_APIGATEWAY_SECRET_KEY</span><span class="o">=</span>
 
 <span class="c1"># Maximum size before gzip compression for response</span>
 <span class="nv">AWS_APIGATEWAY_COMPRESSION_MAX_BYTES</span><span class="o">=</span>
