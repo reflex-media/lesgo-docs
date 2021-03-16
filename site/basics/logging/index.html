@@ -310,6 +310,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/available-scripts/" title="Available Scripts" class="md-nav__link">
+      Available Scripts
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -581,21 +593,14 @@
 <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;This is an info log&#39;</span><span class="p">);</span>
 <span class="nx">logger</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">&#39;This is a warning log&#39;</span><span class="p">);</span>
 <span class="nx">logger</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;This is an error log&#39;</span><span class="p">);</span>
+<span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;This is a debug log and will only get logged when APP_DEBUG=true&#39;</span><span class="p">);</span>
 </pre></div>
 
 
-<p>Error logs can also be sent to Sentry. Simply update the relevant DOTenv in the <code>config/environments/</code> directory.</p>
-<div class="codehilite"><pre><span></span><span class="c1"># Enable/disable sentry reporting</span>
-<span class="nv">SENTRY_ENABLED</span><span class="o">=</span><span class="nb">true</span>
-
-<span class="c1"># DSN for sentry reporting. Instructions can be found on your Sentry dashboard</span>
-<span class="nv">SENTRY_DSN</span><span class="o">=</span>
-
-<span class="c1"># Minimal error to send to Sentry.</span>
-<span class="nv">SENTRY_LEVEL</span><span class="o">=</span>
-</pre></div>
-
-
+<div class="admonition info">
+<p class="admonition-title">PRO TIP</p>
+<p>This logger is built for, and works well, with both CloudWatch and DataDog. DataDog will help you monitor your logs, errors, inovations, and alot more in almost real-time with no performance impact!</p>
+</div>
 <p>You may also add additional custom metadata as such:</p>
 <div class="codehilite"><pre><span></span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;This is an info log with my own custom metadata&#39;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">customData1</span><span class="o">:</span> <span class="s1">&#39;someData1&#39;</span><span class="p">,</span>

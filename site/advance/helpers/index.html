@@ -310,6 +310,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/available-scripts/" title="Available Scripts" class="md-nav__link">
+      Available Scripts
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -434,9 +446,86 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Helpers
+      </label>
+    
     <a href="./" title="Helpers" class="md-nav__link md-nav__link--active">
       Helpers
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#crypto" title="Crypto" class="md-nav__link">
+    Crypto
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hash" title="Hash" class="md-nav__link">
+    Hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#md5-hash" title="MD5 Hash" class="md-nav__link">
+    MD5 Hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encrypt" title="Encrypt" class="md-nav__link">
+    Encrypt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decrypt" title="Decrypt" class="md-nav__link">
+    Decrypt
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-uid" title="Generate Uid" class="md-nav__link">
+    Generate Uid
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#email-format-validator" title="Email Format Validator" class="md-nav__link">
+    Email Format Validator
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -559,6 +648,70 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#crypto" title="Crypto" class="md-nav__link">
+    Crypto
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hash" title="Hash" class="md-nav__link">
+    Hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#md5-hash" title="MD5 Hash" class="md-nav__link">
+    MD5 Hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encrypt" title="Encrypt" class="md-nav__link">
+    Encrypt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decrypt" title="Decrypt" class="md-nav__link">
+    Decrypt
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-uid" title="Generate Uid" class="md-nav__link">
+    Generate Uid
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#email-format-validator" title="Email Format Validator" class="md-nav__link">
+    Email Format Validator
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -573,6 +726,78 @@
                 
                 
                 <h1 id="helpers">Helpers<a class="headerlink" href="#helpers" title="Permanent link">&para;</a></h1>
+<p>Lesgo! comes in-built with various helper functions available within the <code>Utils/</code> namespace.</p>
+<h2 id="crypto">Crypto<a class="headerlink" href="#crypto" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><code>Utils/crypto</code></p>
+</blockquote>
+<p>Cryptographic functions using the Crypto npm library.</p>
+<h3 id="hash">Hash<a class="headerlink" href="#hash" title="Permanent link">&para;</a></h3>
+<p>One way hashing of data using SHA-256.</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">hash</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;Utils/crypto&#39;</span><span class="p">;</span>
+
+<span class="k">return</span> <span class="nx">hash</span><span class="p">(</span><span class="s1">&#39;some string to be hashed. This is a one-way hash&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h3 id="md5-hash">MD5 Hash<a class="headerlink" href="#md5-hash" title="Permanent link">&para;</a></h3>
+<p>One way hashing of data using the faster MD5.</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">hashMD5</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;Utils/crypto&#39;</span><span class="p">;</span>
+
+<span class="k">return</span> <span class="nx">hash</span><span class="p">(</span><span class="s1">&#39;some string to be hashed by MD5. This is a one-way hash and is faster than hash&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h3 id="encrypt">Encrypt<a class="headerlink" href="#encrypt" title="Permanent link">&para;</a></h3>
+<p>2-way encryption with auto-generated iv and cipher.</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">encrypt</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;Utils/crypto&#39;</span><span class="p">;</span>
+
+<span class="k">return</span> <span class="nx">encrypt</span><span class="p">(</span><span class="s1">&#39;some string to be encrypted that can be decrypted&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h3 id="decrypt">Decrypt<a class="headerlink" href="#decrypt" title="Permanent link">&para;</a></h3>
+<p>Decrypting a previously encrypted data.</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">decrypt</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;Utils/crypto&#39;</span><span class="p">;</span>
+
+<span class="k">return</span> <span class="nx">decrypt</span><span class="p">(</span><span class="s1">&#39;some-encrypted-string&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h2 id="generate-uid">Generate Uid<a class="headerlink" href="#generate-uid" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><code>Utils/generateUid</code></p>
+</blockquote>
+<p>Generates random string with an optional prefix and suffix using the Nanoid npm library. Useful for generating unique id.</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">generateUid</span> <span class="nx">from</span> <span class="s1">&#39;Utils/generateUid&#39;</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generateUid</span><span class="p">());</span>
+<span class="c1">// 098f6bcd4621d373cade4</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generateUid</span><span class="p">({</span> <span class="nx">prefix</span><span class="o">:</span> <span class="s1">&#39;somePrefix&#39;</span> <span class="p">}));</span>
+<span class="c1">// somePrefix-621d4bc3cade7d4098f63</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generateUid</span><span class="p">({</span> <span class="nx">suffix</span><span class="o">:</span> <span class="s1">&#39;someSuffix&#39;</span> <span class="p">}));</span>
+<span class="c1">// 7d6af6c3cde214093d4b8-someSuffix</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generateUid</span><span class="p">({</span> <span class="nx">length</span><span class="o">:</span> <span class="mi">36</span> <span class="p">}));</span>
+<span class="c1">// ce214094b8daf683d4b7d63ccde21403dd93</span>
+</pre></div>
+
+
+<h2 id="email-format-validator">Email Format Validator<a class="headerlink" href="#email-format-validator" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><code>Utils/isEmail</code></p>
+</blockquote>
+<p>Validates for a valid email format.</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">isEmail</span> <span class="nx">from</span> <span class="s1">&#39;Utils/isEmail&#39;</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isEmail</span><span class="p">(</span><span class="s1">&#39;john@doe.com&#39;</span><span class="p">));</span>
+<span class="c1">// true</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isEmail</span><span class="p">(</span><span class="s1">&#39;some string&#39;</span><span class="p">));</span>
+<span class="c1">// false</span>
+</pre></div>
                 
                   
                 

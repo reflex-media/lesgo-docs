@@ -310,6 +310,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/available-scripts/" title="Available Scripts" class="md-nav__link">
+      Available Scripts
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -477,8 +489,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dispatcher" title="Dispatcher" class="md-nav__link">
-    Dispatcher
+  <a href="#queue-dispatch-event" title="Queue Dispatch Event" class="md-nav__link">
+    Queue Dispatch Event
   </a>
   
     <nav class="md-nav">
@@ -497,62 +509,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#consumer" title="Consumer" class="md-nav__link">
-    Consumer
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#automatic-consumption" title="Automatic Consumption" class="md-nav__link">
-    Automatic Consumption
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#scheduled-consumption" title="Scheduled Consumption" class="md-nav__link">
-    Scheduled Consumption
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-queue" title="Configuring Queue" class="md-nav__link">
-    Configuring Queue
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#add-serverless-resource" title="Add Serverless Resource" class="md-nav__link">
-    Add Serverless Resource
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connecting-to-separate-sqs-instance" title="Connecting To Separate SQS Instance" class="md-nav__link">
-    Connecting To Separate SQS Instance
+  <a href="#consuming-dispatached-queued-messages" title="Consuming Dispatached Queued Messages" class="md-nav__link">
+    Consuming Dispatached Queued Messages
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-queue-endpoints" title="Sample Queue Endpoints" class="md-nav__link">
-    Sample Queue Endpoints
+  <a href="#batch-processing-queued-messages" title="Batch Processing Queued Messages" class="md-nav__link">
+    Batch Processing Queued Messages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-queued-messages-with-fifo" title="Processing Queued Messages with FIFO" class="md-nav__link">
+    Processing Queued Messages with FIFO
   </a>
   
 </li>
@@ -666,8 +638,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dispatcher" title="Dispatcher" class="md-nav__link">
-    Dispatcher
+  <a href="#queue-dispatch-event" title="Queue Dispatch Event" class="md-nav__link">
+    Queue Dispatch Event
   </a>
   
     <nav class="md-nav">
@@ -686,62 +658,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#consumer" title="Consumer" class="md-nav__link">
-    Consumer
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#automatic-consumption" title="Automatic Consumption" class="md-nav__link">
-    Automatic Consumption
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#scheduled-consumption" title="Scheduled Consumption" class="md-nav__link">
-    Scheduled Consumption
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-queue" title="Configuring Queue" class="md-nav__link">
-    Configuring Queue
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#add-serverless-resource" title="Add Serverless Resource" class="md-nav__link">
-    Add Serverless Resource
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connecting-to-separate-sqs-instance" title="Connecting To Separate SQS Instance" class="md-nav__link">
-    Connecting To Separate SQS Instance
+  <a href="#consuming-dispatached-queued-messages" title="Consuming Dispatached Queued Messages" class="md-nav__link">
+    Consuming Dispatached Queued Messages
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-queue-endpoints" title="Sample Queue Endpoints" class="md-nav__link">
-    Sample Queue Endpoints
+  <a href="#batch-processing-queued-messages" title="Batch Processing Queued Messages" class="md-nav__link">
+    Batch Processing Queued Messages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-queued-messages-with-fifo" title="Processing Queued Messages with FIFO" class="md-nav__link">
+    Processing Queued Messages with FIFO
   </a>
   
 </li>
@@ -767,8 +699,8 @@
                 
                 <h1 id="queues">Queues<a class="headerlink" href="#queues" title="Permanent link">&para;</a></h1>
 <p>Lesgo! is pre-configured with AWS SQS for queues.</p>
-<h2 id="dispatcher">Dispatcher<a class="headerlink" href="#dispatcher" title="Permanent link">&para;</a></h2>
-<p>The <code>dispatch()</code> function will dispatch a message payload to the queue.</p>
+<h2 id="queue-dispatch-event">Queue Dispatch Event<a class="headerlink" href="#queue-dispatch-event" title="Permanent link">&para;</a></h2>
+<p>The <code>Utils/dispatch</code> function will dispatch a message payload to the queue.</p>
 <h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
 <p>This example usage will send a message to the pre-defined PingQueue.</p>
 <div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">dispatch</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;Utils/queue&quot;</span><span class="p">;</span>
@@ -781,41 +713,26 @@
 </pre></div>
 
 
-<p>Refer to <code>src/core/pingQueue.js</code> for usage example.</p>
-<h2 id="consumer">Consumer<a class="headerlink" href="#consumer" title="Permanent link">&para;</a></h2>
-<p>The consumer is a lambda function that will process messages payload in the Queue.</p>
-<p>Refer to <code>src/core/pingQueueProcessor.js</code> for usage example.</p>
-<h3 id="automatic-consumption">Automatic Consumption<a class="headerlink" href="#automatic-consumption" title="Permanent link">&para;</a></h3>
-<p>Messages sent to the Queues can be automatically consumed by a Consumer. This can be configured to an event lambda function.</p>
-<p><strong>Configuring automated queue processor</strong></p>
-<p>...</p>
-<h3 id="scheduled-consumption">Scheduled Consumption<a class="headerlink" href="#scheduled-consumption" title="Permanent link">&para;</a></h3>
-<p>Messages sent to a FIFO Queue will need to be manually consumed. This can be configured as a CloudWatch Event.</p>
-<p><strong>Configuring scheduled queue processor</strong></p>
-<p>...</p>
-<h2 id="configuring-queue">Configuring Queue<a class="headerlink" href="#configuring-queue" title="Permanent link">&para;</a></h2>
-<p>Queues will need to be configured on Serverless via its yaml file before it can be used.</p>
-<h3 id="add-serverless-resource">Add Serverless Resource<a class="headerlink" href="#add-serverless-resource" title="Permanent link">&para;</a></h3>
-<h2 id="connecting-to-separate-sqs-instance">Connecting To Separate SQS Instance<a class="headerlink" href="#connecting-to-separate-sqs-instance" title="Permanent link">&para;</a></h2>
-<p>To connect to a different SQS instance, you may override the config by updating these in the environment file.</p>
-<div class="codehilite"><pre><span></span><span class="c1"># Set IAM access key with SQS access</span>
-<span class="nv">AWS_SQS_OPTIONS_ACCESS_KEY_ID</span><span class="o">=</span>
-
-<span class="c1"># Set IAM secret key</span>
-<span class="nv">AWS_SQS_OPTIONS_SECRET_ACCESS_KEY</span><span class="o">=</span>
-
-<span class="c1"># Set SQS region to connect to</span>
-<span class="nv">AWS_SQS_OPTIONS_REGION</span><span class="o">=</span>
+<h2 id="consuming-dispatached-queued-messages">Consuming Dispatached Queued Messages<a class="headerlink" href="#consuming-dispatached-queued-messages" title="Permanent link">&para;</a></h2>
+<p>Messages sent to SQS can automatically trigger and be executed by a Lambda Function. This can be configured to an event lambda function within the <code>config/functions</code>.</p>
+<blockquote>
+<p><code>config/functions/dequeue.yml</code></p>
+</blockquote>
+<div class="codehilite"><pre><span></span>dequeue:
+  handler: ${self:custom.path.app}/handlers/dequeue.handler
+  description: Receives message from SQS for actual business logic execution
+  timeout: 15
+  events:
+    - sqs: arn:aws:sqs:${self:provider.region}:${env:AWS_ACCOUNT_ID}:${self:provider.stackName}-dequeue
 </pre></div>
 
 
-<h2 id="sample-queue-endpoints">Sample Queue Endpoints<a class="headerlink" href="#sample-queue-endpoints" title="Permanent link">&para;</a></h2>
-<p><strong><code>/ping/queue</code></strong><br />
-Send a ping request queued to SQS.<br />
-<strong>Note</strong>: Set <code>x-api-key</code> in your request header for a valid request.</p>
-<p><strong><code>/ping/queue?failed-queue</code></strong><br />
-Send a ping request queued to SQS as a failed job.<br />
-<strong>Note</strong>: Set <code>x-api-key</code> in your request header for a valid request.</p>
+<h2 id="batch-processing-queued-messages">Batch Processing Queued Messages<a class="headerlink" href="#batch-processing-queued-messages" title="Permanent link">&para;</a></h2>
+<p>Messages can also be fetched and executed in batches.</p>
+<p>...</p>
+<h2 id="processing-queued-messages-with-fifo">Processing Queued Messages with FIFO<a class="headerlink" href="#processing-queued-messages-with-fifo" title="Permanent link">&para;</a></h2>
+<p>Messages can also be consumed in FIFO.</p>
+<p>...</p>
                 
                   
                 

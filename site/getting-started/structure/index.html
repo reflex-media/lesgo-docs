@@ -460,6 +460,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../available-scripts/" title="Available Scripts" class="md-nav__link">
+      Available Scripts
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -842,9 +854,9 @@
 |   ├── environments
 |   |   ├── .env
 |   |   ├── .env.local
-|   |   ├── .env.development
-|   |   ├── .env.staging
-|   |   └── .env.production
+|   |   ├── .env.dev
+|   |   ├── .env.sandbox
+|   |   └── .env.prod
 |   ├── functions
 |   ├── resources
 |   └── utils
@@ -865,13 +877,13 @@
 <p>The <code>config/</code> directory contains the serverless configurations. The application-specific configs can be found in <code>src/config/</code> directory instead.</p>
 <h3 id="environment-config">Environment Config<a class="headerlink" href="#environment-config" title="Permanent link">&para;</a></h3>
 <p>The <code>config/environments</code> directory contains environment-specific configurations. The environment files are used for both deployment and within application code.</p>
-<p>You may overwrite env files during a deployment by adding a <code>.local</code> suffix e.g; <code>.env.development.local</code>. This is useful for when you want to deploy to a specific environment but not wanting to overwrite committed values.</p>
+<p>You may overwrite env files during a deployment by adding a <code>.local</code> suffix e.g; <code>.env.dev.local</code>. This is useful for when you want to deploy to a specific environment but not wanting to overwrite committed values.</p>
 <blockquote>
 <p><code>.env</code>: default environment, served as a local example.<br />
 <code>.env.local</code>: local environment configuration. This should not be committed.<br />
-<code>.env.development</code>: development environment configuration.<br />
-<code>.env.staging</code>: staging environment configuration.<br />
-<code>.env.production</code>: production environment configuration.</p>
+<code>.env.dev</code>: development environment configuration.<br />
+<code>.env.sandbox</code>: sandbox environment configuration.<br />
+<code>.env.prod</code>: production environment configuration.</p>
 </blockquote>
 <h3 id="function-config">Function Config<a class="headerlink" href="#function-config" title="Permanent link">&para;</a></h3>
 <p>The <code>config/functions/</code> directory contains the available and declared Serverless functions.</p>

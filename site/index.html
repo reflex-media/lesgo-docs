@@ -276,8 +276,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-lightweight-nodejs-serverless-framework" title="A lightweight node.js serverless framework" class="md-nav__link">
-    A lightweight node.js serverless framework
+  <a href="#a-lightweight-nodejs-boilerplate-framework-for-serverless-architecture" title="A lightweight node.js boilerplate framework for serverless architecture" class="md-nav__link">
+    A lightweight node.js boilerplate framework for serverless architecture
   </a>
   
 </li>
@@ -285,6 +285,13 @@
         <li class="md-nav__item">
   <a href="#quick-start" title="Quick Start" class="md-nav__link">
     Quick Start
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-lesgo-framework" title="Why Lesgo! Framework" class="md-nav__link">
+    Why Lesgo! Framework
   </a>
   
 </li>
@@ -351,6 +358,18 @@
   <li class="md-nav__item">
     <a href="getting-started/deployment/" title="Deployment" class="md-nav__link">
       Deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="getting-started/available-scripts/" title="Available Scripts" class="md-nav__link">
+      Available Scripts
     </a>
   </li>
 
@@ -597,8 +616,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-lightweight-nodejs-serverless-framework" title="A lightweight node.js serverless framework" class="md-nav__link">
-    A lightweight node.js serverless framework
+  <a href="#a-lightweight-nodejs-boilerplate-framework-for-serverless-architecture" title="A lightweight node.js boilerplate framework for serverless architecture" class="md-nav__link">
+    A lightweight node.js boilerplate framework for serverless architecture
   </a>
   
 </li>
@@ -606,6 +625,13 @@
         <li class="md-nav__item">
   <a href="#quick-start" title="Quick Start" class="md-nav__link">
     Quick Start
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-lesgo-framework" title="Why Lesgo! Framework" class="md-nav__link">
+    Why Lesgo! Framework
   </a>
   
 </li>
@@ -630,8 +656,8 @@
                 
                 
                 <h1 id="lesgo">Lesgo!<a class="headerlink" href="#lesgo" title="Permanent link">&para;</a></h1>
-<h2 id="a-lightweight-nodejs-serverless-framework">A lightweight node.js serverless framework<a class="headerlink" href="#a-lightweight-nodejs-serverless-framework" title="Permanent link">&para;</a></h2>
-<p>Bootstrap your next microservice with a light-weight node.js serverless framework on AWS.</p>
+<h2 id="a-lightweight-nodejs-boilerplate-framework-for-serverless-architecture">A lightweight node.js boilerplate framework for serverless architecture<a class="headerlink" href="#a-lightweight-nodejs-boilerplate-framework-for-serverless-architecture" title="Permanent link">&para;</a></h2>
+<p>Bootstrap your next serverless microservice with a light-weight node.js app built on top of the <a href="https://www.serverless.com/">Serverless Framework</a> on AWS.</p>
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Prerequisites</p>
@@ -639,22 +665,30 @@
 Refer to https://serverless.com/framework/docs/getting-started/ for additional info.</p>
 </div>
 <p>Create Serverless project:</p>
-<div class="codehilite"><pre><span></span>sls create --template-url https://github.com/reflex-media/lesgo/tree/master --path my-service
+<div class="codehilite"><pre><span></span>sls create --template-url https://github.com/reflex-media/lesgo-lite/tree/master --path my-service
 <span class="nb">cd</span> my-service
 </pre></div>
 
 
 <p>Install dependencies:</p>
-<div class="codehilite"><pre><span></span>yarn install
+<div class="codehilite"><pre><span></span>npm install
 </pre></div>
 
 
 <p>Start local:</p>
-<div class="codehilite"><pre><span></span>yarn start
+<div class="codehilite"><pre><span></span>npm start
 </pre></div>
 
 
 <p>Access local url via browser or Postman: <a href="http://localhost:8181/ping">http://localhost:8181/ping</a>.</p>
+<h2 id="why-lesgo-framework">Why Lesgo! Framework<a class="headerlink" href="#why-lesgo-framework" title="Permanent link">&para;</a></h2>
+<p>Like any other frameworks out there, we built this Framework because we couldn't find one that fits our needs. We believe that a framework for the Serverless Architecture should fit the following criteria:</p>
+<ul>
+<li><strong>Super lightweight</strong>. The bundled lambda function should only bundle what is necessarily required by the function, and nothing else. This is why we chose the Serverless Framework as the basic building block for this framework. It provides the necessary tools to build, bundle, and deploy direct to AWS via CloudFormation, while still allowing the option to bundle each function individually.</li>
+<li><strong>Easy to understand file structure</strong>. Most of our file structure, scripts, and helper functions is inspired from the Laravel Framework. The primary reason being that all the original developers and current maintainers have years of experience building applications on Taylor Otwell's Laravel Framework. If you know Laravel, you will know Lesgo!</li>
+<li><strong>Highly adaptable for any use case</strong>. We have built multiple microservices for the last 3 years from a simple "Unique Name Generator", to a process-intensive "Photo Processor" and "Image Moderation", to complex projects building a Social Network App using this very same framework!</li>
+<li><strong>Continous upgrades</strong>. As long as we continue to use this framework, we will continue to maintain and expand its functionalities. This framework will continue to grow with us. We take the learnings from our other microservices and upgrade this framework accordingly.</li>
+</ul>
                 
                   
                 

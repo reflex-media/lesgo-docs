@@ -310,6 +310,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/available-scripts/" title="Available Scripts" class="md-nav__link">
+      Available Scripts
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -377,36 +389,35 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#normalize-http-request" title="Normalize Http Request" class="md-nav__link">
-    Normalize Http Request
+  <a href="#http" title="Http" class="md-nav__link">
+    Http
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#success-response" title="Success Response" class="md-nav__link">
+    Success Response
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-response" title="Error Response" class="md-nav__link">
+    Error Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#normalize-sqs-message" title="Normalize SQS Message" class="md-nav__link">
     Normalize SQS Message
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#success-http-response" title="Success Http Response" class="md-nav__link">
-    Success Http Response
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error-http-response" title="Error Http Response" class="md-nav__link">
-    Error Http Response
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#http" title="Http" class="md-nav__link">
-    Http
   </a>
   
 </li>
@@ -648,36 +659,35 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#normalize-http-request" title="Normalize Http Request" class="md-nav__link">
-    Normalize Http Request
+  <a href="#http" title="Http" class="md-nav__link">
+    Http
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#success-response" title="Success Response" class="md-nav__link">
+    Success Response
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-response" title="Error Response" class="md-nav__link">
+    Error Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#normalize-sqs-message" title="Normalize SQS Message" class="md-nav__link">
     Normalize SQS Message
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#success-http-response" title="Success Http Response" class="md-nav__link">
-    Success Http Response
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error-http-response" title="Error Http Response" class="md-nav__link">
-    Error Http Response
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#http" title="Http" class="md-nav__link">
-    Http
   </a>
   
 </li>
@@ -718,77 +728,12 @@
 <p>Middlewares require <a href="https://www.npmjs.com/package/middy">Middy npm</a> to work.</p>
 <p>Middlewares should be written in the <code>src/middlewares/</code> directory.</p>
 <h2 id="available-middlewares">Available Middlewares<a class="headerlink" href="#available-middlewares" title="Permanent link">&para;</a></h2>
-<p>Lesgo! comes with 6 pre-existing middlewares.</p>
+<p>Lesgo! comes with 2 pre-existing middlewares.</p>
 <p>You may also import other ready-made middlewares from the <a href="https://www.npmjs.com/package/middy#available-middlewares">Middy repository</a>.</p>
-<h3 id="normalize-http-request">Normalize Http Request<a class="headerlink" href="#normalize-http-request" title="Permanent link">&para;</a></h3>
-<p>This middleware will normalize the query string parameters and/or json body in the request into a common <code>handler.event.input</code>. This middleware executes <em>before</em> the handler is called.</p>
-<p><strong>Usage</strong></p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">middy</span> <span class="nx">from</span> <span class="s2">&quot;middy&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">normalizeHttpRequest</span> <span class="nx">from</span> <span class="s2">&quot;Middlewares/normalizeHttpRequest&quot;</span><span class="p">;</span>
-
-<span class="kr">const</span> <span class="nx">originalHandler</span> <span class="o">=</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">input</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="nx">middy</span><span class="p">(</span><span class="nx">originalHandler</span><span class="p">);</span>
-
-<span class="nx">handler</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">normalizeHttpRequest</span><span class="p">());</span>
-</pre></div>
-
-
-<h3 id="normalize-sqs-message">Normalize SQS Message<a class="headerlink" href="#normalize-sqs-message" title="Permanent link">&para;</a></h3>
-<p>This middleware will normalize records coming from sqs message event. The <code>Records</code> object in the <code>handler.event</code> will be normalized into <code>handler.event.collection</code>. This middleware executes <em>before</em> the handler is called.</p>
-<p><strong>Usage</strong></p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">middy</span> <span class="nx">from</span> <span class="s2">&quot;middy&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">normalizeSQSMessage</span> <span class="nx">from</span> <span class="s2">&quot;Middlewares/normalizeSQSMessage&quot;</span><span class="p">;</span>
-
-<span class="kr">const</span> <span class="nx">originalHandler</span> <span class="o">=</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">collection</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="nx">middy</span><span class="p">(</span><span class="nx">originalHandler</span><span class="p">);</span>
-
-<span class="nx">handler</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">normalizeSQSMessage</span><span class="p">());</span>
-</pre></div>
-
-
-<p>Refer to <code>src/handlers/samples/pingQueueProcessor.js</code> for more detailed usage example.</p>
-<h3 id="success-http-response">Success Http Response<a class="headerlink" href="#success-http-response" title="Permanent link">&para;</a></h3>
-<p>This middleware will be executed whenever a successful response is expected to be returned. This middleware executes <em>after</em> the request is processed and <em>before</em> the response is returned.</p>
-<p><strong>Usage</strong></p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">middy</span> <span class="nx">from</span> <span class="s2">&quot;middy&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">successHttpResponse</span> <span class="nx">from</span> <span class="s2">&quot;Middlewares/successHttpResponse&quot;</span><span class="p">;</span>
-
-<span class="kr">const</span> <span class="nx">originalHandler</span> <span class="o">=</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">input</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="nx">middy</span><span class="p">(</span><span class="nx">originalHandler</span><span class="p">);</span>
-
-<span class="nx">handler</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">successHttpResponse</span><span class="p">());</span>
-</pre></div>
-
-
-<h3 id="error-http-response">Error Http Response<a class="headerlink" href="#error-http-response" title="Permanent link">&para;</a></h3>
-<p>This middleware will be executed whenever an error response is expected to be returned. This middleware executes <em>after</em> the request is processed and <em>before</em> the response is returned.</p>
-<p><strong>Usage</strong></p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">middy</span> <span class="nx">from</span> <span class="s2">&quot;middy&quot;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">errorHttpResponse</span> <span class="nx">from</span> <span class="s2">&quot;Middlewares/errorHttpResponse&quot;</span><span class="p">;</span>
-
-<span class="kr">const</span> <span class="nx">originalHandler</span> <span class="o">=</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">input</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="nx">middy</span><span class="p">(</span><span class="nx">originalHandler</span><span class="p">);</span>
-
-<span class="nx">handler</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">errorHttpResponse</span><span class="p">());</span>
-</pre></div>
-
-
 <h3 id="http">Http<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
-<p>This middleware combines the <code>normalizeHttpRequest</code>, <code>successHttpResponse</code>, and <code>errorHttpResponse</code> middlewares, and can be used for all http endpoints (configured with API Gateway).</p>
+<p>This middleware normalizes all HTTP requests, handles, and formats success and error responses, and should be used for all HTTP endpoints. Will also provide any or both JSON body and url querystring parameters into a single <code>event.input</code>. This middleware will also populate with <code>event.auth.sub</code> when JWT is used and presented with the <code>Authorization</code> header.</p>
 <p><strong>Usage</strong></p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">middy</span> <span class="nx">from</span> <span class="s2">&quot;middy&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">middy</span> <span class="nx">from</span> <span class="s1">&#39;@middy/core&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="nx">httpMiddleware</span> <span class="nx">from</span> <span class="s2">&quot;Middlewares/httpMiddleware&quot;</span><span class="p">;</span>
 
 <span class="kr">const</span> <span class="nx">originalHandler</span> <span class="o">=</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
@@ -801,7 +746,55 @@
 </pre></div>
 
 
-<p>Refer to <code>src/handlers/ping.js</code> for usage.</p>
+<h4 id="success-response">Success Response<a class="headerlink" href="#success-response" title="Permanent link">&para;</a></h4>
+<p>The successfuly response will be formatted in this way</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;_meta&quot;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4 id="error-response">Error Response<a class="headerlink" href="#error-response" title="Permanent link">&para;</a></h4>
+<p>The successfuly response will be formatted in this way</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Core/users/getUser::USER_NOT_EXIST&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;UserException: User does not exist&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;details&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;err&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;UserException&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;User not found&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
+                <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Core/users/getUser::USER_NOT_EXIST&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;extra&quot;</span><span class="p">:</span> <span class="p">{}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;_meta&quot;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="normalize-sqs-message">Normalize SQS Message<a class="headerlink" href="#normalize-sqs-message" title="Permanent link">&para;</a></h3>
+<p>This middleware will normalize records coming from sqs message event. The <code>Records</code> object in the <code>handler.event</code> will be normalized into <code>handler.event.collection</code>. This middleware executes <em>before</em> the handler is called.</p>
+<p><strong>Usage</strong></p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">middy</span> <span class="nx">from</span> <span class="s1">&#39;@middy/core&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">normalizeSQSMessage</span> <span class="nx">from</span> <span class="s2">&quot;Middlewares/normalizeSQSMessage&quot;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">originalHandler</span> <span class="o">=</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">collection</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="nx">middy</span><span class="p">(</span><span class="nx">originalHandler</span><span class="p">);</span>
+
+<span class="nx">handler</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">normalizeSQSMessage</span><span class="p">());</span>
+</pre></div>
+
+
 <h2 id="custom-middlewares">Custom Middlewares<a class="headerlink" href="#custom-middlewares" title="Permanent link">&para;</a></h2>
 <p>You can write your own custom middleware with <a href="https://www.npmjs.com/package/middy#writing-a-middleware">Middy</a>.</p>
                 
@@ -824,7 +817,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../getting-started/deployment/" title="Deployment" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../getting-started/available-scripts/" title="Available Scripts" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -833,7 +826,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Deployment
+                Available Scripts
               </span>
             </div>
           </a>
