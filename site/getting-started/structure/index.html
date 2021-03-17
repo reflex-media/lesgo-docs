@@ -362,6 +362,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-documents-directory" title="The Documents Directory" class="md-nav__link">
+    The Documents Directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-source-directory" title="The Source Directory" class="md-nav__link">
     The Source Directory
   </a>
@@ -377,8 +384,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#constant-directory" title="Constant Directory" class="md-nav__link">
-    Constant Directory
+  <a href="#data-directory" title="Data Directory" class="md-nav__link">
+    Data Directory
   </a>
   
 </li>
@@ -407,6 +414,13 @@
           <li class="md-nav__item">
   <a href="#middleware-directory" title="Middleware Directory" class="md-nav__link">
     Middleware Directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-directory" title="Model Directory" class="md-nav__link">
+    Model Directory
   </a>
   
 </li>
@@ -755,6 +769,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-documents-directory" title="The Documents Directory" class="md-nav__link">
+    The Documents Directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-source-directory" title="The Source Directory" class="md-nav__link">
     The Source Directory
   </a>
@@ -770,8 +791,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#constant-directory" title="Constant Directory" class="md-nav__link">
-    Constant Directory
+  <a href="#data-directory" title="Data Directory" class="md-nav__link">
+    Data Directory
   </a>
   
 </li>
@@ -800,6 +821,13 @@
           <li class="md-nav__item">
   <a href="#middleware-directory" title="Middleware Directory" class="md-nav__link">
     Middleware Directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-directory" title="Model Directory" class="md-nav__link">
+    Model Directory
   </a>
   
 </li>
@@ -860,13 +888,15 @@
 |   ├── functions
 |   ├── resources
 |   └── utils
+├── documents
 ├── src
 |   ├── config
-|   ├── constants
+|   ├── data
 |   ├── core
 |   ├── exceptions
 |   ├── handlers
 |   ├── middlewares
+|   ├── models
 |   ├── services
 |   └── utils
 └── tests
@@ -891,20 +921,24 @@
 <p>The <code>config/resources/</code> directory contains the available and declared Serverless resources.</p>
 <h3 id="util-config">Util Config<a class="headerlink" href="#util-config" title="Permanent link">&para;</a></h3>
 <p>The <code>config/utils/</code> directory contains additional Serverless configs where required.</p>
+<h2 id="the-documents-directory">The Documents Directory<a class="headerlink" href="#the-documents-directory" title="Permanent link">&para;</a></h2>
+<p>The <code>documents/</code> directory contains any documents outside of the application. One use case is to store the exported Postman Collection and Environment files here.</p>
 <h2 id="the-source-directory">The Source Directory<a class="headerlink" href="#the-source-directory" title="Permanent link">&para;</a></h2>
 <p>The <code>src/</code> directory contains the main source code for your application.</p>
 <h3 id="config-directory">Config Directory<a class="headerlink" href="#config-directory" title="Permanent link">&para;</a></h3>
 <p>The <code>src/config/</code> directory contains the application configurations.</p>
-<h3 id="constant-directory">Constant Directory<a class="headerlink" href="#constant-directory" title="Permanent link">&para;</a></h3>
-<p>The <code>src/constants/</code> directory contains any application-specific constants made available throughout your source code.</p>
+<h3 id="data-directory">Data Directory<a class="headerlink" href="#data-directory" title="Permanent link">&para;</a></h3>
+<p>The <code>src/data/</code> directory to store mocked data or application schema.</p>
 <h3 id="core-directory">Core Directory<a class="headerlink" href="#core-directory" title="Permanent link">&para;</a></h3>
-<p>The <code>src/core/</code> directory contains your application's core business logic.</p>
+<p>The <code>src/core/</code> directory contains your application's business / functional logic.</p>
 <h3 id="exception-directory">Exception Directory<a class="headerlink" href="#exception-directory" title="Permanent link">&para;</a></h3>
 <p>The <code>src/exceptions/</code> directory contains error classes.</p>
 <h3 id="handler-directory">Handler Directory<a class="headerlink" href="#handler-directory" title="Permanent link">&para;</a></h3>
 <p>The <code>src/handlers/</code> directory contains the entry point for all events.</p>
 <h3 id="middleware-directory">Middleware Directory<a class="headerlink" href="#middleware-directory" title="Permanent link">&para;</a></h3>
 <p>The <code>src/middlewares/</code> directory contains the request middlewares.</p>
+<h3 id="model-directory">Model Directory<a class="headerlink" href="#model-directory" title="Permanent link">&para;</a></h3>
+<p>The <code>src/models/</code> directory contains the Model for the application. Models is the gateway to the database / data store.</p>
 <h3 id="service-directory">Service Directory<a class="headerlink" href="#service-directory" title="Permanent link">&para;</a></h3>
 <p>The <code>src/services/</code> directory contains class-based services or modules, usually instantiated. These classes are usually made available in the <code>src/utils/</code> as helper functions.</p>
 <h3 id="util-directory">Util Directory<a class="headerlink" href="#util-directory" title="Permanent link">&para;</a></h3>

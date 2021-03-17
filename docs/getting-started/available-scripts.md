@@ -21,4 +21,5 @@ npm test
 ```bash
 npm run coverage
 ```
-> The code coverage report will be made available in the `coverage` directory. Open the `index.html` to view the Code Coverage Report. It also creates a Test Coverage Report and can be found in `coverage/test-report` directory.
+!!! info 
+    The code coverage report will be made available in the `coverage` directory. Open the `index.html` to view the Code Coverage Report. It also creates a Test Coverage Report and can be found in `coverage/test-report` directory.

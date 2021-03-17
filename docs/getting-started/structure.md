@@ -11,13 +11,15 @@
 |   ├── functions
 |   ├── resources
 |   └── utils
+├── documents
 ├── src
 |   ├── config
-|   ├── constants
+|   ├── data
 |   ├── core
 |   ├── exceptions
 |   ├── handlers
 |   ├── middlewares
+|   ├── models
 |   ├── services
 |   └── utils
 └── tests
@@ -49,19 +51,20 @@ The `config/resources/` directory contains the available and declared Serverless
 ### Util Config
 The `config/utils/` directory contains additional Serverless configs where required.
 
-## The Source Directory
+## The Documents Directory
+The `documents/` directory contains any documents outside of the application. One use case is to store the exported Postman Collection and Environment files here.
 
+## The Source Directory
 The `src/` directory contains the main source code for your application.
 
 ### Config Directory
-
 The `src/config/` directory contains the application configurations.
 
-### Constant Directory
-The `src/constants/` directory contains any application-specific constants made available throughout your source code.
+### Data Directory
+The `src/data/` directory to store mocked data or application schema.
 
 ### Core Directory
-The `src/core/` directory contains your application's core business logic.
+The `src/core/` directory contains your application's business / functional logic.
 
 ### Exception Directory 
 The `src/exceptions/` directory contains error classes.
@@ -71,6 +74,9 @@ The `src/handlers/` directory contains the entry point for all events.
 
 ### Middleware Directory
 The `src/middlewares/` directory contains the request middlewares.
+
+### Model Directory
+The `src/models/` directory contains the Model for the application. Models is the gateway to the database / data store.
 
 ### Service Directory
 The `src/services/` directory contains class-based services or modules, usually instantiated. These classes are usually made available in the `src/utils/` as helper functions.
