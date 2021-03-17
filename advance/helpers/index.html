@@ -519,6 +519,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#field-validator" title="Field Validator" class="md-nav__link">
+    Field Validator
+  </a>
+  
+</li>
+      
       
       
       
@@ -706,6 +713,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#field-validator" title="Field Validator" class="md-nav__link">
+    Field Validator
+  </a>
+  
+</li>
+      
       
       
       
@@ -734,33 +748,47 @@
 <p>Cryptographic functions using the Crypto npm library.</p>
 <h3 id="hash">Hash<a class="headerlink" href="#hash" title="Permanent link">&para;</a></h3>
 <p>One way hashing of data using SHA-256.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">hash</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;Utils/crypto&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">hash</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;Utils/crypto&quot;</span><span class="p">;</span>
 
-<span class="k">return</span> <span class="nx">hash</span><span class="p">(</span><span class="s1">&#39;some string to be hashed. This is a one-way hash&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">hashedString</span> <span class="o">=</span> <span class="nx">hash</span><span class="p">(</span><span class="s2">&quot;some data to hash&quot;</span><span class="p">);</span>
+
+<span class="c1">// 6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50</span>
 </pre></div>
 
 
 <h3 id="md5-hash">MD5 Hash<a class="headerlink" href="#md5-hash" title="Permanent link">&para;</a></h3>
 <p>One way hashing of data using the faster MD5.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">hashMD5</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;Utils/crypto&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">hashMD5</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;Utils/crypto&quot;</span><span class="p">;</span>
 
-<span class="k">return</span> <span class="nx">hash</span><span class="p">(</span><span class="s1">&#39;some string to be hashed by MD5. This is a one-way hash and is faster than hash&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">hashedMD5String</span> <span class="o">=</span> <span class="nx">hashMD5</span><span class="p">(</span>
+  <span class="s2">&quot;some data to hash&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// 527d738baba016840c3a33f2790845dd</span>
 </pre></div>
 
 
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While hashMD5 is fast, it is not at all recommended as it is considered a weak 1-iteration hash with no salt.</p>
+</div>
 <h3 id="encrypt">Encrypt<a class="headerlink" href="#encrypt" title="Permanent link">&para;</a></h3>
 <p>2-way encryption with auto-generated iv and cipher.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">encrypt</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;Utils/crypto&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">encrypt</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;Utils/crypto&quot;</span><span class="p">;</span>
 
-<span class="k">return</span> <span class="nx">encrypt</span><span class="p">(</span><span class="s1">&#39;some string to be encrypted that can be decrypted&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">encryptedStr</span> <span class="o">=</span> <span class="nx">encrypt</span><span class="p">(</span><span class="s2">&quot;some string to be encrypted that can be decrypted&quot;</span><span class="p">);</span>
+
+<span class="c1">// </span>
 </pre></div>
 
 
 <h3 id="decrypt">Decrypt<a class="headerlink" href="#decrypt" title="Permanent link">&para;</a></h3>
 <p>Decrypting a previously encrypted data.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">decrypt</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;Utils/crypto&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">decrypt</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;Utils/crypto&quot;</span><span class="p">;</span>
 
-<span class="k">return</span> <span class="nx">decrypt</span><span class="p">(</span><span class="s1">&#39;some-encrypted-string&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">decryptedStr</span> <span class="o">=</span> <span class="nx">decrypt</span><span class="p">(</span><span class="s2">&quot;some-encrypted-string&quot;</span><span class="p">);</span>
+
+<span class="c1">// </span>
 </pre></div>
 
 
@@ -769,18 +797,22 @@
 <p><code>Utils/generateUid</code></p>
 </blockquote>
 <p>Generates random string with an optional prefix and suffix using the Nanoid npm library. Useful for generating unique id.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">generateUid</span> <span class="nx">from</span> <span class="s1">&#39;Utils/generateUid&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">generateUid</span> <span class="nx">from</span> <span class="s2">&quot;Utils/generateUid&quot;</span><span class="p">;</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generateUid</span><span class="p">());</span>
+<span class="kr">const</span> <span class="nx">uid</span> <span class="o">=</span> <span class="nx">generateUid</span><span class="p">());</span>
+
 <span class="c1">// 098f6bcd4621d373cade4</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generateUid</span><span class="p">({</span> <span class="nx">prefix</span><span class="o">:</span> <span class="s1">&#39;somePrefix&#39;</span> <span class="p">}));</span>
+<span class="kr">const</span> <span class="nx">prefixUid</span> <span class="o">=</span> <span class="nx">generateUid</span><span class="p">({</span> <span class="nx">prefix</span><span class="o">:</span> <span class="s2">&quot;somePrefix&quot;</span> <span class="p">}));</span>
+
 <span class="c1">// somePrefix-621d4bc3cade7d4098f63</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generateUid</span><span class="p">({</span> <span class="nx">suffix</span><span class="o">:</span> <span class="s1">&#39;someSuffix&#39;</span> <span class="p">}));</span>
+<span class="kr">const</span> <span class="nx">uidSuffix</span> <span class="o">=</span> <span class="nx">generateUid</span><span class="p">({</span> <span class="nx">suffix</span><span class="o">:</span> <span class="s2">&quot;someSuffix&quot;</span> <span class="p">}));</span>
+
 <span class="c1">// 7d6af6c3cde214093d4b8-someSuffix</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generateUid</span><span class="p">({</span> <span class="nx">length</span><span class="o">:</span> <span class="mi">36</span> <span class="p">}));</span>
+<span class="nx">cost</span> <span class="nx">uidLimited</span> <span class="o">=</span> <span class="nx">generateUid</span><span class="p">({</span> <span class="nx">length</span><span class="o">:</span> <span class="mi">36</span> <span class="p">}));</span>
+
 <span class="c1">// ce214094b8daf683d4b7d63ccde21403dd93</span>
 </pre></div>
 
@@ -790,13 +822,87 @@
 <p><code>Utils/isEmail</code></p>
 </blockquote>
 <p>Validates for a valid email format.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">isEmail</span> <span class="nx">from</span> <span class="s1">&#39;Utils/isEmail&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">isEmail</span> <span class="nx">from</span> <span class="s2">&quot;Utils/isEmail&quot;</span><span class="p">;</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isEmail</span><span class="p">(</span><span class="s1">&#39;john@doe.com&#39;</span><span class="p">));</span>
+<span class="nx">isEmail</span><span class="p">(</span><span class="s2">&quot;john@doe.com&quot;</span><span class="p">));</span>
+
 <span class="c1">// true</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isEmail</span><span class="p">(</span><span class="s1">&#39;some string&#39;</span><span class="p">));</span>
+<span class="nx">isEmail</span><span class="p">(</span><span class="s2">&quot;some string&quot;</span><span class="p">));</span>
+
 <span class="c1">// false</span>
+</pre></div>
+
+
+<h2 id="field-validator">Field Validator<a class="headerlink" href="#field-validator" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><code>Utils/validateFields</code></p>
+</blockquote>
+<p>Validates parameters received to ensure the data is of the right type and exists.</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">validateFields</span> <span class="nx">from</span> <span class="s2">&quot;Utils/validateFields&quot;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">validFields</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;someString&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;someObject&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;someNumber&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;someDecimal&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;decimal&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;someEmail&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;someArray&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;someEnum&quot;</span><span class="p">,</span>
+    <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;enum&quot;</span><span class="p">,</span>
+    <span class="nx">enumValues</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;def&quot;</span><span class="p">,</span> <span class="s2">&quot;xyz&quot;</span><span class="p">],</span>
+    <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">];</span>
+
+<span class="kr">const</span> <span class="nx">toValidate1</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">someString</span><span class="o">:</span> <span class="s2">&quot;The cat&quot;</span><span class="p">,</span>
+  <span class="nx">someObject</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">objKey1</span><span class="o">:</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span>
+    <span class="nx">objKey2</span><span class="o">:</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">someNumber</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
+  <span class="nx">someDecimal</span><span class="o">:</span> <span class="mf">0.123</span><span class="p">,</span>
+  <span class="nx">someEmail</span><span class="o">:</span> <span class="s2">&quot;email@mail.com&quot;</span><span class="p">,</span>
+  <span class="nx">someArray</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;aaa&quot;</span><span class="p">,</span> <span class="s2">&quot;bbb&quot;</span><span class="p">,</span> <span class="s2">&quot;ccc&quot;</span><span class="p">],</span>
+  <span class="nx">someEnum</span><span class="o">:</span> <span class="s2">&quot;def&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kr">const</span> <span class="nx">validated</span> <span class="o">=</span> <span class="nx">validateFields</span><span class="p">(</span><span class="nx">toValidate1</span><span class="p">,</span> <span class="nx">validFields</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm">{</span>
+<span class="cm">  someString: &quot;The cat&quot;,</span>
+<span class="cm">  someObject: {</span>
+<span class="cm">    objKey1: &quot;one&quot;,</span>
+<span class="cm">    objKey2: &quot;two&quot;,</span>
+<span class="cm">  },</span>
+<span class="cm">  someNumber: 123,</span>
+<span class="cm">  someDecimal: 0.123,</span>
+<span class="cm">  someEmail: &quot;email@mail.com&quot;,</span>
+<span class="cm">  someArray: [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;],</span>
+<span class="cm">  someEnum: &quot;def&quot;,</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+</pre></div>
+
+
+<p>The example above will pass and return with the exact validated fields in <code>toValidate1</code>.</p>
+<p>The next example will throw an Error.</p>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">toValidate2</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">...</span><span class="nx">toValidate1</span><span class="p">,</span>
+  <span class="nx">someString</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">validated</span> <span class="o">=</span> <span class="nx">validateFields</span><span class="p">(</span><span class="nx">toValidate2</span><span class="p">,</span> <span class="nx">validFields</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm">new LesgoException(</span>
+<span class="cm">  `Invalid type for &#39;someString&#39;, expecting &#39;string&#39;`,</span>
+<span class="cm">  `${FILE}::INVALID_TYPE_NAME`</span>
+<span class="cm">)</span>
+<span class="cm">*/</span>
 </pre></div>
                 
                   

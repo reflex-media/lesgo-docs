@@ -482,8 +482,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#additional-methods" title="Additional methods" class="md-nav__link">
-    Additional methods
+  <a href="#available-methods" title="Available methods" class="md-nav__link">
+    Available methods
   </a>
   
     <nav class="md-nav">
@@ -504,8 +504,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dbselectpaginate" title="db.selectPaginate" class="md-nav__link">
+    db.selectPaginate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dbinsert" title="db.insert" class="md-nav__link">
     db.insert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbupdate" title="db.update" class="md-nav__link">
+    db.update
   </a>
   
 </li>
@@ -721,8 +735,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#additional-methods" title="Additional methods" class="md-nav__link">
-    Additional methods
+  <a href="#available-methods" title="Available methods" class="md-nav__link">
+    Available methods
   </a>
   
     <nav class="md-nav">
@@ -743,8 +757,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dbselectpaginate" title="db.selectPaginate" class="md-nav__link">
+    db.selectPaginate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dbinsert" title="db.insert" class="md-nav__link">
     db.insert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbupdate" title="db.update" class="md-nav__link">
+    db.update
   </a>
   
 </li>
@@ -814,7 +842,7 @@
 <div class="codehilite"><pre><span></span><span class="c1"># AWS Secret Manager ARN to allow app db user connect to the specified db</span>
 <span class="nv">DB_SECRET_ARN</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 
-<span class="c1"># AWS Secret Manager ARN to allow app command db user connect to the specified db </span>
+<span class="c1"># AWS Secret Manager ARN to allow app command db user connect to the specified db</span>
 <span class="c1"># for running &quot;command&quot; like functions like database schema migration</span>
 <span class="nv">DB_SECRET_COMMAND_ARN</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 
@@ -828,52 +856,176 @@
 
 <h3 id="basic-queries">Basic Queries<a class="headerlink" href="#basic-queries" title="Permanent link">&para;</a></h3>
 <p>To run a basic query, you may use the query method on the <code>Utils/db</code>:</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s1">&#39;Utils/db&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
-<span class="k">return</span> <span class="nx">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users&quot;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users&quot;</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm">[</span>
+<span class="cm">  {</span>
+<span class="cm">    id: 1,</span>
+<span class="cm">    username: &#39;John Doe&#39;,</span>
+<span class="cm">  },</span>
+<span class="cm">  {</span>
+<span class="cm">    id: 2,</span>
+<span class="cm">    username: &#39;Jane Doe&#39;,</span>
+<span class="cm">  },</span>
+<span class="cm">  ...</span>
+<span class="cm">]</span>
+<span class="cm">*/</span>
 </pre></div>
 
 
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While it is OK to write raw queries with values inserted directly in the query statement, note that this is risky. Use prepared statement as show below as much as possible.</p>
+</div>
 <h3 id="using-prepared-statement">Using Prepared Statement<a class="headerlink" href="#using-prepared-statement" title="Permanent link">&para;</a></h3>
 <p>You should always use prepared statement for your queries.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s1">&#39;Utils/db&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
-<span class="k">return</span> <span class="nx">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = :id LIMIT 1&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = :id LIMIT 1&quot;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
 <span class="p">});</span>
+
+<span class="cm">/**</span>
+<span class="cm">[</span>
+<span class="cm">  {</span>
+<span class="cm">    id: 1,</span>
+<span class="cm">    username: &#39;John Doe&#39;,</span>
+<span class="cm">  },</span>
+<span class="cm">  {</span>
+<span class="cm">    id: 2,</span>
+<span class="cm">    username: &#39;Jane Doe&#39;,</span>
+<span class="cm">  },</span>
+<span class="cm">  ...</span>
+<span class="cm">]</span>
+<span class="cm">*/</span>
 </pre></div>
 
 
-<h3 id="additional-methods">Additional methods<a class="headerlink" href="#additional-methods" title="Permanent link">&para;</a></h3>
+<h3 id="available-methods">Available methods<a class="headerlink" href="#available-methods" title="Permanent link">&para;</a></h3>
 <p>The <code>Utils/db</code> also comes with more specific and granular methods for specific queries.</p>
+<p>Refer to <a href="https://www.npmjs.com/package/data-api-client">data-api-client</a> npm package for additioal details.</p>
 <h4 id="dbselect">db.select<a class="headerlink" href="#dbselect" title="Permanent link">&para;</a></h4>
 <p>This will return an array of Objects</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s1">&#39;Utils/db&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
-<span class="k">return</span> <span class="nx">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE is_deleted = :isDeleted&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="kr">const</span> <span class="nx">darta</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE is_deleted = :isDeleted&quot;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">isDeleted</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
 <span class="p">});</span>
+
+<span class="cm">/**</span>
+<span class="cm">[</span>
+<span class="cm">  {</span>
+<span class="cm">    id: 1,</span>
+<span class="cm">    username: &#39;John Doe&#39;,</span>
+<span class="cm">    is_deleted: false,</span>
+<span class="cm">  },</span>
+<span class="cm">  {</span>
+<span class="cm">    id: 2,</span>
+<span class="cm">    username: &#39;Jane Doe&#39;,</span>
+<span class="cm">    is_deleted: false,</span>
+<span class="cm">  },</span>
+<span class="cm">  ...</span>
+<span class="cm">]</span>
+<span class="cm">*/</span>
 </pre></div>
 
 
 <h4 id="dbselectfirst">db.selectFirst<a class="headerlink" href="#dbselectfirst" title="Permanent link">&para;</a></h4>
 <p>This will return only a single record</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s1">&#39;Utils/db&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
-<span class="k">return</span> <span class="nx">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">selectFirst</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = :id&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">selectFirst</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = :id&quot;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
 <span class="p">});</span>
+
+<span class="cm">/**</span>
+<span class="cm">{</span>
+<span class="cm">  id: 1,</span>
+<span class="cm">  username: &#39;John Doe&#39;,</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
 </pre></div>
 
 
-<h4 id="dbinsert">db.insert<a class="headerlink" href="#dbinsert" title="Permanent link">&para;</a></h4>
-<p>This will return only the newly inserted primary key</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s1">&#39;Utils/db&#39;</span><span class="p">;</span>
+<h4 id="dbselectpaginate">db.selectPaginate<a class="headerlink" href="#dbselectpaginate" title="Permanent link">&para;</a></h4>
+<p>This will return a paginated response</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
-<span class="k">return</span> <span class="nx">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="s2">&quot;INSERT INTO users(username,email,created_at) VALUES (:username, :email:, now())&quot;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">username</span><span class="o">:</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span>
-  <span class="nx">email</span><span class="o">:</span> <span class="s1">&#39;john@mail.com&#39;</span><span class="p">,</span>
-<span class="p">});</span>
+<span class="kr">const</span> <span class="nx">paginatedData</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">selectPaginate</span><span class="p">(</span>
+  <span class="s2">&quot;SELECT * FROM users WHERE id = :id&quot;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">perPage</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nx">currentPage</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">total</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm">{</span>
+<span class="cm">  count: 25,</span>
+<span class="cm">  previous_page: 1,</span>
+<span class="cm">  current_page: 1,</span>
+<span class="cm">  next_page: 2,</span>
+<span class="cm">  last_page: 34,</span>
+<span class="cm">  per_page: 5,</span>
+<span class="cm">  total: 100,</span>
+<span class="cm">  items: [</span>
+<span class="cm">    {</span>
+<span class="cm">      id: 1,</span>
+<span class="cm">      username: &#39;John Doe&#39;,</span>
+<span class="cm">    },</span>
+<span class="cm">    {</span>
+<span class="cm">      id: 2,</span>
+<span class="cm">      username: &#39;Jane Doe&#39;,</span>
+<span class="cm">    },</span>
+<span class="cm">    {</span>
+<span class="cm">      id: 3,</span>
+<span class="cm">      username: &#39;Salmah Hayek&#39;,</span>
+<span class="cm">    }</span>
+<span class="cm">  ],</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+</pre></div>
+
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If <code>total</code> is not provided, <code>db.selectPaginate</code> will execute the given query and calculate the total record count by calculating the length of the resulset with <code>.length</code>. It is highly recommended to provide the <code>total</code> to avoid this resource intensive process.</p>
+</div>
+<h4 id="dbinsert">db.insert<a class="headerlink" href="#dbinsert" title="Permanent link">&para;</a></h4>
+<p>This will insert a new record and return only the newly inserted primary key</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">insertId</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span>
+  <span class="s2">&quot;INSERT INTO users(username,email,created_at) VALUES (:username, :email:, now())&quot;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="nx">username</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+    <span class="nx">email</span><span class="o">:</span> <span class="s2">&quot;john@mail.com&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// 1</span>
+</pre></div>
+
+
+<h4 id="dbupdate">db.update<a class="headerlink" href="#dbupdate" title="Permanent link">&para;</a></h4>
+<p>This will update an existing record. Will throw an Error if no record found for update</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">insertId</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span>
+  <span class="s2">&quot;UPDATE users SET username=:username, email=:email, updated_at=now()) WHERE id=:id&quot;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">username</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+    <span class="nx">email</span><span class="o">:</span> <span class="s2">&quot;john@mail.com&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">);</span>
 </pre></div>
 
 
