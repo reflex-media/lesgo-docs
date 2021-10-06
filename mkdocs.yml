@@ -7,6 +7,9 @@ repo_name: reflex-media/lesgo
 repo_url: https://github.com/reflex-media/lesgo
 extra:
   repo_icon: github
+  version:
+    provider: mike
+    default: stable
 
 copyright: Copyright &copy; 2019 Reflex Media
 
@@ -21,6 +24,7 @@ theme:
     tabs: false
   extra_css:
     - "stylesheets/extra.css"
+  custom_dir: overrides
 
 extra_css:
   - "stylesheets/extra.css"
