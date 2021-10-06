@@ -6,7 +6,6 @@ site_url: https://reflex-media.github.io/lesgo-docs/
 repo_name: reflex-media/lesgo
 repo_url: https://github.com/reflex-media/lesgo
 extra:
-  repo_icon: github
   version:
     provider: mike
     default: stable
@@ -18,10 +17,9 @@ theme:
   palette:
     primary: white
     accent: orange
-  logo:
-    icon: cloud
-  feature:
-    tabs: false
+  icon:
+    logo: material/cloud
+    repo: fontawesome/brands/github
   extra_css:
     - "stylesheets/extra.css"
   custom_dir: overrides
