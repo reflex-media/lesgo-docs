@@ -14,6 +14,12 @@ Refer to the official [MkDocs](https://www.mkdocs.org/#installation) for install
 
 ## Commands
 
+### Install python packages
+
+```bash
+$ pip install -r requirements.txt
+```
+
 ### Quick Start
 
 Start mkdocs on your local machine with live reloading.
