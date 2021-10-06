@@ -13,7 +13,7 @@
         <meta name="description" content="A lightweight node.js serverless framework">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/getting-started/deployment/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.6.3/getting-started/deployment/">
       
       
         <meta name="author" content="Sufiyan Rahmat">
@@ -115,7 +115,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://reflex-media.github.io/lesgo-docs/" title="Lesgo!" class="md-header-nav__button md-logo">
+        <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-header-nav__button md-logo">
           
             <i class="md-icon">cloud</i>
           
@@ -211,7 +211,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://reflex-media.github.io/lesgo-docs/" title="Lesgo!" class="md-nav__button md-logo">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-nav__button md-logo">
       
         <i class="md-icon">cloud</i>
       
@@ -781,54 +781,47 @@
 <p>Serverless Framework handles most of the deployment tasks. Lesgo! uses its own deployment script to allow for a more custom deployment process.</p>
 <h2 id="deploy-entire-application">Deploy Entire Application<a class="headerlink" href="#deploy-entire-application" title="Permanent link">&para;</a></h2>
 <p>This command will deploy the entire application to a specific environment.</p>
-<div class="codehilite"><pre><span></span>npm run deploy -- -s <span class="o">{</span>environment<span class="o">}</span>
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code>npm run deploy -- -s <span class="o">{</span>environment<span class="o">}</span>
+</code></pre></div>
 
 <h3 id="example-deploy">Example deploy<a class="headerlink" href="#example-deploy" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span>npm run deploy -- -s dev
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code>npm run deploy -- -s dev
+</code></pre></div>
 
 <h2 id="deploy-single-function">Deploy Single Function<a class="headerlink" href="#deploy-single-function" title="Permanent link">&para;</a></h2>
 <p>This command will deploy only a single function to a specific environment.</p>
-<div class="codehilite"><pre><span></span>npm run deploy -- -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code>npm run deploy -- -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
+</code></pre></div>
 
 <h3 id="example-deploy_1">Example deploy<a class="headerlink" href="#example-deploy_1" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span>npm run deploy -- -s dev -f ping
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code>npm run deploy -- -s dev -f ping
+</code></pre></div>
 
 <h2 id="other-available-commands">Other Available Commands<a class="headerlink" href="#other-available-commands" title="Permanent link">&para;</a></h2>
 <p>These commands are also available.</p>
 <h3 id="invoke-a-function">Invoke a function<a class="headerlink" href="#invoke-a-function" title="Permanent link">&para;</a></h3>
 <p>This command will invoke/trigger a single function.</p>
-<div class="codehilite"><pre><span></span>npm run invoke -- -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
+<div class="codehilite"><pre><span></span><code>npm run invoke -- -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
 
 <span class="c1"># Example</span>
 npm run invoke -- -s dev -f ping
-</pre></div>
-
+</code></pre></div>
 
 <h3 id="tail-log-of-a-function">Tail log of a function<a class="headerlink" href="#tail-log-of-a-function" title="Permanent link">&para;</a></h3>
 <p>This command allows you to tail the log of a single function.</p>
-<div class="codehilite"><pre><span></span>npm run logs -- -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
+<div class="codehilite"><pre><span></span><code>npm run logs -- -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
 
 <span class="c1"># Example</span>
 npm run logs -- -s dev -f ping
-</pre></div>
-
+</code></pre></div>
 
 <h3 id="build-bundle-without-deployment">Build bundle without deployment<a class="headerlink" href="#build-bundle-without-deployment" title="Permanent link">&para;</a></h3>
 <p>This command allows you to build the bundle without doing actual deployment. This might be useful to note the created bundle files and sizes.</p>
-<div class="codehilite"><pre><span></span>npm run build -- -s <span class="o">{</span>environment<span class="o">}</span>
+<div class="codehilite"><pre><span></span><code>npm run build -- -s <span class="o">{</span>environment<span class="o">}</span>
 
 <span class="c1"># Example</span>
 npm run build -- -s dev
-</pre></div>
-
+</code></pre></div>
 
 <h3 id="destroy">Destroy<a class="headerlink" href="#destroy" title="Permanent link">&para;</a></h3>
 <p>Destroy everything, leave nothing behind.</p>
@@ -836,11 +829,11 @@ npm run build -- -s dev
 <p class="admonition-title">DANGER!</p>
 <p>Note that this action is non-reversible! Everything will disappear from AWS.</p>
 </div>
-<div class="codehilite"><pre><span></span>npm run destroy -- -s <span class="o">{</span>environment<span class="o">}</span>
+<div class="codehilite"><pre><span></span><code>npm run destroy -- -s <span class="o">{</span>environment<span class="o">}</span>
 
 <span class="c1"># Example</span>
 npm run destroy -- -s dev
-</pre></div>
+</code></pre></div>
                 
                   
                 

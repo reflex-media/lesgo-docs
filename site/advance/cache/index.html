@@ -13,7 +13,7 @@
         <meta name="description" content="A lightweight node.js serverless framework">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/advance/cache/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.6.3/advance/cache/">
       
       
         <meta name="author" content="Sufiyan Rahmat">
@@ -115,7 +115,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://reflex-media.github.io/lesgo-docs/" title="Lesgo!" class="md-header-nav__button md-logo">
+        <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-header-nav__button md-logo">
           
             <i class="md-icon">cloud</i>
           
@@ -211,7 +211,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://reflex-media.github.io/lesgo-docs/" title="Lesgo!" class="md-nav__button md-logo">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-nav__button md-logo">
       
         <i class="md-icon">cloud</i>
       
@@ -701,44 +701,40 @@
 <p>Lesgo! uses AWS ElastiCache for caching.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>This is configurable in the <code>src/config/cache.js</code>.</p>
-<div class="codehilite"><pre><span></span><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="k">default</span><span class="o">:</span> <span class="s2">&quot;memcached&quot;</span><span class="p">,</span>
   <span class="nx">connections</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">memcached</span><span class="o">:</span> <span class="p">{</span>
       <span class="nx">url</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ELASTICACHE_MEMCACHED_URL</span> <span class="o">||</span> <span class="kc">null</span><span class="p">,</span>
       <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
         <span class="nx">autoDiscover</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">autoDiscoverInterval</span><span class="o">:</span> <span class="mi">60000</span><span class="p">,</span>
+        <span class="nx">autoDiscoverInterval</span><span class="o">:</span> <span class="mf">60000</span><span class="p">,</span>
         <span class="nx">autoDiscoverOverridesRemove</span><span class="o">:</span> <span class="kc">false</span>
       <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">};</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>ElastiCache is disabled by default. To enable ElastiCache, follow the steps below.</p>
 <ol>
 <li>Uncomment <code>elastiCache.yml</code> resource in <code>serverless.yml</code></li>
 </ol>
-<div class="codehilite"><pre><span></span>resources:
+<div class="codehilite"><pre><span></span><code>resources:
   - ${file(${self:custom.path.resources}/elastiCache.yml)}
-</pre></div>
-
+</code></pre></div>
 
 <ol>
 <li>Deploy application and retrieve ElastiCache node Endpoint on AWS Console.</li>
 </ol>
-<div class="codehilite"><pre><span></span>yarn deploy -s development
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code>yarn deploy -s development
+</code></pre></div>
 
 <ol>
 <li>Update relevant environment file in <code>config/environments/</code> directory.</li>
 </ol>
-<div class="codehilite"><pre><span></span><span class="nv">ELASTICACHE_MEMCACHED_URL</span><span class="o">=</span><span class="s2">&quot;INSERT_ELASTICACHE_NODE_ENDPOINT_HERE&quot;</span>
-</pre></div>
-
+<div class="codehilite"><pre><span></span><code><span class="nv">ELASTICACHE_MEMCACHED_URL</span><span class="o">=</span><span class="s2">&quot;INSERT_ELASTICACHE_NODE_ENDPOINT_HERE&quot;</span>
+</code></pre></div>
 
 <p>Deploy your application again and you may now use ElastiCache.</p>
 <h2 id="cache-usage">Cache Usage<a class="headerlink" href="#cache-usage" title="Permanent link">&para;</a></h2>
@@ -746,35 +742,32 @@
 <p>To test the sample usage, uncomment <code>samples.yml</code> function in <code>serverless.yml</code> and deploy the application to a development environment.</p>
 <h3 id="retrieving-items-from-the-cache">Retrieving items from the cache<a class="headerlink" href="#retrieving-items-from-the-cache" title="Permanent link">&para;</a></h3>
 <p>You may use the <code>get</code> method on the <code>cache</code> util to fetch items from the cache.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">cache</span> <span class="nx">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="nx">cache</span> <span class="kr">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">cacheKey</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">);</span>
-</pre></div>
-
+<span class="kd">const</span> <span class="nx">cacheKey</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">);</span>
+</code></pre></div>
 
 <p>Test sample usage with this url endpoint <code>/samples/cache?method=get&amp;key=sampleCacheKey</code>.</p>
 <h3 id="storing-items-to-the-cache">Storing items to the cache<a class="headerlink" href="#storing-items-to-the-cache" title="Permanent link">&para;</a></h3>
 <p>You may use the <code>set</code> method on the <code>cache</code> util to store items to the cache.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">cache</span> <span class="nx">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="nx">cache</span> <span class="kr">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">cacheKey</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">cacheValue</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">cacheLifetimeInSeconds</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">cacheKey</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">cacheValue</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">cacheLifetimeInSeconds</span> <span class="o">=</span> <span class="mf">10</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">,</span> <span class="nx">cacheValue</span><span class="p">,</span> <span class="nx">cacheLifetimeInSeconds</span><span class="p">);</span>
-</pre></div>
-
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">,</span> <span class="nx">cacheValue</span><span class="p">,</span> <span class="nx">cacheLifetimeInSeconds</span><span class="p">);</span>
+</code></pre></div>
 
 <p>Test sample usage with this url endpoint <code>/samples/cache?method=set&amp;key=sampleCacheKey&amp;value=sampleCacheValue</code>.</p>
 <h3 id="deleting-items-from-the-cache">Deleting items from the cache<a class="headerlink" href="#deleting-items-from-the-cache" title="Permanent link">&para;</a></h3>
 <p>You may use the <code>del</code> method on the <code>cache</code> util to delete items from the cache.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">cache</span> <span class="nx">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="nx">cache</span> <span class="kr">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">cacheKey</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">del</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">);</span>
-</pre></div>
-
+<span class="kd">const</span> <span class="nx">cacheKey</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">del</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">);</span>
+</code></pre></div>
 
 <p>Test sample usage with this url endpoint <code>/samples/cache?method=del&amp;key=sampleCacheKey</code>.</p>
                 

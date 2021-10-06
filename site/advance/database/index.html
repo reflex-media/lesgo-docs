@@ -13,7 +13,7 @@
         <meta name="description" content="A lightweight node.js serverless framework">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/advance/database/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.6.3/advance/database/">
       
       
         <meta name="author" content="Sufiyan Rahmat">
@@ -115,7 +115,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://reflex-media.github.io/lesgo-docs/" title="Lesgo!" class="md-header-nav__button md-logo">
+        <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-header-nav__button md-logo">
           
             <i class="md-icon">cloud</i>
           
@@ -211,7 +211,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://reflex-media.github.io/lesgo-docs/" title="Lesgo!" class="md-nav__button md-logo">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-nav__button md-logo">
       
         <i class="md-icon">cloud</i>
       
@@ -839,7 +839,7 @@
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
 <p>The database configuration for your application is located at <code>src/config/db.js</code>.</p>
 <p>You may also simply update the respective environment files in <code>config/environments/*</code> as such:</p>
-<div class="codehilite"><pre><span></span><span class="c1"># AWS Secret Manager ARN to allow app db user connect to the specified db</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># AWS Secret Manager ARN to allow app db user connect to the specified db</span>
 <span class="nv">DB_SECRET_ARN</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 
 <span class="c1"># AWS Secret Manager ARN to allow app command db user connect to the specified db</span>
@@ -851,14 +851,13 @@
 
 <span class="c1"># Database name to connect to</span>
 <span class="nv">DB_NAME</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3 id="basic-queries">Basic Queries<a class="headerlink" href="#basic-queries" title="Permanent link">&para;</a></h3>
 <p>To run a basic query, you may use the query method on the <code>Utils/db</code>:</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users&quot;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users&quot;</span><span class="p">);</span>
 
 <span class="cm">/**</span>
 <span class="cm">[</span>
@@ -873,8 +872,7 @@
 <span class="cm">  ...</span>
 <span class="cm">]</span>
 <span class="cm">*/</span>
-</pre></div>
-
+</code></pre></div>
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -882,10 +880,10 @@
 </div>
 <h3 id="using-prepared-statement">Using Prepared Statement<a class="headerlink" href="#using-prepared-statement" title="Permanent link">&para;</a></h3>
 <p>You should always use prepared statement for your queries.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = :id LIMIT 1&quot;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = :id LIMIT 1&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">id</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
 <span class="p">});</span>
 
 <span class="cm">/**</span>
@@ -901,17 +899,16 @@
 <span class="cm">  ...</span>
 <span class="cm">]</span>
 <span class="cm">*/</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3 id="available-methods">Available methods<a class="headerlink" href="#available-methods" title="Permanent link">&para;</a></h3>
 <p>The <code>Utils/db</code> also comes with more specific and granular methods for specific queries.</p>
 <p>Refer to <a href="https://www.npmjs.com/package/data-api-client">data-api-client</a> npm package for additioal details.</p>
 <h4 id="dbselect">db.select<a class="headerlink" href="#dbselect" title="Permanent link">&para;</a></h4>
 <p>This will return an array of Objects</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">darta</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE is_deleted = :isDeleted&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">darta</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE is_deleted = :isDeleted&quot;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">isDeleted</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
 <span class="p">});</span>
 
@@ -930,15 +927,14 @@
 <span class="cm">  ...</span>
 <span class="cm">]</span>
 <span class="cm">*/</span>
-</pre></div>
-
+</code></pre></div>
 
 <h4 id="dbselectfirst">db.selectFirst<a class="headerlink" href="#dbselectfirst" title="Permanent link">&para;</a></h4>
 <p>This will return only a single record</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">selectFirst</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = :id&quot;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">selectFirst</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = :id&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">id</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
 <span class="p">});</span>
 
 <span class="cm">/**</span>
@@ -947,22 +943,21 @@
 <span class="cm">  username: &#39;John Doe&#39;,</span>
 <span class="cm">}</span>
 <span class="cm">*/</span>
-</pre></div>
-
+</code></pre></div>
 
 <h4 id="dbselectpaginate">db.selectPaginate<a class="headerlink" href="#dbselectpaginate" title="Permanent link">&para;</a></h4>
 <p>This will return a paginated response</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">paginatedData</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">selectPaginate</span><span class="p">(</span>
+<span class="kd">const</span> <span class="nx">paginatedData</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">selectPaginate</span><span class="p">(</span>
   <span class="s2">&quot;SELECT * FROM users WHERE id = :id&quot;</span><span class="p">,</span>
   <span class="p">{</span>
-    <span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="p">{</span>
-    <span class="nx">perPage</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="nx">currentPage</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="nx">total</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="nx">perPage</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span>
+    <span class="nx">currentPage</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+    <span class="nx">total</span><span class="o">:</span> <span class="mf">100</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">);</span>
 
@@ -991,8 +986,7 @@
 <span class="cm">  ],</span>
 <span class="cm">}</span>
 <span class="cm">*/</span>
-</pre></div>
-
+</code></pre></div>
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1000,9 +994,9 @@
 </div>
 <h4 id="dbinsert">db.insert<a class="headerlink" href="#dbinsert" title="Permanent link">&para;</a></h4>
 <p>This will insert a new record and return only the newly inserted primary key</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">insertId</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span>
+<span class="kd">const</span> <span class="nx">insertId</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span>
   <span class="s2">&quot;INSERT INTO users(username,email,created_at) VALUES (:username, :email:, now())&quot;</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="nx">username</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
@@ -1011,23 +1005,21 @@
 <span class="p">);</span>
 
 <span class="c1">// 1</span>
-</pre></div>
-
+</code></pre></div>
 
 <h4 id="dbupdate">db.update<a class="headerlink" href="#dbupdate" title="Permanent link">&para;</a></h4>
 <p>This will update an existing record. Will throw an Error if no record found for update</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">db</span> <span class="nx">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">insertId</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span>
+<span class="kd">const</span> <span class="nx">insertId</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span>
   <span class="s2">&quot;UPDATE users SET username=:username, email=:email, updated_at=now()) WHERE id=:id&quot;</span><span class="p">,</span>
   <span class="p">{</span>
-    <span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
     <span class="nx">username</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
     <span class="nx">email</span><span class="o">:</span> <span class="s2">&quot;john@mail.com&quot;</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2 id="aws-dynamodb">AWS DynamoDb<a class="headerlink" href="#aws-dynamodb" title="Permanent link">&para;</a></h2>
 <p>If you'd prefer a non-relational database, DynamoDb is also supported.</p>
@@ -1036,7 +1028,7 @@
 <blockquote>
 <p><code>config/resources/dynamodb.yml</code></p>
 </blockquote>
-<div class="codehilite"><pre><span></span>Resources:
+<div class="codehilite"><pre><span></span><code>Resources:
   settingsTable:
     Type: AWS::DynamoDB::Table
     DeletionPolicy: Retain
@@ -1053,16 +1045,14 @@
         - AttributeName: checkType
           KeyType: RANGE
       BillingMode: PAY_PER_REQUEST
-</pre></div>
-
+</code></pre></div>
 
 <blockquote>
 <p><code>serverless.yml</code></p>
 </blockquote>
-<div class="codehilite"><pre><span></span>resources:
+<div class="codehilite"><pre><span></span><code>resources:
   - ${file(${self:custom.path.resources}/dynamodb.yml)}
-</pre></div>
-
+</code></pre></div>
 
 <h3 id="basic-queries_1">Basic Queries<a class="headerlink" href="#basic-queries_1" title="Permanent link">&para;</a></h3>
                 

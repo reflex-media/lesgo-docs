@@ -13,7 +13,7 @@
         <meta name="description" content="A lightweight node.js serverless framework">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/advance/queues/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.6.3/advance/queues/">
       
       
         <meta name="author" content="Sufiyan Rahmat">
@@ -115,7 +115,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://reflex-media.github.io/lesgo-docs/" title="Lesgo!" class="md-header-nav__button md-logo">
+        <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-header-nav__button md-logo">
           
             <i class="md-icon">cloud</i>
           
@@ -211,7 +211,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://reflex-media.github.io/lesgo-docs/" title="Lesgo!" class="md-nav__button md-logo">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-nav__button md-logo">
       
         <i class="md-icon">cloud</i>
       
@@ -703,29 +703,27 @@
 <p>The <code>Utils/dispatch</code> function will dispatch a message payload to the queue.</p>
 <h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
 <p>This example usage will send a message to the pre-defined PingQueue.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">dispatch</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;Utils/queue&quot;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">dispatch</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;Utils/queue&quot;</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">someData</span><span class="o">:</span> <span class="s2">&quot;someValue&quot;</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="k">return</span> <span class="nx">await</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span> <span class="s2">&quot;pingQueue&quot;</span><span class="p">);</span>
-</pre></div>
-
+<span class="k">return</span> <span class="k">await</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span> <span class="s2">&quot;pingQueue&quot;</span><span class="p">);</span>
+</code></pre></div>
 
 <h2 id="consuming-dispatached-queued-messages">Consuming Dispatached Queued Messages<a class="headerlink" href="#consuming-dispatached-queued-messages" title="Permanent link">&para;</a></h2>
 <p>Messages sent to SQS can automatically trigger and be executed by a Lambda Function. This can be configured to an event lambda function within the <code>config/functions</code>.</p>
 <blockquote>
 <p><code>config/functions/dequeue.yml</code></p>
 </blockquote>
-<div class="codehilite"><pre><span></span>dequeue:
+<div class="codehilite"><pre><span></span><code>dequeue:
   handler: ${self:custom.path.app}/handlers/dequeue.handler
   description: Receives message from SQS for actual business logic execution
   timeout: 15
   events:
     - sqs: arn:aws:sqs:${self:provider.region}:${env:AWS_ACCOUNT_ID}:${self:provider.stackName}-dequeue
-</pre></div>
-
+</code></pre></div>
 
 <h2 id="batch-processing-queued-messages">Batch Processing Queued Messages<a class="headerlink" href="#batch-processing-queued-messages" title="Permanent link">&para;</a></h2>
 <p>Messages can also be fetched and executed in batches.</p>

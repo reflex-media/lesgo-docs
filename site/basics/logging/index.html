@@ -13,7 +13,7 @@
         <meta name="description" content="A lightweight node.js serverless framework">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/basics/logging/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.6.3/basics/logging/">
       
       
         <meta name="author" content="Sufiyan Rahmat">
@@ -115,7 +115,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://reflex-media.github.io/lesgo-docs/" title="Lesgo!" class="md-header-nav__button md-logo">
+        <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-header-nav__button md-logo">
           
             <i class="md-icon">cloud</i>
           
@@ -211,7 +211,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://reflex-media.github.io/lesgo-docs/" title="Lesgo!" class="md-nav__button md-logo">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-nav__button md-logo">
       
         <i class="md-icon">cloud</i>
       
@@ -587,26 +587,25 @@
                 <h1 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h1>
 <p>Lesgo! is configured with structured logging.</p>
 <p>Structured logs will appear on the console by default.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">logger</span> <span class="nx">from</span> <span class="s1">&#39;Utils/logger&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="nx">logger</span> <span class="kr">from</span> <span class="s1">&#39;Utils/logger&#39;</span><span class="p">;</span>
 
 <span class="nx">logger</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s1">&#39;this is an info log&#39;</span><span class="p">);</span>
 <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;This is an info log&#39;</span><span class="p">);</span>
 <span class="nx">logger</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">&#39;This is a warning log&#39;</span><span class="p">);</span>
 <span class="nx">logger</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;This is an error log&#39;</span><span class="p">);</span>
 <span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;This is a debug log and will only get logged when APP_DEBUG=true&#39;</span><span class="p">);</span>
-</pre></div>
-
+</code></pre></div>
 
 <div class="admonition info">
 <p class="admonition-title">PRO TIP</p>
 <p>This logger is built for, and works well, with both CloudWatch and DataDog. DataDog will help you monitor your logs, errors, inovations, and alot more in almost real-time with no performance impact!</p>
 </div>
 <p>You may also add additional custom metadata as such:</p>
-<div class="codehilite"><pre><span></span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;This is an info log with my own custom metadata&#39;</span><span class="p">,</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;This is an info log with my own custom metadata&#39;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">customData1</span><span class="o">:</span> <span class="s1">&#39;someData1&#39;</span><span class="p">,</span>
   <span class="nx">customData2</span><span class="o">:</span> <span class="s1">&#39;someData2&#39;</span><span class="p">,</span>
 <span class="p">});</span>
-</pre></div>
+</code></pre></div>
                 
                   
                 

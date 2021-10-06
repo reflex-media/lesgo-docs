@@ -13,7 +13,7 @@
         <meta name="description" content="A lightweight node.js serverless framework">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/basics/error-handling/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.6.3/basics/error-handling/">
       
       
         <meta name="author" content="Sufiyan Rahmat">
@@ -115,7 +115,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://reflex-media.github.io/lesgo-docs/" title="Lesgo!" class="md-header-nav__button md-logo">
+        <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-header-nav__button md-logo">
           
             <i class="md-icon">cloud</i>
           
@@ -211,7 +211,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://reflex-media.github.io/lesgo-docs/" title="Lesgo!" class="md-nav__button md-logo">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-nav__button md-logo">
       
         <i class="md-icon">cloud</i>
       
@@ -631,21 +631,20 @@
                 
                 <h1 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h1>
 <p>It is recommended to always throw an Error class as an exception instead of returning just an error message. You may create your own Error Class within the <code>src/exceptions/</code> directory.</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">MediaException</span> <span class="nx">from</span> <span class="s1">&#39;Exceptions/MediaException&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="nx">MediaException</span> <span class="kr">from</span> <span class="s1">&#39;Exceptions/MediaException&#39;</span><span class="p">;</span>
 <span class="p">...</span>
 
 <span class="k">try</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">validateFields</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">validFields</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">throw</span> <span class="k">new</span> <span class="nx">MediaException</span><span class="p">(</span>
+  <span class="k">throw</span> <span class="ow">new</span> <span class="nx">MediaException</span><span class="p">(</span>
     <span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">,</span>
     <span class="sb">`Core/medias/getMedia::FIELD_VALIDATION_EXCEPTION`</span><span class="p">,</span>
-    <span class="mi">400</span><span class="p">,</span>
+    <span class="mf">400</span><span class="p">,</span>
     <span class="p">{</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">err</span> <span class="p">}</span>
   <span class="p">);</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2 id="custom-error-classes">Custom Error Classes<a class="headerlink" href="#custom-error-classes" title="Permanent link">&para;</a></h2>
 <p>You can define your own Error Classes as required. Refer to the existing <code>src/exceptions/ErrorException.js</code> class.</p>
