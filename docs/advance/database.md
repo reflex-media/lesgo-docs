@@ -253,3 +253,129 @@ resources:
 ```
 
 ### Basic Queries
+
+To run a basic query, you may use the query method on the `Utils/dynamodb`:
+
+```js
+import dynamodb from "Utils/dynamodb";
+
+const data = await dynamodb.query(
+  'stackName-settings',
+  'siteId = :siteId',
+  {
+    ':siteId': 'default',
+  },
+  'siteId, checkType'
+);
+
+/**
+[
+  {
+    siteId: 'site1',
+    checkType: 'text',
+  },
+  {
+    siteId: 'site2',
+    checkType: 'photo',
+  },
+  ...
+]
+*/
+```
+
+### Using Custom Queries
+
+You can also pass your own query if needed through the `client` property, refer to `query` method's [first parameter](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#query-property).
+
+```js
+import dynamodb from "Utils/dynamodb";
+
+const data = await dynamodb.client.query({
+  ExpressionAttributeValues: {
+    ':siteId': 'default',
+    'siteId, checkType'
+  },
+  KeyConditionExpression: "siteId = :siteId", 
+  ProjectionExpression: "siteId, checkType", 
+  IndexName: 'settings-index',
+  TableName: "stackName-settings"
+ });
+
+/**
+{
+  Items: [
+    {
+      siteId: 'site1',
+      checkType: 'text',
+    },
+    {
+      siteId: 'site2',
+      checkType: 'photo',
+    },
+    ...
+  ],
+  Count: 5,
+  ConsumedCapacity: {}
+}
+
+*/
+```
+
+### Available Methods
+
+The `Utils/dynamodb` also comes with more specific and granular methods for specific queries.
+
+#### dynamodb.queryCount
+
+This will return the number of results
+
+```js
+import dynamodb from "Utils/dynamodb";
+
+const count = await dynamodb.queryCount(
+  'stackName-settings',
+  'siteId = :siteId',
+  {
+    ':siteId': 'default',
+  },
+  'siteId, checkType'
+);
+
+// 5
+```
+
+#### dynamodb.put
+
+This will insert a new record. Refer [here](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#put-property) for response and more information.
+
+```js
+import dynamodb from "Utils/dynamodb";
+
+const data = await dynamodb.put(
+  'stackName-settings',
+  {
+    'siteId': 'default',
+    'checkType': 'text'
+  }
+);
+```
+
+#### dynamodb.update
+
+This will update an existing record. Refer [here](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#update-property) for response and more information.
+
+```js
+import dynamodb from "Utils/dynamodb";
+
+const data = await dynamodb.update(
+  'stackName-settings',
+  {
+    'siteId': 'default',
+    'checkType': 'text'
+  },
+  'set checkType = :checkType',
+  {
+    ':checkType': 'photo'
+  }
+);
+```
