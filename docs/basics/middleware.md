@@ -8,7 +8,7 @@ Middlewares should be written in the `src/middlewares/` directory.
 
 ## Available Middlewares
 
-Lesgo! comes with 2 pre-existing middlewares.
+Lesgo! comes with 3 pre-existing middlewares.
 
 You may also import other ready-made middlewares from the [Middy repository](https://www.npmjs.com/package/middy#available-middlewares).
 
@@ -83,6 +83,25 @@ const originalHandler = event => {
 export const handler = middy(originalHandler);
 
 handler.use(normalizeSQSMessage());
+```
+
+### Verify JWT
+
+This middleware will verify any JWT passed to the `Authorization` header of the http request. The decoded JWT can be accesed through `handler.event.decodedJwt`. If the JWT is verified, `handler.event.auth.sub` is set to the JWT's sub, else a `403` response will be thrown.
+
+**Usage**
+
+```js
+import middy from '@middy/core';
+import verifyJwtTokenMiddleware from "Middlewares/verifyJwtTokenMiddleware";
+
+const originalHandler = event => {
+  return event.collection;
+};
+
+export const handler = middy(originalHandler);
+
+handler.use(verifyJwtTokenMiddleware());
 ```
 
 ## Custom Middlewares
