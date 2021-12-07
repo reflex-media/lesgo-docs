@@ -62,4 +62,6 @@ nav:
       - Typescript: advance/typescript.md
   - Security:
       - VPC: security/vpc.md
+  - Packages:
+      - Firebase: packages/firebase.md
   - Contributing: contributing.md
