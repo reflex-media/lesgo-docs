@@ -17,11 +17,7 @@ const firebaseAdmin = new FirebaseAdmin({
 
 ## Accessing Firebase Admin Client
 
-If ever needed you can also access the service instance directly through
-
-```js
-firebaseAdmin.app
-```
+If ever needed you can also access the service instance directly through `firebaseAdmin.app`
 
 ## Available methods
 
