@@ -3,22 +3,22 @@
 These are the available scripts within Lesgo! Framework
 
 ### Run lint
-```bash
+```apache
 npm run lint
 ```
 
 ### Run lint fix
-```bash
+```apache
 npm run lint-fix
 ```
 
 ### Test build with Jest
-```bash
+```apache
 npm test
 ```
 
 ### Run code coverage report
-```bash
+```apache
 npm run coverage
 ```
 !!! info 

@@ -32,7 +32,7 @@ The sentry configuration for your application is located at `src/config/sentry.j
 
 You may also simply update the respective environment files in `config/environments/*` as such:
 
-```bash
+```apache
 # Whether to enable sentry or not
 SENTRY_ENABLED="true"
 

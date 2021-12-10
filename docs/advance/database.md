@@ -10,7 +10,7 @@ The database configuration for your application is located at `src/config/db.js`
 
 You may also simply update the respective environment files in `config/environments/*` as such:
 
-```bash
+```apache
 # AWS Secret Manager ARN to allow app db user connect to the specified db
 DB_SECRET_ARN=""
 

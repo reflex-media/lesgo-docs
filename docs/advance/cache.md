@@ -33,13 +33,13 @@ resources:
 
 2. Deploy application and retrieve ElastiCache node Endpoint on AWS Console.
 
-```bash
+```apache
 yarn deploy -s development
 ```
 
 3. Update relevant environment file in `config/environments/` directory.
 
-```bash
+```apache
 ELASTICACHE_MEMCACHED_URL="INSERT_ELASTICACHE_NODE_ENDPOINT_HERE"
 ```
 

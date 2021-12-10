@@ -45,7 +45,11 @@ The static files will be stored in the `site/` directory.
 This command will deploy the static site in `site/` directory to GitHub Pages.
 
 ```bash
-$ mkdocs gh-deploy
+$ mike deploy 0.6.3 stable
+```
+or 
+```bash
+$ mike deploy 0.7.0
 ```
 
 ## Architecture

@@ -18,8 +18,8 @@ theme:
   palette:
     primary: white
     accent: orange
-  logo:
-    icon: cloud
+  icon:
+    logo: material/cloud
   feature:
     tabs: false
   extra_css:
@@ -38,6 +38,10 @@ markdown_extensions:
       permalink: true
   - codehilite:
       guess_lang: false
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets
 
 nav:
   - Prologue: index.md

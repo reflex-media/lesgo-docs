@@ -6,13 +6,13 @@ Serverless Framework handles most of the deployment tasks. Lesgo! uses its own d
 
 This command will deploy the entire application to a specific environment.
 
-```bash
+```apache
 npm run deploy -- -s {environment}
 ```
 
 ### Example deploy
 
-```bash
+```apache
 npm run deploy -- -s dev
 ```
 
@@ -20,13 +20,13 @@ npm run deploy -- -s dev
 
 This command will deploy only a single function to a specific environment.
 
-```bash
+```apache
 npm run deploy -- -s {environment} -f {function_name}
 ```
 
 ### Example deploy
 
-```bash
+```apache
 npm run deploy -- -s dev -f ping
 ```
 
@@ -38,7 +38,7 @@ These commands are also available.
 
 This command will invoke/trigger a single function.
 
-```bash
+```apache
 npm run invoke -- -s {environment} -f {function_name}
 
 # Example
@@ -49,7 +49,7 @@ npm run invoke -- -s dev -f ping
 
 This command allows you to tail the log of a single function.
 
-```bash
+```apache
 npm run logs -- -s {environment} -f {function_name}
 
 # Example
@@ -60,7 +60,7 @@ npm run logs -- -s dev -f ping
 
 This command allows you to build the bundle without doing actual deployment. This might be useful to note the created bundle files and sizes.
 
-```bash
+```apache
 npm run build -- -s {environment}
 
 # Example
@@ -74,7 +74,7 @@ Destroy everything, leave nothing behind.
 !!! danger "DANGER!"
     Note that this action is non-reversible! Everything will disappear from AWS.
 
-```bash
+```apache
 npm run destroy -- -s {environment}
 
 # Example

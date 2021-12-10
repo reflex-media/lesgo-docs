@@ -8,20 +8,20 @@
 
 Create Serverless project:
 
-```bash
+```apache
 sls create --template-url https://github.com/reflex-media/lesgo-lite/tree/master --path my-service
 cd my-service
 ```
 
 Install dependencies:
 
-```bash
+```apache
 npm install
 ```
 
 Start local:
 
-```bash
+```apache
 npm start
 ```
 
@@ -47,7 +47,7 @@ These environment files can be committed to the source control. To overwrite for
 
 ### Available Environment Configurations
 
-```bash
+```apache
 # Declare the environment to deploy to
 APP_ENV="dev"
 
