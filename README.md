@@ -52,6 +52,14 @@ or
 $ mike deploy 0.7.0
 ```
 
+### Preview Deploy
+
+This command will preview the currently updated site under `gh-pages` branch
+
+```bash
+$ mike serve
+```
+
 ## Architecture
 
 ```
