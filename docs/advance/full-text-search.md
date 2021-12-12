@@ -8,7 +8,7 @@ The elasticsearch configuration for your application is located at `src/config/e
 
 You may also simply update the respective environment files in `config/environments/*` as such:
 
-```bash
+```apache
 # Elasticsearch index name to use
 ES_INDEX=""
 

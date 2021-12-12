@@ -17,7 +17,7 @@ const objectFile = await getObject('Key', 'Bucket');
 
 To fetch/put objects to an exisitng S3 bucket, be sure to set up an IAM user with the correct permissions as well as updating the S3 bucket policy. You may override the config by updating these in the environment file.
 
-```bash
+```apache
 # Set IAM access key with S3 access
 AWS_S3_OPTIONS_ACCESS_KEY_ID=
 

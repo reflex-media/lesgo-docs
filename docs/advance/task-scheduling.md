@@ -6,7 +6,7 @@ Lesgo! utilizes the CloudWatch Scheduled Event type to schedule events. This is 
 
 Define a scheduled event by first inserting a function with the `event:schedule` type in your serverless function yaml.
 
-```yml
+```yaml
 functions:
   - pingScheduledEvent:
     handler: src/app/handlers/scheduledEvent.handler

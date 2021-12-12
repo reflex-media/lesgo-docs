@@ -12,20 +12,20 @@ Bootstrap your next serverless microservice with a light-weight node.js app buil
 
 Create Serverless project:
 
-```apache
+```bash
 sls create --template-url https://github.com/reflex-media/lesgo-lite/tree/master --path my-service
 cd my-service
 ```
 
 Install dependencies:
 
-```apache
+```bash
 npm install
 ```
 
 Start local:
 
-```apache
+```bash
 npm start
 ```
 

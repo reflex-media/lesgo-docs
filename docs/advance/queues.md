@@ -25,7 +25,7 @@ return await dispatch(payload, "pingQueue");
 Messages sent to SQS can automatically trigger and be executed by a Lambda Function. This can be configured to an event lambda function within the `config/functions`.
 
 > `config/functions/dequeue.yml`
-```yml
+```yaml
 dequeue:
   handler: ${self:custom.path.app}/handlers/dequeue.handler
   description: Receives message from SQS for actual business logic execution

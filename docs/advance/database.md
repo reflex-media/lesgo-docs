@@ -225,7 +225,7 @@ Before you can start to use DynamoDb, you need to set it up under the `config/re
 
 > `config/resources/dynamodb.yml`
 
-```yml
+```yaml
 Resources:
   settingsTable:
     Type: AWS::DynamoDB::Table
@@ -247,7 +247,7 @@ Resources:
 
 > `serverless.yml`
 
-```yml
+```yaml
 resources:
   - ${file(${self:custom.path.resources}/dynamodb.yml)}
 ```

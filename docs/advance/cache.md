@@ -33,7 +33,7 @@ resources:
 
 2. Deploy application and retrieve ElastiCache node Endpoint on AWS Console.
 
-```apache
+```bash
 yarn deploy -s development
 ```
 
