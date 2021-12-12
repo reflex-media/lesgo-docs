@@ -1,0 +1,1554 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A lightweight node.js serverless framework">
+      
+      
+      
+        <meta name="author" content="Sufiyan Rahmat">
+      
+      
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.7.0/advance/database/">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.0">
+    
+    
+      
+        <title>Database - Lesgo!</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a3f8f96a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="orange">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#database" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Lesgo!
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Database
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/reflex-media/lesgo/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    reflex-media/lesgo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
+
+    </a>
+    Lesgo!
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/reflex-media/lesgo/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    reflex-media/lesgo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Prologue
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        Getting Started
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/structure/" class="md-nav__link">
+        Directory Structure
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/deployment/" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/available-scripts/" class="md-nav__link">
+        Available Scripts
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        The Basics
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The Basics" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          The Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/error-handling/" class="md-nav__link">
+        Error Handling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      
+      <label class="md-nav__link" for="nav-4">
+        Digging Deeper
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Digging Deeper" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Digging Deeper
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Cache
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Database
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Database
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rds-aurora-serverless-database" class="md-nav__link">
+    RDS Aurora Serverless Database
+  </a>
+  
+    <nav class="md-nav" aria-label="RDS Aurora Serverless Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-queries" class="md-nav__link">
+    Basic Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-prepared-statement" class="md-nav__link">
+    Using Prepared Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-methods" class="md-nav__link">
+    Available methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Available methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dbconnect" class="md-nav__link">
+    db.connect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbselect" class="md-nav__link">
+    db.select
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbselectfirst" class="md-nav__link">
+    db.selectFirst
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbselectpaginate" class="md-nav__link">
+    db.selectPaginate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbinsert" class="md-nav__link">
+    db.insert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbupdate" class="md-nav__link">
+    db.update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rds-proxy-database" class="md-nav__link">
+    RDS Proxy Database
+  </a>
+  
+    <nav class="md-nav" aria-label="RDS Proxy Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_1" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-methods_1" class="md-nav__link">
+    Available methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Available methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dbconnect_1" class="md-nav__link">
+    db.connect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbpconnect" class="md-nav__link">
+    db.pConnect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbend" class="md-nav__link">
+    db.end
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-dynamodb" class="md-nav__link">
+    AWS DynamoDb
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS DynamoDb">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_2" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-queries_1" class="md-nav__link">
+    Basic Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-custom-queries" class="md-nav__link">
+    Using Custom Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-methods_2" class="md-nav__link">
+    Available Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamodbquerycount" class="md-nav__link">
+    dynamodb.queryCount
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamodbput" class="md-nav__link">
+    dynamodb.put
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamodbupdate" class="md-nav__link">
+    dynamodb.update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helpers
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../object-store/" class="md-nav__link">
+        Object Store
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queues/" class="md-nav__link">
+        Queues
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task-scheduling/" class="md-nav__link">
+        Task Scheduling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-tests/" class="md-nav__link">
+        Unit Tests
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../full-text-search/" class="md-nav__link">
+        Full-Text Search
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typescript/" class="md-nav__link">
+        Typescript
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+      
+      <label class="md-nav__link" for="nav-5">
+        Security
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Security" data-md-level="1">
+        <label class="md-nav__title" for="nav-5">
+          <span class="md-nav__icon md-icon"></span>
+          Security
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/vpc/" class="md-nav__link">
+        VPC
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+      
+      <label class="md-nav__link" for="nav-6">
+        Packages
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Packages" data-md-level="1">
+        <label class="md-nav__title" for="nav-6">
+          <span class="md-nav__icon md-icon"></span>
+          Packages
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../packages/firebase/" class="md-nav__link">
+        Firebase
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rds-aurora-serverless-database" class="md-nav__link">
+    RDS Aurora Serverless Database
+  </a>
+  
+    <nav class="md-nav" aria-label="RDS Aurora Serverless Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-queries" class="md-nav__link">
+    Basic Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-prepared-statement" class="md-nav__link">
+    Using Prepared Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-methods" class="md-nav__link">
+    Available methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Available methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dbconnect" class="md-nav__link">
+    db.connect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbselect" class="md-nav__link">
+    db.select
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbselectfirst" class="md-nav__link">
+    db.selectFirst
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbselectpaginate" class="md-nav__link">
+    db.selectPaginate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbinsert" class="md-nav__link">
+    db.insert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbupdate" class="md-nav__link">
+    db.update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rds-proxy-database" class="md-nav__link">
+    RDS Proxy Database
+  </a>
+  
+    <nav class="md-nav" aria-label="RDS Proxy Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_1" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-methods_1" class="md-nav__link">
+    Available methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Available methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dbconnect_1" class="md-nav__link">
+    db.connect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbpconnect" class="md-nav__link">
+    db.pConnect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbend" class="md-nav__link">
+    db.end
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-dynamodb" class="md-nav__link">
+    AWS DynamoDb
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS DynamoDb">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_2" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-queries_1" class="md-nav__link">
+    Basic Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-custom-queries" class="md-nav__link">
+    Using Custom Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-methods_2" class="md-nav__link">
+    Available Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamodbquerycount" class="md-nav__link">
+    dynamodb.queryCount
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamodbput" class="md-nav__link">
+    dynamodb.put
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamodbupdate" class="md-nav__link">
+    dynamodb.update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/reflex-media/lesgo/edit/master/docs/advance/database.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="database">Database<a class="headerlink" href="#database" title="Permanent link">&para;</a></h1>
+<p>As of today, Lesgo! only supports <strong>AWS DynamoDB</strong>, <strong>AWS Aurora Database Serverless</strong>, and <strong>AWS RDS Proxy</strong> as these are the only true serverless database services available on AWS.</p>
+<h2 id="rds-aurora-serverless-database">RDS Aurora Serverless Database<a class="headerlink" href="#rds-aurora-serverless-database" title="Permanent link">&para;</a></h2>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<p>The database configuration for your application is located at <code>src/config/db.js</code>.</p>
+<p>You may also simply update the respective environment files in <code>config/environments/*</code> as such:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># AWS Secret Manager ARN to allow app db user connect to the specified db</span>
+<span class="nb">DB_SECRET_ARN</span>=<span class="s2">&quot;&quot;</span>
+
+<span class="c"># AWS Secret Manager ARN to allow app command db user connect to the specified db</span>
+<span class="c"># for running &quot;command&quot; like functions like database schema migration</span>
+<span class="nb">DB_SECRET_COMMAND_ARN</span>=<span class="s2">&quot;&quot;</span>
+
+<span class="c"># AWS Secret Manager ARN for the Aurora Serverless database cluster</span>
+<span class="nb">DB_RESOURCE_ARN</span>=<span class="s2">&quot;&quot;</span>
+
+<span class="c"># Database name to connect to</span>
+<span class="nb">DB_NAME</span>=<span class="s2">&quot;&quot;</span>
+</code></pre></div>
+<h3 id="basic-queries">Basic Queries<a class="headerlink" href="#basic-queries" title="Permanent link">&para;</a></h3>
+<p>To run a basic query, you may use the query method on the <code>Utils/db</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users&quot;</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm">[</span>
+<span class="cm">  {</span>
+<span class="cm">    id: 1,</span>
+<span class="cm">    username: &#39;John Doe&#39;,</span>
+<span class="cm">  },</span>
+<span class="cm">  {</span>
+<span class="cm">    id: 2,</span>
+<span class="cm">    username: &#39;Jane Doe&#39;,</span>
+<span class="cm">  },</span>
+<span class="cm">  ...</span>
+<span class="cm">]</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While it is OK to write raw queries with values inserted directly in the query statement, note that this is risky. Use prepared statement as show below as much as possible.</p>
+</div>
+<h3 id="using-prepared-statement">Using Prepared Statement<a class="headerlink" href="#using-prepared-statement" title="Permanent link">&para;</a></h3>
+<p>You should always use prepared statement for your queries.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = :id LIMIT 1&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">id</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="cm">/**</span>
+<span class="cm">[</span>
+<span class="cm">  {</span>
+<span class="cm">    id: 1,</span>
+<span class="cm">    username: &#39;John Doe&#39;,</span>
+<span class="cm">  },</span>
+<span class="cm">  {</span>
+<span class="cm">    id: 2,</span>
+<span class="cm">    username: &#39;Jane Doe&#39;,</span>
+<span class="cm">  },</span>
+<span class="cm">  ...</span>
+<span class="cm">]</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<h3 id="available-methods">Available methods<a class="headerlink" href="#available-methods" title="Permanent link">&para;</a></h3>
+<p>The <code>Utils/db</code> also comes with more specific and granular methods for specific queries.</p>
+<p>Refer to <a href="https://www.npmjs.com/package/data-api-client">data-api-client</a> npm package for additioal details.</p>
+<h4 id="dbconnect">db.connect<a class="headerlink" href="#dbconnect" title="Permanent link">&para;</a></h4>
+<p>This is used to manually connect to the database using some configuration</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="nx">db</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+  <span class="nx">secretArn</span><span class="o">:</span> <span class="s2">&quot;secretArnDataApi&quot;</span><span class="p">,</span>
+  <span class="nx">resourceArn</span><span class="o">:</span> <span class="s2">&quot;resourceArnDataApi&quot;</span><span class="p">,</span>
+  <span class="nx">database</span><span class="o">:</span> <span class="s2">&quot;databaseDataApi&quot;</span><span class="p">,</span>
+  <span class="nx">region</span><span class="o">:</span> <span class="s2">&quot;us-east-1&quot;</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="dbselect">db.select<a class="headerlink" href="#dbselect" title="Permanent link">&para;</a></h4>
+<p>This will return an array of Objects</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">darta</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE is_deleted = :isDeleted&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">isDeleted</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="cm">/**</span>
+<span class="cm">[</span>
+<span class="cm">  {</span>
+<span class="cm">    id: 1,</span>
+<span class="cm">    username: &#39;John Doe&#39;,</span>
+<span class="cm">    is_deleted: false,</span>
+<span class="cm">  },</span>
+<span class="cm">  {</span>
+<span class="cm">    id: 2,</span>
+<span class="cm">    username: &#39;Jane Doe&#39;,</span>
+<span class="cm">    is_deleted: false,</span>
+<span class="cm">  },</span>
+<span class="cm">  ...</span>
+<span class="cm">]</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<h4 id="dbselectfirst">db.selectFirst<a class="headerlink" href="#dbselectfirst" title="Permanent link">&para;</a></h4>
+<p>This will return only a single record</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">selectFirst</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = :id&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">id</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="cm">/**</span>
+<span class="cm">{</span>
+<span class="cm">  id: 1,</span>
+<span class="cm">  username: &#39;John Doe&#39;,</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<h4 id="dbselectpaginate">db.selectPaginate<a class="headerlink" href="#dbselectpaginate" title="Permanent link">&para;</a></h4>
+<p>This will return a paginated response</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">paginatedData</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">selectPaginate</span><span class="p">(</span>
+  <span class="s2">&quot;SELECT * FROM users WHERE id = :id&quot;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">perPage</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span>
+    <span class="nx">currentPage</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+    <span class="nx">total</span><span class="o">:</span> <span class="mf">100</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm">{</span>
+<span class="cm">  count: 25,</span>
+<span class="cm">  previous_page: 1,</span>
+<span class="cm">  current_page: 1,</span>
+<span class="cm">  next_page: 2,</span>
+<span class="cm">  last_page: 34,</span>
+<span class="cm">  per_page: 5,</span>
+<span class="cm">  total: 100,</span>
+<span class="cm">  items: [</span>
+<span class="cm">    {</span>
+<span class="cm">      id: 1,</span>
+<span class="cm">      username: &#39;John Doe&#39;,</span>
+<span class="cm">    },</span>
+<span class="cm">    {</span>
+<span class="cm">      id: 2,</span>
+<span class="cm">      username: &#39;Jane Doe&#39;,</span>
+<span class="cm">    },</span>
+<span class="cm">    {</span>
+<span class="cm">      id: 3,</span>
+<span class="cm">      username: &#39;Salmah Hayek&#39;,</span>
+<span class="cm">    }</span>
+<span class="cm">  ],</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If <code>total</code> is not provided, <code>db.selectPaginate</code> will execute the given query and calculate the total record count by calculating the length of the resulset with <code>.length</code>. It is highly recommended to provide the <code>total</code> to avoid this resource intensive process.</p>
+</div>
+<h4 id="dbinsert">db.insert<a class="headerlink" href="#dbinsert" title="Permanent link">&para;</a></h4>
+<p>This will insert a new record and return only the newly inserted primary key</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">insertId</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span>
+  <span class="s2">&quot;INSERT INTO users(username,email,created_at) VALUES (:username, :email:, now())&quot;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="nx">username</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+    <span class="nx">email</span><span class="o">:</span> <span class="s2">&quot;john@mail.com&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// 1</span>
+</code></pre></div>
+<h4 id="dbupdate">db.update<a class="headerlink" href="#dbupdate" title="Permanent link">&para;</a></h4>
+<p>This will update an existing record. Will throw an Error if no record found for update</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">insertId</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span>
+  <span class="s2">&quot;UPDATE users SET username=:username, email=:email, updated_at=now()) WHERE id=:id&quot;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+    <span class="nx">username</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+    <span class="nx">email</span><span class="o">:</span> <span class="s2">&quot;john@mail.com&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div>
+<h2 id="rds-proxy-database">RDS Proxy Database<a class="headerlink" href="#rds-proxy-database" title="Permanent link">&para;</a></h2>
+<h3 id="configuration_1">Configuration<a class="headerlink" href="#configuration_1" title="Permanent link">&para;</a></h3>
+<p>RDS Proxy uses the same configuration file as AWS Aurora DB located at <code>src/config/db.js</code>.</p>
+<p>You may also simply update the respective environment files in <code>config/environments/*</code> as such:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># RDS Proxy endpoint </span>
+<span class="nb">DB_HOST</span>=<span class="s2">&quot;&quot;</span>
+
+<span class="c"># Database user</span>
+<span class="nb">DB_USER</span>=<span class="s2">&quot;&quot;</span>
+
+<span class="c"># Database password</span>
+<span class="nb">DB_PASSWORD</span>=<span class="s2">&quot;&quot;</span>
+
+<span class="c"># Database name to connect to</span>
+<span class="nb">DB_NAME</span>=<span class="s2">&quot;&quot;</span>
+</code></pre></div>
+<h3 id="available-methods_1">Available methods<a class="headerlink" href="#available-methods_1" title="Permanent link">&para;</a></h3>
+<p>AWS RDS Proxy also uses the same set of methods as AWS Aurora Database and some more.</p>
+<h4 id="dbconnect_1">db.connect<a class="headerlink" href="#dbconnect_1" title="Permanent link">&para;</a></h4>
+<p>This is used to manually connect to the database using some configuration</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+  <span class="nx">host</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+  <span class="nx">user</span><span class="o">:</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+  <span class="nx">password</span><span class="o">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+  <span class="nx">database</span><span class="o">:</span> <span class="s2">&quot;rds-proxy-db&quot;</span><span class="p">,</span>
+  <span class="nx">persistes</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="dbpconnect">db.pConnect<a class="headerlink" href="#dbpconnect" title="Permanent link">&para;</a></h4>
+<p>This is the same method as <code>db.connect</code> but forces <code>persistent: true</code></p>
+<h4 id="dbend">db.end<a class="headerlink" href="#dbend" title="Permanent link">&para;</a></h4>
+<p>This closes the current connection, whether persistent or not.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">pConnect</span><span class="p">({</span>
+  <span class="nx">host</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+  <span class="nx">user</span><span class="o">:</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+  <span class="nx">password</span><span class="o">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+  <span class="nx">database</span><span class="o">:</span> <span class="s2">&quot;rds-proxy-db&quot;</span><span class="p">,</span>
+  <span class="nx">persistes</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">});</span>
+
+<span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+</code></pre></div>
+<h2 id="aws-dynamodb">AWS DynamoDb<a class="headerlink" href="#aws-dynamodb" title="Permanent link">&para;</a></h2>
+<p>If you'd prefer a non-relational database, DynamoDb is also supported.</p>
+<h3 id="configuration_2">Configuration<a class="headerlink" href="#configuration_2" title="Permanent link">&para;</a></h3>
+<p>Before you can start to use DynamoDb, you need to set it up under the <code>config/resources/</code> directory. Also include the newly created yml file in the <code>serverless.yml</code> under the <code>resources</code> section.</p>
+<blockquote>
+<p><code>config/resources/dynamodb.yml</code></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nt">Resources</span><span class="p">:</span>
+  <span class="nt">settingsTable</span><span class="p">:</span>
+    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::DynamoDB::Table</span>
+    <span class="nt">DeletionPolicy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Retain</span>
+    <span class="nt">Properties</span><span class="p">:</span>
+      <span class="nt">TableName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${self:provider.stackName}-settings</span>
+      <span class="nt">AttributeDefinitions</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">AttributeName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">siteId</span>
+          <span class="nt">AttributeType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">S</span>
+        <span class="p p-Indicator">-</span> <span class="nt">AttributeName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">checkType</span>
+          <span class="nt">AttributeType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">S</span>
+      <span class="nt">KeySchema</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">AttributeName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">siteId</span>
+          <span class="nt">KeyType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">HASH</span>
+        <span class="p p-Indicator">-</span> <span class="nt">AttributeName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">checkType</span>
+          <span class="nt">KeyType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">RANGE</span>
+      <span class="nt">BillingMode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PAY_PER_REQUEST</span>
+</code></pre></div>
+<blockquote>
+<p><code>serverless.yml</code></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${file(${self:custom.path.resources}/dynamodb.yml)}</span>
+</code></pre></div>
+<h3 id="basic-queries_1">Basic Queries<a class="headerlink" href="#basic-queries_1" title="Permanent link">&para;</a></h3>
+<p>To run a basic query, you may use the query method on the <code>Utils/dynamodb</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">dynamodb</span> <span class="kr">from</span> <span class="s2">&quot;Utils/dynamodb&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">dynamodb</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+  <span class="s1">&#39;stackName-settings&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;siteId = :siteId&#39;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="s1">&#39;:siteId&#39;</span><span class="o">:</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="s1">&#39;siteId, checkType&#39;</span>
+<span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm">[</span>
+<span class="cm">  {</span>
+<span class="cm">    siteId: &#39;site1&#39;,</span>
+<span class="cm">    checkType: &#39;text&#39;,</span>
+<span class="cm">  },</span>
+<span class="cm">  {</span>
+<span class="cm">    siteId: &#39;site2&#39;,</span>
+<span class="cm">    checkType: &#39;photo&#39;,</span>
+<span class="cm">  },</span>
+<span class="cm">  ...</span>
+<span class="cm">]</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<h3 id="using-custom-queries">Using Custom Queries<a class="headerlink" href="#using-custom-queries" title="Permanent link">&para;</a></h3>
+<p>You can also pass your own query if needed through the <code>client</code> property, refer to <code>query</code> method's <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#query-property">first parameter</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">dynamodb</span> <span class="kr">from</span> <span class="s2">&quot;Utils/dynamodb&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">dynamodb</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">query</span><span class="p">({</span>
+  <span class="nx">ExpressionAttributeValues</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;:siteId&#39;</span><span class="o">:</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;siteId, checkType&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">KeyConditionExpression</span><span class="o">:</span> <span class="s2">&quot;siteId = :siteId&quot;</span><span class="p">,</span> 
+  <span class="nx">ProjectionExpression</span><span class="o">:</span> <span class="s2">&quot;siteId, checkType&quot;</span><span class="p">,</span> 
+  <span class="nx">IndexName</span><span class="o">:</span> <span class="s1">&#39;settings-index&#39;</span><span class="p">,</span>
+  <span class="nx">TableName</span><span class="o">:</span> <span class="s2">&quot;stackName-settings&quot;</span>
+ <span class="p">});</span>
+
+<span class="cm">/**</span>
+<span class="cm">{</span>
+<span class="cm">  Items: [</span>
+<span class="cm">    {</span>
+<span class="cm">      siteId: &#39;site1&#39;,</span>
+<span class="cm">      checkType: &#39;text&#39;,</span>
+<span class="cm">    },</span>
+<span class="cm">    {</span>
+<span class="cm">      siteId: &#39;site2&#39;,</span>
+<span class="cm">      checkType: &#39;photo&#39;,</span>
+<span class="cm">    },</span>
+<span class="cm">    ...</span>
+<span class="cm">  ],</span>
+<span class="cm">  Count: 5,</span>
+<span class="cm">  ConsumedCapacity: {}</span>
+<span class="cm">}</span>
+
+<span class="cm">*/</span>
+</code></pre></div>
+<h3 id="available-methods_2">Available Methods<a class="headerlink" href="#available-methods_2" title="Permanent link">&para;</a></h3>
+<p>The <code>Utils/dynamodb</code> also comes with more specific and granular methods for specific queries.</p>
+<h4 id="dynamodbquerycount">dynamodb.queryCount<a class="headerlink" href="#dynamodbquerycount" title="Permanent link">&para;</a></h4>
+<p>This will return the number of results</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">dynamodb</span> <span class="kr">from</span> <span class="s2">&quot;Utils/dynamodb&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">dynamodb</span><span class="p">.</span><span class="nx">queryCount</span><span class="p">(</span>
+  <span class="s1">&#39;stackName-settings&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;siteId = :siteId&#39;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="s1">&#39;:siteId&#39;</span><span class="o">:</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="s1">&#39;siteId, checkType&#39;</span>
+<span class="p">);</span>
+
+<span class="c1">// 5</span>
+</code></pre></div>
+<h4 id="dynamodbput">dynamodb.put<a class="headerlink" href="#dynamodbput" title="Permanent link">&para;</a></h4>
+<p>This will insert a new record. Refer <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#put-property">here</a> for response and more information.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">dynamodb</span> <span class="kr">from</span> <span class="s2">&quot;Utils/dynamodb&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">dynamodb</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span>
+  <span class="s1">&#39;stackName-settings&#39;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="s1">&#39;siteId&#39;</span><span class="o">:</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;checkType&#39;</span><span class="o">:</span> <span class="s1">&#39;text&#39;</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div>
+<h4 id="dynamodbupdate">dynamodb.update<a class="headerlink" href="#dynamodbupdate" title="Permanent link">&para;</a></h4>
+<p>This will update an existing record. Refer <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#update-property">here</a> for response and more information.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">dynamodb</span> <span class="kr">from</span> <span class="s2">&quot;Utils/dynamodb&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">dynamodb</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span>
+  <span class="s1">&#39;stackName-settings&#39;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="s1">&#39;siteId&#39;</span><span class="o">:</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;checkType&#39;</span><span class="o">:</span> <span class="s1">&#39;text&#39;</span>
+  <span class="p">},</span>
+  <span class="s1">&#39;set checkType = :checkType&#39;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="s1">&#39;:checkType&#39;</span><span class="o">:</span> <span class="s1">&#39;photo&#39;</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../cache/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Cache
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../helpers/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Helpers
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Reflex Media
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.217ffd95.min.js", "version": {"provider": "mike", "default": "stable"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.926459b3.min.js"></script>
+      
+    
+  </body>
+</html>
