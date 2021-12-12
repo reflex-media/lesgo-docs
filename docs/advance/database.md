@@ -1,6 +1,6 @@
 # Database
 
-As of today, Lesgo! only supports AWS DynamoDb and AWS Aurora Database Serverless, as these are the only true serverless database services available on AWS.
+As of today, Lesgo! only supports **AWS DynamoDB**, **AWS Aurora Database Serverless**, and **AWS RDS Proxy** as these are the only true serverless database services available on AWS.
 
 ## RDS Aurora Serverless Database
 
@@ -83,6 +83,22 @@ const data = db.query("SELECT * FROM users WHERE id = :id LIMIT 1", {
 The `Utils/db` also comes with more specific and granular methods for specific queries.
 
 Refer to [data-api-client](https://www.npmjs.com/package/data-api-client) npm package for additioal details.
+
+#### db.connect
+
+This is used to manually connect to the database using some configuration
+
+```js
+import db from "Utils/db";
+
+db.connect({
+  secretArn: "secretArnDataApi",
+  resourceArn: "resourceArnDataApi",
+  database: "databaseDataApi",
+  region: "us-east-1"
+});
+
+```
 
 #### db.select
 
@@ -213,6 +229,72 @@ const insertId = db.update(
     email: "john@mail.com",
   }
 );
+```
+
+## RDS Proxy Database
+
+### Configuration
+
+RDS Proxy uses the same configuration file as AWS Aurora DB located at `src/config/db.js`.
+
+You may also simply update the respective environment files in `config/environments/*` as such:
+
+```apache
+# RDS Proxy endpoint 
+DB_HOST=""
+
+# Database user
+DB_USER=""
+
+# Database password
+DB_PASSWORD=""
+
+# Database name to connect to
+DB_NAME=""
+```
+
+### Available methods
+
+AWS RDS Proxy also uses the same set of methods as AWS Aurora Database and some more.
+
+#### db.connect
+
+This is used to manually connect to the database using some configuration
+
+```js
+import db from "Utils/db";
+
+await db.connect({
+  host: "127.0.0.1",
+  user: "root",
+  password: "password",
+  database: "rds-proxy-db",
+  persistes: false
+});
+
+```
+
+#### db.pConnect
+
+This is the same method as `db.connect` but forces `persistent: true`
+
+#### db.end
+
+This closes the current connection, whether persistent or not.
+
+```js
+import db from "Utils/db";
+
+await db.pConnect({
+  host: "127.0.0.1",
+  user: "root",
+  password: "password",
+  database: "rds-proxy-db",
+  persistes: false
+});
+
+await db.end();
+
 ```
 
 ## AWS DynamoDb
