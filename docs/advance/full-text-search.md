@@ -4,7 +4,7 @@ Lesgo! is pre-configured with AWS Elasticsearch for full-text search.
 
 ## Configuration
 
-The elasticsearch configuration for your application is located at `src/config/elasticsearch.js`.
+The elasticsearch configuration for your application is located at `src/config/elasticsearch.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/elasticsearch.js) to that path.
 
 You may also simply update the respective environment files in `config/environments/*` as such:
 

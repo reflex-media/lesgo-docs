@@ -4,7 +4,7 @@ Lesgo! uses AWS ElastiCache for caching.
 
 ## Configuration
 
-This is configurable in the `src/config/cache.js`.
+This is configurable in the `src/config/cache.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/cache.js) to that path.
 
 ```js
 export default {

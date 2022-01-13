@@ -89,6 +89,30 @@ handler.use(normalizeSQSMessage());
 
 This middleware will verify any JWT passed to the `Authorization` header of the http request. The decoded JWT can be accesed through `handler.event.decodedJwt`. If the JWT is verified, `handler.event.auth.sub` is set to the JWT's sub, else a `403` response will be thrown.
 
+**Configuration**
+
+The JWT configuration for your application is located at `src/config/jwt.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/jwt.js) to that path.
+
+You may also simply update the respective environment files in `config/environments/*` as such:
+
+```apache
+# SHA256 JWT secret key, used to verify the token passed to "Authorization" header
+JWT_SECRET=""
+
+# Leave empty if you don't want the issuer to be validated
+JWT_ISS_SHOULD_VALIDATE=
+
+# Comma-separated list of domains to validate
+JWT_ISS_DOMAINS=""
+
+# Leave empty if you don't want the custom claims to be validated
+JWT_CUSTOM_CLAIMS_SHOULD_VALIDATE=
+
+# List of custom claims to valdiate.
+# Visit https://auth0.com/docs/tokens/jwt-claims for more info
+JWT_CUSTOM_CLAIMS_DATA=""
+```
+
 **Usage**
 
 ```js
