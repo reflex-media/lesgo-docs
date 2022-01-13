@@ -28,7 +28,7 @@ Lesgo! is pre-configured to work with sentry out of the box
 
 ### Configuration
 
-The sentry configuration for your application is located at `src/config/sentry.js`.
+The sentry configuration for your application is located at `src/config/sentry.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/sentry.js) to that path.
 
 You may also simply update the respective environment files in `config/environments/*` as such:
 

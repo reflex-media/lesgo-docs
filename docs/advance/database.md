@@ -6,7 +6,7 @@ As of today, Lesgo! only supports **AWS DynamoDB**, **AWS Aurora Database Server
 
 ### Configuration
 
-The database configuration for your application is located at `src/config/db.js`.
+The database configuration for your application is located at `src/config/db.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/db.js) to that path.
 
 You may also simply update the respective environment files in `config/environments/*` as such:
 
@@ -235,7 +235,7 @@ const insertId = db.update(
 
 ### Configuration
 
-RDS Proxy uses the same configuration file as AWS Aurora DB located at `src/config/db.js`.
+RDS Proxy uses the same configuration file as AWS Aurora DB located at `src/config/db.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/db.js) to that path.
 
 You may also simply update the respective environment files in `config/environments/*` as such:
 
