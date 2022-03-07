@@ -13,7 +13,7 @@
         <meta name="author" content="Sufiyan Rahmat">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.6.3/advance/cache/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.7.0/advance/cache/">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.0">
@@ -83,7 +83,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -179,7 +179,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -763,7 +763,7 @@
                 <h1 id="cache">Cache<a class="headerlink" href="#cache" title="Permanent link">&para;</a></h1>
 <p>Lesgo! uses AWS ElastiCache for caching.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>This is configurable in the <code>src/config/cache.js</code>.</p>
+<p>This is configurable in the <code>src/config/cache.js</code>. Or copy <a href="https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/cache.js">this file</a> to that path.</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="k">default</span><span class="o">:</span> <span class="s2">&quot;memcached&quot;</span><span class="p">,</span>
   <span class="nx">connections</span><span class="o">:</span> <span class="p">{</span>
@@ -788,12 +788,12 @@
 <ol>
 <li>Deploy application and retrieve ElastiCache node Endpoint on AWS Console.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="nb">yarn</span> deploy -s development
+<div class="highlight"><pre><span></span><code>yarn deploy -s development
 </code></pre></div>
 <ol>
 <li>Update relevant environment file in <code>config/environments/</code> directory.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="nb">ELASTICACHE_MEMCACHED_URL</span>=<span class="s2">&quot;INSERT_ELASTICACHE_NODE_ENDPOINT_HERE&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">ELASTICACHE_MEMCACHED_URL</span>=<span class="s2">&quot;INSERT_ELASTICACHE_NODE_ENDPOINT_HERE&quot;</span><span class="w"></span>
 </code></pre></div>
 <p>Deploy your application again and you may now use ElastiCache.</p>
 <h2 id="cache-usage">Cache Usage<a class="headerlink" href="#cache-usage" title="Permanent link">&para;</a></h2>

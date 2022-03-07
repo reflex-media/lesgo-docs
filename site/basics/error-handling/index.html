@@ -13,7 +13,7 @@
         <meta name="author" content="Sufiyan Rahmat">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.6.3/basics/error-handling/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.7.0/basics/error-handling/">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.0">
@@ -83,7 +83,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -179,7 +179,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -767,19 +767,19 @@
 <h2 id="sentry">Sentry<a class="headerlink" href="#sentry" title="Permanent link">&para;</a></h2>
 <p>Lesgo! is pre-configured to work with sentry out of the box</p>
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
-<p>The sentry configuration for your application is located at <code>src/config/sentry.js</code>.</p>
+<p>The sentry configuration for your application is located at <code>src/config/sentry.js</code>. Or copy <a href="https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/sentry.js">this file</a> to that path.</p>
 <p>You may also simply update the respective environment files in <code>config/environments/*</code> as such:</p>
-<div class="highlight"><pre><span></span><code><span class="c"># Whether to enable sentry or not</span>
-<span class="nb">SENTRY_ENABLED</span>=<span class="s2">&quot;true&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c"># Whether to enable sentry or not</span><span class="w"></span>
+<span class="nb">SENTRY_ENABLED</span>=<span class="s2">&quot;true&quot;</span><span class="w"></span>
 
-<span class="c"># Where to send events</span>
-<span class="nb">SENTRY_DSN</span>=<span class="s2">&quot;https://public@sentry.example.com/1&quot;</span>
+<span class="c"># Where to send events</span><span class="w"></span>
+<span class="nb">SENTRY_DSN</span>=<span class="s2">&quot;https://public@sentry.example.com/1&quot;</span><span class="w"></span>
 
-<span class="c"># Minimal level for error reporting. Ref: https://github.com/winstonjs/winston#logging</span>
-<span class="nb">SENTRY_LEVEL</span>=<span class="s2">&quot;error&quot;</span>
+<span class="c"># Minimal level for error reporting. Ref: https://github.com/winstonjs/winston#logging</span><span class="w"></span>
+<span class="nb">SENTRY_LEVEL</span>=<span class="s2">&quot;error&quot;</span><span class="w"></span>
 
-<span class="c"># Track release version and for sourcemaps reference</span>
-<span class="nb">SENTRY_RELEASE</span>=<span class="s2">&quot;sls-my-project-maste&quot;</span>
+<span class="c"># Track release version and for sourcemaps reference</span><span class="w"></span>
+<span class="nb">SENTRY_RELEASE</span>=<span class="s2">&quot;sls-my-project-maste&quot;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="initialization">Initialization<a class="headerlink" href="#initialization" title="Permanent link">&para;</a></h3>
 <p>Call this as early as possible on any of your lambdas. A suggestion would be to put this inside of a middleware</p>

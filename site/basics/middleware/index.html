@@ -13,7 +13,7 @@
         <meta name="author" content="Sufiyan Rahmat">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.6.3/basics/middleware/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.7.0/basics/middleware/">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.0">
@@ -83,7 +83,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -179,7 +179,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -823,32 +823,32 @@
 </code></pre></div>
 <h4 id="success-response">Success Response<a class="headerlink" href="#success-response" title="Permanent link">&para;</a></h4>
 <p>The successfuly response will be formatted in this way
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;_meta&quot;</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div></p>
 <h4 id="error-response">Error Response<a class="headerlink" href="#error-response" title="Permanent link">&para;</a></h4>
 <p>The successfuly response will be formatted in this way
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Core/users/getUser::USER_NOT_EXIST&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;UserException: User does not exist&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;details&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;err&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;UserException&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;User not found&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
-                <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Core/users/getUser::USER_NOT_EXIST&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;extra&quot;</span><span class="p">:</span> <span class="p">{}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;_meta&quot;</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Core/users/getUser::USER_NOT_EXIST&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UserException: User does not exist&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;err&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UserException&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User not found&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Core/users/getUser::USER_NOT_EXIST&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;extra&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div></p>
 <h3 id="normalize-sqs-message">Normalize SQS Message<a class="headerlink" href="#normalize-sqs-message" title="Permanent link">&para;</a></h3>
 <p>This middleware will normalize records coming from sqs message event. The <code>Records</code> object in the <code>handler.event</code> will be normalized into <code>handler.event.collection</code>. This middleware executes <em>before</em> the handler is called.</p>
@@ -866,6 +866,25 @@
 </code></pre></div>
 <h3 id="verify-jwt">Verify JWT<a class="headerlink" href="#verify-jwt" title="Permanent link">&para;</a></h3>
 <p>This middleware will verify any JWT passed to the <code>Authorization</code> header of the http request. The decoded JWT can be accesed through <code>handler.event.decodedJwt</code>. If the JWT is verified, <code>handler.event.auth.sub</code> is set to the JWT's sub, else a <code>403</code> response will be thrown.</p>
+<p><strong>Configuration</strong></p>
+<p>The JWT configuration for your application is located at <code>src/config/jwt.js</code>. Or copy <a href="https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/jwt.js">this file</a> to that path.</p>
+<p>You may also simply update the respective environment files in <code>config/environments/*</code> as such:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># SHA256 JWT secret key, used to verify the token passed to &quot;Authorization&quot; header</span><span class="w"></span>
+<span class="nb">JWT_SECRET</span>=<span class="s2">&quot;&quot;</span><span class="w"></span>
+
+<span class="c"># Leave empty if you don&#39;t want the issuer to be validated</span><span class="w"></span>
+<span class="nb">JWT_ISS_SHOULD_VALIDATE</span>=<span class="w"></span>
+
+<span class="c"># Comma-separated list of domains to validate</span><span class="w"></span>
+<span class="nb">JWT_ISS_DOMAINS</span>=<span class="s2">&quot;&quot;</span><span class="w"></span>
+
+<span class="c"># Leave empty if you don&#39;t want the custom claims to be validated</span><span class="w"></span>
+<span class="nb">JWT_CUSTOM_CLAIMS_SHOULD_VALIDATE</span>=<span class="w"></span>
+
+<span class="c"># List of custom claims to valdiate.</span><span class="w"></span>
+<span class="c"># Visit https://auth0.com/docs/tokens/jwt-claims for more info</span><span class="w"></span>
+<span class="nb">JWT_CUSTOM_CLAIMS_DATA</span>=<span class="s2">&quot;&quot;</span><span class="w"></span>
+</code></pre></div>
 <p><strong>Usage</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">middy</span> <span class="kr">from</span> <span class="s1">&#39;@middy/core&#39;</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">verifyJwtTokenMiddleware</span> <span class="kr">from</span> <span class="s2">&quot;Middlewares/verifyJwtTokenMiddleware&quot;</span><span class="p">;</span>

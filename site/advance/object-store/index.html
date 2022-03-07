@@ -13,7 +13,7 @@
         <meta name="author" content="Sufiyan Rahmat">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.6.3/advance/object-store/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.7.0/advance/object-store/">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.0">
@@ -83,7 +83,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -179,7 +179,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -463,6 +463,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fetch-object" class="md-nav__link">
     Fetch Object
   </a>
@@ -676,6 +683,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fetch-object" class="md-nav__link">
     Fetch Object
   </a>
@@ -708,6 +722,18 @@
                 
                 <h1 id="object-store">Object Store<a class="headerlink" href="#object-store" title="Permanent link">&para;</a></h1>
 <p>Lesgo! is pre-configured with AWS S3 for object storage.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>The S3 configuration for your application is located at <code>src/config/aws.js</code>. Or copy <a href="https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/aws.js">this file</a> to that path.</p>
+<p>You may also simply update the respective environment files in <code>config/environments/*</code> as such:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># S3 Access Key ID</span><span class="w"></span>
+<span class="nb">AWS_S3_OPTIONS_ACCESS_KEY_ID</span>=<span class="s2">&quot;&quot;</span><span class="w"></span>
+
+<span class="c"># S3 Secret Access Key</span><span class="w"></span>
+<span class="nb">AWS_S3_OPTIONS_SECRET_ACCESS_KEY</span>=<span class="s2">&quot;&quot;</span><span class="w"></span>
+
+<span class="c"># S3 region name</span><span class="w"></span>
+<span class="nb">AWS_S3_OPTIONS_REGION</span>=<span class="s2">&quot;&quot;</span><span class="w"></span>
+</code></pre></div>
 <h2 id="fetch-object">Fetch Object<a class="headerlink" href="#fetch-object" title="Permanent link">&para;</a></h2>
 <p>The <code>getObject()</code> function will fetch the object from the Bucket.</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">getObject</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;Utils/objectStore&#39;</span><span class="p">;</span>
@@ -717,14 +743,14 @@
 </code></pre></div>
 <h2 id="s3-bucket-permissions-policy">S3 Bucket Permissions Policy<a class="headerlink" href="#s3-bucket-permissions-policy" title="Permanent link">&para;</a></h2>
 <p>To fetch/put objects to an exisitng S3 bucket, be sure to set up an IAM user with the correct permissions as well as updating the S3 bucket policy. You may override the config by updating these in the environment file.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Set IAM access key with S3 access</span>
-<span class="nv">AWS_S3_OPTIONS_ACCESS_KEY_ID</span><span class="o">=</span>
+<div class="highlight"><pre><span></span><code><span class="c"># Set IAM access key with S3 access</span><span class="w"></span>
+<span class="nb">AWS_S3_OPTIONS_ACCESS_KEY_ID</span>=<span class="w"></span>
 
-<span class="c1"># Set IAM secret key</span>
-<span class="nv">AWS_S3_OPTIONS_SECRET_ACCESS_KEY</span><span class="o">=</span>
+<span class="c"># Set IAM secret key</span><span class="w"></span>
+<span class="nb">AWS_S3_OPTIONS_SECRET_ACCESS_KEY</span>=<span class="w"></span>
 
-<span class="c1"># Set S3 region to connect to</span>
-<span class="nv">AWS_S3_OPTIONS_REGION</span><span class="o">=</span>
+<span class="c"># Set S3 region to connect to</span><span class="w"></span>
+<span class="nb">AWS_S3_OPTIONS_REGION</span>=<span class="w"></span>
 </code></pre></div>
                 
               

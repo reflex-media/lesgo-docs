@@ -13,7 +13,7 @@
         <meta name="author" content="Sufiyan Rahmat">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.6.3/security/vpc/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.7.0/security/vpc/">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.0">
@@ -83,7 +83,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -179,7 +179,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -713,18 +713,18 @@
 <ol>
 <li>Comment out <code>vpc.yml</code> and <code>lambda.yml</code> resources in <code>serverless.yml</code></li>
 </ol>
-<div class="highlight"><pre><span></span><code># - ${file(${self:custom.path.resources}/vpc.yml)}
-# - ${file(${self:custom.path.resources}/lambda.yml)}
+<div class="highlight"><pre><span></span><code><span class="c1"># - ${file(${self:custom.path.resources}/vpc.yml)}</span><span class="w"></span>
+<span class="c1"># - ${file(${self:custom.path.resources}/lambda.yml)}</span><span class="w"></span>
 </code></pre></div>
 <ol>
 <li>Comment out <code>vpc</code> in <code>provider</code> in <code>serverless.yml</code></li>
 </ol>
-<div class="highlight"><pre><span></span><code># vpc:
-#   securityGroupIds:
-#     - Ref: LambdaSecurityGroup
-#   subnetIds:
-#     - Ref: PrivateSubnet1
-#     - Ref: PrivateSubnet2
+<div class="highlight"><pre><span></span><code><span class="c1"># vpc:</span><span class="w"></span>
+<span class="c1">#   securityGroupIds:</span><span class="w"></span>
+<span class="c1">#     - Ref: LambdaSecurityGroup</span><span class="w"></span>
+<span class="c1">#   subnetIds:</span><span class="w"></span>
+<span class="c1">#     - Ref: PrivateSubnet1</span><span class="w"></span>
+<span class="c1">#     - Ref: PrivateSubnet2</span><span class="w"></span>
 </code></pre></div>
 <p>This will now set your lambda and required resources within your own AWS default VPC.</p>
 <div class="admonition info">

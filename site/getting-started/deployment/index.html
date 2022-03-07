@@ -13,7 +13,7 @@
         <meta name="author" content="Sufiyan Rahmat">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.6.3/getting-started/deployment/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.7.0/getting-started/deployment/">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.0">
@@ -83,7 +83,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -179,7 +179,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://reflex-media.github.io/lesgo-docs/0.6.3" title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!">
+    <a href="https://reflex-media.github.io/lesgo-docs/0.7.0" title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -844,40 +844,40 @@
 <p>Serverless Framework handles most of the deployment tasks. Lesgo! uses its own deployment script to allow for a more custom deployment process.</p>
 <h2 id="deploy-entire-application">Deploy Entire Application<a class="headerlink" href="#deploy-entire-application" title="Permanent link">&para;</a></h2>
 <p>This command will deploy the entire application to a specific environment.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">npm</span> run deploy -- -s {environment}
+<div class="highlight"><pre><span></span><code>npm run deploy -- -s <span class="o">{</span>environment<span class="o">}</span>
 </code></pre></div>
 <h3 id="example-deploy">Example deploy<a class="headerlink" href="#example-deploy" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nb">npm</span> run deploy -- -s dev
+<div class="highlight"><pre><span></span><code>npm run deploy -- -s dev
 </code></pre></div>
 <h2 id="deploy-single-function">Deploy Single Function<a class="headerlink" href="#deploy-single-function" title="Permanent link">&para;</a></h2>
 <p>This command will deploy only a single function to a specific environment.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">npm</span> run deploy -- -s {environment} -f {function_name}
+<div class="highlight"><pre><span></span><code>npm run deploy -- -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
 </code></pre></div>
 <h3 id="example-deploy_1">Example deploy<a class="headerlink" href="#example-deploy_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nb">npm</span> run deploy -- -s dev -f ping
+<div class="highlight"><pre><span></span><code>npm run deploy -- -s dev -f ping
 </code></pre></div>
 <h2 id="other-available-commands">Other Available Commands<a class="headerlink" href="#other-available-commands" title="Permanent link">&para;</a></h2>
 <p>These commands are also available.</p>
 <h3 id="invoke-a-function">Invoke a function<a class="headerlink" href="#invoke-a-function" title="Permanent link">&para;</a></h3>
 <p>This command will invoke/trigger a single function.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">npm</span> run invoke -- -s {environment} -f {function_name}
+<div class="highlight"><pre><span></span><code>npm run invoke -- -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
 
-<span class="c"># Example</span>
-<span class="nb">npm</span> run invoke -- -s dev -f ping
+<span class="c1"># Example</span>
+npm run invoke -- -s dev -f ping
 </code></pre></div>
 <h3 id="tail-log-of-a-function">Tail log of a function<a class="headerlink" href="#tail-log-of-a-function" title="Permanent link">&para;</a></h3>
 <p>This command allows you to tail the log of a single function.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">npm</span> run logs -- -s {environment} -f {function_name}
+<div class="highlight"><pre><span></span><code>npm run logs -- -s <span class="o">{</span>environment<span class="o">}</span> -f <span class="o">{</span>function_name<span class="o">}</span>
 
-<span class="c"># Example</span>
-<span class="nb">npm</span> run logs -- -s dev -f ping
+<span class="c1"># Example</span>
+npm run logs -- -s dev -f ping
 </code></pre></div>
 <h3 id="build-bundle-without-deployment">Build bundle without deployment<a class="headerlink" href="#build-bundle-without-deployment" title="Permanent link">&para;</a></h3>
 <p>This command allows you to build the bundle without doing actual deployment. This might be useful to note the created bundle files and sizes.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">npm</span> run build -- -s {environment}
+<div class="highlight"><pre><span></span><code>npm run build -- -s <span class="o">{</span>environment<span class="o">}</span>
 
-<span class="c"># Example</span>
-<span class="nb">npm</span> run build -- -s dev
+<span class="c1"># Example</span>
+npm run build -- -s dev
 </code></pre></div>
 <h3 id="destroy">Destroy<a class="headerlink" href="#destroy" title="Permanent link">&para;</a></h3>
 <p>Destroy everything, leave nothing behind.</p>
@@ -885,10 +885,10 @@
 <p class="admonition-title">DANGER!</p>
 <p>Note that this action is non-reversible! Everything will disappear from AWS.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="nb">npm</span> run destroy -- -s {environment}
+<div class="highlight"><pre><span></span><code>npm run destroy -- -s <span class="o">{</span>environment<span class="o">}</span>
 
-<span class="c"># Example</span>
-<span class="nb">npm</span> run destroy -- -s dev
+<span class="c1"># Example</span>
+npm run destroy -- -s dev
 </code></pre></div>
                 
               
