@@ -14,6 +14,12 @@ Refer to the official [MkDocs](https://www.mkdocs.org/#installation) for install
 
 ## Commands
 
+### Install python packages
+
+```bash
+$ pip install -r requirements.txt
+```
+
 ### Quick Start
 
 Start mkdocs on your local machine with live reloading.
@@ -39,7 +45,19 @@ The static files will be stored in the `site/` directory.
 This command will deploy the static site in `site/` directory to GitHub Pages.
 
 ```bash
-$ mkdocs gh-deploy
+$ mike deploy 0.6.3 stable
+```
+or 
+```bash
+$ mike deploy 0.7.0
+```
+
+### Preview Deploy
+
+This command will preview the currently updated site under `gh-pages` branch
+
+```bash
+$ mike serve
 ```
 
 ## Architecture

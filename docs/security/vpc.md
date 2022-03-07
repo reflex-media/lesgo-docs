@@ -8,14 +8,14 @@ Should you choose to use the default VPC, follow these steps:
 
 1. Comment out `vpc.yml` and `lambda.yml` resources in `serverless.yml`
 
-```yml
+```yaml
 # - ${file(${self:custom.path.resources}/vpc.yml)}
 # - ${file(${self:custom.path.resources}/lambda.yml)}
 ```
 
 2. Comment out `vpc` in `provider` in `serverless.yml`
 
-```yml
+```yaml
 # vpc:
 #   securityGroupIds:
 #     - Ref: LambdaSecurityGroup

@@ -47,7 +47,7 @@ These environment files can be committed to the source control. To overwrite for
 
 ### Available Environment Configurations
 
-```bash
+```apache
 # Declare the environment to deploy to
 APP_ENV="dev"
 

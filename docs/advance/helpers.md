@@ -105,6 +105,47 @@ isEmail("some string"));
 // false
 ```
 
+## Decimal Number Validator
+
+> `Utils/isDecimal`
+
+Validates for a valid decimal number in any format such as `##.##`.
+
+```js
+import isDecimal from "Utils/isDecimal";
+
+isDecimal(5.4);
+
+// true
+
+isDecimal(5);
+
+// false
+```
+
+## Empty Value Validator
+
+> `Utils/isEmpty`
+
+Validates if a value is either an `undefined`, or `null`, or empty string, or an empty array, or an object without keys.
+
+```js
+import isEmpty from "Utils/isEmpty";
+
+isEmpty(undefined);
+isEmpty(null);
+isEmpty({});
+isEmpty([]);
+isEmpty('');
+
+// true
+
+isEmpty('test');
+isEmpty(0);
+
+// false
+```
+
 ## Field Validator
 
 > `Utils/validateFields`

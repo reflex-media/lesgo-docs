@@ -7,6 +7,9 @@ repo_name: reflex-media/lesgo
 repo_url: https://github.com/reflex-media/lesgo
 extra:
   repo_icon: github
+  version:
+    provider: mike
+    default: stable
 
 copyright: Copyright &copy; 2019 Reflex Media
 
@@ -15,12 +18,13 @@ theme:
   palette:
     primary: white
     accent: orange
-  logo:
-    icon: cloud
+  icon:
+    logo: material/cloud
   feature:
     tabs: false
   extra_css:
     - "stylesheets/extra.css"
+  custom_dir: overrides
 
 extra_css:
   - "stylesheets/extra.css"
@@ -34,6 +38,10 @@ markdown_extensions:
       permalink: true
   - codehilite:
       guess_lang: false
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets
 
 nav:
   - Prologue: index.md
@@ -54,6 +62,10 @@ nav:
       - Queues: advance/queues.md
       - Task Scheduling: advance/task-scheduling.md
       - Unit Tests: advance/unit-tests.md
+      - Full-Text Search: advance/full-text-search.md
+      - Typescript: advance/typescript.md
   - Security:
       - VPC: security/vpc.md
+  - Packages:
+      - Firebase: packages/firebase.md
   - Contributing: contributing.md

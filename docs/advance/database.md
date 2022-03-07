@@ -1,16 +1,16 @@
 # Database
 
-As of today, Lesgo! only supports AWS DynamoDb and AWS Aurora Database Serverless, as these are the only true serverless database services available on AWS.
+As of today, Lesgo! only supports **AWS DynamoDB**, **AWS Aurora Database Serverless**, and **AWS RDS Proxy** as these are the only true serverless database services available on AWS.
 
 ## RDS Aurora Serverless Database
 
 ### Configuration
 
-The database configuration for your application is located at `src/config/db.js`.
+The database configuration for your application is located at `src/config/db.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/db.js) to that path.
 
 You may also simply update the respective environment files in `config/environments/*` as such:
 
-```bash
+```apache
 # AWS Secret Manager ARN to allow app db user connect to the specified db
 DB_SECRET_ARN=""
 
@@ -83,6 +83,22 @@ const data = db.query("SELECT * FROM users WHERE id = :id LIMIT 1", {
 The `Utils/db` also comes with more specific and granular methods for specific queries.
 
 Refer to [data-api-client](https://www.npmjs.com/package/data-api-client) npm package for additioal details.
+
+#### db.connect
+
+This is used to manually connect to the database using some configuration
+
+```js
+import db from "Utils/db";
+
+db.connect({
+  secretArn: "secretArnDataApi",
+  resourceArn: "resourceArnDataApi",
+  database: "databaseDataApi",
+  region: "us-east-1"
+});
+
+```
 
 #### db.select
 
@@ -215,6 +231,72 @@ const insertId = db.update(
 );
 ```
 
+## RDS Proxy Database
+
+### Configuration
+
+RDS Proxy uses the same configuration file as AWS Aurora DB located at `src/config/db.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/db.js) to that path.
+
+You may also simply update the respective environment files in `config/environments/*` as such:
+
+```apache
+# RDS Proxy endpoint 
+DB_HOST=""
+
+# Database user
+DB_USER=""
+
+# Database password
+DB_PASSWORD=""
+
+# Database name to connect to
+DB_NAME=""
+```
+
+### Available methods
+
+AWS RDS Proxy also uses the same set of methods as AWS Aurora Database and some more.
+
+#### db.connect
+
+This is used to manually connect to the database using some configuration
+
+```js
+import db from "Utils/db";
+
+await db.connect({
+  host: "127.0.0.1",
+  user: "root",
+  password: "password",
+  database: "rds-proxy-db",
+  persistes: false
+});
+
+```
+
+#### db.pConnect
+
+This is the same method as `db.connect` but forces `persistent: true`
+
+#### db.end
+
+This closes the current connection, whether persistent or not.
+
+```js
+import db from "Utils/db";
+
+await db.pConnect({
+  host: "127.0.0.1",
+  user: "root",
+  password: "password",
+  database: "rds-proxy-db",
+  persistes: false
+});
+
+await db.end();
+
+```
+
 ## AWS DynamoDb
 
 If you'd prefer a non-relational database, DynamoDb is also supported.
@@ -225,7 +307,7 @@ Before you can start to use DynamoDb, you need to set it up under the `config/re
 
 > `config/resources/dynamodb.yml`
 
-```yml
+```yaml
 Resources:
   settingsTable:
     Type: AWS::DynamoDB::Table
@@ -247,9 +329,135 @@ Resources:
 
 > `serverless.yml`
 
-```yml
+```yaml
 resources:
   - ${file(${self:custom.path.resources}/dynamodb.yml)}
 ```
 
 ### Basic Queries
+
+To run a basic query, you may use the query method on the `Utils/dynamodb`:
+
+```js
+import dynamodb from "Utils/dynamodb";
+
+const data = await dynamodb.query(
+  'stackName-settings',
+  'siteId = :siteId',
+  {
+    ':siteId': 'default',
+  },
+  'siteId, checkType'
+);
+
+/**
+[
+  {
+    siteId: 'site1',
+    checkType: 'text',
+  },
+  {
+    siteId: 'site2',
+    checkType: 'photo',
+  },
+  ...
+]
+*/
+```
+
+### Using Custom Queries
+
+You can also pass your own query if needed through the `client` property, refer to `query` method's [first parameter](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#query-property).
+
+```js
+import dynamodb from "Utils/dynamodb";
+
+const data = await dynamodb.client.query({
+  ExpressionAttributeValues: {
+    ':siteId': 'default',
+    'siteId, checkType'
+  },
+  KeyConditionExpression: "siteId = :siteId", 
+  ProjectionExpression: "siteId, checkType", 
+  IndexName: 'settings-index',
+  TableName: "stackName-settings"
+ });
+
+/**
+{
+  Items: [
+    {
+      siteId: 'site1',
+      checkType: 'text',
+    },
+    {
+      siteId: 'site2',
+      checkType: 'photo',
+    },
+    ...
+  ],
+  Count: 5,
+  ConsumedCapacity: {}
+}
+
+*/
+```
+
+### Available Methods
+
+The `Utils/dynamodb` also comes with more specific and granular methods for specific queries.
+
+#### dynamodb.queryCount
+
+This will return the number of results
+
+```js
+import dynamodb from "Utils/dynamodb";
+
+const count = await dynamodb.queryCount(
+  'stackName-settings',
+  'siteId = :siteId',
+  {
+    ':siteId': 'default',
+  },
+  'siteId, checkType'
+);
+
+// 5
+```
+
+#### dynamodb.put
+
+This will insert a new record. Refer [here](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#put-property) for response and more information.
+
+```js
+import dynamodb from "Utils/dynamodb";
+
+const data = await dynamodb.put(
+  'stackName-settings',
+  {
+    'siteId': 'default',
+    'checkType': 'text'
+  }
+);
+```
+
+#### dynamodb.update
+
+This will update an existing record. Refer [here](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#update-property) for response and more information.
+
+```js
+import dynamodb from "Utils/dynamodb";
+
+const data = await dynamodb.update(
+  'stackName-settings',
+  {
+    'siteId': 'default',
+    'checkType': 'text'
+  },
+  'set checkType = :checkType',
+  {
+    ':checkType': 'photo'
+  }
+);
+```
