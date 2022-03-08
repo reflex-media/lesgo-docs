@@ -1,0 +1,277 @@
+# AWS RDS Aurora
+
+MySQL and PostgreSQL-compatible relational database built for the cloud. Performance and availability of commercial-grade databases at 1/10th the cost.
+
+## Configuration
+
+The database configuration for your application is located at `src/config/db.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/db.js) to that path.
+
+### Aurora Serverless
+
+!!! note
+    As Lesgo! establishes connection to Aurora Serverless via the Data API, prior setup and storing of the credentials on AWS Secret Manager is required. [Find out more](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html).
+
+For Aurora Serverless via Data API, create a `connections.dataApi` configuration as shown below.
+
+```js
+// src/config/db.js
+
+export default {
+  default: "dataApi",
+  connections: {
+    dataApi: {
+      secretArn: process.env.DB_SECRET_ARN || "secretArnDataApi",
+      secretCommandArn:
+        process.env.DB_SECRET_COMMAND_ARN || "secretCommandArnDataApi",
+      resourceArn: process.env.DB_RESOURCE_ARN || "resourceArnDataApi",
+      database: process.env.DB_NAME || "databaseDataApi",
+    },
+  },
+};
+```
+
+You may also simply update the respective environment files in `config/environments/.env.*` as such:
+
+```apache
+# AWS Secret Manager ARN to allow app db user connect to the specified db
+DB_SECRET_ARN=""
+
+# AWS Secret Manager ARN to allow app command db user connect to the specified db
+# for running "command" like functions like database schema migration
+DB_SECRET_COMMAND_ARN=""
+
+# AWS Secret Manager ARN for the Aurora Serverless database cluster
+DB_RESOURCE_ARN=""
+
+# Database name to connect to
+DB_NAME=""
+```
+
+### Aurora Provisioned
+
+!!! note
+    As Lesgo! establishes connection to Aurora Provisioned via the RDS Proxy, prior setup of the RDS Proxy is required. [Find out more](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-proxy.html).
+
+For Aurora Provisioned via RDS Proxy, create a `connections.rdsProxy` configuration as shown below.
+
+```js
+// src/config/db.js
+
+export default {
+  default: "rdsProxy",
+  connections: {
+    rdsProxy: {
+      host:
+        process.env.DB_RDS_PROXY_HOST ||
+        "rds-cluster-proxy.proxy-ek9srsfbg2xc.us-west-2.rds.amazonaws.com",
+      user: process.env.DB_RDS_PROXY_USER || "proxyUser",
+      password: process.env.DB_RDS_PROXY_PASSWORD || "proxyPass",
+      database: process.env.DB_NAME || "dbname",
+    },
+    rdsProxyRead: {
+      host:
+        process.env.DB_RDS_PROXY_HOST_READ ||
+        process.env.DB_RDS_PROXY_HOST ||
+        "rds-cluster-proxy-read-only.proxy-ek9srsfbg2xc.us-west-2.rds.amazonaws.com",
+      user:
+        process.env.DB_RDS_PROXY_USER_READ ||
+        process.env.DB_RDS_PROXY_USER ||
+        "proxyUser",
+      password:
+        process.env.DB_RDS_PROXY_PASSWORD_READ ||
+        process.env.DB_RDS_PROXY_PASSWORD ||
+        "proxyPass",
+      database: process.env.DB_NAME || "dbname",
+    },
+  },
+};
+```
+
+You may also simply update the respective environment files in `config/environments//env.*` as such:
+
+```apache
+# config/environments/.env.*
+
+# Domain host of the RDS Proxy
+DB_RDS_PROXY_HOST=""
+
+# Domain host of the RDS Proxy for read-only connection
+DB_RDS_PROXY_HOST_READ=""
+
+# RDS Proxy username
+DB_RDS_PROXY_USER=""
+
+# RDS Proxy password
+DB_RDS_PROXY_PASSWORD=""
+```
+
+## Database Connection
+
+Connecting to the database is automatically handled when you execute your query.
+
+For Aurora Serverless (via Data API), this is nothing to worry about as the opening and closing of database connections is handled within Data API itself! Thus, one less worry about manaing connection pools.
+
+For Aurora Provisioed (via RDS Proxy), a connection will be opened and closed per every query executed. While this works, it is not effecient as opening and closing a database connection will cost additional time (and money!).
+
+As such, specifically for RDS Proxy, you should make use of Lesgo's persistent connection method `db.pConnect()`. This should be handled at the Handler level as much as possible.
+
+### Persistent Connection for RDS Proxy
+
+```js
+// src/handlers/utils/ping.js
+
+import middy from "@middy/core";
+import httpMiddleware from "Middlewares/httpMiddleware";
+import ping from "Core/utils/ping";
+import db from "Utils/db";
+
+const originalHandler = async (event) => {
+  await db.pConnect();
+
+  return ping(event.input);
+};
+
+export const handler = middy(originalHandler);
+
+handler.use(httpMiddleware({ db }));
+```
+
+Notice the passing of the `db` object into `httpMiddleware()`. This is important to allow `httpMiddleware` to disconnect from RDS Proxy at the end of the lambda execution. Without doing so, you will encounter lambda timeout issues as the db connection is still open.
+
+Should you want to handle the closing of the db connection yourself, you can do so as shown below.
+
+```js
+// src/handlers/utils/ping.js
+
+import middy from "@middy/core";
+import httpMiddleware from "Middlewares/httpMiddleware";
+import ping from "Core/utils/ping";
+import db from "Utils/db";
+
+const originalHandler = async (event) => {
+  await db.pConnect();
+
+  try {
+    return ping(event.input);
+  } catch (err) {
+    throw err;
+  } finally {
+    db.end();
+  }
+};
+
+export const handler = middy(originalHandler);
+
+handler.use();
+```
+
+The `finally` in `try catch` is important to allow for a safe ending of the db conection.
+
+## Running Database Queries
+
+### Retrieving All Rows
+
+`db.select()` will return a promised array of objects.
+
+```js
+import db from "Utils/db";
+
+const data = await db.select(
+  "SELECT * FROM users WHERE is_deleted = :isDeleted",
+  {
+    isDeleted: 0,
+  }
+);
+```
+
+### Retrieving a Single Row
+
+`db.selectFirst()` will return a promised object.
+
+```js
+import db from "Utils/db";
+
+const data = await db.selectFirst("SELECT * FROM users WHERE id = :id", {
+  id: 1,
+});
+```
+
+### Retrieving Paginated Rows
+
+`db.selectPaginate()` will return a promised object with itemized rows.
+
+```js
+import db from "Utils/db";
+
+const data = await db.selectPaginate(
+  "SELECT * FROM users WHERE is_deleted = :isDeleted",
+  {
+    isDeleted: 0,
+  },
+  {
+    perPage: 1,
+    currentPage: 1,
+    total: 25,
+  }
+);
+```
+
+### Inserting a Single Record
+
+`db.insert()` will insert a new record and return only the newly inserted primary key.
+
+```js
+import db from "Utils/db";
+
+const insertId = await db.insert(
+  "INSERT INTO users(username,email,created_at) VALUES (:username, :email:, now())",
+  {
+    username: "John",
+    email: "john@mail.com",
+  }
+);
+```
+
+A much better aproach to inserting records is to first validate the fields and then inserting it with `Utils/prepSQLInsertParams`.
+
+```js
+import prepSQLInsertParams from "Utils/prepSQLInsertParams";
+import validateFields from "Utils/validateFields";
+import db from "Utils/db";
+
+const validFields = [
+  { key: "user_id", type: "number", required: true },
+  { key: "member_id", type: "number", required: true },
+];
+
+let validated = validateFields({ ...params }, validFields);
+
+const { insertColumns, insertValues, insertFields } = prepSQLInsertParams(
+  validated,
+  validFields
+);
+
+await db.insert(
+  `INSERT INTO blocks(${insertColumns}) VALUES(${insertValues})`,
+  insertFields
+);
+```
+
+Learn more about [Utils/validateFields](../advance/helpers.md#field-validator).
+
+### Updating an Existing Single Record
+
+`db.update()` will update an existing record and throw an Error if no record found for update.
+
+```js
+import db from "Utils/db";
+
+const insertId = await db.update(
+  "UPDATE users SET username=:username, email=:email, updated_at=now()) WHERE id=:id",
+  {
+    id: 1,
+    username: "John",
+    email: "john@mail.com",
+  }
+);
+```

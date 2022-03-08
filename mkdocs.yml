@@ -66,6 +66,10 @@ nav:
       - Typescript: advance/typescript.md
   - Security:
       - VPC: security/vpc.md
+  - Database:
+      - Getting Started: database/getting-started.md
+      - DynamoDB: database/dynamodb.md
+      - RDS Aurora: database/rds-aurora.md
   - Packages:
       - Firebase: packages/firebase.md
   - Contributing: contributing.md
