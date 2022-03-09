@@ -229,10 +229,57 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Prologue
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Prologue" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Prologue
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
-        Prologue
+      <a href="../../prologue/release-notes/" class="md-nav__link">
+        Release Notes
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prologue/contribution-guide/" class="md-nav__link">
+        Contribution Guide
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -271,7 +318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/" class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Installation
       </a>
     </li>
@@ -439,20 +486,6 @@
     <li class="md-nav__item">
       <a href="../../advance/cache/" class="md-nav__link">
         Cache
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advance/database/" class="md-nav__link">
-        Database
       </a>
     </li>
   
@@ -701,6 +734,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#running-dynamodb-queries" class="md-nav__link">
+    Running DynamoDB Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Running DynamoDB Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-records" class="md-nav__link">
+    Retrieving Records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-record-count" class="md-nav__link">
+    Retrieving Record Count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inserting-a-record" class="md-nav__link">
+    Inserting a Record
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-existing-record" class="md-nav__link">
+    Updating Existing Record
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#native-client" class="md-nav__link">
+    Native Client
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -778,21 +859,6 @@
   
 
     
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../contributing/" class="md-nav__link">
-        Contributing
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -826,6 +892,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#running-dynamodb-queries" class="md-nav__link">
+    Running DynamoDB Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Running DynamoDB Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-records" class="md-nav__link">
+    Retrieving Records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-record-count" class="md-nav__link">
+    Retrieving Record Count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inserting-a-record" class="md-nav__link">
+    Inserting a Record
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-existing-record" class="md-nav__link">
+    Updating Existing Record
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#native-client" class="md-nav__link">
+    Native Client
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -855,16 +969,16 @@
 <span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::DynamoDB::Table</span><span class="w"></span>
 <span class="w">    </span><span class="nt">DeletionPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Retain</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">TableName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${self:provider.stackName}-&lt;tableName&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">TableName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ActorsTable</span><span class="w"></span>
 <span class="w">      </span><span class="nt">AttributeDefinitions</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">AttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">siteId</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">AttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actorName</span><span class="w"></span>
 <span class="w">          </span><span class="nt">AttributeType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">AttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkType</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">AttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">movieName</span><span class="w"></span>
 <span class="w">          </span><span class="nt">AttributeType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S</span><span class="w"></span>
 <span class="w">      </span><span class="nt">KeySchema</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">AttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">siteId</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">AttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actorName</span><span class="w"></span>
 <span class="w">          </span><span class="nt">KeyType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HASH</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">AttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkType</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">AttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">movieName</span><span class="w"></span>
 <span class="w">          </span><span class="nt">KeyType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RANGE</span><span class="w"></span>
 <span class="w">      </span><span class="nt">BillingMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PAY_PER_REQUEST</span><span class="w"></span>
 </code></pre></div>
@@ -874,6 +988,112 @@
 <span class="nt">resources</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config/resources/dynamodb.yml</span><span class="w"></span>
 </code></pre></div>
+<h2 id="running-dynamodb-queries">Running DynamoDB Queries<a class="headerlink" href="#running-dynamodb-queries" title="Permanent link">&para;</a></h2>
+<h3 id="retrieving-records">Retrieving Records<a class="headerlink" href="#retrieving-records" title="Permanent link">&para;</a></h3>
+<p><code>dynamodb.query()</code> will return all matching records based on pre-determined primary key, primary and sort key combination, or global secondary index key.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">dynamodb</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+  <span class="nx">tableName</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>                 <span class="c1">// name of the dynamodb table</span>
+  <span class="nx">keyConditionExpression</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>    <span class="c1">// primary or primary with sort or GSI key condition</span>
+  <span class="nx">expressionAttributeValues</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span> <span class="c1">// key-value pair</span>
+  <span class="nx">projectionExpression</span><span class="o">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1">// data to return</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">dynamodb</span> <span class="kr">from</span> <span class="s2">&quot;Utils/dynamodb&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">dynamodb</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+  <span class="s2">&quot;ActorsTable&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;actorName = :actorName and movieName = :movieName&quot;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;:actorName&quot;</span><span class="o">:</span> <span class="s2">&quot;Tom Hanks&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;:movieName&quot;</span><span class="o">:</span> <span class="s2">&quot;Toy Story&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm">[</span>
+<span class="cm">  {</span>
+<span class="cm">    actorName: &#39;Tom Hanks&#39;,</span>
+<span class="cm">    movieName: &#39;Toy Story&#39;,</span>
+<span class="cm">  },</span>
+<span class="cm">  ...</span>
+<span class="cm">] */</span>
+</code></pre></div>
+<h3 id="retrieving-record-count">Retrieving Record Count<a class="headerlink" href="#retrieving-record-count" title="Permanent link">&para;</a></h3>
+<p><code>dynamodb.queryCount()</code> will return the number of query records.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">dynamodb</span><span class="p">.</span><span class="nx">queryCount</span><span class="p">(</span>
+  <span class="nx">tableName</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>                 <span class="c1">// name of the dynamodb table</span>
+  <span class="nx">keyConditionExpression</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>    <span class="c1">// primary or primary with sort or GSI key condition</span>
+  <span class="nx">expressionAttributeValues</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span> <span class="c1">// key-value pair</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">dynamodb</span> <span class="kr">from</span> <span class="s2">&quot;Utils/dynamodb&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">dynamodb</span><span class="p">.</span><span class="nx">queryCount</span><span class="p">(</span>
+  <span class="s2">&quot;ActorsTable&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;actorName = :actorName&quot;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;:actorName&quot;</span><span class="o">:</span> <span class="s2">&quot;Tom Hanks&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// 5</span>
+</code></pre></div>
+<h3 id="inserting-a-record">Inserting a Record<a class="headerlink" href="#inserting-a-record" title="Permanent link">&para;</a></h3>
+<p><code>dynamodb.put()</code> will insert a new record.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">dynamodb</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span>
+  <span class="nx">tableName</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="nx">item</span><span class="o">:</span> <span class="nb">Object</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">dynamodb</span> <span class="kr">from</span> <span class="s2">&quot;Utils/dynamodb&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">dynamodb</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s2">&quot;ActorTable&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">actorName</span><span class="o">:</span> <span class="s2">&quot;Keanue Reaves&quot;</span><span class="p">,</span>
+  <span class="nx">movieName</span><span class="o">:</span> <span class="s2">&quot;Speed&quot;</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="updating-existing-record">Updating Existing Record<a class="headerlink" href="#updating-existing-record" title="Permanent link">&para;</a></h3>
+<p><code>dynamodb.update()</code> will update an existing record.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">dynamodb</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span>
+  <span class="nx">tableName</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="nx">key</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
+  <span class="nx">updateExpression</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="nx">expressionAttributeValues</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">dynamodb</span> <span class="kr">from</span> <span class="s2">&quot;Utils/dynamodb&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">dynamodb</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span>
+  <span class="s2">&quot;ActorsTable&quot;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="nx">actorName</span><span class="o">:</span> <span class="s2">&quot;Tom Hanks&quot;</span><span class="p">,</span>
+    <span class="nx">movieName</span><span class="o">:</span> <span class="s2">&quot;Toy Story&quot;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;set role = :role&quot;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;:role&quot;</span><span class="o">:</span> <span class="s2">&quot;Woody&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="native-client">Native Client<a class="headerlink" href="#native-client" title="Permanent link">&para;</a></h3>
+<p>Should you need to execute any other methods not already available, use the exported <code>dynamodb.client</code> to execute any of the available client functions.</p>
+<p><strong>Example available client query method</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">resp</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">dynamodb</span><span class="p">.</span><span class="nx">client</span>
+  <span class="p">.</span><span class="nx">query</span><span class="p">({</span>
+    <span class="nx">ExpressionAttributeValues</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;:actorName&quot;</span><span class="o">:</span> <span class="s2">&quot;Tom Hanks&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">KeyConditionExpression</span><span class="o">:</span> <span class="s2">&quot;actorName = :actorName&quot;</span><span class="p">,</span>
+    <span class="nx">ProjectionExpression</span><span class="o">:</span> <span class="s2">&quot;actorName, movieName&quot;</span><span class="p">,</span>
+    <span class="nx">TableName</span><span class="o">:</span> <span class="s2">&quot;ActorTable&quot;</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">promise</span><span class="p">();</span>
+</code></pre></div>
+<p>Refer to the official documentation <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html">here</a>.</p>
 
               
             </article>

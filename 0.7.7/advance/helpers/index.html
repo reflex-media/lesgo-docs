@@ -229,10 +229,57 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Prologue
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Prologue" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Prologue
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
-        Prologue
+      <a href="../../prologue/release-notes/" class="md-nav__link">
+        Release Notes
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prologue/contribution-guide/" class="md-nav__link">
+        Contribution Guide
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -271,7 +318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/" class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Installation
       </a>
     </li>
@@ -451,20 +498,6 @@
               
   
   
-  
-    <li class="md-nav__item">
-      <a href="../database/" class="md-nav__link">
-        Database
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
     
   
   
@@ -572,6 +605,20 @@
         <li class="md-nav__item">
   <a href="#field-validator" class="md-nav__link">
     Field Validator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prep-insert-sql-parameter" class="md-nav__link">
+    Prep Insert SQL Parameter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prep-update-sql-parameter" class="md-nav__link">
+    Prep Update SQL Parameter
   </a>
   
 </li>
@@ -847,21 +894,6 @@
   
 
     
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../contributing/" class="md-nav__link">
-        Contributing
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -964,6 +996,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#prep-insert-sql-parameter" class="md-nav__link">
+    Prep Insert SQL Parameter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prep-update-sql-parameter" class="md-nav__link">
+    Prep Update SQL Parameter
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1001,9 +1047,7 @@
 <p>One way hashing of data using the faster MD5.</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">hashMD5</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;Utils/crypto&quot;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">hashedMD5String</span> <span class="o">=</span> <span class="nx">hashMD5</span><span class="p">(</span>
-  <span class="s2">&quot;some data to hash&quot;</span>
-<span class="p">);</span>
+<span class="kd">const</span> <span class="nx">hashedMD5String</span> <span class="o">=</span> <span class="nx">hashMD5</span><span class="p">(</span><span class="s2">&quot;some data to hash&quot;</span><span class="p">);</span>
 
 <span class="c1">// 527d738baba016840c3a33f2790845dd</span>
 </code></pre></div>
@@ -1015,9 +1059,11 @@
 <p>2-way encryption with auto-generated iv and cipher.</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">encrypt</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;Utils/crypto&quot;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">encryptedStr</span> <span class="o">=</span> <span class="nx">encrypt</span><span class="p">(</span><span class="s2">&quot;some string to be encrypted that can be decrypted&quot;</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">encryptedStr</span> <span class="o">=</span> <span class="nx">encrypt</span><span class="p">(</span>
+  <span class="s2">&quot;some string to be encrypted that can be decrypted&quot;</span>
+<span class="p">);</span>
 
-<span class="c1">// </span>
+<span class="c1">//</span>
 </code></pre></div>
 <h3 id="decrypt">Decrypt<a class="headerlink" href="#decrypt" title="Permanent link">&para;</a></h3>
 <p>Decrypting a previously encrypted data.</p>
@@ -1025,7 +1071,7 @@
 
 <span class="kd">const</span> <span class="nx">decryptedStr</span> <span class="o">=</span> <span class="nx">decrypt</span><span class="p">(</span><span class="s2">&quot;some-encrypted-string&quot;</span><span class="p">);</span>
 
-<span class="c1">// </span>
+<span class="c1">//</span>
 </code></pre></div>
 <h2 id="generate-uid">Generate Uid<a class="headerlink" href="#generate-uid" title="Permanent link">&para;</a></h2>
 <blockquote>
@@ -1046,7 +1092,7 @@
 
 <span class="c1">// 7d6af6c3cde214093d4b8-someSuffix</span>
 
-<span class="nx">cost</span> <span class="nx">uidLimited</span> <span class="o">=</span> <span class="nx">generateUid</span><span class="p">({</span> <span class="nx">length</span><span class="o">:</span> <span class="mf">36</span> <span class="p">}));</span>
+<span class="kd">const</span> <span class="nx">uidLimited</span> <span class="o">=</span> <span class="nx">generateUid</span><span class="p">({</span> <span class="nx">length</span><span class="o">:</span> <span class="mf">36</span> <span class="p">}));</span>
 
 <span class="c1">// ce214094b8daf683d4b7d63ccde21403dd93</span>
 </code></pre></div>
@@ -1091,11 +1137,11 @@
 <span class="nx">isEmpty</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 <span class="nx">isEmpty</span><span class="p">({});</span>
 <span class="nx">isEmpty</span><span class="p">([]);</span>
-<span class="nx">isEmpty</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+<span class="nx">isEmpty</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
 
 <span class="c1">// true</span>
 
-<span class="nx">isEmpty</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
+<span class="nx">isEmpty</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
 <span class="nx">isEmpty</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
 
 <span class="c1">// false</span>
@@ -1168,6 +1214,72 @@
 <span class="cm">)</span>
 <span class="cm">*/</span>
 </code></pre></div>
+<h2 id="prep-insert-sql-parameter">Prep Insert SQL Parameter<a class="headerlink" href="#prep-insert-sql-parameter" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><code>Utils/prepSQLInsertParams</code></p>
+</blockquote>
+<p>Takes in data and returns a nicely formatted response to be used for <code>Utils/db.insert()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">prepSQLInsertParams</span><span class="p">(</span>
+  <span class="nx">params</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span> <span class="c1">// data to insert to db (matching key to db column)</span>
+  <span class="nx">columns</span><span class="o">:</span> <span class="nb">Object</span> <span class="c1">// valid db column names</span>
+<span class="p">)</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">insertColumns</span><span class="p">,</span>  <span class="c1">// comma-separated db column field names</span>
+  <span class="nx">insertValues</span><span class="p">,</span>   <span class="c1">// comma-separated field values in prepared statement form i.e; :username, :id, etc</span>
+  <span class="nx">insertFields</span>    <span class="c1">// data object to insert</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">prepSQLInsertParams</span> <span class="kr">from</span> <span class="s2">&quot;Utils/prepSQLInsertParams&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">username</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+  <span class="nx">email</span><span class="o">:</span> <span class="s2">&quot;john.doe@gmail.com&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">validFields</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+<span class="p">];</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">insertColumns</span><span class="p">,</span> <span class="nx">insertValues</span><span class="p">,</span> <span class="nx">insertFields</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">prepSQLInsertParams</span><span class="p">(</span>
+  <span class="nx">params</span><span class="p">,</span>
+  <span class="nx">validFields</span>
+<span class="p">);</span>
+</code></pre></div>
+<p>See usage with <a href="../../database/rds-aurora/#inserting-a-single-record"><code>Utils/db.insert()</code></a>.</p>
+<h2 id="prep-update-sql-parameter">Prep Update SQL Parameter<a class="headerlink" href="#prep-update-sql-parameter" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><code>Utils/prepSQLUpdateParams</code></p>
+</blockquote>
+<p>Takes in data and returns a nicely formatted response to be used for <code>Utils/db.update()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">prepSQLUpdateParams</span><span class="p">(</span>
+  <span class="nx">params</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span> <span class="c1">// data to update to db (matching key to db column)</span>
+  <span class="nx">columns</span><span class="o">:</span> <span class="nb">Object</span> <span class="c1">// valid db column names</span>
+<span class="p">)</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">updateColumnValues</span><span class="p">,</span> <span class="c1">// comma-separated column=:value pair</span>
+  <span class="nx">wherePrimaryKey</span><span class="p">,</span>    <span class="c1">// primary key (based on default table.id)</span>
+  <span class="nx">updateFields</span>        <span class="c1">// data object to update</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">prepSQLUpdateParams</span> <span class="kr">from</span> <span class="s2">&quot;Utils/prepSQLUpdateParams&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">id</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+  <span class="nx">username</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+  <span class="nx">email</span><span class="o">:</span> <span class="s2">&quot;john.doe@gmail.com&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">validFields</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+<span class="p">];</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">updateColumnValues</span><span class="p">,</span> <span class="nx">wherePrimaryKey</span><span class="p">,</span> <span class="nx">updateFields</span> <span class="p">}</span> <span class="o">=</span>
+  <span class="nx">prepSQLUpdateParams</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">validFields</span><span class="p">);</span>
+</code></pre></div>
+<p>See usage with <a href="../../database/rds-aurora/#updating-an-existing-record"><code>Utils/db.update()</code></a>.</p>
 
               
             </article>
@@ -1181,7 +1293,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../database/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Database" rel="prev">
+        <a href="../cache/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Cache" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1190,7 +1302,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Database
+              Cache
             </div>
           </div>
         </a>

@@ -229,10 +229,57 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Prologue
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Prologue" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Prologue
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
-        Prologue
+      <a href="../../prologue/release-notes/" class="md-nav__link">
+        Release Notes
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prologue/contribution-guide/" class="md-nav__link">
+        Contribution Guide
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -271,7 +318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/" class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Installation
       </a>
     </li>
@@ -451,20 +498,6 @@
     <li class="md-nav__item">
       <a href="../../advance/cache/" class="md-nav__link">
         Cache
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advance/database/" class="md-nav__link">
-        Database
       </a>
     </li>
   
@@ -747,21 +780,6 @@
   
 
     
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../contributing/" class="md-nav__link">
-        Contributing
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -801,22 +819,24 @@
 <h1 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h1>
 <p>Lesgo! is configured with structured logging.</p>
 <p>Structured logs will appear on the console by default.</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">logger</span> <span class="kr">from</span> <span class="s1">&#39;Utils/logger&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">logger</span> <span class="kr">from</span> <span class="s2">&quot;Utils/logger&quot;</span><span class="p">;</span>
 
-<span class="nx">logger</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s1">&#39;this is an info log&#39;</span><span class="p">);</span>
-<span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;This is an info log&#39;</span><span class="p">);</span>
-<span class="nx">logger</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">&#39;This is a warning log&#39;</span><span class="p">);</span>
-<span class="nx">logger</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;This is an error log&#39;</span><span class="p">);</span>
-<span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;This is a debug log and will only get logged when APP_DEBUG=true&#39;</span><span class="p">);</span>
+<span class="nx">logger</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;info&quot;</span><span class="p">,</span> <span class="s2">&quot;this is an info log&quot;</span><span class="p">);</span>
+<span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;This is an info log&quot;</span><span class="p">);</span>
+<span class="nx">logger</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">&quot;This is a warning log&quot;</span><span class="p">);</span>
+<span class="nx">logger</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;This is an error log&quot;</span><span class="p">);</span>
+<span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span>
+  <span class="s2">&quot;This is a debug log and will only get logged when APP_DEBUG=true&quot;</span>
+<span class="p">);</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">PRO TIP</p>
 <p>This logger is built for, and works well, with both CloudWatch and DataDog. DataDog will help you monitor your logs, errors, inovations, and alot more in almost real-time with no performance impact!</p>
 </div>
 <p>You may also add additional custom metadata as such:</p>
-<div class="highlight"><pre><span></span><code><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;This is an info log with my own custom metadata&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">customData1</span><span class="o">:</span> <span class="s1">&#39;someData1&#39;</span><span class="p">,</span>
-  <span class="nx">customData2</span><span class="o">:</span> <span class="s1">&#39;someData2&#39;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;This is an info log with my own custom metadata&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">customData1</span><span class="o">:</span> <span class="s2">&quot;someData1&quot;</span><span class="p">,</span>
+  <span class="nx">customData2</span><span class="o">:</span> <span class="s2">&quot;someData2&quot;</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div>
 

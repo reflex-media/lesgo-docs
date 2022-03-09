@@ -229,10 +229,57 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Prologue
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Prologue" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Prologue
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
-        Prologue
+      <a href="../../prologue/release-notes/" class="md-nav__link">
+        Release Notes
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prologue/contribution-guide/" class="md-nav__link">
+        Contribution Guide
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -271,7 +318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/" class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Installation
       </a>
     </li>
@@ -439,20 +486,6 @@
     <li class="md-nav__item">
       <a href="../../advance/cache/" class="md-nav__link">
         Cache
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advance/database/" class="md-nav__link">
-        Database
       </a>
     </li>
   
@@ -792,8 +825,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#updating-an-existing-single-record" class="md-nav__link">
-    Updating an Existing Single Record
+  <a href="#updating-an-existing-record" class="md-nav__link">
+    Updating an Existing Record
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raw-query" class="md-nav__link">
+    Raw Query
   </a>
   
 </li>
@@ -862,21 +902,6 @@
           
         </ul>
       </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../contributing/" class="md-nav__link">
-        Contributing
-      </a>
     </li>
   
 
@@ -991,8 +1016,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#updating-an-existing-single-record" class="md-nav__link">
-    Updating an Existing Single Record
+  <a href="#updating-an-existing-record" class="md-nav__link">
+    Updating an Existing Record
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raw-query" class="md-nav__link">
+    Raw Query
   </a>
   
 </li>
@@ -1113,8 +1145,8 @@
 </code></pre></div>
 <h2 id="database-connection">Database Connection<a class="headerlink" href="#database-connection" title="Permanent link">&para;</a></h2>
 <p>Connecting to the database is automatically handled when you execute your query.</p>
-<p>For Aurora Serverless (via Data API), this is nothing to worry about as the opening and closing of database connections is handled within Data API itself! Thus, one less worry about manaing connection pools.</p>
-<p>For Aurora Provisioed (via RDS Proxy), a connection will be opened and closed per every query executed. While this works, it is not effecient as opening and closing a database connection will cost additional time (and money!).</p>
+<p>For Aurora Serverless (via Data API), this is nothing to worry about as the opening and closing of database connections is handled within Data API itself! Thus, one less worry about managing connection pools.</p>
+<p>For Aurora Provisioned (via RDS Proxy), a connection will be opened and closed per every query executed. While this works, it is not efficient as opening and closing a database connection will cost additional time (and money!).</p>
 <p>As such, specifically for RDS Proxy, you should make use of Lesgo's persistent connection method <code>db.pConnect()</code>. This should be handled at the Handler level as much as possible.</p>
 <h3 id="persistent-connection-for-rds-proxy">Persistent Connection for RDS Proxy<a class="headerlink" href="#persistent-connection-for-rds-proxy" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// src/handlers/utils/ping.js</span>
@@ -1147,7 +1179,8 @@
   <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">pConnect</span><span class="p">();</span>
 
   <span class="k">try</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">ping</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">input</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">resp</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ping</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">input</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">resp</span><span class="p">;</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
   <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
@@ -1226,24 +1259,31 @@
 </code></pre></div>
 <h3 id="inserting-a-single-record">Inserting a Single Record<a class="headerlink" href="#inserting-a-single-record" title="Permanent link">&para;</a></h3>
 <p><code>db.insert()</code> will insert a new record and return only the newly inserted primary key.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span>
+  <span class="nx">sql</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="nx">sqlParams</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
+  <span class="nx">connectionOpts</span><span class="o">?:</span> <span class="nb">Object</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">insertId</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span>
-  <span class="s2">&quot;INSERT INTO users(username,email,created_at) VALUES (:username, :email:, now())&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;INSERT INTO users(username,email) VALUES (:username, :email)&quot;</span><span class="p">,</span>
   <span class="p">{</span>
     <span class="nx">username</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
     <span class="nx">email</span><span class="o">:</span> <span class="s2">&quot;john@mail.com&quot;</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">);</span>
 </code></pre></div>
-<p>A much better aproach to inserting records is to first validate the fields and then inserting it with <code>Utils/prepSQLInsertParams</code>.</p>
+<p>A much better approach to inserting records is to first validate the fields and then inserting it with <code>Utils/prepSQLInsertParams</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">prepSQLInsertParams</span> <span class="kr">from</span> <span class="s2">&quot;Utils/prepSQLInsertParams&quot;</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">validateFields</span> <span class="kr">from</span> <span class="s2">&quot;Utils/validateFields&quot;</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">validFields</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;user_id&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
-  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;member_id&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
 <span class="p">];</span>
 
 <span class="kd">let</span> <span class="nx">validated</span> <span class="o">=</span> <span class="nx">validateFields</span><span class="p">({</span> <span class="p">...</span><span class="nx">params</span> <span class="p">},</span> <span class="nx">validFields</span><span class="p">);</span>
@@ -1254,13 +1294,20 @@
 <span class="p">);</span>
 
 <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span>
-  <span class="sb">`INSERT INTO blocks(</span><span class="si">${</span><span class="nx">insertColumns</span><span class="si">}</span><span class="sb">) VALUES(</span><span class="si">${</span><span class="nx">insertValues</span><span class="si">}</span><span class="sb">)`</span><span class="p">,</span>
+  <span class="sb">`INSERT INTO users(</span><span class="si">${</span><span class="nx">insertColumns</span><span class="si">}</span><span class="sb">) VALUES(</span><span class="si">${</span><span class="nx">insertValues</span><span class="si">}</span><span class="sb">)`</span><span class="p">,</span>
   <span class="nx">insertFields</span>
 <span class="p">);</span>
 </code></pre></div>
-<p>Learn more about <a href="../../advance/helpers/#field-validator">Utils/validateFields</a>.</p>
-<h3 id="updating-an-existing-single-record">Updating an Existing Single Record<a class="headerlink" href="#updating-an-existing-single-record" title="Permanent link">&para;</a></h3>
+<p>Learn more about <a href="../../advance/helpers/#field-validator">Utils/validateFields</a> and <a href="../../advance/helpers/#prep-insert-sql-parameter">Utils/prepSQLInsertParams</a>.</p>
+<h3 id="updating-an-existing-record">Updating an Existing Record<a class="headerlink" href="#updating-an-existing-record" title="Permanent link">&para;</a></h3>
 <p><code>db.update()</code> will update an existing record and throw an Error if no record found for update.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span>
+  <span class="nx">sql</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="nx">sqlParams</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
+  <span class="nx">connectionOpts</span><span class="o">?:</span> <span class="nb">Object</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">insertId</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span>
@@ -1271,6 +1318,47 @@
     <span class="nx">email</span><span class="o">:</span> <span class="s2">&quot;john@mail.com&quot;</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">);</span>
+</code></pre></div>
+<p>As with insert, updatating an existing record is best done with <code>Utils/prepSQLUpdateParams</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">prepSQLUpdateParams</span> <span class="kr">from</span> <span class="s2">&quot;Utils/prepSQLUpdateParams&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">validateFields</span> <span class="kr">from</span> <span class="s2">&quot;Utils/validateFields&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">validFields</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+<span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">username</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+  <span class="nx">email</span><span class="o">:</span> <span class="s2">&quot;john@mail.com&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="nx">validated</span> <span class="o">=</span> <span class="nx">validateFields</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">validFields</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">updateColumnValues</span><span class="p">,</span> <span class="nx">wherePrimaryKey</span><span class="p">,</span> <span class="nx">updateFields</span> <span class="p">}</span> <span class="o">=</span>
+  <span class="nx">prepSQLUpdateParams</span><span class="p">(</span><span class="nx">validated</span><span class="p">,</span> <span class="nx">validFields</span><span class="p">);</span>
+
+<span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span>
+  <span class="sb">`UPDATE users SET </span><span class="si">${</span><span class="nx">updateColumnValues</span><span class="si">}</span><span class="sb">, updated_at=NOW() WHERE </span><span class="si">${</span><span class="nx">wherePrimaryKey</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+  <span class="nx">updateFields</span>
+<span class="p">);</span>
+</code></pre></div>
+<p>Learn more about <a href="../../advance/helpers/#prep-update-sql-parameter">Utils/prepSQLUpdateParams</a>.</p>
+<h3 id="raw-query">Raw Query<a class="headerlink" href="#raw-query" title="Permanent link">&para;</a></h3>
+<p>All of the above executes <code>db.query()</code>. You may also execute your queries directly and get a raw response.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+  <span class="nx">sql</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="nx">sqlParams</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
+  <span class="nx">connectionOpts</span><span class="o">?:</span> <span class="nb">Object</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = :id&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">id</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+<span class="p">});</span>
 </code></pre></div>
 
               

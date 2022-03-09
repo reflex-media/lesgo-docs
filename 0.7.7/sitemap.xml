@@ -11,17 +11,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/contributing/</loc>
-         <lastmod>2022-03-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/advance/cache/</loc>
-         <lastmod>2022-03-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/advance/database/</loc>
          <lastmod>2022-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -112,6 +102,16 @@
     </url>
     <url>
          <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/packages/firebase/</loc>
+         <lastmod>2022-03-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/prologue/contribution-guide/</loc>
+         <lastmod>2022-03-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/prologue/release-notes/</loc>
          <lastmod>2022-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>

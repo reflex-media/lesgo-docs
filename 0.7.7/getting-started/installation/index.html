@@ -229,10 +229,57 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Prologue
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Prologue" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Prologue
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
-        Prologue
+      <a href="../../prologue/release-notes/" class="md-nav__link">
+        Release Notes
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prologue/contribution-guide/" class="md-nav__link">
+        Contribution Guide
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -243,14 +290,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       
       
@@ -271,79 +316,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Installation
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         Installation
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#quick-start" class="md-nav__link">
-    Quick Start
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#environment-configuration" class="md-nav__link">
-    Environment Configuration
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#available-environment-configurations" class="md-nav__link">
-    Available Environment Configurations
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -509,20 +486,6 @@
     <li class="md-nav__item">
       <a href="../../advance/cache/" class="md-nav__link">
         Cache
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advance/database/" class="md-nav__link">
-        Database
       </a>
     </li>
   
@@ -805,21 +768,6 @@
   
 
     
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../contributing/" class="md-nav__link">
-        Contributing
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -845,6 +793,20 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-lightweight-nodejs-boilerplate-framework-for-serverless-architecture" class="md-nav__link">
+    A lightweight node.js boilerplate framework for serverless architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-lesgo-framework" class="md-nav__link">
+    Why Lesgo! Framework
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#quick-start" class="md-nav__link">
@@ -899,10 +861,20 @@
 
 
 <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
+<h2 id="a-lightweight-nodejs-boilerplate-framework-for-serverless-architecture">A lightweight node.js boilerplate framework for serverless architecture<a class="headerlink" href="#a-lightweight-nodejs-boilerplate-framework-for-serverless-architecture" title="Permanent link">&para;</a></h2>
+<p>Bootstrap your next serverless microservice with a light-weight node.js app built on top of the <a href="https://www.serverless.com/">Serverless Framework</a> on AWS.</p>
+<h2 id="why-lesgo-framework">Why Lesgo! Framework<a class="headerlink" href="#why-lesgo-framework" title="Permanent link">&para;</a></h2>
+<p>Like any other frameworks out there, we built this Framework because we couldn't find one that fits our needs. We believe that a framework for the Serverless Architecture should fit the following criteria:</p>
+<ul>
+<li><strong>Super lightweight</strong>. The bundled lambda function should only bundle what is necessarily required by the function, and nothing else. This is why we chose the Serverless Framework as the basic building block for this framework. It provides the necessary tools to build, bundle, and deploy direct to AWS via CloudFormation, while still allowing the option to bundle each function individually.</li>
+<li><strong>Easy to understand file structure</strong>. Most of our file structure, scripts, and helper functions is inspired from the Laravel Framework. The primary reason being that all the original developers and current maintainers have years of experience building applications on Taylor Otwell's Laravel Framework. If you know Laravel, you will know Lesgo!</li>
+<li><strong>Highly adaptable for any use case</strong>. We have built multiple microservices for the last 3 years from a simple "Unique Name Generator", to a process-intensive "Photo Processor" and "Image Moderation", to complex projects building a Social Network App using this very same framework!</li>
+<li><strong>Continous upgrades</strong>. As long as we continue to use this framework, we will continue to maintain and expand its functionalities. This framework will continue to grow with us. We take the learnings from our other microservices and upgrade this framework accordingly.</li>
+</ul>
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Prerequisites</p>
-<p>Install Serverless Framework globally with: <code>npm install -g serverless</code>.<br />
+<p>Install Serverless Framework globally with: <code>npm install -g serverless</code>.
 Refer to https://serverless.com/framework/docs/getting-started/ for additional info.</p>
 </div>
 <p>Create Serverless project:</p>
@@ -917,7 +889,7 @@ Refer to https://serverless.com/framework/docs/getting-started/ for additional i
 </code></pre></div>
 <p>Access local url via browser or Postman: <a href="http://localhost:8181/ping">http://localhost:8181/ping</a>.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>There are 2 levels of configurations for the Lesgo! framework. </p>
+<p>There are 2 levels of configurations for the Lesgo! framework.</p>
 <p>The project (serverless) configurations are stored in <code>config/</code> directory as <code>.yml</code> files. These configuration files affect your project set up and build.</p>
 <p>The application configurations are stored in <code>src/config/</code> directory as <code>.js</code> files (We'll move to TypeScript soon, we promise!). These are application/business specific configurations.</p>
 <p>Each configuration is documented below, so feel free to look through the files and get familiar with the options relevant to you.</p>
@@ -959,41 +931,6 @@ Refer to https://serverless.com/framework/docs/getting-started/ for additional i
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Prologue" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Prologue
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../structure/" class="md-footer__link md-footer__link--next" aria-label="Next: Directory Structure" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Directory Structure
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
