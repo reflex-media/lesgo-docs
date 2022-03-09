@@ -9,7 +9,7 @@ extra:
   repo_icon: github
   version:
     provider: mike
-    default: stable
+    default: latest
 
 copyright: Copyright &copy; 2019 Reflex Media
 
