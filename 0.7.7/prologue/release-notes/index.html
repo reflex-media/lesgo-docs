@@ -70,6 +70,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#release-notes" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -259,10 +264,64 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Release Notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Release Notes
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#multi-sls-configuration-support" class="md-nav__link">
+    Multi SLS configuration support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disconnecting-of-persistent-connections" class="md-nav__link">
+    Disconnecting of Persistent Connections
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memcache-plus-over-memcached-elasticache" class="md-nav__link">
+    memcache-plus over memcached-elasticache
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#esgetmulti" class="md-nav__link">
+    es.getMulti()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -780,6 +839,60 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#multi-sls-configuration-support" class="md-nav__link">
+    Multi SLS configuration support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disconnecting-of-persistent-connections" class="md-nav__link">
+    Disconnecting of Persistent Connections
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memcache-plus-over-memcached-elasticache" class="md-nav__link">
+    memcache-plus over memcached-elasticache
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#esgetmulti" class="md-nav__link">
+    es.getMulti()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -791,9 +904,96 @@
 
 
 
-  <h1>Release Notes</h1>
+<h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">&para;</a></h1>
+<h2 id="multi-sls-configuration-support">Multi SLS configuration support<a class="headerlink" href="#multi-sls-configuration-support" title="Permanent link">&para;</a></h2>
+<p>Lesgo! now supports multiple <code>serverless.yml</code> configuration to exist within the same codebase. This allows you to deploy separate applications. Useful for cases where you might have exceeded the resource allocation.</p>
+<p>Simply create a new <code>serverless-x.yml</code> file, update the configurations accordingly, add a new <code>deploy-x</code> script in <code>package.json</code>, specifying the config file to deploy with <code>-c "severless-x.yml"</code></p>
+<p><strong>Sample package.json</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="err">...</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;deploy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lesgo-scripts -t deploy&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;deploy-backend&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lesgo-scripts -t deploy -c \&quot;./serverless-x.yml\&quot;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="err">...</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><strong>Sample Deployment</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">npm</span><span class="w"> </span>run<span class="w"> </span>deploy-x<span class="w"> </span>--<span class="w"> </span>-s<span class="w"> </span>dev<span class="w"></span>
+</code></pre></div>
+<h2 id="disconnecting-of-persistent-connections">Disconnecting of Persistent Connections<a class="headerlink" href="#disconnecting-of-persistent-connections" title="Permanent link">&para;</a></h2>
+<p>Previously, persistent connections have to be manually disconnected for both db and cache connections. As long as you want to have persistent connection, add that to the Handler and pass it along to the middlewares.</p>
+<p><strong>Sample usage with middleware</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// src/handlers/utils/ping.js</span>
 
+<span class="k">import</span> <span class="nx">middy</span> <span class="kr">from</span> <span class="s2">&quot;@middy/core&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">httpMiddleware</span> <span class="kr">from</span> <span class="s2">&quot;Middlewares/httpMiddleware&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ping</span> <span class="kr">from</span> <span class="s2">&quot;Core/utils/ping&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
+<span class="kd">const</span> <span class="nx">originalHandler</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">dbRead</span><span class="p">.</span><span class="nx">pConnect</span><span class="p">(),</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">pConnect</span><span class="p">()]);</span> <span class="c1">// connect to the db and cache before anything else</span>
+
+  <span class="k">return</span> <span class="nx">ping</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">input</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="nx">middy</span><span class="p">(</span><span class="nx">originalHandler</span><span class="p">);</span>
+
+<span class="nx">handler</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">httpMiddleware</span><span class="p">({</span> <span class="nx">db</span><span class="p">,</span> <span class="nx">cache</span> <span class="p">}));</span> <span class="c1">// pass along the instance to the middleware</span>
+</code></pre></div>
+<p><strong>Sample usage without middleware</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// src/handlers/utils/ping.js</span>
+
+<span class="k">import</span> <span class="nx">middy</span> <span class="kr">from</span> <span class="s2">&quot;@middy/core&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ping</span> <span class="kr">from</span> <span class="s2">&quot;Core/utils/ping&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">originalHandler</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">pConnect</span><span class="p">();</span> <span class="c1">// connect to the db before anything else</span>
+
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">resp</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ping</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">input</span><span class="p">);</span> <span class="c1">// important to await here to prevent premature disconnection</span>
+    <span class="k">return</span> <span class="nx">resp</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span> <span class="c1">// disconnect after everything else is done</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="nx">middy</span><span class="p">(</span><span class="nx">originalHandler</span><span class="p">);</span>
+
+<span class="nx">handler</span><span class="p">.</span><span class="nx">use</span><span class="p">();</span>
+</code></pre></div>
+<h2 id="memcache-plus-over-memcached-elasticache">memcache-plus over memcached-elasticache<a class="headerlink" href="#memcache-plus-over-memcached-elasticache" title="Permanent link">&para;</a></h2>
+<p>memcached-elasticache is no longer being actively maintained and has been unstable especially with timeout disconnections. As such, <a href="https://www.npmjs.com/package/memcache-plus">memcache-plus</a> is the new SDK for AWS Elasticache Memcached service.</p>
+<p>The <code>src/config/cache.js</code> should be updated accordingly.</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="k">default</span><span class="o">:</span> <span class="s2">&quot;memcached&quot;</span><span class="p">,</span>
+  <span class="nx">connections</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">memcached</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">hosts</span><span class="o">:</span> <span class="p">[</span>
+          <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ELASTICACHE_MEMCACHED_URL</span> <span class="o">||</span>
+            <span class="s2">&quot;api-dev-cache.xdw723.cfg.uswest2.cache.amazonaws.com:11211&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="nx">autoDiscover</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">@elastic/elasticsearch@7.13.0</p>
+<p>It has been discovered that <code>@elastic/elasticsearch</code> greater than <code>@7.13.0</code> is not compatible with the SDK. Thus is is important to ensure the package version is set to 7.13.0.</p>
+</div>
+<h2 id="esgetmulti">es.getMulti()<a class="headerlink" href="#esgetmulti" title="Permanent link">&para;</a></h2>
+<p>A new method to fetch multiple cache keys.</p>
+<p><strong>Usage example</strong></p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
 
               
             </article>
