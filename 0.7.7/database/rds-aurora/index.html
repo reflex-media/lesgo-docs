@@ -1096,7 +1096,7 @@
   <span class="p">},</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>You may also simply update the respective environment files in <code>config/environments//env.*</code> as such:</p>
+<p>You may also simply update the respective environment files in <code>config/environments/env.*</code> as such:</p>
 <div class="highlight"><pre><span></span><code><span class="c"># config/environments/.env.*</span><span class="w"></span>
 
 <span class="c"># Domain host of the RDS Proxy</span><span class="w"></span>
@@ -1135,7 +1135,7 @@
 <span class="nx">handler</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">httpMiddleware</span><span class="p">({</span> <span class="nx">db</span> <span class="p">}));</span>
 </code></pre></div>
 <p>Notice the passing of the <code>db</code> object into <code>httpMiddleware()</code>. This is important to allow <code>httpMiddleware</code> to disconnect from RDS Proxy at the end of the lambda execution. Without doing so, you will encounter lambda timeout issues as the db connection is still open.</p>
-<p>Should you want to handle the closing of the db connection yourself, you can do so as shown below.</p>
+<p>Should you want to handle the closing of the db connection yourself and without using any of Lesgo!'s middlewares, you can do so as shown below.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// src/handlers/utils/ping.js</span>
 
 <span class="k">import</span> <span class="nx">middy</span> <span class="kr">from</span> <span class="s2">&quot;@middy/core&quot;</span><span class="p">;</span>
@@ -1159,10 +1159,17 @@
 
 <span class="nx">handler</span><span class="p">.</span><span class="nx">use</span><span class="p">();</span>
 </code></pre></div>
-<p>The <code>finally</code> in <code>try catch</code> is important to allow for a safe ending of the db conection.</p>
+<p>The <code>finally</code> in <code>try catch</code> is important to allow for a safe disconnection of the db.</p>
 <h2 id="running-database-queries">Running Database Queries<a class="headerlink" href="#running-database-queries" title="Permanent link">&para;</a></h2>
 <h3 id="retrieving-all-rows">Retrieving All Rows<a class="headerlink" href="#retrieving-all-rows" title="Permanent link">&para;</a></h3>
 <p><code>db.select()</code> will return a promised array of objects.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span>
+  <span class="nx">sql</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="nx">sqlParams</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
+  <span class="nx">connectionOpts</span><span class="o">?:</span> <span class="nb">Object</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span>
@@ -1173,7 +1180,14 @@
 <span class="p">);</span>
 </code></pre></div>
 <h3 id="retrieving-a-single-row">Retrieving a Single Row<a class="headerlink" href="#retrieving-a-single-row" title="Permanent link">&para;</a></h3>
-<p><code>db.selectFirst()</code> will return a promised object.</p>
+<p><code>db.selectFirst()</code> will return a promised object of a single record.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">selectFirst</span><span class="p">(</span>
+  <span class="nx">sql</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="nx">sqlParams</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
+  <span class="nx">connectionOpts</span><span class="o">?:</span> <span class="nb">Object</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">selectFirst</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = :id&quot;</span><span class="p">,</span> <span class="p">{</span>
@@ -1181,7 +1195,21 @@
 <span class="p">});</span>
 </code></pre></div>
 <h3 id="retrieving-paginated-rows">Retrieving Paginated Rows<a class="headerlink" href="#retrieving-paginated-rows" title="Permanent link">&para;</a></h3>
-<p><code>db.selectPaginate()</code> will return a promised object with itemized rows.</p>
+<p><code>db.selectPaginate()</code> will return a promised object with pagination data and itemized rows.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">selectPaginate</span><span class="p">(</span>
+  <span class="nx">sql</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="nx">sqlParams</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
+  <span class="nx">perPage</span><span class="o">?:</span> <span class="nb">Number</span> <span class="o">=</span> <span class="mf">10</span><span class="p">,</span>
+  <span class="nx">currentPage</span><span class="o">?:</span> <span class="nb">Number</span> <span class="o">=</span> <span class="mf">1</span><span class="p">,</span>
+  <span class="nx">total</span><span class="o">?:</span> <span class="nb">Number</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nx">connectionOpts</span><span class="o">?:</span> <span class="nb">Object</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="p">);</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When <code>total</code> is not provided, <code>db.selectPaginate()</code> will run 2 separate queries to first fetch all the record count, followed by the actual query with <code>OFFSET</code> and <code>LIMIT</code>. It is strongly advisable to pass along the <code>total</code> for best performance.</p>
+</div>
+<p><strong>Usage</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">db</span> <span class="kr">from</span> <span class="s2">&quot;Utils/db&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">selectPaginate</span><span class="p">(</span>
