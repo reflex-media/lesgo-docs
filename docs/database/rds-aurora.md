@@ -9,6 +9,7 @@ The database configuration for your application is located at `src/config/db.js`
 ### Aurora Serverless
 
 !!! note
+
     As Lesgo! establishes connection to Aurora Serverless via the Data API, prior setup and storing of the credentials on AWS Secret Manager is required. [Find out more](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html).
 
 For Aurora Serverless via Data API, create a `connections.dataApi` configuration as shown below.
@@ -50,6 +51,7 @@ DB_NAME=""
 ### Aurora Provisioned
 
 !!! note
+
     As Lesgo! establishes connection to Aurora Provisioned via the RDS Proxy, prior setup of the RDS Proxy is required. [Find out more](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-proxy.html).
 
 For Aurora Provisioned via RDS Proxy, create a `connections.rdsProxy` configuration as shown below.
@@ -87,7 +89,7 @@ export default {
 };
 ```
 
-You may also simply update the respective environment files in `config/environments//env.*` as such:
+You may also simply update the respective environment files in `config/environments/env.*` as such:
 
 ```apache
 # config/environments/.env.*
@@ -138,7 +140,7 @@ handler.use(httpMiddleware({ db }));
 
 Notice the passing of the `db` object into `httpMiddleware()`. This is important to allow `httpMiddleware` to disconnect from RDS Proxy at the end of the lambda execution. Without doing so, you will encounter lambda timeout issues as the db connection is still open.
 
-Should you want to handle the closing of the db connection yourself, you can do so as shown below.
+Should you want to handle the closing of the db connection yourself and without using any of Lesgo!'s middlewares, you can do so as shown below.
 
 ```js
 // src/handlers/utils/ping.js
@@ -165,13 +167,23 @@ export const handler = middy(originalHandler);
 handler.use();
 ```
 
-The `finally` in `try catch` is important to allow for a safe ending of the db conection.
+The `finally` in `try catch` is important to allow for a safe disconnection of the db.
 
 ## Running Database Queries
 
 ### Retrieving All Rows
 
 `db.select()` will return a promised array of objects.
+
+```js
+db.select(
+  sql: String,
+  sqlParams: Object,
+  connectionOpts?: Object = {}
+);
+```
+
+**Usage**
 
 ```js
 import db from "Utils/db";
@@ -186,7 +198,17 @@ const data = await db.select(
 
 ### Retrieving a Single Row
 
-`db.selectFirst()` will return a promised object.
+`db.selectFirst()` will return a promised object of a single record.
+
+```js
+db.selectFirst(
+  sql: String,
+  sqlParams: Object,
+  connectionOpts?: Object = {}
+);
+```
+
+**Usage**
 
 ```js
 import db from "Utils/db";
@@ -198,7 +220,24 @@ const data = await db.selectFirst("SELECT * FROM users WHERE id = :id", {
 
 ### Retrieving Paginated Rows
 
-`db.selectPaginate()` will return a promised object with itemized rows.
+`db.selectPaginate()` will return a promised object with pagination data and itemized rows.
+
+```js
+db.selectPaginate(
+  sql: String,
+  sqlParams: Object,
+  perPage?: Number = 10,
+  currentPage?: Number = 1,
+  total?: Number = null,
+  connectionOpts?: Object = {}
+);
+```
+
+!!! note
+
+    When `total` is not provided, `db.selectPaginate()` will run 2 separate queries to first fetch all the record count, followed by the actual query with `OFFSET` and `LIMIT`. It is strongly advisable to pass along the `total` for best performance.
+
+**Usage**
 
 ```js
 import db from "Utils/db";

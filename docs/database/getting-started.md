@@ -16,13 +16,13 @@ As of today, Lesgo! supports the following database services:
 
 Should you needed a traditional relational database, then [AWS RDS Aurora Serverless](https://aws.amazon.com/rds/aurora/serverless/) is the next best choice. Aurora Serverless is auto-scalable and pay only when it is up and running. It also allows you to connect to its Data API; removing the need to manage connection pools[^1] and leaving it to the [Data API](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html) to manage that for you.
 
-[See docs](audora-serverless.md).
+[See docs](rds-aurora.md#aurora-serverless).
 
 **AWS RDS Aurora Provisioned**
 
 Should you need to connect to an existing database that is already setup, [AWS RDS Aurora Provisioned](https://aws.amazon.com/rds/aurora) is also supported. It is recommedned to connect Lesgo! via RDS Proxy to manage connection pooling[^1].
 
-[See docs](audora-provisioned.md).
+[See docs](rds-aurora.md#aurora-provisioned).
 
 
 
