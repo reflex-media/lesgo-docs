@@ -72,6 +72,7 @@ npm run build -- -s dev
 Destroy everything, leave nothing behind.
 
 !!! danger "DANGER!"
+
     Note that this action is non-reversible! Everything will disappear from AWS.
 
 ```bash

@@ -27,6 +27,7 @@ Should you choose to use the default VPC, follow these steps:
 This will now set your lambda and required resources within your own AWS default VPC.
 
 !!! info "ElastiCache VPC Requirement"
+
     Note that ElastiCache requires you to set a VPC and will no longer work once you use a default VPC.
 
 ## Connecting to existing VPC

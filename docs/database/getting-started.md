@@ -24,10 +24,4 @@ Should you need to connect to an existing database that is already setup, [AWS R
 
 [See docs](rds-aurora.md#aurora-provisioned).
 
-
-
-
-
-
-
 [^1]: **Connection Pooling** is an important factor when considering for connecting to any database engine. This is because Lambda will need to establish a database connection before it can make any queries. As Lambda is scalable, each request will create its own connection, resulting in massive hits to the db connection load. With Data API and RDS Proxy, connection pooling is automatically handled for you with a separate service that is fully managed by AWS.

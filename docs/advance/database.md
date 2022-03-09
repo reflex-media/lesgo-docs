@@ -50,6 +50,7 @@ const data = await db.query("SELECT * FROM users");
 ```
 
 !!! warning "Warning"
+
     While it is OK to write raw queries with values inserted directly in the query statement, note that this is risky. Use prepared statement as show below as much as possible.
 
 ### Using Prepared Statement
@@ -95,9 +96,8 @@ db.connect({
   secretArn: "secretArnDataApi",
   resourceArn: "resourceArnDataApi",
   database: "databaseDataApi",
-  region: "us-east-1"
+  region: "us-east-1",
 });
-
 ```
 
 #### db.select
@@ -194,6 +194,7 @@ const paginatedData = await db.selectPaginate(
 ```
 
 !!! warning "Warning"
+
     If `total` is not provided, `db.selectPaginate` will execute the given query and calculate the total record count by calculating the length of the resulset with `.length`. It is highly recommended to provide the `total` to avoid this resource intensive process.
 
 #### db.insert
@@ -240,7 +241,7 @@ RDS Proxy uses the same configuration file as AWS Aurora DB located at `src/conf
 You may also simply update the respective environment files in `config/environments/*` as such:
 
 ```apache
-# RDS Proxy endpoint 
+# RDS Proxy endpoint
 DB_HOST=""
 
 # Database user
@@ -269,9 +270,8 @@ await db.connect({
   user: "root",
   password: "password",
   database: "rds-proxy-db",
-  persistes: false
+  persistes: false,
 });
-
 ```
 
 #### db.pConnect
@@ -290,11 +290,10 @@ await db.pConnect({
   user: "root",
   password: "password",
   database: "rds-proxy-db",
-  persistes: false
+  persistes: false,
 });
 
 await db.end();
-
 ```
 
 ## AWS DynamoDb
@@ -342,12 +341,12 @@ To run a basic query, you may use the query method on the `Utils/dynamodb`:
 import dynamodb from "Utils/dynamodb";
 
 const data = await dynamodb.query(
-  'stackName-settings',
-  'siteId = :siteId',
+  "stackName-settings",
+  "siteId = :siteId",
   {
-    ':siteId': 'default',
+    ":siteId": "default",
   },
-  'siteId, checkType'
+  "siteId, checkType"
 );
 
 /**
@@ -377,8 +376,8 @@ const data = await dynamodb.client.query({
     ':siteId': 'default',
     'siteId, checkType'
   },
-  KeyConditionExpression: "siteId = :siteId", 
-  ProjectionExpression: "siteId, checkType", 
+  KeyConditionExpression: "siteId = :siteId",
+  ProjectionExpression: "siteId, checkType",
   IndexName: 'settings-index',
   TableName: "stackName-settings"
  });
@@ -415,12 +414,12 @@ This will return the number of results
 import dynamodb from "Utils/dynamodb";
 
 const count = await dynamodb.queryCount(
-  'stackName-settings',
-  'siteId = :siteId',
+  "stackName-settings",
+  "siteId = :siteId",
   {
-    ':siteId': 'default',
+    ":siteId": "default",
   },
-  'siteId, checkType'
+  "siteId, checkType"
 );
 
 // 5
@@ -433,13 +432,10 @@ This will insert a new record. Refer [here](https://docs.aws.amazon.com/AWSJavaS
 ```js
 import dynamodb from "Utils/dynamodb";
 
-const data = await dynamodb.put(
-  'stackName-settings',
-  {
-    'siteId': 'default',
-    'checkType': 'text'
-  }
-);
+const data = await dynamodb.put("stackName-settings", {
+  siteId: "default",
+  checkType: "text",
+});
 ```
 
 #### dynamodb.update
@@ -450,14 +446,14 @@ This will update an existing record. Refer [here](https://docs.aws.amazon.com/AW
 import dynamodb from "Utils/dynamodb";
 
 const data = await dynamodb.update(
-  'stackName-settings',
+  "stackName-settings",
   {
-    'siteId': 'default',
-    'checkType': 'text'
+    siteId: "default",
+    checkType: "text",
   },
-  'set checkType = :checkType',
+  "set checkType = :checkType",
   {
-    ':checkType': 'photo'
+    ":checkType": "photo",
   }
 );
 ```

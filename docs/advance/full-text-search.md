@@ -31,11 +31,11 @@ To run a basic query, you may use the search method on the `Utils/es`:
 import es from "Utils/elasticsearch";
 
 const response = await es().search({
-	query: {
-        match: {
-        	quote: "winter"
-        }
-    }
+  query: {
+    match: {
+      quote: "winter",
+    },
+  },
 });
 
 /**
@@ -82,45 +82,43 @@ const response = await es().search({
 import es from "Utils/elasticsearch";
 
 const response = await es().search({
-	"from": 0,
-    "size": 4,
-    "query": {
-    	"bool": {
-    		"must": [
-	            {
-	                "match": {
-	                    "account_type": 2
-	                }
-	            },
-	        ],
-	        "must_not": {
-                "terms": {
-                    "account_id": [
-                        3627950,
-                    ]
-                }
-            },
-            "filter": [
-            	{
-	                "geo_distance": {
-	                    "distance": "50mi",
-	                    "distance_type": "arc",
-	                    "location": {
-	                        "lat": 37.7749295,
-	                        "lon": -122.4194155
-	                    }
-	                }
-	            }
-            ]
-    	}
-    },
-    "sort": [
+  from: 0,
+  size: 4,
+  query: {
+    bool: {
+      must: [
         {
-            "last_activity_dt": {
-                "order": "desc"
-            }
-        }
-    ]
+          match: {
+            account_type: 2,
+          },
+        },
+      ],
+      must_not: {
+        terms: {
+          account_id: [3627950],
+        },
+      },
+      filter: [
+        {
+          geo_distance: {
+            distance: "50mi",
+            distance_type: "arc",
+            location: {
+              lat: 37.7749295,
+              lon: -122.4194155,
+            },
+          },
+        },
+      ],
+    },
+  },
+  sort: [
+    {
+      last_activity_dt: {
+        order: "desc",
+      },
+    },
+  ],
 });
 
 /**
@@ -171,11 +169,11 @@ import es from "Utils/elasticsearch";
 const client = es().getClient();
 
 await client.index({
-    index: "game-of-thrones",
-    body: {
-        character: "Ned Stark",
-        quote: "Winter is coming."
-    }
+  index: "game-of-thrones",
+  body: {
+    character: "Ned Stark",
+    quote: "Winter is coming.",
+  },
 });
 ```
 
@@ -198,10 +196,13 @@ This will create a new index.
 ```js
 import es from "Utils/elasticsearch";
 
-await es().createIndices({
-	character: "Tyrion Lannister",
-    quote: "A mind needs books like a sword needs a whetstone."
-}, "game-of-thrones");
+await es().createIndices(
+  {
+    character: "Tyrion Lannister",
+    quote: "A mind needs books like a sword needs a whetstone.",
+  },
+  "game-of-thrones"
+);
 ```
 
 ### es.deleteIndices
@@ -215,8 +216,8 @@ await es().deleteIndices(["game-of-thrones", "twitter", "store"]);
 
 // More options
 await es().deleteIndices("game-of-thrones", {
-	ignore_unavailable: true,
-	timeout: "2000"
+  ignore_unavailable: true,
+  timeout: "2000",
 });
 ```
 
@@ -231,7 +232,7 @@ await es().existIndices("game-of-thrones");
 
 // More options
 await es().existIndices("game-of-thrones", {
-	id: "1"
+  id: "1",
 });
 ```
 
@@ -240,15 +241,16 @@ await es().existIndices("game-of-thrones", {
 This will add new fields to an existing data stream or index.
 
 !!! warning "Warning"
+
     Due to deprecation of `type` from Elasticsearch 7.0.0, use `es.getClient()` directly. For more info, refer [here](https://www.elastic.co/guide/en/elasticsearch/reference/7.16/removal-of-types.html)
 
 ```js
 import es from "Utils/elasticsearch";
 
 await es().putMapping("twitter", "user", {
-	"name": { "type": "text" },
-    "user_name": { "type": "keyword" },
-    "email": { "type": "keyword" }
+  name: { type: "text" },
+  user_name: { type: "keyword" },
+  email: { type: "keyword" },
 });
 ```
 
@@ -302,16 +304,19 @@ This will add a JSON document to the specified data stream or index and makes it
 import es from "Utils/elasticsearch";
 
 await es({ index: "game-of-thrones" }).create("1", {
-	character: "Tyrion Lannister",
-    quote: "A mind needs books like a sword needs a whetstone."
+  character: "Tyrion Lannister",
+  quote: "A mind needs books like a sword needs a whetstone.",
 });
 
 // Third parameter is to refresh or not
-await es({ index: "game-of-thrones" }).indexOrCreateById({
-	id: "1",
-	character: "Tyrion Lannister",
-    quote: "A mind needs books like a sword needs a whetstone."
-}, true)
+await es({ index: "game-of-thrones" }).indexOrCreateById(
+  {
+    id: "1",
+    character: "Tyrion Lannister",
+    quote: "A mind needs books like a sword needs a whetstone.",
+  },
+  true
+);
 
 /**
 {
@@ -339,18 +344,18 @@ This will perform multiple indexing or delete operations in a single API call. T
 import es from "Utils/elasticsearch";
 
 await es({ index: "game-of-thrones" }).bulkIndex([
-	{
-		profile_id: "1",
-		text: "If I fall, don't bring me back.",
-    	user: "jon",
-    	date: new Date()
-    },
-    {
-		profile_id: "2",
-		text: "Winter is coming",
-    	user: "ned",
-    	date: new Date()
-    },
+  {
+    profile_id: "1",
+    text: "If I fall, don't bring me back.",
+    user: "jon",
+    date: new Date(),
+  },
+  {
+    profile_id: "2",
+    text: "Winter is coming",
+    user: "ned",
+    date: new Date(),
+  },
 ]);
 
 /**
@@ -388,9 +393,9 @@ This adds a JSON document to the specified data stream or index and makes it sea
 import es from "Utils/elasticsearch";
 
 await es({ index: "game-of-thrones" }).create("1", {
-	text: "If I fall, don't bring me back.",
-	user: "jon",
-	date: new Date()
+  text: "If I fall, don't bring me back.",
+  user: "jon",
+  date: new Date(),
 });
 
 /**

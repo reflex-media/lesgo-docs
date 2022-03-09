@@ -3,7 +3,8 @@
 ## Quick Start
 
 !!! info "Prerequisites"
-    Install Serverless Framework globally with: `npm install -g serverless`.  
+
+    Install Serverless Framework globally with: `npm install -g serverless`.
     Refer to https://serverless.com/framework/docs/getting-started/ for additional info.
 
 Create Serverless project:
@@ -29,7 +30,7 @@ Access local url via browser or Postman: [http://localhost:8181/ping](http://loc
 
 ## Configuration
 
-There are 2 levels of configurations for the Lesgo! framework. 
+There are 2 levels of configurations for the Lesgo! framework.
 
 The project (serverless) configurations are stored in `config/` directory as `.yml` files. These configuration files affect your project set up and build.
 

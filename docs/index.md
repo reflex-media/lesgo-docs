@@ -7,7 +7,8 @@ Bootstrap your next serverless microservice with a light-weight node.js app buil
 ## Quick Start
 
 !!! info "Prerequisites"
-    Install Serverless Framework globally with: `npm install -g serverless`.  
+
+    Install Serverless Framework globally with: `npm install -g serverless`.
     Refer to https://serverless.com/framework/docs/getting-started/ for additional info.
 
 Create Serverless project:

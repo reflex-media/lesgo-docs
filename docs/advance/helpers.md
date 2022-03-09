@@ -27,14 +27,13 @@ One way hashing of data using the faster MD5.
 ```js
 import { hashMD5 } from "Utils/crypto";
 
-const hashedMD5String = hashMD5(
-  "some data to hash"
-);
+const hashedMD5String = hashMD5("some data to hash");
 
 // 527d738baba016840c3a33f2790845dd
 ```
 
 !!! warning "Warning"
+
     While hashMD5 is fast, it is not at all recommended as it is considered a weak 1-iteration hash with no salt.
 
 ### Encrypt
@@ -44,9 +43,11 @@ const hashedMD5String = hashMD5(
 ```js
 import { encrypt } from "Utils/crypto";
 
-const encryptedStr = encrypt("some string to be encrypted that can be decrypted");
+const encryptedStr = encrypt(
+  "some string to be encrypted that can be decrypted"
+);
 
-// 
+//
 ```
 
 ### Decrypt
@@ -58,7 +59,7 @@ import { decrypt } from "Utils/crypto";
 
 const decryptedStr = decrypt("some-encrypted-string");
 
-// 
+//
 ```
 
 ## Generate Uid
@@ -82,7 +83,7 @@ const uidSuffix = generateUid({ suffix: "someSuffix" }));
 
 // 7d6af6c3cde214093d4b8-someSuffix
 
-cost uidLimited = generateUid({ length: 36 }));
+const uidLimited = generateUid({ length: 36 }));
 
 // ce214094b8daf683d4b7d63ccde21403dd93
 ```
@@ -136,11 +137,11 @@ isEmpty(undefined);
 isEmpty(null);
 isEmpty({});
 isEmpty([]);
-isEmpty('');
+isEmpty("");
 
 // true
 
-isEmpty('test');
+isEmpty("test");
 isEmpty(0);
 
 // false
