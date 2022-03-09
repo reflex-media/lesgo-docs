@@ -220,3 +220,83 @@ new LesgoException(
 )
 */
 ```
+
+## Prep Insert SQL Parameter
+
+> `Utils/prepSQLInsertParams`
+
+Takes in data and returns a nicely formatted response to be used for `Utils/db.insert()`.
+
+```js
+prepSQLInsertParams(
+  params: Object, // data to insert to db (matching key to db column)
+  columns: Object // valid db column names
+): {
+  insertColumns,  // comma-separated db column field names
+  insertValues,   // comma-separated field values in prepared statement form i.e; :username, :id, etc
+  insertFields    // data object to insert
+};
+```
+
+**Usage**
+
+```js
+import prepSQLInsertParams from "Utils/prepSQLInsertParams";
+
+const params = {
+  username: "John",
+  email: "john.doe@gmail.com",
+};
+
+const validFields = [
+  { key: "username", type: "string", required: true },
+  { key: "email", type: "string", required: true },
+];
+
+const { insertColumns, insertValues, insertFields } = prepSQLInsertParams(
+  params,
+  validFields
+);
+```
+
+See usage with [`Utils/db.insert()`](../database/rds-aurora.md#inserting-a-single-record).
+
+## Prep Update SQL Parameter
+
+> `Utils/prepSQLUpdateParams`
+
+Takes in data and returns a nicely formatted response to be used for `Utils/db.update()`.
+
+```js
+prepSQLUpdateParams(
+  params: Object, // data to update to db (matching key to db column)
+  columns: Object // valid db column names
+): {
+  updateColumnValues, // comma-separated column=:value pair
+  wherePrimaryKey,    // primary key (based on default table.id)
+  updateFields        // data object to update
+};
+```
+
+**Usage**
+
+```js
+import prepSQLUpdateParams from "Utils/prepSQLUpdateParams";
+
+const params = {
+  id: 1,
+  username: "John",
+  email: "john.doe@gmail.com",
+};
+
+const validFields = [
+  { key: "id", type: "number", required: true },
+  { key: "username", type: "string", required: true },
+  { key: "email", type: "string", required: true },
+];
+
+const { updateColumnValues, wherePrimaryKey, updateFields } =
+  prepSQLUpdateParams(params, validFields);
+```
+
+See usage with [`Utils/db.update()`](../database/rds-aurora.md#updating-an-existing-record).

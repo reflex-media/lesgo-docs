@@ -260,10 +260,20 @@ const data = await db.selectPaginate(
 `db.insert()` will insert a new record and return only the newly inserted primary key.
 
 ```js
+db.insert(
+  sql: String,
+  sqlParams: Object,
+  connectionOpts?: Object = {}
+);
+```
+
+**Usage**
+
+```js
 import db from "Utils/db";
 
 const insertId = await db.insert(
-  "INSERT INTO users(username,email,created_at) VALUES (:username, :email:, now())",
+  "INSERT INTO users(username,email) VALUES (:username, :email)",
   {
     username: "John",
     email: "john@mail.com",
@@ -271,7 +281,7 @@ const insertId = await db.insert(
 );
 ```
 
-A much better aproach to inserting records is to first validate the fields and then inserting it with `Utils/prepSQLInsertParams`.
+A much better approach to inserting records is to first validate the fields and then inserting it with `Utils/prepSQLInsertParams`.
 
 ```js
 import prepSQLInsertParams from "Utils/prepSQLInsertParams";
@@ -279,8 +289,8 @@ import validateFields from "Utils/validateFields";
 import db from "Utils/db";
 
 const validFields = [
-  { key: "user_id", type: "number", required: true },
-  { key: "member_id", type: "number", required: true },
+  { key: "username", type: "string", required: true },
+  { key: "email", type: "string", required: true },
 ];
 
 let validated = validateFields({ ...params }, validFields);
@@ -291,16 +301,26 @@ const { insertColumns, insertValues, insertFields } = prepSQLInsertParams(
 );
 
 await db.insert(
-  `INSERT INTO blocks(${insertColumns}) VALUES(${insertValues})`,
+  `INSERT INTO users(${insertColumns}) VALUES(${insertValues})`,
   insertFields
 );
 ```
 
-Learn more about [Utils/validateFields](../advance/helpers.md#field-validator).
+Learn more about [Utils/validateFields](../advance/helpers.md#field-validator) and [Utils/prepSQLInsertParams](../advance/helpers.md#prep-insert-sql-parameter).
 
-### Updating an Existing Single Record
+### Updating an Existing Record
 
 `db.update()` will update an existing record and throw an Error if no record found for update.
+
+```js
+db.update(
+  sql: String,
+  sqlParams: Object,
+  connectionOpts?: Object = {}
+);
+```
+
+**Usage**
 
 ```js
 import db from "Utils/db";
@@ -313,4 +333,56 @@ const insertId = await db.update(
     email: "john@mail.com",
   }
 );
+```
+
+As with insert, updatating an existing record is best done with `Utils/prepSQLUpdateParams`.
+
+```js
+import prepSQLUpdateParams from "Utils/prepSQLUpdateParams";
+import validateFields from "Utils/validateFields";
+import db from "Utils/db";
+
+const validFields = [
+  { key: "username", type: "string", required: true },
+  { key: "email", type: "string", required: true },
+];
+
+const params = {
+  username: "John",
+  email: "john@mail.com",
+};
+
+let validated = validateFields(params, validFields);
+
+const { updateColumnValues, wherePrimaryKey, updateFields } =
+  prepSQLUpdateParams(validated, validFields);
+
+await db.update(
+  `UPDATE users SET ${updateColumnValues}, updated_at=NOW() WHERE ${wherePrimaryKey}`,
+  updateFields
+);
+```
+
+Learn more about [Utils/prepSQLUpdateParams](../advance/helpers.md#prep-update-sql-parameter).
+
+### Raw Query
+
+All of the above executes `db.query()`. You may also execute your queries directly and get a raw response.
+
+```js
+db.query(
+  sql: String,
+  sqlParams: Object,
+  connectionOpts?: Object = {}
+);
+```
+
+**Usage**
+
+```js
+import db from "Utils/db";
+
+const data = await db.query("SELECT * FROM users WHERE id = :id", {
+  id: 1,
+});
 ```
