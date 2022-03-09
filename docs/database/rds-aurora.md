@@ -111,9 +111,9 @@ DB_RDS_PROXY_PASSWORD=""
 
 Connecting to the database is automatically handled when you execute your query.
 
-For Aurora Serverless (via Data API), this is nothing to worry about as the opening and closing of database connections is handled within Data API itself! Thus, one less worry about manaing connection pools.
+For Aurora Serverless (via Data API), this is nothing to worry about as the opening and closing of database connections is handled within Data API itself! Thus, one less worry about managing connection pools.
 
-For Aurora Provisioed (via RDS Proxy), a connection will be opened and closed per every query executed. While this works, it is not effecient as opening and closing a database connection will cost additional time (and money!).
+For Aurora Provisioned (via RDS Proxy), a connection will be opened and closed per every query executed. While this works, it is not efficient as opening and closing a database connection will cost additional time (and money!).
 
 As such, specifically for RDS Proxy, you should make use of Lesgo's persistent connection method `db.pConnect()`. This should be handled at the Handler level as much as possible.
 
@@ -154,7 +154,8 @@ const originalHandler = async (event) => {
   await db.pConnect();
 
   try {
-    return ping(event.input);
+    const resp = await ping(event.input);
+    return resp;
   } catch (err) {
     throw err;
   } finally {

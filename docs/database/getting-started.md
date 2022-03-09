@@ -1,10 +1,6 @@
 # Getting Started
 
-As of today, Lesgo! supports the following database services:
-
-- AWS DynamoDB
-- AWS RDS Aurora Serverless
-- AWS RDS Aurora Provisioned
+As of today, Lesgo! supports the following database services.
 
 **AWS DynamoDB**
 
