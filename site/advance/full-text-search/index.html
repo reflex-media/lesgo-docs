@@ -229,10 +229,57 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Prologue
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Prologue" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Prologue
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
-        Prologue
+      <a href="../../prologue/release-notes/" class="md-nav__link">
+        Release Notes
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prologue/contribution-guide/" class="md-nav__link">
+        Contribution Guide
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -271,7 +318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/" class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Installation
       </a>
     </li>
@@ -441,20 +488,6 @@
     <li class="md-nav__item">
       <a href="../cache/" class="md-nav__link">
         Cache
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../database/" class="md-nav__link">
-        Database
       </a>
     </li>
   
@@ -875,21 +908,6 @@
   
 
     
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../contributing/" class="md-nav__link">
-        Contributing
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -1061,11 +1079,11 @@
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">es</span> <span class="kr">from</span> <span class="s2">&quot;Utils/elasticsearch&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">es</span><span class="p">().</span><span class="nx">search</span><span class="p">({</span>
-    <span class="nx">query</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">match</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">quote</span><span class="o">:</span> <span class="s2">&quot;winter&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+  <span class="nx">query</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">match</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">quote</span><span class="o">:</span> <span class="s2">&quot;winter&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
 <span class="p">});</span>
 
 <span class="cm">/**</span>
@@ -1109,45 +1127,43 @@
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">es</span> <span class="kr">from</span> <span class="s2">&quot;Utils/elasticsearch&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">es</span><span class="p">().</span><span class="nx">search</span><span class="p">({</span>
-    <span class="s2">&quot;from&quot;</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
-    <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mf">4</span><span class="p">,</span>
-    <span class="s2">&quot;query&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;bool&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;must&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;match&quot;</span><span class="o">:</span> <span class="p">{</span>
-                        <span class="s2">&quot;account_type&quot;</span><span class="o">:</span> <span class="mf">2</span>
-                    <span class="p">}</span>
-                <span class="p">},</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;must_not&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;terms&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;account_id&quot;</span><span class="o">:</span> <span class="p">[</span>
-                        <span class="mf">3627950</span><span class="p">,</span>
-                    <span class="p">]</span>
-                <span class="p">}</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;filter&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;geo_distance&quot;</span><span class="o">:</span> <span class="p">{</span>
-                        <span class="s2">&quot;distance&quot;</span><span class="o">:</span> <span class="s2">&quot;50mi&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;distance_type&quot;</span><span class="o">:</span> <span class="s2">&quot;arc&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;location&quot;</span><span class="o">:</span> <span class="p">{</span>
-                            <span class="s2">&quot;lat&quot;</span><span class="o">:</span> <span class="mf">37.7749295</span><span class="p">,</span>
-                            <span class="s2">&quot;lon&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">122.4194155</span>
-                        <span class="p">}</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;sort&quot;</span><span class="o">:</span> <span class="p">[</span>
+  <span class="kr">from</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+  <span class="nx">size</span><span class="o">:</span> <span class="mf">4</span><span class="p">,</span>
+  <span class="nx">query</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">bool</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">must</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;last_activity_dt&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="s2">&quot;desc&quot;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
+          <span class="nx">match</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">account_type</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span>
+          <span class="p">},</span>
+        <span class="p">},</span>
+      <span class="p">],</span>
+      <span class="nx">must_not</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">terms</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">account_id</span><span class="o">:</span> <span class="p">[</span><span class="mf">3627950</span><span class="p">],</span>
+        <span class="p">},</span>
+      <span class="p">},</span>
+      <span class="nx">filter</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nx">geo_distance</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">distance</span><span class="o">:</span> <span class="s2">&quot;50mi&quot;</span><span class="p">,</span>
+            <span class="nx">distance_type</span><span class="o">:</span> <span class="s2">&quot;arc&quot;</span><span class="p">,</span>
+            <span class="nx">location</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">lat</span><span class="o">:</span> <span class="mf">37.7749295</span><span class="p">,</span>
+              <span class="nx">lon</span><span class="o">:</span> <span class="o">-</span><span class="mf">122.4194155</span><span class="p">,</span>
+            <span class="p">},</span>
+          <span class="p">},</span>
+        <span class="p">},</span>
+      <span class="p">],</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="nx">sort</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">last_activity_dt</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">order</span><span class="o">:</span> <span class="s2">&quot;desc&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+  <span class="p">],</span>
 <span class="p">});</span>
 
 <span class="cm">/**</span>
@@ -1194,11 +1210,11 @@
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">es</span><span class="p">().</span><span class="nx">getClient</span><span class="p">();</span>
 
 <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">index</span><span class="p">({</span>
-    <span class="nx">index</span><span class="o">:</span> <span class="s2">&quot;game-of-thrones&quot;</span><span class="p">,</span>
-    <span class="nx">body</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">character</span><span class="o">:</span> <span class="s2">&quot;Ned Stark&quot;</span><span class="p">,</span>
-        <span class="nx">quote</span><span class="o">:</span> <span class="s2">&quot;Winter is coming.&quot;</span>
-    <span class="p">}</span>
+  <span class="nx">index</span><span class="o">:</span> <span class="s2">&quot;game-of-thrones&quot;</span><span class="p">,</span>
+  <span class="nx">body</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">character</span><span class="o">:</span> <span class="s2">&quot;Ned Stark&quot;</span><span class="p">,</span>
+    <span class="nx">quote</span><span class="o">:</span> <span class="s2">&quot;Winter is coming.&quot;</span><span class="p">,</span>
+  <span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
 <h2 id="available-methods">Available methods<a class="headerlink" href="#available-methods" title="Permanent link">&para;</a></h2>
@@ -1212,10 +1228,13 @@
 <p>This will create a new index.</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">es</span> <span class="kr">from</span> <span class="s2">&quot;Utils/elasticsearch&quot;</span><span class="p">;</span>
 
-<span class="k">await</span> <span class="nx">es</span><span class="p">().</span><span class="nx">createIndices</span><span class="p">({</span>
+<span class="k">await</span> <span class="nx">es</span><span class="p">().</span><span class="nx">createIndices</span><span class="p">(</span>
+  <span class="p">{</span>
     <span class="nx">character</span><span class="o">:</span> <span class="s2">&quot;Tyrion Lannister&quot;</span><span class="p">,</span>
-    <span class="nx">quote</span><span class="o">:</span> <span class="s2">&quot;A mind needs books like a sword needs a whetstone.&quot;</span>
-<span class="p">},</span> <span class="s2">&quot;game-of-thrones&quot;</span><span class="p">);</span>
+    <span class="nx">quote</span><span class="o">:</span> <span class="s2">&quot;A mind needs books like a sword needs a whetstone.&quot;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;game-of-thrones&quot;</span>
+<span class="p">);</span>
 </code></pre></div>
 <h3 id="esdeleteindices">es.deleteIndices<a class="headerlink" href="#esdeleteindices" title="Permanent link">&para;</a></h3>
 <p>This will delete one or more indices. For more options, refer <a href="https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#_delete">here</a></p>
@@ -1225,8 +1244,8 @@
 
 <span class="c1">// More options</span>
 <span class="k">await</span> <span class="nx">es</span><span class="p">().</span><span class="nx">deleteIndices</span><span class="p">(</span><span class="s2">&quot;game-of-thrones&quot;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">ignore_unavailable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">timeout</span><span class="o">:</span> <span class="s2">&quot;2000&quot;</span>
+  <span class="nx">ignore_unavailable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">timeout</span><span class="o">:</span> <span class="s2">&quot;2000&quot;</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div>
 <h3 id="esexistindices">es.existIndices<a class="headerlink" href="#esexistindices" title="Permanent link">&para;</a></h3>
@@ -1237,7 +1256,7 @@
 
 <span class="c1">// More options</span>
 <span class="k">await</span> <span class="nx">es</span><span class="p">().</span><span class="nx">existIndices</span><span class="p">(</span><span class="s2">&quot;game-of-thrones&quot;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span>
+  <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div>
 <h3 id="esputmapping">es.putMapping<a class="headerlink" href="#esputmapping" title="Permanent link">&para;</a></h3>
@@ -1249,9 +1268,9 @@
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">es</span> <span class="kr">from</span> <span class="s2">&quot;Utils/elasticsearch&quot;</span><span class="p">;</span>
 
 <span class="k">await</span> <span class="nx">es</span><span class="p">().</span><span class="nx">putMapping</span><span class="p">(</span><span class="s2">&quot;twitter&quot;</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;text&quot;</span> <span class="p">},</span>
-    <span class="s2">&quot;user_name&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;keyword&quot;</span> <span class="p">},</span>
-    <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;keyword&quot;</span> <span class="p">}</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;text&quot;</span> <span class="p">},</span>
+  <span class="nx">user_name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;keyword&quot;</span> <span class="p">},</span>
+  <span class="nx">email</span><span class="o">:</span> <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;keyword&quot;</span> <span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
 <h3 id="esget">es.get<a class="headerlink" href="#esget" title="Permanent link">&para;</a></h3>
@@ -1297,16 +1316,19 @@
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">es</span> <span class="kr">from</span> <span class="s2">&quot;Utils/elasticsearch&quot;</span><span class="p">;</span>
 
 <span class="k">await</span> <span class="nx">es</span><span class="p">({</span> <span class="nx">index</span><span class="o">:</span> <span class="s2">&quot;game-of-thrones&quot;</span> <span class="p">}).</span><span class="nx">create</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">character</span><span class="o">:</span> <span class="s2">&quot;Tyrion Lannister&quot;</span><span class="p">,</span>
-    <span class="nx">quote</span><span class="o">:</span> <span class="s2">&quot;A mind needs books like a sword needs a whetstone.&quot;</span>
+  <span class="nx">character</span><span class="o">:</span> <span class="s2">&quot;Tyrion Lannister&quot;</span><span class="p">,</span>
+  <span class="nx">quote</span><span class="o">:</span> <span class="s2">&quot;A mind needs books like a sword needs a whetstone.&quot;</span><span class="p">,</span>
 <span class="p">});</span>
 
 <span class="c1">// Third parameter is to refresh or not</span>
-<span class="k">await</span> <span class="nx">es</span><span class="p">({</span> <span class="nx">index</span><span class="o">:</span> <span class="s2">&quot;game-of-thrones&quot;</span> <span class="p">}).</span><span class="nx">indexOrCreateById</span><span class="p">({</span>
+<span class="k">await</span> <span class="nx">es</span><span class="p">({</span> <span class="nx">index</span><span class="o">:</span> <span class="s2">&quot;game-of-thrones&quot;</span> <span class="p">}).</span><span class="nx">indexOrCreateById</span><span class="p">(</span>
+  <span class="p">{</span>
     <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
     <span class="nx">character</span><span class="o">:</span> <span class="s2">&quot;Tyrion Lannister&quot;</span><span class="p">,</span>
-    <span class="nx">quote</span><span class="o">:</span> <span class="s2">&quot;A mind needs books like a sword needs a whetstone.&quot;</span>
-<span class="p">},</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="nx">quote</span><span class="o">:</span> <span class="s2">&quot;A mind needs books like a sword needs a whetstone.&quot;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="kc">true</span>
+<span class="p">);</span>
 
 <span class="cm">/**</span>
 <span class="cm">{</span>
@@ -1330,18 +1352,18 @@
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">es</span> <span class="kr">from</span> <span class="s2">&quot;Utils/elasticsearch&quot;</span><span class="p">;</span>
 
 <span class="k">await</span> <span class="nx">es</span><span class="p">({</span> <span class="nx">index</span><span class="o">:</span> <span class="s2">&quot;game-of-thrones&quot;</span> <span class="p">}).</span><span class="nx">bulkIndex</span><span class="p">([</span>
-    <span class="p">{</span>
-        <span class="nx">profile_id</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-        <span class="nx">text</span><span class="o">:</span> <span class="s2">&quot;If I fall, don&#39;t bring me back.&quot;</span><span class="p">,</span>
-        <span class="nx">user</span><span class="o">:</span> <span class="s2">&quot;jon&quot;</span><span class="p">,</span>
-        <span class="nx">date</span><span class="o">:</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">()</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nx">profile_id</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-        <span class="nx">text</span><span class="o">:</span> <span class="s2">&quot;Winter is coming&quot;</span><span class="p">,</span>
-        <span class="nx">user</span><span class="o">:</span> <span class="s2">&quot;ned&quot;</span><span class="p">,</span>
-        <span class="nx">date</span><span class="o">:</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">()</span>
-    <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">profile_id</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nx">text</span><span class="o">:</span> <span class="s2">&quot;If I fall, don&#39;t bring me back.&quot;</span><span class="p">,</span>
+    <span class="nx">user</span><span class="o">:</span> <span class="s2">&quot;jon&quot;</span><span class="p">,</span>
+    <span class="nx">date</span><span class="o">:</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(),</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">profile_id</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+    <span class="nx">text</span><span class="o">:</span> <span class="s2">&quot;Winter is coming&quot;</span><span class="p">,</span>
+    <span class="nx">user</span><span class="o">:</span> <span class="s2">&quot;ned&quot;</span><span class="p">,</span>
+    <span class="nx">date</span><span class="o">:</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(),</span>
+  <span class="p">},</span>
 <span class="p">]);</span>
 
 <span class="cm">/**</span>
@@ -1375,9 +1397,9 @@
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">es</span> <span class="kr">from</span> <span class="s2">&quot;Utils/elasticsearch&quot;</span><span class="p">;</span>
 
 <span class="k">await</span> <span class="nx">es</span><span class="p">({</span> <span class="nx">index</span><span class="o">:</span> <span class="s2">&quot;game-of-thrones&quot;</span> <span class="p">}).</span><span class="nx">create</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">text</span><span class="o">:</span> <span class="s2">&quot;If I fall, don&#39;t bring me back.&quot;</span><span class="p">,</span>
-    <span class="nx">user</span><span class="o">:</span> <span class="s2">&quot;jon&quot;</span><span class="p">,</span>
-    <span class="nx">date</span><span class="o">:</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">()</span>
+  <span class="nx">text</span><span class="o">:</span> <span class="s2">&quot;If I fall, don&#39;t bring me back.&quot;</span><span class="p">,</span>
+  <span class="nx">user</span><span class="o">:</span> <span class="s2">&quot;jon&quot;</span><span class="p">,</span>
+  <span class="nx">date</span><span class="o">:</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(),</span>
 <span class="p">});</span>
 
 <span class="cm">/**</span>
