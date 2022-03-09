@@ -44,9 +44,11 @@ markdown_extensions:
   - pymdownx.snippets
 
 nav:
-  - Prologue: index.md
+  - Prologue:
+      - Release Notes: prologue/release-notes.md
+      - Contribution Guide: prologue/contribution-guide.md
   - Getting Started:
-      - Installation: getting-started/installation.md
+      - Installation: index.md
       - Directory Structure: getting-started/structure.md
       - Deployment: getting-started/deployment.md
       - Available Scripts: getting-started/available-scripts.md
@@ -71,4 +73,3 @@ nav:
       - RDS Aurora: database/rds-aurora.md
   - Packages:
       - Firebase: packages/firebase.md
-  - Contributing: contributing.md

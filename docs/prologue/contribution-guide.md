@@ -1,4 +1,4 @@
-# Contributing
+# Contribution Guide
 
 Interested in contributing to the Lesgo! framework? Want to report a bug? Before you do, please read the following guidelines.
 

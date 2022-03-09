@@ -1,0 +1,117 @@
+# Release Notes
+
+## Multi SLS configuration support
+
+Lesgo! now supports multiple `serverless.yml` configuration to exist within the same codebase. This allows you to deploy separate applications. Useful for cases where you might have exceeded the resource allocation.
+
+Simply create a new `serverless-x.yml` file, update the configurations accordingly, add a new `deploy-x` script in `package.json`, specifying the config file to deploy with `-c "severless-x.yml"`
+
+**Sample package.json**
+
+```json
+{
+    ...,
+    "scripts": {
+        ...,
+        "deploy": "lesgo-scripts -t deploy",
+        "deploy-backend": "lesgo-scripts -t deploy -c \"./serverless-x.yml\"",
+        ...,
+    },
+    ...
+}
+```
+
+**Sample Deployment**
+
+```apache
+npm run deploy-x -- -s dev
+```
+
+## Disconnecting of Persistent Connections
+
+Previously, persistent connections have to be manually disconnected for both db and cache connections. As long as you want to have persistent connection, add that to the Handler and pass it along to the middlewares.
+
+**Sample usage with middleware**
+
+```js
+// src/handlers/utils/ping.js
+
+import middy from "@middy/core";
+import httpMiddleware from "Middlewares/httpMiddleware";
+import ping from "Core/utils/ping";
+import db from "Utils/db";
+
+const originalHandler = async (event) => {
+  await Promise.all([dbRead.pConnect(), cache.pConnect()]); // connect to the db and cache before anything else
+
+  return ping(event.input);
+};
+
+export const handler = middy(originalHandler);
+
+handler.use(httpMiddleware({ db, cache })); // pass along the instance to the middleware
+```
+
+**Sample usage without middleware**
+
+```js
+// src/handlers/utils/ping.js
+
+import middy from "@middy/core";
+import ping from "Core/utils/ping";
+import db from "Utils/db";
+
+const originalHandler = async (event) => {
+  await db.pConnect(); // connect to the db before anything else
+
+  try {
+    const resp = await ping(event.input); // important to await here to prevent premature disconnection
+    return resp;
+  } catch (err) {
+    throw err;
+  } finally {
+    db.end(); // disconnect after everything else is done
+  }
+};
+
+export const handler = middy(originalHandler);
+
+handler.use();
+```
+
+## memcache-plus over memcached-elasticache
+
+memcached-elasticache is no longer being actively maintained and has been unstable especially with timeout disconnections. As such, [memcache-plus](https://www.npmjs.com/package/memcache-plus) is the new SDK for AWS Elasticache Memcached service.
+
+The `src/config/cache.js` should be updated accordingly.
+
+```js
+export default {
+  default: "memcached",
+  connections: {
+    memcached: {
+      options: {
+        hosts: [
+          process.env.ELASTICACHE_MEMCACHED_URL ||
+            "api-dev-cache.xdw723.cfg.uswest2.cache.amazonaws.com:11211",
+        ],
+        autoDiscover: true,
+      },
+    },
+  },
+};
+```
+
+!!! important "@elastic/elasticsearch@7.13.0"
+
+    It has been discovered that `@elastic/elasticsearch` greater than `@7.13.0` is not compatible with the SDK. Thus is is important to ensure the package version is set to 7.13.0.
+
+## es.getMulti()
+
+A new method to fetch multiple cache keys.
+
+**Usage example**
+
+```js
+
+```

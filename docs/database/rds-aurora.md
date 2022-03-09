@@ -146,7 +146,6 @@ Should you want to handle the closing of the db connection yourself and without 
 // src/handlers/utils/ping.js
 
 import middy from "@middy/core";
-import httpMiddleware from "Middlewares/httpMiddleware";
 import ping from "Core/utils/ping";
 import db from "Utils/db";
 
