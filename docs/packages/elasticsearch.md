@@ -1,6 +1,6 @@
-# Full-Text Search
+# Elasticsearch
 
-Lesgo! is pre-configured with AWS Elasticsearch for full-text search.
+Lesgo! is pre-configured with AWS Elasticsearch 7.10 engine.
 
 ## Configuration
 
@@ -295,6 +295,97 @@ await es({ index: "game-of-thrones" }).get("0");
 }
 */
 ```
+
+### es.search
+
+This will return documents based on search query.
+
+```js
+es.search(
+  body: Object, // query object to execute
+);
+```
+
+**Example Usage**
+
+```js
+import es from "Utils/elasticsearch";
+
+const search = es({ index: "game-of-thrones" });
+
+await search.search({
+  query: {
+    match: {
+      "user.id": "kimchy",
+    },
+  },
+});
+```
+
+### es.msearch
+
+This will execute multiple different searches using a single API request.
+
+```js
+es.msearch(
+  body: Array, // array of query objects to execute
+);
+```
+
+**Example Usage**
+
+```js
+import es from "Utils/elasticsearch";
+
+const search = es({ index: "game-of-thrones" });
+
+await search.msearch([
+  { index: "game-of-thrones" },
+  {
+    query: {
+      bool: {
+        must: [
+          {
+            match: {
+              hashtag: "new",
+            },
+          },
+        ],
+        must_not: [
+          {
+            match: {
+              hashtag: "old",
+            },
+          },
+        ],
+      },
+    },
+  },
+  { index: "game-of-thrones" },
+  {
+    query: {
+      bool: {
+        must: [
+          {
+            match: {
+              hashtag: "new",
+            },
+          },
+        ],
+        must_not: [
+          {
+            match: {
+              hashtag: "old",
+            },
+          },
+        ],
+      },
+    },
+  },
+]);
+```
+
+Learn more with [Multi Search API](https://www.elastic.co/guide/en/elasticsearch/reference/7.13/search-multi-search.html).
 
 ### es.indexOrCreateById / es.create
 

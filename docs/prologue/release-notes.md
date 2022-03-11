@@ -102,16 +102,25 @@ export default {
 };
 ```
 
-!!! important "@elastic/elasticsearch@7.13.0"
+## Additional Methods
 
-    It has been discovered that `@elastic/elasticsearch` greater than `@7.13.0` is not compatible with the SDK. Thus is is important to ensure the package version is set to 7.13.0.
+### Utils/cache
 
-## es.getMulti()
+- Retrieve multiple cache data with `cache.getMulti()`. [Learn more](../advance/cache.md#retrieving-multiple-data-from-the-cache)
+- Delete multiple cache data with `cache.delMulti()`. [Learn more](../advance/cache.md#deleting-multiple-cache-data)
 
-A new method to fetch multiple cache keys.
+### Utils/elasticsearch
 
-**Usage example**
+Added a new method to execute multiple different queries using a single API request with `es.msearch()`. [Learn more](../packages/elasticsearch.md#esmsearch).
 
-```js
+## Additional Notes
 
-```
+### Elasticsearch 7.13.0
+
+It has been discovered that `@elastic/elasticsearch` greater than `@7.13.0` is not compatible with the SDK. Thus is is important to ensure the package version is set to 7.13.0.
+
+### Removal of db config persists
+
+As part of ensuring file size optimization (and thus improving function initialization performance), usage of `persists` key has now been deprecated and is strongly advised to be removed in the `config/db.connections.rdsProxy` and `config/db.connections.rdsProxy`.
+
+Persistent Connections should be added on a as needed basis in the Handlers and passed along to the middlewares. See [Persistent Connection for RDS](../database/rds-aurora.md#persistent-connection-for-rds-proxy) Proxt for more info.

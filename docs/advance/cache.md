@@ -14,11 +14,9 @@ export default {
       url: process.env.ELASTICACHE_MEMCACHED_URL || null,
       options: {
         autoDiscover: true,
-        autoDiscoverInterval: 60000,
-        autoDiscoverOverridesRemove: false
-      }
-    }
-  }
+      },
+    },
+  },
 };
 ```
 
@@ -51,18 +49,41 @@ Import the `cache` module from `Utils/cache`.
 
 To test the sample usage, uncomment `samples.yml` function in `serverless.yml` and deploy the application to a development environment.
 
-### Retrieving items from the cache
+### Retrieving data from the cache
 
-You may use the `get` method on the `cache` util to fetch items from the cache.
+`Utils/cache.get()` will return data from given cache key.
+
+```js
+cache.get(
+  key: String, // cache key to fetch data from
+): Promise;
+```
 
 ```js
 import cache from "Utils/cache";
 
-const cacheKey = "foo";
-const data = await cache.get(cacheKey);
+const data = await cache.get("foo");
 ```
 
-Test sample usage with this url endpoint `/samples/cache?method=get&key=sampleCacheKey`.
+### Retrieving multiple data from the cache
+
+`Utils/cache.getMulti()` will return multiple data from multiple cache keys.
+
+```js
+cache.getMulti(
+  keys: String[], // array of cache keys to fetch data from
+): Promise;
+```
+
+**Example Usage**
+
+```js
+import cache from "Utils/cache";
+
+const cacheKeys = ["foo", "foo2", "foo3"];
+
+const data = await cache.getMulti(["foo", "foo2", "foo3"]);
+```
 
 ### Storing items to the cache
 
@@ -80,15 +101,38 @@ const data = await cache.set(cacheKey, cacheValue, cacheLifetimeInSeconds);
 
 Test sample usage with this url endpoint `/samples/cache?method=set&key=sampleCacheKey&value=sampleCacheValue`.
 
-### Deleting items from the cache
+### Deleting cache data
 
-You may use the `del` method on the `cache` util to delete items from the cache.
+`Utils/cache.del()` will remove the cache key.
+
+```js
+cache.del(
+  key: String, // cache key to remove
+): Promise;
+```
+
+**Example Usage**
 
 ```js
 import cache from "Utils/cache";
 
-const cacheKey = "foo";
-const data = await cache.del(cacheKey);
+await cache.del("foo");
 ```
 
-Test sample usage with this url endpoint `/samples/cache?method=del&key=sampleCacheKey`.
+### Deleting multiple cache data
+
+`Utils/cache.del()` will remove the cache key.
+
+```js
+cache.delMulti(
+  keys: String[], // array of cache keys to remove
+): Promise;
+```
+
+**Example Usage**
+
+```js
+import cache from "Utils/cache";
+
+await cache.delMulti(["foo", "foo2", "foo3"]);
+```

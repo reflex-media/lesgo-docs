@@ -63,7 +63,6 @@ nav:
       - Queues: advance/queues.md
       - Task Scheduling: advance/task-scheduling.md
       - Unit Tests: advance/unit-tests.md
-      - Full-Text Search: advance/full-text-search.md
       - Typescript: advance/typescript.md
   - Security:
       - VPC: security/vpc.md
@@ -72,4 +71,5 @@ nav:
       - DynamoDB: database/dynamodb.md
       - RDS Aurora: database/rds-aurora.md
   - Packages:
+      - Elasticsearch: packages/elasticsearch.md
       - Firebase: packages/firebase.md
