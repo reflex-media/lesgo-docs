@@ -535,8 +535,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#retrieving-items-from-the-cache" class="md-nav__link">
-    Retrieving items from the cache
+  <a href="#retrieving-data-from-the-cache" class="md-nav__link">
+    Retrieving data from the cache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-multiple-data-from-the-cache" class="md-nav__link">
+    Retrieving multiple data from the cache
   </a>
   
 </li>
@@ -549,8 +556,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#deleting-items-from-the-cache" class="md-nav__link">
-    Deleting items from the cache
+  <a href="#deleting-cache-data" class="md-nav__link">
+    Deleting cache data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-multiple-cache-data" class="md-nav__link">
+    Deleting multiple cache data
   </a>
   
 </li>
@@ -633,20 +647,6 @@
     <li class="md-nav__item">
       <a href="../unit-tests/" class="md-nav__link">
         Unit Tests
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../full-text-search/" class="md-nav__link">
-        Full-Text Search
       </a>
     </li>
   
@@ -831,6 +831,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../packages/elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../packages/firebase/" class="md-nav__link">
         Firebase
       </a>
@@ -887,8 +901,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#retrieving-items-from-the-cache" class="md-nav__link">
-    Retrieving items from the cache
+  <a href="#retrieving-data-from-the-cache" class="md-nav__link">
+    Retrieving data from the cache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-multiple-data-from-the-cache" class="md-nav__link">
+    Retrieving multiple data from the cache
   </a>
   
 </li>
@@ -901,8 +922,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#deleting-items-from-the-cache" class="md-nav__link">
-    Deleting items from the cache
+  <a href="#deleting-cache-data" class="md-nav__link">
+    Deleting cache data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-multiple-cache-data" class="md-nav__link">
+    Deleting multiple cache data
   </a>
   
 </li>
@@ -941,11 +969,9 @@
       <span class="nx">url</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ELASTICACHE_MEMCACHED_URL</span> <span class="o">||</span> <span class="kc">null</span><span class="p">,</span>
       <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
         <span class="nx">autoDiscover</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">autoDiscoverInterval</span><span class="o">:</span> <span class="mf">60000</span><span class="p">,</span>
-        <span class="nx">autoDiscoverOverridesRemove</span><span class="o">:</span> <span class="kc">false</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
 <span class="p">};</span>
 </code></pre></div>
 <p>ElastiCache is disabled by default. To enable ElastiCache, follow the steps below.</p>
@@ -969,14 +995,29 @@
 <h2 id="cache-usage">Cache Usage<a class="headerlink" href="#cache-usage" title="Permanent link">&para;</a></h2>
 <p>Import the <code>cache</code> module from <code>Utils/cache</code>.</p>
 <p>To test the sample usage, uncomment <code>samples.yml</code> function in <code>serverless.yml</code> and deploy the application to a development environment.</p>
-<h3 id="retrieving-items-from-the-cache">Retrieving items from the cache<a class="headerlink" href="#retrieving-items-from-the-cache" title="Permanent link">&para;</a></h3>
-<p>You may use the <code>get</code> method on the <code>cache</code> util to fetch items from the cache.</p>
+<h3 id="retrieving-data-from-the-cache">Retrieving data from the cache<a class="headerlink" href="#retrieving-data-from-the-cache" title="Permanent link">&para;</a></h3>
+<p><code>Utils/cache.get()</code> will return data from given cache key.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">cache</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span>
+  <span class="nx">key</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">// cache key to fetch data from</span>
+<span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="p">;</span>
+</code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">cache</span> <span class="kr">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">cacheKey</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p>Test sample usage with this url endpoint <code>/samples/cache?method=get&amp;key=sampleCacheKey</code>.</p>
+<h3 id="retrieving-multiple-data-from-the-cache">Retrieving multiple data from the cache<a class="headerlink" href="#retrieving-multiple-data-from-the-cache" title="Permanent link">&para;</a></h3>
+<p><code>Utils/cache.getMulti()</code> will return multiple data from multiple cache keys.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">cache</span><span class="p">.</span><span class="nx">getMulti</span><span class="p">(</span>
+  <span class="nx">keys</span><span class="o">:</span> <span class="nb">String</span><span class="p">[],</span> <span class="c1">// array of cache keys to fetch data from</span>
+<span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Example Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">cache</span> <span class="kr">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">cacheKeys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;foo2&quot;</span><span class="p">,</span> <span class="s2">&quot;foo3&quot;</span><span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">getMulti</span><span class="p">([</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;foo2&quot;</span><span class="p">,</span> <span class="s2">&quot;foo3&quot;</span><span class="p">]);</span>
+</code></pre></div>
 <h3 id="storing-items-to-the-cache">Storing items to the cache<a class="headerlink" href="#storing-items-to-the-cache" title="Permanent link">&para;</a></h3>
 <p>You may use the <code>set</code> method on the <code>cache</code> util to store items to the cache.</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">cache</span> <span class="kr">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
@@ -988,14 +1029,28 @@
 <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">,</span> <span class="nx">cacheValue</span><span class="p">,</span> <span class="nx">cacheLifetimeInSeconds</span><span class="p">);</span>
 </code></pre></div>
 <p>Test sample usage with this url endpoint <code>/samples/cache?method=set&amp;key=sampleCacheKey&amp;value=sampleCacheValue</code>.</p>
-<h3 id="deleting-items-from-the-cache">Deleting items from the cache<a class="headerlink" href="#deleting-items-from-the-cache" title="Permanent link">&para;</a></h3>
-<p>You may use the <code>del</code> method on the <code>cache</code> util to delete items from the cache.</p>
+<h3 id="deleting-cache-data">Deleting cache data<a class="headerlink" href="#deleting-cache-data" title="Permanent link">&para;</a></h3>
+<p><code>Utils/cache.del()</code> will remove the cache key.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">cache</span><span class="p">.</span><span class="nx">del</span><span class="p">(</span>
+  <span class="nx">key</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">// cache key to remove</span>
+<span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Example Usage</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">cache</span> <span class="kr">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">cacheKey</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">del</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">del</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p>Test sample usage with this url endpoint <code>/samples/cache?method=del&amp;key=sampleCacheKey</code>.</p>
+<h3 id="deleting-multiple-cache-data">Deleting multiple cache data<a class="headerlink" href="#deleting-multiple-cache-data" title="Permanent link">&para;</a></h3>
+<p><code>Utils/cache.del()</code> will remove the cache key.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">cache</span><span class="p">.</span><span class="nx">delMulti</span><span class="p">(</span>
+  <span class="nx">keys</span><span class="o">:</span> <span class="nb">String</span><span class="p">[],</span> <span class="c1">// array of cache keys to remove</span>
+<span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Example Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">cache</span> <span class="kr">from</span> <span class="s2">&quot;Utils/cache&quot;</span><span class="p">;</span>
+
+<span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">delMulti</span><span class="p">([</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;foo2&quot;</span><span class="p">,</span> <span class="s2">&quot;foo3&quot;</span><span class="p">]);</span>
+</code></pre></div>
 
               
             </article>
