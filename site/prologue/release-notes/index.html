@@ -313,9 +313,56 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#esgetmulti" class="md-nav__link">
-    es.getMulti()
+  <a href="#additional-methods" class="md-nav__link">
+    Additional Methods
   </a>
+  
+    <nav class="md-nav" aria-label="Additional Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilscache" class="md-nav__link">
+    Utils/cache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilselasticsearch" class="md-nav__link">
+    Utils/elasticsearch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-notes" class="md-nav__link">
+    Additional Notes
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elasticsearch-7130" class="md-nav__link">
+    Elasticsearch 7.13.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removal-of-db-config-persists" class="md-nav__link">
+    Removal of db config persists
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -632,20 +679,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advance/full-text-search/" class="md-nav__link">
-        Full-Text Search
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../advance/typescript/" class="md-nav__link">
         Typescript
       </a>
@@ -818,6 +851,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../packages/elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../packages/firebase/" class="md-nav__link">
         Firebase
       </a>
@@ -880,9 +927,56 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#esgetmulti" class="md-nav__link">
-    es.getMulti()
+  <a href="#additional-methods" class="md-nav__link">
+    Additional Methods
   </a>
+  
+    <nav class="md-nav" aria-label="Additional Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilscache" class="md-nav__link">
+    Utils/cache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilselasticsearch" class="md-nav__link">
+    Utils/elasticsearch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-notes" class="md-nav__link">
+    Additional Notes
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elasticsearch-7130" class="md-nav__link">
+    Elasticsearch 7.13.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removal-of-db-config-persists" class="md-nav__link">
+    Removal of db config persists
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -985,15 +1079,20 @@
   <span class="p">},</span>
 <span class="p">};</span>
 </code></pre></div>
-<div class="admonition important">
-<p class="admonition-title">@elastic/elasticsearch@7.13.0</p>
+<h2 id="additional-methods">Additional Methods<a class="headerlink" href="#additional-methods" title="Permanent link">&para;</a></h2>
+<h3 id="utilscache">Utils/cache<a class="headerlink" href="#utilscache" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Retrieve multiple cache data with <code>cache.getMulti()</code>. <a href="../../advance/cache/#retrieving-multiple-data-from-the-cache">Learn more</a></li>
+<li>Delete multiple cache data with <code>cache.delMulti()</code>. <a href="../../advance/cache/#deleting-multiple-cache-data">Learn more</a></li>
+</ul>
+<h3 id="utilselasticsearch">Utils/elasticsearch<a class="headerlink" href="#utilselasticsearch" title="Permanent link">&para;</a></h3>
+<p>Added a new method to execute multiple different queries using a single API request with <code>es.msearch()</code>. <a href="../../packages/elasticsearch/#esmsearch">Learn more</a>.</p>
+<h2 id="additional-notes">Additional Notes<a class="headerlink" href="#additional-notes" title="Permanent link">&para;</a></h2>
+<h3 id="elasticsearch-7130">Elasticsearch 7.13.0<a class="headerlink" href="#elasticsearch-7130" title="Permanent link">&para;</a></h3>
 <p>It has been discovered that <code>@elastic/elasticsearch</code> greater than <code>@7.13.0</code> is not compatible with the SDK. Thus is is important to ensure the package version is set to 7.13.0.</p>
-</div>
-<h2 id="esgetmulti">es.getMulti()<a class="headerlink" href="#esgetmulti" title="Permanent link">&para;</a></h2>
-<p>A new method to fetch multiple cache keys.</p>
-<p><strong>Usage example</strong></p>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
+<h3 id="removal-of-db-config-persists">Removal of db config persists<a class="headerlink" href="#removal-of-db-config-persists" title="Permanent link">&para;</a></h3>
+<p>As part of ensuring file size optimization (and thus improving function initialization performance), usage of <code>persists</code> key has now been deprecated and is strongly advised to be removed in the <code>config/db.connections.rdsProxy</code> and <code>config/db.connections.rdsProxy</code>.</p>
+<p>Persistent Connections should be added on a as needed basis in the Handlers and passed along to the middlewares. See <a href="../../database/rds-aurora/#persistent-connection-for-rds-proxy">Persistent Connection for RDS</a> Proxt for more info.</p>
 
               
             </article>

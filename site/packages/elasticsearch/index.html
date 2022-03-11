@@ -12,14 +12,14 @@
         <meta name="author" content="Sufiyan Rahmat">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.7.7/advance/full-text-search/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/0.7.7/packages/elasticsearch/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
     
     
       
-        <title>Full-Text Search - Lesgo!</title>
+        <title>Elasticsearch - Lesgo!</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#full-text-search" class="md-skip">
+        <a href="#elasticsearch" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Full-Text Search
+              Elasticsearch
             
           </span>
         </div>
@@ -456,14 +456,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
       
@@ -486,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cache/" class="md-nav__link">
+      <a href="../../advance/cache/" class="md-nav__link">
         Cache
       </a>
     </li>
@@ -500,7 +498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../helpers/" class="md-nav__link">
+      <a href="../../advance/helpers/" class="md-nav__link">
         Helpers
       </a>
     </li>
@@ -514,7 +512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../object-store/" class="md-nav__link">
+      <a href="../../advance/object-store/" class="md-nav__link">
         Object Store
       </a>
     </li>
@@ -528,7 +526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../queues/" class="md-nav__link">
+      <a href="../../advance/queues/" class="md-nav__link">
         Queues
       </a>
     </li>
@@ -542,7 +540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../task-scheduling/" class="md-nav__link">
+      <a href="../../advance/task-scheduling/" class="md-nav__link">
         Task Scheduling
       </a>
     </li>
@@ -556,7 +554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../unit-tests/" class="md-nav__link">
+      <a href="../../advance/unit-tests/" class="md-nav__link">
         Unit Tests
       </a>
     </li>
@@ -568,161 +566,9 @@
               
   
   
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Full-Text Search
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Full-Text Search
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#basic-usage" class="md-nav__link">
-    Basic Usage
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced-query" class="md-nav__link">
-    Advanced Query
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-elasticsearch-client" class="md-nav__link">
-    Accessing Elasticsearch Client
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#available-methods" class="md-nav__link">
-    Available methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Available methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#essetconnection" class="md-nav__link">
-    es.setConnection
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#escreateindices" class="md-nav__link">
-    es.createIndices
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#esdeleteindices" class="md-nav__link">
-    es.deleteIndices
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#esexistindices" class="md-nav__link">
-    es.existIndices
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#esputmapping" class="md-nav__link">
-    es.putMapping
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#esget" class="md-nav__link">
-    es.get
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#esindexorcreatebyid-escreate" class="md-nav__link">
-    es.indexOrCreateById / es.create
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#esbulkindex" class="md-nav__link">
-    es.bulkIndex
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#escreate" class="md-nav__link">
-    es.create
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
   
     <li class="md-nav__item">
-      <a href="../typescript/" class="md-nav__link">
+      <a href="../../advance/typescript/" class="md-nav__link">
         Typescript
       </a>
     </li>
@@ -866,12 +712,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -892,9 +740,175 @@
               
   
   
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Elasticsearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Elasticsearch
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    Basic Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-query" class="md-nav__link">
+    Advanced Query
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-elasticsearch-client" class="md-nav__link">
+    Accessing Elasticsearch Client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-methods" class="md-nav__link">
+    Available methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Available methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essetconnection" class="md-nav__link">
+    es.setConnection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escreateindices" class="md-nav__link">
+    es.createIndices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esdeleteindices" class="md-nav__link">
+    es.deleteIndices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esexistindices" class="md-nav__link">
+    es.existIndices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esputmapping" class="md-nav__link">
+    es.putMapping
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esget" class="md-nav__link">
+    es.get
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#essearch" class="md-nav__link">
+    es.search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esmsearch" class="md-nav__link">
+    es.msearch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esindexorcreatebyid-escreate" class="md-nav__link">
+    es.indexOrCreateById / es.create
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esbulkindex" class="md-nav__link">
+    es.bulkIndex
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escreate" class="md-nav__link">
+    es.create
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
   
     <li class="md-nav__item">
-      <a href="../../packages/firebase/" class="md-nav__link">
+      <a href="../firebase/" class="md-nav__link">
         Firebase
       </a>
     </li>
@@ -1013,6 +1027,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#essearch" class="md-nav__link">
+    es.search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esmsearch" class="md-nav__link">
+    es.msearch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#esindexorcreatebyid-escreate" class="md-nav__link">
     es.indexOrCreateById / es.create
   </a>
@@ -1050,14 +1078,14 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/reflex-media/lesgo/edit/master/docs/advance/full-text-search.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/reflex-media/lesgo/edit/master/docs/packages/elasticsearch.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
 
-<h1 id="full-text-search">Full-Text Search<a class="headerlink" href="#full-text-search" title="Permanent link">&para;</a></h1>
-<p>Lesgo! is pre-configured with AWS Elasticsearch for full-text search.</p>
+<h1 id="elasticsearch">Elasticsearch<a class="headerlink" href="#elasticsearch" title="Permanent link">&para;</a></h1>
+<p>Lesgo! is pre-configured with AWS Elasticsearch 7.10 engine.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>The elasticsearch configuration for your application is located at <code>src/config/elasticsearch.js</code>. Or copy <a href="https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/elasticsearch.js">this file</a> to that path.</p>
 <p>You may also simply update the respective environment files in <code>config/environments/*</code> as such:</p>
@@ -1311,6 +1339,82 @@
 <span class="cm">}</span>
 <span class="cm">*/</span>
 </code></pre></div>
+<h3 id="essearch">es.search<a class="headerlink" href="#essearch" title="Permanent link">&para;</a></h3>
+<p>This will return documents based on search query.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">es</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span>
+  <span class="nx">body</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span> <span class="c1">// query object to execute</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><strong>Example Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">es</span> <span class="kr">from</span> <span class="s2">&quot;Utils/elasticsearch&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">search</span> <span class="o">=</span> <span class="nx">es</span><span class="p">({</span> <span class="nx">index</span><span class="o">:</span> <span class="s2">&quot;game-of-thrones&quot;</span> <span class="p">});</span>
+
+<span class="k">await</span> <span class="nx">search</span><span class="p">.</span><span class="nx">search</span><span class="p">({</span>
+  <span class="nx">query</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">match</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;user.id&quot;</span><span class="o">:</span> <span class="s2">&quot;kimchy&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="esmsearch">es.msearch<a class="headerlink" href="#esmsearch" title="Permanent link">&para;</a></h3>
+<p>This will execute multiple different searches using a single API request.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">es</span><span class="p">.</span><span class="nx">msearch</span><span class="p">(</span>
+  <span class="nx">body</span><span class="o">:</span> <span class="nb">Array</span><span class="p">,</span> <span class="c1">// array of query objects to execute</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><strong>Example Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">es</span> <span class="kr">from</span> <span class="s2">&quot;Utils/elasticsearch&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">search</span> <span class="o">=</span> <span class="nx">es</span><span class="p">({</span> <span class="nx">index</span><span class="o">:</span> <span class="s2">&quot;game-of-thrones&quot;</span> <span class="p">});</span>
+
+<span class="k">await</span> <span class="nx">search</span><span class="p">.</span><span class="nx">msearch</span><span class="p">([</span>
+  <span class="p">{</span> <span class="nx">index</span><span class="o">:</span> <span class="s2">&quot;game-of-thrones&quot;</span> <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">query</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">bool</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">must</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nx">match</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">hashtag</span><span class="o">:</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+          <span class="p">},</span>
+        <span class="p">],</span>
+        <span class="nx">must_not</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nx">match</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">hashtag</span><span class="o">:</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+          <span class="p">},</span>
+        <span class="p">],</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">index</span><span class="o">:</span> <span class="s2">&quot;game-of-thrones&quot;</span> <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">query</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">bool</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">must</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nx">match</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">hashtag</span><span class="o">:</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+          <span class="p">},</span>
+        <span class="p">],</span>
+        <span class="nx">must_not</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nx">match</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">hashtag</span><span class="o">:</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+          <span class="p">},</span>
+        <span class="p">],</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">]);</span>
+</code></pre></div>
+<p>Learn more with <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.13/search-multi-search.html">Multi Search API</a>.</p>
 <h3 id="esindexorcreatebyid-escreate">es.indexOrCreateById / es.create<a class="headerlink" href="#esindexorcreatebyid-escreate" title="Permanent link">&para;</a></h3>
 <p>This will add a JSON document to the specified data stream or index and makes it searchable. If the target is an index and the document already exists, the request updates the document and increments its version, else it is created.</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">es</span> <span class="kr">from</span> <span class="s2">&quot;Utils/elasticsearch&quot;</span><span class="p">;</span>
@@ -1432,7 +1536,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../unit-tests/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Unit Tests" rel="prev">
+        <a href="../../database/rds-aurora/" class="md-footer__link md-footer__link--prev" aria-label="Previous: RDS Aurora" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1441,20 +1545,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Unit Tests
+              RDS Aurora
             </div>
           </div>
         </a>
       
       
         
-        <a href="../typescript/" class="md-footer__link md-footer__link--next" aria-label="Next: Typescript" rel="next">
+        <a href="../firebase/" class="md-footer__link md-footer__link--next" aria-label="Next: Firebase" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Typescript
+              Firebase
             </div>
           </div>
           <div class="md-footer__button md-icon">
