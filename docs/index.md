@@ -43,6 +43,10 @@ npm start
 
 Access local url via browser or Postman: [http://localhost:8181/ping](http://localhost:8181/ping).
 
+!!! tip
+
+    Use `npm ci` instead of `npm install` to install dependencies based on package-lock.json.
+
 ## Configuration
 
 There are 2 levels of configurations for the Lesgo! framework.
@@ -75,16 +79,4 @@ AWS_ACCOUNT_REGION="us-west-1"
 
 # This name needs to match the aws credentials profile on your local machine
 AWS_ACCOUNT_PROFILE="slsDevProfile"
-
-# Set the default timeout for all lambda functions
-AWS_LAMBDA_TIMEOUT=3
-
-# Set the default memory size for all lambda functions
-AWS_LAMBDA_MEMORY_SIZE=128
-
-# Set the default retention period for all cloudwatch logs
-AWS_LOG_RETENTION_DAYS=7
-
-# Maximum size before gzip compression for response
-AWS_APIGATEWAY_COMPRESSION_MAX_BYTES=
 ```

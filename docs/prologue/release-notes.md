@@ -27,6 +27,62 @@ Simply create a new `serverless-x.yml` file, update the configurations according
 npm run deploy-x -- -s dev
 ```
 
+## CloudFormation Nested Stack Support
+
+For cases where your app has exceeded the max resource allocation count, enable these plugins `serverless-plugin-split-stacks` and `serverless-dependson-plugin` to allow Nested Stack within CloudFormation.
+
+1. Install npm packages
+   ```apache
+   npm i serverless-plugin-split-stacks serverless-dependson-plugin
+   ```
+2. Add plugins to serverless.yml
+   ```yaml
+   plugins:
+     - serverless-plugin-split-stacks
+     - serverless-dependson-plugin
+   ```
+3. Add custom configuration to serverless.yml
+   ```yaml
+   custom:
+     splitStacks:
+       perFunction: false
+       perType: true
+       perGroupFunction: false
+     dependsOn:
+       enabled: true
+       chains: 15
+   ```
+
+Learn more on [serverless-plugin-split-stacks](https://www.npmjs.com/package/serverless-plugin-split-stacks)
+
+## Chaining deployment
+
+If you ever encounter an EC2 API Rate Limit error as below, enable `serverless-dependson-plugin` to help slow down the deployment process and chain the deployment to depend on the previous completion.
+
+```bash
+Your request has been throttled by EC2, please make sure you have enough API rate limit.
+EC2 Error Code: RequestLimitExceeded. EC2 Error Message: Request limit exceeded.
+```
+
+1. Install npm packages
+   ```apache
+   npm i serverless-dependson-plugin
+   ```
+2. Add plugins to serverless.yml
+   ```yaml
+   plugins:
+     - serverless-dependson-plugin
+   ```
+3. Add custom configuration to serverless.yml
+   ```yaml
+   custom:
+     dependsOn:
+       enabled: true
+       chains: 15
+   ```
+
+Learn more on [serverless-dependson-plugin](https://www.serverless.com/plugins/serverless-dependson-plugin)
+
 ## Disconnecting of Persistent Connections
 
 Previously, persistent connections have to be manually disconnected for both db and cache connections. As long as you want to have persistent connection, add that to the Handler and pass it along to the middlewares.
