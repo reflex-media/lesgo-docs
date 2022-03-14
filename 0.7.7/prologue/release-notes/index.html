@@ -299,6 +299,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cloudformation-nested-stack-support" class="md-nav__link">
+    CloudFormation Nested Stack Support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chaining-deployment" class="md-nav__link">
+    Chaining deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#disconnecting-of-persistent-connections" class="md-nav__link">
     Disconnecting of Persistent Connections
   </a>
@@ -913,6 +927,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cloudformation-nested-stack-support" class="md-nav__link">
+    CloudFormation Nested Stack Support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chaining-deployment" class="md-nav__link">
+    Chaining deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#disconnecting-of-persistent-connections" class="md-nav__link">
     Disconnecting of Persistent Connections
   </a>
@@ -1017,6 +1045,50 @@
 <p><strong>Sample Deployment</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">npm</span><span class="w"> </span>run<span class="w"> </span>deploy-x<span class="w"> </span>--<span class="w"> </span>-s<span class="w"> </span>dev<span class="w"></span>
 </code></pre></div>
+<h2 id="cloudformation-nested-stack-support">CloudFormation Nested Stack Support<a class="headerlink" href="#cloudformation-nested-stack-support" title="Permanent link">&para;</a></h2>
+<p>For cases where your app has exceeded the max resource allocation count, enable these plugins <code>serverless-plugin-split-stacks</code> and <code>serverless-dependson-plugin</code> to allow Nested Stack within CloudFormation.</p>
+<ol>
+<li>Install npm packages
+   <div class="highlight"><pre><span></span><code><span class="nb">npm</span><span class="w"> </span>i<span class="w"> </span>serverless-plugin-split-stacks<span class="w"> </span>serverless-dependson-plugin<span class="w"></span>
+</code></pre></div></li>
+<li>Add plugins to serverless.yml
+   <div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serverless-plugin-split-stacks</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serverless-dependson-plugin</span><span class="w"></span>
+</code></pre></div></li>
+<li>Add custom configuration to serverless.yml
+   <div class="highlight"><pre><span></span><code><span class="nt">custom</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">splitStacks</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">perFunction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">perType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">perGroupFunction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">  </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">chains</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span><span class="w"></span>
+</code></pre></div></li>
+</ol>
+<p>Learn more on <a href="https://www.npmjs.com/package/serverless-plugin-split-stacks">serverless-plugin-split-stacks</a></p>
+<h2 id="chaining-deployment">Chaining deployment<a class="headerlink" href="#chaining-deployment" title="Permanent link">&para;</a></h2>
+<p>If you ever encounter an EC2 API Rate Limit error as below, enable <code>serverless-dependson-plugin</code> to help slow down the deployment process and chain the deployment to depend on the previous completion.</p>
+<div class="highlight"><pre><span></span><code>Your request has been throttled by EC2, please make sure you have enough API rate limit.
+EC2 Error Code: RequestLimitExceeded. EC2 Error Message: Request limit exceeded.
+</code></pre></div>
+<ol>
+<li>Install npm packages
+   <div class="highlight"><pre><span></span><code><span class="nb">npm</span><span class="w"> </span>i<span class="w"> </span>serverless-dependson-plugin<span class="w"></span>
+</code></pre></div></li>
+<li>Add plugins to serverless.yml
+   <div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serverless-dependson-plugin</span><span class="w"></span>
+</code></pre></div></li>
+<li>Add custom configuration to serverless.yml
+   <div class="highlight"><pre><span></span><code><span class="nt">custom</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">dependsOn</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">chains</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span><span class="w"></span>
+</code></pre></div></li>
+</ol>
+<p>Learn more on <a href="https://www.serverless.com/plugins/serverless-dependson-plugin">serverless-dependson-plugin</a></p>
 <h2 id="disconnecting-of-persistent-connections">Disconnecting of Persistent Connections<a class="headerlink" href="#disconnecting-of-persistent-connections" title="Permanent link">&para;</a></h2>
 <p>Previously, persistent connections have to be manually disconnected for both db and cache connections. As long as you want to have persistent connection, add that to the Handler and pass it along to the middlewares.</p>
 <p><strong>Sample usage with middleware</strong></p>
