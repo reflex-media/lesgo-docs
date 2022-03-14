@@ -24,28 +24,33 @@ Like any other frameworks out there, we built this Framework because we couldn't
 
 Create Serverless project:
 
-```bash
-sls create --template-url https://github.com/reflex-media/lesgo-lite/tree/master --path my-service
-cd my-service
+```apache
+sls create --template-url https://github.com/reflex-media/lesgo-lite/tree/master --path myApp
 ```
 
-Install dependencies:
+Navigate to newly created path
 
-```bash
-npm install
+```apache
+cd myApp
+```
+
+Install dependencies via package-lock.json file:
+
+```apache
+npm ci
 ```
 
 Start local:
 
-```bash
+```apache
 npm start
 ```
 
-Access local url via browser or Postman: [http://localhost:8181/ping](http://localhost:8181/ping).
+Access local url via browser or Postman: [http://localhost:3000/v1/utils/ping](http://localhost:3000/v1/utils/ping).
 
 !!! tip
 
-    Use `npm ci` instead of `npm install` to install dependencies based on package-lock.json.
+    Use this template for a full-fledged working example https://github.com/reflex-media/lesgo/tree/master.
 
 ## Configuration
 

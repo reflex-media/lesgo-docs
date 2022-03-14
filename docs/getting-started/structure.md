@@ -12,6 +12,9 @@
 |   ├── resources
 |   └── utils
 ├── documents
+|   └── Postman
+|       ├── Collections
+|       └── Environments
 ├── src
 |   ├── config
 |   ├── data
@@ -53,6 +56,8 @@ The `config/utils/` directory contains additional Serverless configs where requi
 
 ## The Documents Directory
 The `documents/` directory contains any documents outside of the application. One use case is to store the exported Postman Collection and Environment files here.
+
+Included are the Postman Contract Tests and Endpoints Collection. Import them to your local Postman app and try them out!
 
 ## The Source Directory
 The `src/` directory contains the main source code for your application.
