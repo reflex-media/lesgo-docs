@@ -20,7 +20,7 @@ This middleware normalizes all HTTP requests, handles, and formats success and e
 
 ```js
 import middy from '@middy/core';
-import httpMiddleware from "Middlewares/httpMiddleware";
+import httpMiddleware from "Lesgo/Middlewares/httpMiddleware";
 
 const originalHandler = event => {
   return event.input;
@@ -74,7 +74,7 @@ This middleware will normalize records coming from sqs message event. The `Recor
 
 ```js
 import middy from '@middy/core';
-import normalizeSQSMessage from "Middlewares/normalizeSQSMessage";
+import normalizeSQSMessage from "Lesgo/Middlewares/normalizeSQSMessage";
 
 const originalHandler = event => {
   return event.collection;
@@ -117,7 +117,7 @@ JWT_CUSTOM_CLAIMS_DATA=""
 
 ```js
 import middy from '@middy/core';
-import verifyJwtTokenMiddleware from "Middlewares/verifyJwtTokenMiddleware";
+import verifyJwtTokenMiddleware from "Lesgo/Middlewares/verifyJwtTokenMiddleware";
 
 const originalHandler = event => {
   return event.collection;
