@@ -28,7 +28,7 @@ ES_REGION=""
 To run a basic query, you may use the search method on the `Utils/es`:
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 const response = await es().search({
   query: {
@@ -79,7 +79,7 @@ const response = await es().search({
 ## Advanced Query
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 const response = await es().search({
   from: 0,
@@ -164,7 +164,7 @@ const response = await es().search({
 If ever needed you can also access the client directly
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 const client = es().getClient();
 
@@ -184,7 +184,7 @@ await client.index({
 This will set the current connection to either `aws` or `default`.
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 es().setConnection("aws");
 ```
@@ -194,7 +194,7 @@ es().setConnection("aws");
 This will create a new index.
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 await es().createIndices(
   {
@@ -210,7 +210,7 @@ await es().createIndices(
 This will delete one or more indices. For more options, refer [here](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#_delete)
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 await es().deleteIndices(["game-of-thrones", "twitter", "store"]);
 
@@ -226,7 +226,7 @@ await es().deleteIndices("game-of-thrones", {
 This will check if an index or indices exists. For more options, refer [here](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#_exists)
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 await es().existIndices("game-of-thrones");
 
@@ -245,7 +245,7 @@ This will add new fields to an existing data stream or index.
     Due to deprecation of `type` from Elasticsearch 7.0.0, use `es.getClient()` directly. For more info, refer [here](https://www.elastic.co/guide/en/elasticsearch/reference/7.16/removal-of-types.html)
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 await es().putMapping("twitter", "user", {
   name: { type: "text" },
@@ -259,7 +259,7 @@ await es().putMapping("twitter", "user", {
 This will retrieve the specified JSON document from an index using the document ID.
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 await es({ index: "game-of-thrones" }).get("0");
 
@@ -309,7 +309,7 @@ es.search(
 **Example Usage**
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 const search = es({ index: "game-of-thrones" });
 
@@ -335,7 +335,7 @@ es.msearch(
 **Example Usage**
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 const search = es({ index: "game-of-thrones" });
 
@@ -392,7 +392,7 @@ Learn more with [Multi Search API](https://www.elastic.co/guide/en/elasticsearch
 This will add a JSON document to the specified data stream or index and makes it searchable. If the target is an index and the document already exists, the request updates the document and increments its version, else it is created.
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 await es({ index: "game-of-thrones" }).create("1", {
   character: "Tyrion Lannister",
@@ -432,7 +432,7 @@ await es({ index: "game-of-thrones" }).indexOrCreateById(
 This will perform multiple indexing or delete operations in a single API call. This reduces overhead and can greatly increase indexing speed.
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 await es({ index: "game-of-thrones" }).bulkIndex([
   {
@@ -481,7 +481,7 @@ await es({ index: "game-of-thrones" }).bulkIndex([
 This adds a JSON document to the specified data stream or index and makes it searchable.
 
 ```js
-import es from "Utils/elasticsearch";
+import es from "lesgo/utils/elasticsearch";
 
 await es({ index: "game-of-thrones" }).create("1", {
   text: "If I fall, don't bring me back.",

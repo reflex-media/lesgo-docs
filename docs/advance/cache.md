@@ -45,7 +45,7 @@ Deploy your application again and you may now use ElastiCache.
 
 ## Cache Usage
 
-Import the `cache` module from `Utils/cache`.
+Import the `cache` module from `lesgo/utils/cache`.
 
 To test the sample usage, uncomment `samples.yml` function in `serverless.yml` and deploy the application to a development environment.
 
@@ -60,7 +60,7 @@ cache.get(
 ```
 
 ```js
-import cache from "Utils/cache";
+import cache from "lesgo/utils/cache";
 
 const data = await cache.get("foo");
 ```
@@ -78,7 +78,7 @@ cache.getMulti(
 **Example Usage**
 
 ```js
-import cache from "Utils/cache";
+import cache from "lesgo/Utils/cache";
 
 const cacheKeys = ["foo", "foo2", "foo3"];
 
@@ -90,7 +90,7 @@ const data = await cache.getMulti(["foo", "foo2", "foo3"]);
 You may use the `set` method on the `cache` util to store items to the cache.
 
 ```js
-import cache from "Utils/cache";
+import cache from "lesgo/utils/cache";
 
 const cacheKey = "foo";
 const cacheValue = "bar";
@@ -114,7 +114,7 @@ cache.del(
 **Example Usage**
 
 ```js
-import cache from "Utils/cache";
+import cache from "lesgo/utils/cache";
 
 await cache.del("foo");
 ```
@@ -132,7 +132,7 @@ cache.delMulti(
 **Example Usage**
 
 ```js
-import cache from "Utils/cache";
+import cache from "lesgo/utils/cache";
 
 await cache.delMulti(["foo", "foo2", "foo3"]);
 ```

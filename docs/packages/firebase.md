@@ -5,7 +5,7 @@ Lesgo! comes with a service wrapper of `firebase-admin` plugin
 ## Initialization
 
 ```js
-import FirebaseAdmin from "Services/FirebaseAdminService";
+import FirebaseAdmin from "lesgo/services/FirebaseAdminService";
 
 const serviceAccount = require("path/to/serviceAccountKey.json");
 

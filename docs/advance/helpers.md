@@ -1,10 +1,10 @@
 # Helpers
 
-Lesgo! comes in-built with various helper functions available within the `Utils/` namespace.
+Lesgo! comes in-built with various helper functions available within the `lesgo/utils/` namespace.
 
 ## Crypto
 
-> `Utils/crypto`
+> `lesgo/utils/crypto`
 
 Cryptographic functions using the Crypto npm library.
 
@@ -13,7 +13,7 @@ Cryptographic functions using the Crypto npm library.
 One way hashing of data using SHA-256.
 
 ```js
-import { hash } from "Utils/crypto";
+import { hash } from "lesgo/utils/crypto";
 
 const hashedString = hash("some data to hash");
 
@@ -25,7 +25,7 @@ const hashedString = hash("some data to hash");
 One way hashing of data using the faster MD5.
 
 ```js
-import { hashMD5 } from "Utils/crypto";
+import { hashMD5 } from "lesgo/utils/crypto";
 
 const hashedMD5String = hashMD5("some data to hash");
 
@@ -41,7 +41,7 @@ const hashedMD5String = hashMD5("some data to hash");
 2-way encryption with auto-generated iv and cipher.
 
 ```js
-import { encrypt } from "Utils/crypto";
+import { encrypt } from "lesgo/utils/crypto";
 
 const encryptedStr = encrypt(
   "some string to be encrypted that can be decrypted"
@@ -55,7 +55,7 @@ const encryptedStr = encrypt(
 Decrypting a previously encrypted data.
 
 ```js
-import { decrypt } from "Utils/crypto";
+import { decrypt } from "lesgo/utils/crypto";
 
 const decryptedStr = decrypt("some-encrypted-string");
 
@@ -64,12 +64,12 @@ const decryptedStr = decrypt("some-encrypted-string");
 
 ## Generate Uid
 
-> `Utils/generateUid`
+> `lesgo/utils/generateUid`
 
 Generates random string with an optional prefix and suffix using the Nanoid npm library. Useful for generating unique id.
 
 ```js
-import generateUid from "Utils/generateUid";
+import generateUid from "lesgo/utils/generateUid";
 
 const uid = generateUid());
 
@@ -90,12 +90,12 @@ const uidLimited = generateUid({ length: 36 }));
 
 ## Email Format Validator
 
-> `Utils/isEmail`
+> `lesgo/utils/isEmail`
 
 Validates for a valid email format.
 
 ```js
-import isEmail from "Utils/isEmail";
+import isEmail from "lesgo/utils/isEmail";
 
 isEmail("john@doe.com"));
 
@@ -108,12 +108,12 @@ isEmail("some string"));
 
 ## Decimal Number Validator
 
-> `Utils/isDecimal`
+> `lesgo/utils/isDecimal`
 
 Validates for a valid decimal number in any format such as `##.##`.
 
 ```js
-import isDecimal from "Utils/isDecimal";
+import isDecimal from "lesgo/utils/isDecimal";
 
 isDecimal(5.4);
 
@@ -126,12 +126,12 @@ isDecimal(5);
 
 ## Empty Value Validator
 
-> `Utils/isEmpty`
+> `lesgo/utils/isEmpty`
 
 Validates if a value is either an `undefined`, or `null`, or empty string, or an empty array, or an object without keys.
 
 ```js
-import isEmpty from "Utils/isEmpty";
+import isEmpty from "lesgo/utils/isEmpty";
 
 isEmpty(undefined);
 isEmpty(null);
@@ -149,12 +149,12 @@ isEmpty(0);
 
 ## Field Validator
 
-> `Utils/validateFields`
+> `lesgo/utils/validateFields`
 
 Validates parameters received to ensure the data is of the right type and exists.
 
 ```js
-import validateFields from "Utils/validateFields";
+import validateFields from "lesgo/utils/validateFields";
 
 const validFields = [
   { key: "someString", type: "string", required: true },
@@ -242,7 +242,7 @@ prepSQLInsertParams(
 **Usage**
 
 ```js
-import prepSQLInsertParams from "Utils/prepSQLInsertParams";
+import prepSQLInsertParams from "lesgo/utils/prepSQLInsertParams";
 
 const params = {
   username: "John",
