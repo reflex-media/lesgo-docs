@@ -123,9 +123,9 @@ As such, specifically for RDS Proxy, you should make use of Lesgo's persistent c
 // src/handlers/utils/ping.js
 
 import middy from "@middy/core";
-import httpMiddleware from "Lesgo/Middlewares/httpMiddleware";
-import db from "Lesgo/Utils/db";
-import ping from "Core/utils/ping";
+import httpMiddleware from "lesgo/middlewares/httpMiddleware";
+import db from "lesgo/utils/db";
+import ping from "core/utils/ping";
 
 const originalHandler = async (event) => {
   await db.pConnect();
@@ -146,8 +146,8 @@ Should you want to handle the closing of the db connection yourself and without 
 // src/handlers/utils/ping.js
 
 import middy from "@middy/core";
-import db from "Lesgo/Utils/db";
-import ping from "Core/utils/ping";
+import db from "lesgo/utils/db";
+import ping from "core/utils/ping";
 
 const originalHandler = async (event) => {
   await db.pConnect();
@@ -186,7 +186,7 @@ db.select(
 **Usage**
 
 ```js
-import db from "Lesgo/Utils/db";
+import db from "lesgo/utils/db";
 
 const data = await db.select(
   "SELECT * FROM users WHERE is_deleted = :isDeleted",
@@ -211,7 +211,7 @@ db.selectFirst(
 **Usage**
 
 ```js
-import db from "Lesgo/Utils/db";
+import db from "lesgo/utils/db";
 
 const data = await db.selectFirst("SELECT * FROM users WHERE id = :id", {
   id: 1,
@@ -240,7 +240,7 @@ db.selectPaginate(
 **Usage**
 
 ```js
-import db from "Lesgo/Utils/db";
+import db from "lesgo/utils/db";
 
 const data = await db.selectPaginate(
   "SELECT * FROM users WHERE is_deleted = :isDeleted",
@@ -270,7 +270,7 @@ db.insert(
 **Usage**
 
 ```js
-import db from "Lesgo/Utils/db";
+import db from "lesgo/utils/db";
 
 const insertId = await db.insert(
   "INSERT INTO users(username,email) VALUES (:username, :email)",
@@ -284,9 +284,9 @@ const insertId = await db.insert(
 A much better approach to inserting records is to first validate the fields and then inserting it with `Utils/prepSQLInsertParams`.
 
 ```js
-import prepSQLInsertParams from "Lesgo/Utils/prepSQLInsertParams";
-import validateFields from "Lesgo/Utils/validateFields";
-import db from "Lesgo/Utils/db";
+import prepSQLInsertParams from "lesgo/utils/prepSQLInsertParams";
+import validateFields from "lesgo/utils/validateFields";
+import db from "lesgo/utils/db";
 
 const validFields = [
   { key: "username", type: "string", required: true },
@@ -323,7 +323,7 @@ db.update(
 **Usage**
 
 ```js
-import db from "Lesgo/Utils/db";
+import db from "lesgo/utils/db";
 
 const insertId = await db.update(
   "UPDATE users SET username=:username, email=:email, updated_at=now()) WHERE id=:id",
@@ -338,9 +338,9 @@ const insertId = await db.update(
 As with insert, updatating an existing record is best done with `Utils/prepSQLUpdateParams`.
 
 ```js
-import prepSQLUpdateParams from "Lesgo/Utils/prepSQLUpdateParams";
-import validateFields from "Lesgo/Utils/validateFields";
-import db from "Lesgo/Utils/db";
+import prepSQLUpdateParams from "lesgo/utils/prepSQLUpdateParams";
+import validateFields from "lesgo/utils/validateFields";
+import db from "lesgo/utils/db";
 
 const validFields = [
   { key: "username", type: "string", required: true },
@@ -380,7 +380,7 @@ db.query(
 **Usage**
 
 ```js
-import db from "Lesgo/Utils/db";
+import db from "lesgo/utils/db";
 
 const data = await db.query("SELECT * FROM users WHERE id = :id", {
   id: 1,

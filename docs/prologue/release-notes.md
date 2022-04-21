@@ -37,9 +37,9 @@ Previously, persistent connections have to be manually disconnected for both db 
 // src/handlers/utils/ping.js
 
 import middy from "@middy/core";
-import httpMiddleware from "Lesgo/Middlewares/httpMiddleware";
-import db from "Lesgo/Utils/db";
-import ping from "Core/utils/ping";
+import httpMiddleware from "lesgo/middlewares/httpMiddleware";
+import db from "lesgo/utils/db";
+import ping from "core/utils/ping";
 
 const originalHandler = async (event) => {
   await Promise.all([dbRead.pConnect(), cache.pConnect()]); // connect to the db and cache before anything else
@@ -58,8 +58,8 @@ handler.use(httpMiddleware({ db, cache })); // pass along the instance to the mi
 // src/handlers/utils/ping.js
 
 import middy from "@middy/core";
-import db from "Lesgo/Utils/db";
-import ping from "Core/utils/ping";
+import db from "lesgo/utils/db";
+import ping from "core/utils/ping";
 
 const originalHandler = async (event) => {
   await db.pConnect(); // connect to the db before anything else

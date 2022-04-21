@@ -5,7 +5,7 @@ Lesgo! is configured with structured logging.
 Structured logs will appear on the console by default.
 
 ```js
-import logger from "Lesgo/Utils/logger";
+import logger from "lesgo/utils/logger";
 
 logger.log("info", "this is an info log");
 logger.info("This is an info log");

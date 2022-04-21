@@ -24,7 +24,7 @@ AWS_S3_OPTIONS_REGION=""
 The `getObject()` function will fetch the object from the Bucket.
 
 ```js
-import { getObject } from 'Lesgo/Utils/objectStore';
+import { getObject } from "lesgo/utils/objectStore";
 
 // Returns a buffered object response. See AWS for more information
 const objectFile = await getObject('Key', 'Bucket');

@@ -51,7 +51,7 @@ SENTRY_RELEASE="sls-my-project-maste"
 Call this as early as possible on any of your lambdas. A suggestion would be to put this inside of a middleware
 
 ```js
-import connectSentry from "Lesgo/Utils/sentry";
+import connectSentry from "lesgo/utils/sentry";
 
 connectSentry();
 ```

@@ -55,7 +55,7 @@ dynamodb.query(
 **Usage**
 
 ```js
-import dynamodb from "Lesgo/Utils/dynamodb";
+import dynamodb from "lesgo/utils/dynamodb";
 
 const user = await dynamodb.query(
   "ActorsTable",
@@ -91,7 +91,7 @@ dynamodb.queryCount(
 **Usage**
 
 ```js
-import dynamodb from "Lesgo/Utils/dynamodb";
+import dynamodb from "lesgo/utils/dynamodb";
 
 const count = await dynamodb.queryCount(
   "ActorsTable",
@@ -118,7 +118,7 @@ dynamodb.put(
 **Usage**
 
 ```js
-import dynamodb from "Lesgo/Utils/dynamodb";
+import dynamodb from "lesgo/utils/dynamodb";
 
 const data = await dynamodb.put("ActorTable", {
   actorName: "Keanue Reaves",
@@ -142,7 +142,7 @@ dynamodb.update(
 **Usage**
 
 ```js
-import dynamodb from "Lesgo/Utils/dynamodb";
+import dynamodb from "lesgo/utils/dynamodb";
 
 const data = await dynamodb.update(
   "ActorsTable",
