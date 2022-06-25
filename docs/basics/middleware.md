@@ -66,6 +66,25 @@ The successfuly response will be formatted in this way
 }
 ```
 
+### Http No Output
+
+This middleware normalizes all HTTP requests, handles, and formats success and error responses to make sure it always returns a success 200 with no body.
+
+**Usage**
+
+```js
+import middy from '@middy/core';
+import httpNoOutputMiddleware from "Middlewares/httpNoOutputMiddleware";
+
+const originalHandler = event => {
+  return event.input;
+};
+
+export const handler = middy(originalHandler);
+
+handler.use(httpNoOutputMiddleware());
+```
+
 ### Normalize SQS Message
 
 This middleware will normalize records coming from sqs message event. The `Records` object in the `handler.event` will be normalized into `handler.event.collection`. This middleware executes _before_ the handler is called.

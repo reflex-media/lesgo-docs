@@ -169,6 +169,16 @@ const validFields = [
     enumValues: ["abc", "def", "xyz"],
     required: true,
   },
+  { key: "someFunc", type: "function", required: true },
+  { key: "someJson", type: "json", required: true },
+  { key: "someObjectCollection", type: "object", required: true, isCollection: true },
+  {
+    key: "someEnumCollection",
+    type: "enum",
+    enumValues: ["abc", "def", "xyz"],
+    required: true,
+    isCollection: true
+  },
 ];
 
 const toValidate1 = {
@@ -182,6 +192,10 @@ const toValidate1 = {
   someEmail: "email@mail.com",
   someArray: ["aaa", "bbb", "ccc"],
   someEnum: "def",
+  someFunc: () => 'bar',
+  someJson: "{\"foo\":\"bar\",\"isTest\":1}",
+  someObjectCollection: [{ "foo": "bar", "isTest": 1 }, [{ "another": "object" }],
+  someEnumCollection: ["def", "abc", "abc"],
 };
 
 const validated = validateFields(toValidate1, validFields));
@@ -198,6 +212,10 @@ const validated = validateFields(toValidate1, validFields));
   someEmail: "email@mail.com",
   someArray: ["aaa", "bbb", "ccc"],
   someEnum: "def",
+  someFunc: () => 'bar',
+  someJson: "{\"foo\":\"bar\",\"isTest\":1}",
+  someObjectCollection: [{ "foo": "bar", "isTest": 1 }, [{ "another": "object" }],
+  someEnumCollection: ["def", "abc", "abc"],
 }
 */
 ```
