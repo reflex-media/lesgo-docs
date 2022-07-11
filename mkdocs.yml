@@ -53,7 +53,11 @@ nav:
       - Deployment: getting-started/deployment.md
       - Available Scripts: getting-started/available-scripts.md
   - The Basics:
-      - Middleware: basics/middleware.md
+      - Middlewares:
+          - Introduction: basics/middlewares/introduction.md
+          - HTTP Middlewares: basics/middlewares/http.md
+          - Event Parsing Middlewares: basics/middlewares/event-parsing.md
+          - Auth Middlewares: basics/middlewares/auth.md
       - Error Handling: basics/error-handling.md
       - Logging: basics/logging.md
   - Digging Deeper:
