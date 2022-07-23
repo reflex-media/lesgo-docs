@@ -47,6 +47,9 @@ handler.use(verifyJwtTokenMiddleware());
 
 This middleware will verify any basic auth passed to the `Authorization` header of the http request. Throws `Middlewares/basicAuthMiddleware::AUTH_INVALID_CLIENT_OR_SECRET_KEY` when a basic auth cannot be found in the clients list configuration.
 
+This middleware can be used together with `clientAuthMiddleware`, as long as `clientAuthMiddleware` is declared first.
+This is to allow the middleware to identify the matched `handler.event.platform`.
+
 **Configuration**
 
 The basic auth configuration for your application is located at `src/config/client.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/client.js) to that path.
@@ -68,9 +71,6 @@ handler.use(basicAuthMiddleware());
 // or
 
 handler.use(basicAuthMiddleware({
-    // When set to false, disables throwing on failure
-    blacklistMode: false,
-
     // This is set as an override for Config/client.js when needed
     client: {
         myApp: {
@@ -83,7 +83,7 @@ handler.use(basicAuthMiddleware({
 
 ## Client Auth
 
-This middleware will verify key passed to `x-client-id` header of the http request and sets the match to `handler.event.platform`. Throws `Middlewares/clientAuthMiddleware::INVALID_CLIENT_ID` when a basic auth cannot be found in the clients list configuration.
+This middleware will verify key passed to `x-client-id` header of the http request and sets the matched key to `handler.event.platform`. Throws `Middlewares/clientAuthMiddleware::INVALID_CLIENT_ID` when a basic auth cannot be found in the clients list configuration.
 
 **Configuration**
 
