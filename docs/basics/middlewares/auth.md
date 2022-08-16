@@ -2,7 +2,7 @@ These middlewares can be utilized as a layer of authentication before going thro
 
 ## Verify JWT
 
-This middleware will verify any JWT passed to the `Authorization` header of the http request. The decoded JWT can be accesed through `handler.event.decodedJwt`. If the JWT is verified, `handler.event.auth.sub` is set to the JWT's sub, else a `403` response will be thrown.
+This middleware will verify any JWT passed to the `Authorization` header of the http request. If the JWT is verified, the decoded JWT can be accesed through `handler.event.decodedJwt`, else a `403` response will be thrown.
 
 **Configuration**
 
