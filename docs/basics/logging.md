@@ -9,6 +9,7 @@ import logger from "Utils/logger";
 
 logger.log("info", "this is an info log");
 logger.info("This is an info log");
+logger.notice("This is an info log but with a level of notice");
 logger.warn("This is a warning log");
 logger.error("This is an error log");
 logger.debug(
