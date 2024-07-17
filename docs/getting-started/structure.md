@@ -6,23 +6,23 @@
 |   |   ├── .env
 |   |   ├── .env.local
 |   |   ├── .env.dev
+|   |   ├── .env.dev.local
 |   |   ├── .env.sandbox
 |   |   └── .env.prod
 |   ├── functions
+|   |   └── utils.yml
 |   ├── resources
 |   └── utils
 ├── documents
-├── src
-|   ├── config
-|   ├── data
-|   ├── core
-|   ├── exceptions
-|   ├── handlers
-|   ├── middlewares
-|   ├── models
-|   ├── services
-|   └── utils
-└── tests
+└── src
+    ├── config
+    ├── core
+    ├── exceptions
+    ├── handlers
+    ├── middlewares
+    ├── models
+    ├── services
+    └── utils
 ```
 
 ## The Config Directory
@@ -37,7 +37,8 @@ You may overwrite env files during a deployment by adding a `.local` suffix e.g;
 
 > `.env`: default environment, served as a local example.  
 > `.env.local`: local environment configuration. This should not be committed.  
-> `.env.dev`: development environment configuration.  
+> `.env.dev`: development environment configuration.
+> `.env.dev.local`: development environment based on local configuration. This should not be committed.
 > `.env.sandbox`: sandbox environment configuration.  
 > `.env.prod`: production environment configuration.
 
@@ -60,9 +61,6 @@ The `src/` directory contains the main source code for your application.
 ### Config Directory
 The `src/config/` directory contains the application configurations.
 
-### Data Directory
-The `src/data/` directory to store mocked data or application schema.
-
 ### Core Directory
 The `src/core/` directory contains your application's business / functional logic.
 
@@ -83,6 +81,3 @@ The `src/services/` directory contains class-based services or modules, usually 
 
 ### Util Directory
 The `src/utils/` directory contains helper functions.
-
-## Test Directory
-The `tests/` directory contains test `.spec.js` files for unit testing.

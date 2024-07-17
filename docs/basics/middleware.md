@@ -2,63 +2,83 @@
 
 Middlewares can be executed before or after a request, usually handled by the handlers. This will be useful for cases where an action is required prior to reaching the handler, or when an action is required to execute prior to the returning of the response.
 
-Middlewares require [Middy npm](https://www.npmjs.com/package/middy) to work.
+Middlewares require the [Middy NPM](https://www.npmjs.com/package/middy) package to work.
 
 Middlewares should be written in the `src/middlewares/` directory.
 
 ## Available Middlewares
 
-Lesgo! comes with 3 pre-existing middlewares.
+Lesgo! comes with a few pre-existing middlewares that you can use right away.
 
 You may also import other ready-made middlewares from the [Middy repository](https://www.npmjs.com/package/middy#available-middlewares).
 
-### Http
+### HttpMiddleware
 
-This middleware normalizes all HTTP requests, handles, and formats success and error responses, and should be used for all HTTP endpoints. Will also provide any or both JSON body and url querystring parameters into a single `event.input`. This middleware will also populate with `event.auth.sub` when JWT is used and presented with the `Authorization` header.
+This middleware normalizes all HTTP requests, handles, and formats success and error responses, and should be used for all HTTP endpoints.
 
 **Usage**
 
-```js
+```ts
 import middy from '@middy/core';
-import httpMiddleware from "Middlewares/httpMiddleware";
+import { APIGatewayProxyEvent } from 'aws-lambda';
+import { httpMiddleware } from 'lesgo/middlewares';
+import appConfig from '../../config/app';
 
-const originalHandler = event => {
-  return event.input;
+type MiddyAPIGatewayProxyEvent = APIGatewayProxyEvent & {
+  pathParameters: {
+    'path-key-1': string,
+    'path-key-2': string,
+  },
+  queryStringParameters: {
+    stringValue: string;
+    numberValue: number,
+    booleanValue: boolean,
+  },
+  body: {
+    user: {
+      name: string;
+      age: number;
+    }
+  };
 };
 
-export const handler = middy(originalHandler);
+const pingHandler = (event: MiddyAPIGatewayProxyEvent) => {
+  const { pathParamters, queryStringParameters, body } = event;
 
-handler.use(httpMiddleware());
+  return {
+    pathParamters,
+    queryStringParameters, 
+    body, 
+  }
+};
+
+export const handler = middy()
+  .use(httpMiddleware({ debugMode: appConfig.debug }))
+  .handler(pingHandler);
+
+export default handler;
 ```
 
 #### Success Response
 
-The successfuly response will be formatted in this way
+The successful response will be formatted in this way
 ```json
 {
     "status": "success",
-    "data": {},
-    "_meta": {}
-}
-```
-
-#### Error Response
-
-The successfuly response will be formatted in this way
-```json
-{
-    "status": "error",
-    "data": null,
-    "error": {
-        "code": "Core/users/getUser::USER_NOT_EXIST",
-        "message": "UserException: User does not exist",
-        "details": {
-            "err": {
-                "name": "UserException",
-                "message": "User not found",
-                "statusCode": 404,
-                "code": "Core/users/getUser::USER_NOT_EXIST",
-                "extra": {}
+    "data": {
+        "pathParameters": {
+            "path-key-1": "pathValue1",
+            "path-key-2": "pathValue2",
+        },
+        "queryStringParameters": {
+            "stringValue": "some-string",
+            "numberValue": 999,
+            "booleanValue": true,
+        },
+        "body": {
+            "user": {
+                "name": "John Doe",
+                "age": 24
             }
         }
     },
@@ -66,51 +86,96 @@ The successfuly response will be formatted in this way
 }
 ```
 
-### Normalize SQS Message
+#### Error Response
 
-This middleware will normalize records coming from sqs message event. The `Records` object in the `handler.event` will be normalized into `handler.event.collection`. This middleware executes _before_ the handler is called.
+The error response will be formatted in this way
+```json
+{
+    "status": "error",
+    "data": null,
+    "error": {
+        "code": "handlers.auth.login::USER_NOT_EXIST",
+        "message": "UserException: User does not exist",
+        "details": {
+            "name": "UserException",
+            "message": "User not found",
+            "statusCode": 404,
+            "code": "models.User.loginUser::USER_NOT_EXIST",
+            "extra": {}
+        }
+    },
+    "_meta": {}
+}
+```
+
+### SQS Middleware
+
+This middleware will normalize records coming from sqs message event. This middleware executes _before_ the handler is called.
 
 **Usage**
 
-```js
+```ts
 import middy from '@middy/core';
-import normalizeSQSMessage from "Middlewares/normalizeSQSMessage";
+import { SQSEvent, SQSRecord } from 'aws-lambda';
+import { sqsMiddleware } from 'lesgo/middlewares';
 
-const originalHandler = event => {
-  return event.collection;
+interface InsertRecordInput {
+  userId: string;
+  title: string;
+}
+
+type MiddySQSEventRecord = SQSRecord & {
+  body: InsertRecordInput;
 };
 
-export const handler = middy(originalHandler);
+type MiddySQSEvent = SQSEvent & {
+  Records: MiddySQSEventRecord[];
+};
 
-handler.use(normalizeSQSMessage());
+const dequeueHandler = async (event: MiddySQSEvent) => {
+  const records = event.Records as MiddySQSEventRecord[];
+
+  const processRecord = async (record: MiddySQSEventRecord) => {
+    // Process the individual record
+  };
+
+  await Promise.all(records.map(record => processRecord(record)));
+};
+
+export const handler = middy()
+  .use(sqsMiddleware())
+  .handler(dequeueHandler);
+
+export default handler;
 ```
 
-### Verify JWT
+### Verify JWT Middleware
 
-This middleware will verify any JWT passed to the `Authorization` header of the http request. The decoded JWT can be accesed through `handler.event.decodedJwt`. If the JWT is verified, `handler.event.auth.sub` is set to the JWT's sub, else a `403` response will be thrown.
+This middleware will verify any JWT passed to the `Authorization` header of the http request. The decoded JWT can be accesed through `handler.event.jwt` once successfully verified.
 
 **Configuration**
 
-The JWT configuration for your application is located at `src/config/jwt.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/jwt.js) to that path.
-
-You may also simply update the respective environment files in `config/environments/*` as such:
+The following JWT environment variables must be added to the respective environment files.
 
 ```apache
-# SHA256 JWT secret key, used to verify the token passed to "Authorization" header
-JWT_SECRET=""
+# Comma-delimited secret keys. 
+# If kid is being used, separate them with ":" i.e.; kid1:secret1,kid2:secret2
+LESGO_JWT_SECRET_KEYS=
 
-# Leave empty if you don't want the issuer to be validated
-JWT_ISS_SHOULD_VALIDATE=
+# JWT algorithm used to sign / verify the token
+LESGO_JWT_ALGORITHM=HS256
 
-# Comma-separated list of domains to validate
-JWT_ISS_DOMAINS=""
+# Time to expire upon creation
+LESGO_JWT_EXPIRESIN=1h
 
-# Leave empty if you don't want the custom claims to be validated
-JWT_CUSTOM_CLAIMS_SHOULD_VALIDATE=
+# Issuer claim
+LESGO_JWT_ISSUER=lesgo-dev
 
-# List of custom claims to valdiate.
-# Visit https://auth0.com/docs/tokens/jwt-claims for more info
-JWT_CUSTOM_CLAIMS_DATA=""
+# Audience claim
+LESGO_JWT_AUDIENCE=lesgo-dev
+
+# Set to true to verify claims.
+LESGO_JWT_VALIDATE_CLAIMS=true
 ```
 
 **Usage**
