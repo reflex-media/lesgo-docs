@@ -24,20 +24,20 @@ Like any other frameworks out there, we built this Framework because we couldn't
 
 Create Serverless project:
 
-```bash
+```apache
 sls create --template-url https://github.com/reflex-media/lesgo/tree/master --path my-service
 cd my-service
 ```
 
 Install dependencies:
 
-```bash
+```apache
 npm install
 ```
 
 Start local:
 
-```bash
+```apache
 npm start
 ```
 
@@ -45,44 +45,13 @@ Access local url via browser or Postman: [http://localhost:8181/ping](http://loc
 
 ## Configuration
 
-There are 2 levels of configurations for the Lesgo! framework.
+There are 3 layers of configurations for the Lesgo! framework.
 
-The project (serverless) configurations are stored in `config/` directory as `.yml` files. These configuration files affect your project set up and build.
+The project configurations (serverless config) are stored in `config/` directory as `.yml` files. These configuration files affect your project set up and build.
 
-The application configurations are stored in `src/config/` directory as `.ts` files. These are application/business specific configurations.
+The application configurations (app config) are stored in `src/config/` directory as `.ts` files. These are application/business specific configurations.
 
-Each configuration is documented below, so feel free to look through the files and get familiar with the options relevant to you.
+The environment configurations (env config) are stored in `config/environments/` directory and is stored as `DOTenv` syntax. These are useful to set configuratuins per environment.
 
-### Environment Configuration
+Each configuration is documented, so feel free to look through the files and get familiar with the options relevant to you.
 
-It is often helpful to have different configuration values based on the environment where the application is running. For example, you may wish to use a different SQS queue on a testing server than you do on your production server.
-
-To make this happen, Lesgo! uses the Serverless DOTenv plugin. DOTenv files are stored in `config/environments/` directory. The supported environments are currently `local`, `dev`, `sandbox`, `prod`.
-
-These environment files can be committed to the source control. To overwrite for your local build, you may create a local DOTenv as such example: `.env.dev.local`. This will allow you to overwrite the existing `.env.dev` without having to commit it.
-
-### Available Eenvironment Configurations
-
-The following environment variables are required to run the basic app.
-
-```apache
-# Declare the name of the application
-APP_ENV=lesgo-app
-
-# Declare the environment to deploy to
-APP_ENV=dev
-
-# Enable/disable debug mode. Recommended set to false on prod env.
-APP_DEBUG=true
-
-# Determine the region to deploy to
-AWS_ACCOUNT_REGION=us-west-1
-
-# This name needs to match the aws credentials profile on your local machine.
-AWS_ACCOUNT_PROFILE=slsDevProfile
-
-# The AWS account id being deployed to
-AWS_ACCOUNT_ID=
-```
-
-There are other environment variables that may be required. However, this is dependent on the modules being used.

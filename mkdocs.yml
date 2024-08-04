@@ -44,31 +44,36 @@ markdown_extensions:
 
 nav:
   - Prologue:
-      - Release Notes: prologue/release-notes.md
-      - Contribution Guide: prologue/contribution-guide.md
+    - Release Notes: prologue/release-notes.md
+    - Contribution Guide: prologue/contribution-guide.md
   - Getting Started:
-      - Installation: index.md
-      - Directory Structure: getting-started/structure.md
-      - Deployment: getting-started/deployment.md
-      - Available Scripts: getting-started/available-scripts.md
+    - Installation: index.md
+    - Configurations:
+      - Configurations: getting-started/configurations/configurations.md
+      - Serverless Framework: getting-started/configurations/serverless-framework.md
+      - Application: getting-started/configurations/application.md
+      - Environment: getting-started/configurations/environment.md
+    - Directory Structure: getting-started/structure.md
+    - Deployment: getting-started/deployment.md
+    - Available Scripts: getting-started/available-scripts.md
   - The Basics:
-      - Middleware: basics/middleware.md
-      - Error Handling: basics/error-handling.md
-      - Logging: basics/logging.md
+    - Middleware: basics/middleware.md
+    - Error Handling: basics/error-handling.md
+    - Logging: basics/logging.md
   - Digging Deeper:
-      - Cache: advance/cache.md
-      - Helpers: advance/helpers.md
-      - Object Store: advance/object-store.md
-      - Queues: advance/queues.md
-      - Task Scheduling: advance/task-scheduling.md
-      - Unit Tests: advance/unit-tests.md
-      - Typescript: advance/typescript.md
+    - Cache: advance/cache.md
+    - Helpers: advance/helpers.md
+    - Object Store: advance/object-store.md
+    - Queues: advance/queues.md
+    - Task Scheduling: advance/task-scheduling.md
+    - Unit Tests: advance/unit-tests.md
+    - Typescript: advance/typescript.md
   - Security:
-      - VPC: security/vpc.md
+    - VPC: security/vpc.md
   - Database:
-      - Getting Started: database/getting-started.md
-      - DynamoDB: database/dynamodb.md
-      - RDS Aurora: database/rds-aurora.md
+    - Getting Started: database/getting-started.md
+    - DynamoDB: database/dynamodb.md
+    - RDS Aurora: database/rds-aurora.md
   - Packages:
-      - Elasticsearch: packages/elasticsearch.md
-      - Firebase: packages/firebase.md
+    - Elasticsearch: packages/elasticsearch.md
+    - Firebase: packages/firebase.md
