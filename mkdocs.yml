@@ -51,13 +51,20 @@ nav:
     - Configurations:
       - Configurations: getting-started/configurations/configurations.md
       - Serverless Framework: getting-started/configurations/serverless-framework.md
-      - Application: getting-started/configurations/application.md
-      - Environment: getting-started/configurations/environment.md
+      - Application: getting-started/configurations/application-config.md
+      - Environment: getting-started/configurations/environment-variables.md
     - Directory Structure: getting-started/structure.md
     - Deployment: getting-started/deployment.md
     - Available Scripts: getting-started/available-scripts.md
   - The Basics:
-    - Middleware: basics/middleware.md
+    - Middlewares:
+      - Middleware: basics/middlewares/middleware.md
+      - HttpMiddleware: basics/middlewares/httpMiddleware.md
+      - HttpResponseMiddleware: basics/middlewares/httpResponseMiddleware.md
+      - SQSMiddleware: basics/middlewares/sqsMiddleware.md
+      - InvokeMiddleware: basics/middlewares/invokeCommandMiddleware.md
+      - VerifyBasicAuthMiddleware: basics/middlewares/verifyBasicAuthMiddleware.md
+      - VerifyJwtMiddleware: basics/middlewares/verifyJwtMiddleware.md
     - Error Handling: basics/error-handling.md
     - Logging: basics/logging.md
   - Digging Deeper:

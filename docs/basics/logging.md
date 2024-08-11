@@ -1,19 +1,21 @@
 # Logging
 
-Lesgo! is configured with structured logging.
+Lesgo! Framework is configured with structured logging.
 
 Structured logs will appear on the console by default.
 
 ```js
-import logger from "Utils/logger";
+import logger from '../../utils/logger';
 
 logger.log("info", "this is an info log");
+
 logger.info("This is an info log");
+
 logger.warn("This is a warning log");
+
 logger.error("This is an error log");
-logger.debug(
-  "This is a debug log and will only get logged when APP_DEBUG=true"
-);
+
+logger.debug("This is a debug log and will only get logged when APP_DEBUG=true");
 ```
 
 !!! info "PRO TIP"
@@ -22,7 +24,7 @@ logger.debug(
 
 You may also add additional custom metadata as such:
 
-```js
+```ts
 logger.info("This is an info log with my own custom metadata", {
   customData1: "someData1",
   customData2: "someData2",

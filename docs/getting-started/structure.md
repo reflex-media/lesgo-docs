@@ -1,6 +1,8 @@
 # Directory Structure
 
-```
+The directory structure of Lesgo! Framework is inspired by Laravel Framework.
+
+```bash
 ├── config
 |   ├── environments
 |   |   ├── .env
@@ -31,16 +33,9 @@ The `config/` directory contains the serverless configurations. The application-
 
 ### Environment Config
 
-The `config/environments` directory contains environment-specific configurations. The environment files are used for both deployment and within application code.
+The `config/environments` directory contains environment-specific configurations. The environment files are used for both deployment and within application code via the App Config.
 
-You may overwrite env files during a deployment by adding a `.local` suffix e.g; `.env.dev.local`. This is useful for when you want to deploy to a specific environment but not wanting to overwrite committed values.
-
-> `.env`: default environment, served as a local example.  
-> `.env.local`: local environment configuration. This should not be committed.  
-> `.env.dev`: development environment configuration.
-> `.env.dev.local`: development environment based on local configuration. This should not be committed.
-> `.env.sandbox`: sandbox environment configuration.  
-> `.env.prod`: production environment configuration.
+Refer to [Environment Variables](../configurations/environment-variables/) for more info.
 
 ### Function Config
 
@@ -79,5 +74,5 @@ The `src/models/` directory contains the Model for the application. Models is th
 ### Service Directory
 The `src/services/` directory contains class-based services or modules, usually instantiated. These classes are usually made available in the `src/utils/` as helper functions.
 
-### Util Directory
+### Utils Directory
 The `src/utils/` directory contains helper functions.
