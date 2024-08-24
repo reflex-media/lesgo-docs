@@ -1,138 +1,66 @@
 # Cache
 
-Lesgo! uses AWS ElastiCache for caching.
+Lesgo! uses AWS ElastiCache for caching. Currently only Redis cache is supported.
+
+## Pre-requisites
+
+In order to start using cache (via AWS ElastiCache - Redis), set it up directly from the [AWS Console](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/LambdaRedis.step1.html).
+
+!!! info "ElastiCache requires VPC"
+
+    AWS ElastiCache must exists within a VPC. [Learn more](../../security/vpc) on setting up VPC for your microservice.
 
 ## Configuration
 
-This is configurable in the `src/config/cache.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/cache.js) to that path.
-
-```js
-export default {
-  default: "memcached",
-  connections: {
-    memcached: {
-      url: process.env.ELASTICACHE_MEMCACHED_URL || null,
-      options: {
-        autoDiscover: true,
-      },
-    },
-  },
-};
-```
-
-ElastiCache is disabled by default. To enable ElastiCache, follow the steps below.
-
-1. Uncomment `elastiCache.yml` resource in `serverless.yml`
-
-```yml
-resources:
-  - ${file(${self:custom.path.resources}/elastiCache.yml)}
-```
-
-2. Deploy application and retrieve ElastiCache node Endpoint on AWS Console.
+Update the following environment variables
 
 ```bash
-yarn deploy -s development
+# Set the AWS ElastiCache Redis endpoint uri
+LESGO_AWS_ELASTICACHE_REDIS_ENDPOINT=
+
+# Set the AWS ElastiCache Redis port number
+LESGO_AWS_ELASTICACHE_REDIS_PORT=
 ```
 
-3. Update relevant environment file in `config/environments/` directory.
+## Retrieving data from the cache
 
-```apache
-ELASTICACHE_MEMCACHED_URL="INSERT_ELASTICACHE_NODE_ENDPOINT_HERE"
+```ts
+import { getCache } from 'lesgo/utils/cache/redis';
+
+const data = await getCache('foo');
 ```
 
-Deploy your application again and you may now use ElastiCache.
+## Storing data to the cache
 
-## Cache Usage
+```ts
+import { setCache } from 'lesgo/utils/cache/redis';
 
-Import the `cache` module from `Utils/cache`.
+const cacheKey = 'foo';
+const cacheValue = 'bar';
 
-To test the sample usage, uncomment `samples.yml` function in `serverless.yml` and deploy the application to a development environment.
-
-### Retrieving data from the cache
-
-`Utils/cache.get()` will return data from given cache key.
-
-```js
-cache.get(
-  key: String, // cache key to fetch data from
-): Promise;
+await setCache(cacheKey, cacheValue);
 ```
 
-```js
-import cache from "Utils/cache";
+To set expiry, enter the expiry time as the 3rd parameter.
 
-const data = await cache.get("foo");
+
+```ts
+import { setCache } from 'lesgo/utils/cache/redis';
+
+const cacheKey = 'foo';
+const cacheValue = 'bar';
+const cacheExpire = 15; // in seconds. Defaults to 5 min expiry if not defined
+
+await setCache(cacheKey, cacheValue, {
+  EX: cacheExpire
+});
 ```
 
-### Retrieving multiple data from the cache
 
-`Utils/cache.getMulti()` will return multiple data from multiple cache keys.
+## Deleting cache data
 
-```js
-cache.getMulti(
-  keys: String[], // array of cache keys to fetch data from
-): Promise;
-```
+```ts
+import { deleteCache } from 'lesgo/utils/cache/redis';
 
-**Example Usage**
-
-```js
-import cache from "Utils/cache";
-
-const cacheKeys = ["foo", "foo2", "foo3"];
-
-const data = await cache.getMulti(["foo", "foo2", "foo3"]);
-```
-
-### Storing items to the cache
-
-You may use the `set` method on the `cache` util to store items to the cache.
-
-```js
-import cache from "Utils/cache";
-
-const cacheKey = "foo";
-const cacheValue = "bar";
-const cacheLifetimeInSeconds = 10;
-
-const data = await cache.set(cacheKey, cacheValue, cacheLifetimeInSeconds);
-```
-
-Test sample usage with this url endpoint `/samples/cache?method=set&key=sampleCacheKey&value=sampleCacheValue`.
-
-### Deleting cache data
-
-`Utils/cache.del()` will remove the cache key.
-
-```js
-cache.del(
-  key: String, // cache key to remove
-): Promise;
-```
-
-**Example Usage**
-
-```js
-import cache from "Utils/cache";
-
-await cache.del("foo");
-```
-
-### Deleting multiple cache data
-
-`Utils/cache.del()` will remove the cache key.
-
-```js
-cache.delMulti(
-  keys: String[], // array of cache keys to remove
-): Promise;
-```
-
-**Example Usage**
-
-```js
-import cache from "Utils/cache";
-
-await cache.delMulti(["foo", "foo2", "foo3"]);
+await deleteCache('foo');
 ```

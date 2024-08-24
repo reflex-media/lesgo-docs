@@ -68,15 +68,17 @@ nav:
     - Error Handling: basics/error-handling.md
     - Logging: basics/logging.md
   - Digging Deeper:
+    - Helpers:
+      - Available Helpers: advance/helpers/available-helpers.md
+      - Crypto: advance/helpers/crypto.md
     - Cache: advance/cache.md
-    - Helpers: advance/helpers.md
     - Object Store: advance/object-store.md
     - Queues: advance/queues.md
     - Task Scheduling: advance/task-scheduling.md
     - Unit Tests: advance/unit-tests.md
-    - Typescript: advance/typescript.md
   - Security:
     - VPC: security/vpc.md
+    - IAM Role: security/iam-role.md
   - Database:
     - Getting Started: database/getting-started.md
     - DynamoDB: database/dynamodb.md

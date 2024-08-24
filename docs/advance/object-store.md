@@ -4,43 +4,52 @@ Lesgo! is pre-configured with AWS S3 for object storage.
 
 ## Configuration
 
-The S3 configuration for your application is located at `src/config/aws.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/aws.js) to that path.
+Update the following environment variables
 
-You may also simply update the respective environment files in `config/environments/*` as such:
+```bash
+# Set the AWS S3 region. Remove if using the default AWS region
+LESGO_AWS_S3_REGION=
 
-```apache
-# S3 Access Key ID
-AWS_S3_OPTIONS_ACCESS_KEY_ID=""
+# Set the AWS S3 bucket to connect to
+LESGO_AWS_S3_BUCKET=
 
-# S3 Secret Access Key
-AWS_S3_OPTIONS_SECRET_ACCESS_KEY=""
-
-# S3 region name
-AWS_S3_OPTIONS_REGION=""
+# Set the public url for the AWS S3 object path
+LESGO_AWS_S3_BUCKET_URI=
 ```
 
-## Fetch Object
+## Permissions
 
-The `getObject()` function will fetch the object from the Bucket.
+Access to the S3 bucket will be done via the IAM lambda role. Set the following permission to be able to get and put objects to the specific bucket.
 
-```js
-import { getObject } from 'Utils/objectStore';
-
-// Returns a buffered object response. See AWS for more information
-const objectFile = await getObject('Key', 'Bucket');
+```yml
+provider:
+  ...
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 's3:GetObject'
+        - 's3:PutObject'
+      Resource: 'arn:aws:s3:::${env:LESGO_AWS_S3_BUCKET}/*'
 ```
 
-## S3 Bucket Permissions Policy
+Learn more about IAM role [here](../../security/iam-role).
 
-To fetch/put objects to an exisitng S3 bucket, be sure to set up an IAM user with the correct permissions as well as updating the S3 bucket policy. You may override the config by updating these in the environment file.
+## Fetch object
 
-```apache
-# Set IAM access key with S3 access
-AWS_S3_OPTIONS_ACCESS_KEY_ID=
+The below example will fetch the object from the default bucket set in the environment variable.
 
-# Set IAM secret key
-AWS_S3_OPTIONS_SECRET_ACCESS_KEY=
+```ts
+import { getObject } from 'lesgo/utils/s3';
 
-# Set S3 region to connect to
-AWS_S3_OPTIONS_REGION=
+const objectFile = await getObject('objectKey');
+```
+
+The below example will fetch the object from the bucket defined in the second parameter.
+
+```ts
+import { getObject } from 'lesgo/utils/s3';
+
+const objectFile = await getObject('objectKey', {
+  Bucket: 'myOtherS3Bucket'
+});
 ```
