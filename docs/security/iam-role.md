@@ -14,7 +14,7 @@ Permissions can be added directly on your `serverless.yml` file.
 
 The below permission allows the lambda to get and put objects from and to the S3 bucket.
 
-```yml
+```yaml
 provider:
   ...
   iamRoleStatements:

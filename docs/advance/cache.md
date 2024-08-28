@@ -12,7 +12,7 @@ In order to start using cache (via AWS ElastiCache - Redis), set it up directly 
 
 ## Configuration
 
-Update the following environment variables
+Update the following environment variables to start using AWS ElastiCache.
 
 ```bash
 # Set the AWS ElastiCache Redis endpoint uri

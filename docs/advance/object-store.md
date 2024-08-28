@@ -1,10 +1,10 @@
 # Object Store
 
-Lesgo! is pre-configured with AWS S3 for object storage.
+Lesgo! uses AWS S3 for object storage.
 
 ## Configuration
 
-Update the following environment variables
+Update the following environment variables to start using AWS S3.
 
 ```bash
 # Set the AWS S3 region. Remove if using the default AWS region
@@ -21,7 +21,7 @@ LESGO_AWS_S3_BUCKET_URI=
 
 Access to the S3 bucket will be done via the IAM lambda role. Set the following permission to be able to get and put objects to the specific bucket.
 
-```yml
+```yaml
 provider:
   ...
   iamRoleStatements:
