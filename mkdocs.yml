@@ -63,6 +63,7 @@ nav:
       - HttpResponseMiddleware: basics/middlewares/httpResponseMiddleware.md
       - SQSMiddleware: basics/middlewares/sqsMiddleware.md
       - InvokeMiddleware: basics/middlewares/invokeCommandMiddleware.md
+      - DisconnectMiddleware: basics/middlewares/disconnectMiddleware.md
       - VerifyBasicAuthMiddleware: basics/middlewares/verifyBasicAuthMiddleware.md
       - VerifyJwtMiddleware: basics/middlewares/verifyJwtMiddleware.md
     - Error Handling: basics/error-handling.md
@@ -83,6 +84,3 @@ nav:
     - Getting Started: database/getting-started.md
     - DynamoDB: database/dynamodb.md
     - RDS Aurora: database/rds-aurora.md
-  - Packages:
-    - Elasticsearch: packages/elasticsearch.md
-    - Firebase: packages/firebase.md

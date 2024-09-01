@@ -1,4 +1,4 @@
-# VerifyJwtMiddleware
+# Verify JWT Middleware
 
 This middleware reads the Authorization header and attaches the decoded JWT to the AWS API Gateway Event, and should be used for HTTP endpoints where authorization is required.
 
@@ -10,7 +10,6 @@ The decoded JWT will be attached to the APIGatewayProxyEvent.jwt field.
 import middy from '@middy/core';
 import { APIGatewayProxyEvent } from 'aws-lambda';
 import { httpMiddleware, verifyJwtMiddleware } from 'lesgo/middlewares';
-import appConfig from '../../config/app';
 
 interface MiddyAPIGatewayProxyEvent extends APIGatewayProxyEvent {
   jwt: string | Jwt | JwtPayload;

@@ -2,7 +2,7 @@
 
 The directory structure of Lesgo! Framework is inspired by Laravel Framework.
 
-```bash
+```
 ├── config
 |   ├── environments
 |   |   ├── .env
@@ -27,52 +27,30 @@ The directory structure of Lesgo! Framework is inspired by Laravel Framework.
     └── utils
 ```
 
-## The Config Directory
+## Directory Structure
 
-The `config/` directory contains the serverless configurations. The application-specific configs can be found in `src/config/` directory instead.
+| Directory                  | Description                                                                 |
+|----------------------------|-----------------------------------------------------------------------------|
+| `utils`                    | Contains the serverless configurations.                                              |
+| `documents`                | Contains any documents outside of the application.                          |
+| `src`                      | Source code directory.                                                      |
+| `src/config`               | Application-specific configurations.                                        |
+| `src/core`                 | Core application logic.                                                     |
+| `src/exceptions`           | Custom exceptions and error handling.                                       |
+| `src/handlers`             | Lambda function handlers.                                                   |
+| `src/middlewares`          | Middleware functions for request processing.                                |
+| `src/models`               | Data models and schemas.                                                    |
+| `src/services`             | Business logic and service classes.                                         |
+| `src/utils`                | Additional utility functions and helpers.                                   |
 
-### Environment Config
+## Configuration Directories
 
-The `config/environments` directory contains environment-specific configurations. The environment files are used for both deployment and within application code via the App Config.
+| Directory                  | Description                                                                 |
+|----------------------------|-----------------------------------------------------------------------------|
+| `config/`                  | Contains the serverless configurations.                                     |
+| `config/environments`      | Environment-specific configurations.                                        |
+| `config/functions/`        | Available and declared Serverless functions.                                |
+| `config/resources/`        | Available and declared Serverless resources.                                |
+| `config/utils/`            | Additional Serverless configurations where required.                        |
 
 Refer to [Environment Variables](../configurations/environment-variables/) for more info.
-
-### Function Config
-
-The `config/functions/` directory contains the available and declared Serverless functions.
-
-### Resource Config
-The `config/resources/` directory contains the available and declared Serverless resources.
-
-### Util Config
-The `config/utils/` directory contains additional Serverless configs where required.
-
-## The Documents Directory
-The `documents/` directory contains any documents outside of the application. One use case is to store the exported Postman Collection and Environment files here.
-
-## The Source Directory
-The `src/` directory contains the main source code for your application.
-
-### Config Directory
-The `src/config/` directory contains the application configurations.
-
-### Core Directory
-The `src/core/` directory contains your application's business / functional logic.
-
-### Exception Directory 
-The `src/exceptions/` directory contains error classes.
-
-### Handler Directory
-The `src/handlers/` directory contains the entry point for all events.
-
-### Middleware Directory
-The `src/middlewares/` directory contains the request middlewares.
-
-### Model Directory
-The `src/models/` directory contains the Model for the application. Models is the gateway to the database / data store.
-
-### Service Directory
-The `src/services/` directory contains class-based services or modules, usually instantiated. These classes are usually made available in the `src/utils/` as helper functions.
-
-### Utils Directory
-The `src/utils/` directory contains helper functions.

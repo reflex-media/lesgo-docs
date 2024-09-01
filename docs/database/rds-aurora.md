@@ -4,170 +4,60 @@ MySQL and PostgreSQL-compatible relational database built for the cloud. Perform
 
 ## Configuration
 
-The database configuration for your application is located at `src/config/db.js`. Or copy [this file](https://raw.githubusercontent.com/reflex-media/lesgo/master/src/config/db.js) to that path.
+Update the following environment variables to configure your RDS database.
 
-### Aurora Serverless
+```bash
+# Set the region of the existing RDS Aurora MySQL
+LESGO_AWS_RDS_AURORA_MYSQL_REGION=ap-southeast-1
 
-!!! note
+# Set the name of the database it should connect to
+LESGO_AWS_RDS_AURORA_MYSQL_DB_NAME=my_db
 
-    As Lesgo! establishes connection to Aurora Serverless via the Data API, prior setup and storing of the credentials on AWS Secret Manager is required. [Find out more](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html).
-
-For Aurora Serverless via Data API, create a `connections.dataApi` configuration as shown below.
-
-```js
-// src/config/db.js
-
-export default {
-  default: "dataApi",
-  connections: {
-    dataApi: {
-      secretArn: process.env.DB_SECRET_ARN || "secretArnDataApi",
-      secretCommandArn:
-        process.env.DB_SECRET_COMMAND_ARN || "secretCommandArnDataApi",
-      resourceArn: process.env.DB_RESOURCE_ARN || "resourceArnDataApi",
-      database: process.env.DB_NAME || "databaseDataApi",
-    },
-  },
-};
+# Set the KMS Secret ID to connect to the RDS Proxy
+LESGO_AWS_RDS_AURORA_MYSQL_PROXY_DB_CREDENTIALS_SECRET_ID=my_dbProxyCredentials
 ```
 
-You may also simply update the respective environment files in `config/environments/.env.*` as such:
+!!! info "AWS KMS to store Proxy Credentials"
 
-```apache
-# AWS Secret Manager ARN to allow app db user connect to the specified db
-DB_SECRET_ARN=""
+    It is strongly recommended to store secret keys via AWS Key Management Service (AWS KMS). Ensure the following database credentials are supplied in the KMS Store: `host`, `username`, `password`.
 
-# AWS Secret Manager ARN to allow app command db user connect to the specified db
-# for running "command" like functions like database schema migration
-DB_SECRET_COMMAND_ARN=""
+!!! important "RDS Proxy"
 
-# AWS Secret Manager ARN for the Aurora Serverless database cluster
-DB_RESOURCE_ARN=""
+    Lesgo! utilizes the RDS Proxy to manage connections to your database. This is important for serverless architecture to prevent each running instance from creating their own connection, eventually exhausting the databse connection limit.
 
-# Database name to connect to
-DB_NAME=""
+## Resource Creation
+
+Should you want Lesgo! Framework to create your RDS Aurora instance, ensure the following environment variables are set as well.
+
+```bash
+# Set the connection type. Proxy connection is recommended
+LESGO_AWS_RDS_AURORA_MYSQL_CONNECTION_TYPE=proxy
+
+# Set the minimum number of running instances to be available at any one time
+LESGO_AWS_RDS_AURORA_MYSQL_SCALE_MIN_CAPACITY=1
+
+# Set the maximum number of running instances to be available at any one time
+LESGO_AWS_RDS_AURORA_MYSQL_SCALE_MAX_CAPACITY=1
+
+# Set the deletion protection to prevent accidental termination and loosing your data
+LESGO_AWS_RDS_AURORA_MYSQL_DELETION_PROTECTION=true
 ```
 
-### Aurora Provisioned
-
-!!! note
-
-    As Lesgo! establishes connection to Aurora Provisioned via the RDS Proxy, prior setup of the RDS Proxy is required. [Find out more](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-proxy.html).
-
-For Aurora Provisioned via RDS Proxy, create a `connections.rdsProxy` configuration as shown below.
-
-```js
-// src/config/db.js
-
-export default {
-  default: "rdsProxy",
-  connections: {
-    rdsProxy: {
-      host:
-        process.env.DB_RDS_PROXY_HOST ||
-        "rds-cluster-proxy.proxy-ek9srsfbg2xc.us-west-2.rds.amazonaws.com",
-      user: process.env.DB_RDS_PROXY_USER || "proxyUser",
-      password: process.env.DB_RDS_PROXY_PASSWORD || "proxyPass",
-      database: process.env.DB_NAME || "dbname",
-    },
-    rdsProxyRead: {
-      host:
-        process.env.DB_RDS_PROXY_HOST_READ ||
-        process.env.DB_RDS_PROXY_HOST ||
-        "rds-cluster-proxy-read-only.proxy-ek9srsfbg2xc.us-west-2.rds.amazonaws.com",
-      user:
-        process.env.DB_RDS_PROXY_USER_READ ||
-        process.env.DB_RDS_PROXY_USER ||
-        "proxyUser",
-      password:
-        process.env.DB_RDS_PROXY_PASSWORD_READ ||
-        process.env.DB_RDS_PROXY_PASSWORD ||
-        "proxyPass",
-      database: process.env.DB_NAME || "dbname",
-    },
-  },
-};
-```
-
-You may also simply update the respective environment files in `config/environments/env.*` as such:
-
-```apache
-# config/environments/.env.*
-
-# Domain host of the RDS Proxy
-DB_RDS_PROXY_HOST=""
-
-# Domain host of the RDS Proxy for read-only connection
-DB_RDS_PROXY_HOST_READ=""
-
-# RDS Proxy username
-DB_RDS_PROXY_USER=""
-
-# RDS Proxy password
-DB_RDS_PROXY_PASSWORD=""
-```
+Be sure to include the relevant resource yml file in the `serverless.yml > resources` file. See `config/resources/sample-rdsProxy.yml` for sample resource creation.
 
 ## Database Connection
 
-Connecting to the database is automatically handled when you execute your query.
+Connecting to the database is automatically handled when you execute your query. Database connection is managed by RDS Proxy.
 
-For Aurora Serverless (via Data API), this is nothing to worry about as the opening and closing of database connections is handled within Data API itself! Thus, one less worry about managing connection pools.
+## Terminating Database Connection
 
-For Aurora Provisioned (via RDS Proxy), a connection will be opened and closed per every query executed. While this works, it is not efficient as opening and closing a database connection will cost additional time (and money!).
+It is important to ensure your database connection is terminated once it is no longer required. By default, connections do not terminate and will remain idle. This is intended to reduce the resource needed when establishing a new connection. 
 
-As such, specifically for RDS Proxy, you should make use of Lesgo's persistent connection method `db.pConnect()`. This should be handled at the Handler level as much as possible.
+However, this is inefficient for serverless architecture. As such, it is important to terminate the connection once it is no longer required.
 
-### Persistent Connection for RDS Proxy
+To terminate the RDS Proxy Connection, call the `disconnectDb` and attach it to the `disconnectMiddleware()` middleware.
 
-```js
-// src/handlers/utils/ping.js
-
-import middy from "@middy/core";
-import httpMiddleware from "Middlewares/httpMiddleware";
-import ping from "Core/utils/ping";
-import db from "Utils/db";
-
-const originalHandler = async (event) => {
-  await db.pConnect();
-
-  return ping(event.input);
-};
-
-export const handler = middy(originalHandler);
-
-handler.use(httpMiddleware({ db }));
-```
-
-Notice the passing of the `db` object into `httpMiddleware()`. This is important to allow `httpMiddleware` to disconnect from RDS Proxy at the end of the lambda execution. Without doing so, you will encounter lambda timeout issues as the db connection is still open.
-
-Should you want to handle the closing of the db connection yourself and without using any of Lesgo!'s middlewares, you can do so as shown below.
-
-```js
-// src/handlers/utils/ping.js
-
-import middy from "@middy/core";
-import ping from "Core/utils/ping";
-import db from "Utils/db";
-
-const originalHandler = async (event) => {
-  await db.pConnect();
-
-  try {
-    const resp = await ping(event.input);
-    return resp;
-  } catch (err) {
-    throw err;
-  } finally {
-    db.end();
-  }
-};
-
-export const handler = middy(originalHandler);
-
-handler.use();
-```
-
-The `finally` in `try catch` is important to allow for a safe disconnection of the db.
+See [disconnectMiddleware](../basics/middlewares/disconnectMiddleware.md) for usage.
 
 ## Running Database Queries
 

@@ -1,4 +1,4 @@
-# VerifyBasicAuthMiddleware
+# Verify Basic Auth Middleware
 
 This middleware reads the Basic Auth header and attaches the username field to the AWS API Gateway Event, and should be used for HTTP endpoints where authorization is required.
 
@@ -6,11 +6,10 @@ The username will be attached to the APIGatewayProxyEvent.basicAuth field.
 
 ## Usage
 
-```ts
+```typescript
 import middy from '@middy/core';
 import { APIGatewayProxyEvent } from 'aws-lambda';
 import { httpMiddleware, verifyBasicAuthMiddleware } from 'lesgo/middlewares';
-import appConfig from '../../config/app';
 
 interface MiddyAPIGatewayProxyEvent extends APIGatewayProxyEvent {
   basicAuth: {

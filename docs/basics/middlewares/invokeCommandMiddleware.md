@@ -4,25 +4,18 @@ This middleware will be used for Invoke Command functions.
 
 ## Usage
 
-```ts
+```typescript
 import middy from '@middy/core';
+import { APIGatewayProxyEvent } from 'aws-lambda';
 
-interface MiddyInvokeCommandEvent {
-  dropTableIfExists?: boolean;
-}
-
-const commandHandler = async (event: MiddyInvokeCommandEvent) => {
-  const { dropTableIfExists } = event;
-
-  return {
-    dropTableIfExists
-  }
+const commandHandler = async (event: APIGatewayProxyEvent) => {
+  // Some code logic
 };
 
 export const handler = middy()
   .use(
     invokeCommandMiddleware({
-      debugMode: appConfig.debug,
+      debugMode: false,
     })
   )
   .handler(commandHandler);

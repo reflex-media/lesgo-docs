@@ -8,14 +8,16 @@ These environment files can be committed to the source control. To overwrite for
 
 You may overwrite env variables during a deployment by adding a `.local` suffix e.g; `.env.dev.local`. This is useful for when you want to deploy to a specific environment but not wanting to overwrite committed values.
 
-> `.env`: default environment, served as a local example.  
-> `.env.local`: local environment variables. This should not be committed.  
-> `.env.dev`: development environment variables.
-> `.env.dev.local`: development environment based on local variables. This should not be committed.
-> `.env.sandbox`: sandbox environment variables.  
-> `.env.prod`: production environment variables.
+| File Name         | Description                                       | Commit Status           |
+|-------------------|---------------------------------------------------|-------------------------|
+| `.env`            | Default environment, served as a local example.   | Can be committed        |
+| `.env.local`      | Local environment variables.                      | Should not be committed |
+| `.env.dev`        | Development environment variables.                | Can be committed        |
+| `.env.dev.local`  | Development environment based on local variables. | Should not be committed |
+| `.env.sandbox`    | Sandbox environment variables.                    | Can be committed        |
+| `.env.prod`       | Production environment variables.                 | Can be committed        |
 
-!!! danger Sensitive keys
+!!! danger "Secret keys"
     Secret or sensitive keys should not be committed to the DOTenv files. Store them in services like the AWS Parameter Store or AWS Secrets Manager instead.
 
 ## Available Environment Variables
@@ -23,15 +25,15 @@ You may overwrite env variables during a deployment by adding a `.local` suffix 
 The following environment variables are required to run the basic app.
 
 ```bash
-# config/environments/.env.dev.local
+# src/config/environments/.env
 
 # Declare the name of the application
 APP_ENV=lesgo-app
 
-# Declare the environment to deploy to
+# Declare the stage to deploy to
 APP_ENV=dev
 
-# Enable/disable debug mode. Recommended set to false on prod env.
+# Enable/disable debug mode. Recommended to set to false on prod env
 APP_DEBUG=true
 
 # Determine the region to deploy to
@@ -44,4 +46,4 @@ AWS_ACCOUNT_PROFILE=slsDevProfile
 AWS_ACCOUNT_ID=
 ```
 
-There are other environment variables that may be required. However, this is dependent on the modules being used.
+There are other environment variables that may be required. This will be mentioned on the modules being used.

@@ -10,11 +10,11 @@ For example, you may want to set debug mode only on non-production environments 
 
 ```bash
 export default {
-    debug: process.env.APP_DEBUG === 'true'
+  debug: process.env.APP_DEBUG === 'true'
 }
 ```
 
-!!! info Environment variables type
+!!! info "Environment variables type"
     All values coming from the `process.env` are presented as a string type. As such, it is also important to take note of type conversion when being used on the app config.
 
 ## Available App Config
