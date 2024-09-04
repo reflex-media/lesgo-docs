@@ -12,21 +12,21 @@
         <meta name="author" content="Sufiyan Rahmat">
       
       
-        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/2.1.0/prologue/contribution-guide/">
+        <link rel="canonical" href="https://reflex-media.github.io/lesgo-docs/2.1.0/basics/middlewares/httpMiddleware/">
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.2.5">
     
     
       
-        <title>Contribution Guide - Lesgo!</title>
+        <title>HttpMiddleware - Lesgo!</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2d9f7617.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2d9f7617.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
         
           
           
@@ -45,9 +45,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#contribution-guide" class="md-skip">
+        <a href="#httpmiddleware" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the stable version.
-  <a href="../../..">
+  <a href="../../../..">
     <strong>Click here to go to stable.</strong>
   </a>
 
@@ -101,7 +101,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!" data-md-component="logo">
+    <a href="../../.." title="Lesgo!" class="md-header__button md-logo" aria-label="Lesgo!" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contribution Guide
+              HttpMiddleware
             
           </span>
         </div>
@@ -199,7 +199,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!" data-md-component="logo">
+    <a href="../../.." title="Lesgo!" class="md-nav__button md-logo" aria-label="Lesgo!" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.03A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97z"/></svg>
@@ -228,14 +228,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
       
       
       
@@ -258,7 +256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../release-notes/" class="md-nav__link">
+      <a href="../../../prologue/release-notes/" class="md-nav__link">
         Release Notes
       </a>
     </li>
@@ -270,113 +268,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Contribution Guide
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../prologue/contribution-guide/" class="md-nav__link">
         Contribution Guide
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#source-repositories" class="md-nav__link">
-    Source Repositories!
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#submission-context" class="md-nav__link">
-    Submission context
-  </a>
-  
-    <nav class="md-nav" aria-label="Submission context">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#got-a-question-or-problem" class="md-nav__link">
-    Got a question or problem?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#found-a-bug" class="md-nav__link">
-    Found a bug?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#missing-a-feature" class="md-nav__link">
-    Missing a feature?
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#submission-guidelines" class="md-nav__link">
-    Submission guidelines
-  </a>
-  
-    <nav class="md-nav" aria-label="Submission guidelines">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#submitting-an-issue" class="md-nav__link">
-    Submitting an issue
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#submitting-a-pull-request-pr" class="md-nav__link">
-    Submitting a Pull Request (PR)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -422,7 +318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         Installation
       </a>
     </li>
@@ -462,7 +358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/configurations/configurations/" class="md-nav__link">
+      <a href="../../../getting-started/configurations/configurations/" class="md-nav__link">
         Configurations
       </a>
     </li>
@@ -476,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/configurations/serverless-framework/" class="md-nav__link">
+      <a href="../../../getting-started/configurations/serverless-framework/" class="md-nav__link">
         Serverless Framework
       </a>
     </li>
@@ -490,7 +386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/configurations/application-config/" class="md-nav__link">
+      <a href="../../../getting-started/configurations/application-config/" class="md-nav__link">
         Application
       </a>
     </li>
@@ -504,7 +400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/configurations/environment-variables/" class="md-nav__link">
+      <a href="../../../getting-started/configurations/environment-variables/" class="md-nav__link">
         Environment
       </a>
     </li>
@@ -525,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/structure/" class="md-nav__link">
+      <a href="../../../getting-started/structure/" class="md-nav__link">
         Directory Structure
       </a>
     </li>
@@ -539,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/deployment/" class="md-nav__link">
+      <a href="../../../getting-started/deployment/" class="md-nav__link">
         Deployment
       </a>
     </li>
@@ -553,7 +449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/available-scripts/" class="md-nav__link">
+      <a href="../../../getting-started/available-scripts/" class="md-nav__link">
         Available Scripts
       </a>
     </li>
@@ -573,12 +469,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -599,12 +497,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
       
       
       
@@ -627,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/middlewares/middleware/" class="md-nav__link">
+      <a href="../middleware/" class="md-nav__link">
         Middleware
       </a>
     </li>
@@ -639,11 +539,73 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../basics/middlewares/httpMiddleware/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          HttpMiddleware
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         HttpMiddleware
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-response" class="md-nav__link">
+    Success Response
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-response" class="md-nav__link">
+    Error Response
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nested-middlewares" class="md-nav__link">
+    Nested Middlewares
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -655,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/middlewares/httpResponseMiddleware/" class="md-nav__link">
+      <a href="../httpResponseMiddleware/" class="md-nav__link">
         HttpResponseMiddleware
       </a>
     </li>
@@ -669,7 +631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/middlewares/sqsMiddleware/" class="md-nav__link">
+      <a href="../sqsMiddleware/" class="md-nav__link">
         SQSMiddleware
       </a>
     </li>
@@ -683,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/middlewares/invokeCommandMiddleware/" class="md-nav__link">
+      <a href="../invokeCommandMiddleware/" class="md-nav__link">
         InvokeMiddleware
       </a>
     </li>
@@ -697,7 +659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/middlewares/disconnectMiddleware/" class="md-nav__link">
+      <a href="../disconnectMiddleware/" class="md-nav__link">
         DisconnectMiddleware
       </a>
     </li>
@@ -711,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/middlewares/verifyBasicAuthMiddleware/" class="md-nav__link">
+      <a href="../verifyBasicAuthMiddleware/" class="md-nav__link">
         VerifyBasicAuthMiddleware
       </a>
     </li>
@@ -725,7 +687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/middlewares/verifyJwtMiddleware/" class="md-nav__link">
+      <a href="../verifyJwtMiddleware/" class="md-nav__link">
         VerifyJwtMiddleware
       </a>
     </li>
@@ -746,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/error-handling/" class="md-nav__link">
+      <a href="../../error-handling/" class="md-nav__link">
         Error Handling
       </a>
     </li>
@@ -760,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/logging/" class="md-nav__link">
+      <a href="../../logging/" class="md-nav__link">
         Logging
       </a>
     </li>
@@ -834,7 +796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advance/helpers/available-helpers/" class="md-nav__link">
+      <a href="../../../advance/helpers/available-helpers/" class="md-nav__link">
         Available Helpers
       </a>
     </li>
@@ -848,7 +810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advance/helpers/crypto/" class="md-nav__link">
+      <a href="../../../advance/helpers/crypto/" class="md-nav__link">
         Crypto
       </a>
     </li>
@@ -869,7 +831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advance/cache/" class="md-nav__link">
+      <a href="../../../advance/cache/" class="md-nav__link">
         Cache
       </a>
     </li>
@@ -883,7 +845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advance/object-store/" class="md-nav__link">
+      <a href="../../../advance/object-store/" class="md-nav__link">
         Object Store
       </a>
     </li>
@@ -897,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advance/queues/" class="md-nav__link">
+      <a href="../../../advance/queues/" class="md-nav__link">
         Queues
       </a>
     </li>
@@ -911,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advance/task-scheduling/" class="md-nav__link">
+      <a href="../../../advance/task-scheduling/" class="md-nav__link">
         Task Scheduling
       </a>
     </li>
@@ -925,7 +887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advance/unit-tests/" class="md-nav__link">
+      <a href="../../../advance/unit-tests/" class="md-nav__link">
         Unit Tests
       </a>
     </li>
@@ -973,7 +935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/vpc/" class="md-nav__link">
+      <a href="../../../security/vpc/" class="md-nav__link">
         VPC
       </a>
     </li>
@@ -987,7 +949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/iam-role/" class="md-nav__link">
+      <a href="../../../security/iam-role/" class="md-nav__link">
         IAM Role
       </a>
     </li>
@@ -1035,7 +997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../database/getting-started/" class="md-nav__link">
+      <a href="../../../database/getting-started/" class="md-nav__link">
         Getting Started
       </a>
     </li>
@@ -1049,7 +1011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../database/dynamodb/" class="md-nav__link">
+      <a href="../../../database/dynamodb/" class="md-nav__link">
         DynamoDB
       </a>
     </li>
@@ -1063,7 +1025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../database/rds-aurora/" class="md-nav__link">
+      <a href="../../../database/rds-aurora/" class="md-nav__link">
         RDS Aurora
       </a>
     </li>
@@ -1104,70 +1066,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#source-repositories" class="md-nav__link">
-    Source Repositories!
+  <a href="#usage" class="md-nav__link">
+    Usage
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#submission-context" class="md-nav__link">
-    Submission context
+  <a href="#success-response" class="md-nav__link">
+    Success Response
   </a>
-  
-    <nav class="md-nav" aria-label="Submission context">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#got-a-question-or-problem" class="md-nav__link">
-    Got a question or problem?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#found-a-bug" class="md-nav__link">
-    Found a bug?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#missing-a-feature" class="md-nav__link">
-    Missing a feature?
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#submission-guidelines" class="md-nav__link">
-    Submission guidelines
-  </a>
-  
-    <nav class="md-nav" aria-label="Submission guidelines">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#submitting-an-issue" class="md-nav__link">
-    Submitting an issue
+  <a href="#error-response" class="md-nav__link">
+    Error Response
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#submitting-a-pull-request-pr" class="md-nav__link">
-    Submitting a Pull Request (PR)
+      
+        <li class="md-nav__item">
+  <a href="#nested-middlewares" class="md-nav__link">
+    Nested Middlewares
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1183,47 +1105,106 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/reflex-media/lesgo/edit/master/docs/prologue/contribution-guide.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/reflex-media/lesgo/edit/master/docs/basics/middlewares/httpMiddleware.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
 
-<h1 id="contribution-guide">Contribution Guide<a class="headerlink" href="#contribution-guide" title="Permanent link">&para;</a></h1>
-<p>Interested in contributing to the Lesgo! framework? Want to report a bug? Before you do, please read the following guidelines.</p>
-<h2 id="source-repositories">Source Repositories!<a class="headerlink" href="#source-repositories" title="Permanent link">&para;</a></h2>
-<p>The Lesgo! source code is managed on GitHub, and live on 3 separate repositories:</p>
-<p><a href="https://github.com/reflex-media/lesgo">Lesgo! Template</a><br />
-This is the main serverless template that developers will in their own project.</p>
-<p><a href="https://github.com/reflex-media/lesgo-lite">Lesgo-lite! Template</a><br />
-An even lighter template with the bare essentials of the Lesgo! Template.</p>
-<p><a href="https://github.com/reflex-media/lesgo-framework">Lesgo! Framework</a><br />
-Most of the core logic exists in this npm package.</p>
-<p><a href="https://github.com/reflex-media/lesgo-docs">Lesgo! Documentation</a><br />
-Repository for this documentation.</p>
-<h2 id="submission-context">Submission context<a class="headerlink" href="#submission-context" title="Permanent link">&para;</a></h2>
-<h3 id="got-a-question-or-problem">Got a question or problem?<a class="headerlink" href="#got-a-question-or-problem" title="Permanent link">&para;</a></h3>
-<p>Submit an issue to our <a href="https://github.com/reflex-media/lesgo/issues">Github Repository</a> and we'll try our best to follow-up.</p>
-<h3 id="found-a-bug">Found a bug?<a class="headerlink" href="#found-a-bug" title="Permanent link">&para;</a></h3>
-<p>If you found a bug in the source code, you can help us by submitting an issue to the issue tracker in our <a href="https://github.com/reflex-media/lesgo">Github Repository</a>. Even better, you can submit a Pull Request with a fix. However, before doing so, please read the submission guidelines.</p>
-<h3 id="missing-a-feature">Missing a feature?<a class="headerlink" href="#missing-a-feature" title="Permanent link">&para;</a></h3>
-<p>You can request a new feature by submitting an issue to our <a href="https://github.com/reflex-media/lesgo/issues">Github Repository</a>. If you would like to implement a new feature, please submit an issue with a proposal for your work first, to be sure that it is of use for everyone, as the Lesgo! framework is highly opinionated. Please consider what kind of change it is:</p>
+<h1 id="httpmiddleware">HttpMiddleware<a class="headerlink" href="#httpmiddleware" title="Permanent link">&para;</a></h1>
+<p>This middleware normalizes all HTTP requests, handles, and formats success and error responses, and should be used for all HTTP endpoints.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">middy</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@middy/core&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">APIGatewayProxyEvent</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;aws-lambda&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">httpMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;lesgo/middlewares&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">appConfig</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../../config/app&#39;</span><span class="p">;</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">MiddyAPIGatewayProxyEvent</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">APIGatewayProxyEvent</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">pathParameters</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s1">&#39;path-key-1&#39;</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;path-key-2&#39;</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">queryStringParameters</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">stringValue</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">numberValue</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">booleanValue</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">pingHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="o">:</span><span class="w"> </span><span class="kt">MiddyAPIGatewayProxyEvent</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pathParamters</span><span class="p">,</span><span class="w"> </span><span class="nx">queryStringParameters</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">event</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">pathParamters</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">queryStringParameters</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">middy</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">httpMiddleware</span><span class="p">({</span><span class="w"> </span><span class="nx">debugMode</span><span class="o">:</span><span class="w"> </span><span class="kt">appConfig.debug</span><span class="w"> </span><span class="p">}))</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">handler</span><span class="p">(</span><span class="nx">pingHandler</span><span class="p">);</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">handler</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="success-response">Success Response<a class="headerlink" href="#success-response" title="Permanent link">&para;</a></h2>
+<p>The successful response will be formatted in this way</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;pathParameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;path-key-1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pathValue1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;path-key-2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pathValue2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;queryStringParameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;stringValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;some-string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;numberValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;booleanValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;_meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="error-response">Error Response<a class="headerlink" href="#error-response" title="Permanent link">&para;</a></h2>
+<p>The error response will be formatted in this way</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;error&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;handlers.auth.login::USER_NOT_EXIST&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User does not exist&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UserException&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User not found&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models.User.loginUser::USER_NOT_EXIST&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;extra&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;_meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="nested-middlewares">Nested Middlewares<a class="headerlink" href="#nested-middlewares" title="Permanent link">&para;</a></h2>
 <ul>
-<li>For a major feature, first open an issue and outline your proposal so that it can be discussed. This will also allow us to better coordinate our efforts, prevent duplication of work, and help you to craft the change so that it is successfully accepted into the project.</li>
-<li>Small features and bugs can be crafted and directly submitted as a Pull Request. However, there is no guarantee that your feature will make it into the master, as it's always a matter of opinion whether if benefits the overall functionality of the theme.</li>
+<li><a href="https://middy.js.org/docs/middlewares/do-not-wait-for-empty-event-loop">@middy/do-not-wait-for-empty-event-loop</a></li>
+<li><a href="https://middy.js.org/docs/middlewares/http-event-normalizer">@middy/http-event-normalizer</a></li>
+<li><a href="https://middy.js.org/docs/middlewares/http-header-normalizer">@middy/http-header-normalizer</a></li>
+<li><a href="https://middy.js.org/docs/middlewares/http-json-body-parser">@middy/http-json-body-parser</a></li>
+<li><a href="../disconnectMiddleware/">lesgo/middlewares/disconnectMiddleware</a></li>
+<li><a href="../httpResponseMiddleware/">lesgo/middlewares/httpResponseMiddleware</a></li>
 </ul>
-<h2 id="submission-guidelines">Submission guidelines<a class="headerlink" href="#submission-guidelines" title="Permanent link">&para;</a></h2>
-<h3 id="submitting-an-issue">Submitting an issue<a class="headerlink" href="#submitting-an-issue" title="Permanent link">&para;</a></h3>
-<p>Before you submit an issue, please search the issue tracker, maybe an issue for your problem already exists and the discussion might inform you of workarounds readily available.</p>
-<p>We want to fix all the issues as soon as possible, but before fixing a bug we need to reproduce and confirm it. In order to reproduce bugs we will systematically ask you to provide a minimal reproduction scenario using the custom issue template. Please stick to the issue template.</p>
-<p>Unfortunately we are not able to investigate / fix bugs without a minimal reproduction scenario, so if we don't hear back from you we may close the issue.</p>
-<h3 id="submitting-a-pull-request-pr">Submitting a Pull Request (PR)<a class="headerlink" href="#submitting-a-pull-request-pr" title="Permanent link">&para;</a></h3>
-<p>Search GitHub for an open or closed PR that relates to your submission. You don't want to duplicate effort. If you do not find a related issue or PR, go ahead.</p>
-<ol>
-<li><strong>Development</strong>: Fork the project, set up the development environment, make your changes in a separate git branch and add descriptive messages to your commits.</li>
-<li><strong>Pull Request</strong>: Commit your changes, push your branch to GitHub and send a PR to lesgo:develop. If we suggest changes, make the required updates, rebase your branch and push the changes to your GitHub repository, which will automatically update your PR.</li>
-</ol>
-<p>After your PR is merged, you can safely delete your branch and pull the changes from the main (upstream) repository.</p>
 
               
             </article>
@@ -1237,7 +1218,7 @@ Repository for this documentation.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../release-notes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Release Notes" rel="prev">
+        <a href="../middleware/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Middleware" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1246,20 +1227,20 @@ Repository for this documentation.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Release Notes
+              Middleware
             </div>
           </div>
         </a>
       
       
         
-        <a href="../.." class="md-footer__link md-footer__link--next" aria-label="Next: Installation" rel="next">
+        <a href="../httpResponseMiddleware/" class="md-footer__link md-footer__link--next" aria-label="Next: HttpResponseMiddleware" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Installation
+              HttpResponseMiddleware
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1293,10 +1274,10 @@ Repository for this documentation.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.bd0b6b67.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.467223ff.min.js"></script>
       
     
   </body>

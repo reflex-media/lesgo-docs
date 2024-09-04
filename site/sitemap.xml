@@ -1,118 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/404/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/404/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/advance/cache/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/advance/cache/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/advance/helpers/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/advance/object-store/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/advance/object-store/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/advance/queues/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/advance/queues/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/advance/task-scheduling/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/advance/task-scheduling/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/advance/unit-tests/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/advance/typescript/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/advance/helpers/available-helpers/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/advance/unit-tests/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/advance/helpers/crypto/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/basics/error-handling/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/basics/error-handling/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/basics/logging/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/basics/logging/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/basics/middleware/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/basics/middlewares/disconnectMiddleware/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/database/dynamodb/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/basics/middlewares/httpMiddleware/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/database/getting-started/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/basics/middlewares/httpResponseMiddleware/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/database/rds-aurora/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/basics/middlewares/invokeCommandMiddleware/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/getting-started/available-scripts/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/basics/middlewares/middleware/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/getting-started/deployment/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/basics/middlewares/sqsMiddleware/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/getting-started/structure/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/basics/middlewares/verifyBasicAuthMiddleware/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/packages/elasticsearch/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/basics/middlewares/verifyJwtMiddleware/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/packages/firebase/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/database/dynamodb/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/prologue/contribution-guide/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/database/getting-started/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/prologue/release-notes/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/database/rds-aurora/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://reflex-media.github.io/lesgo-docs/0.7.7/security/vpc/</loc>
-         <lastmod>2022-03-11</lastmod>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/getting-started/available-scripts/</loc>
+         <lastmod>2024-09-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/getting-started/deployment/</loc>
+         <lastmod>2024-09-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/getting-started/structure/</loc>
+         <lastmod>2024-09-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/getting-started/configurations/application-config/</loc>
+         <lastmod>2024-09-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/getting-started/configurations/configurations/</loc>
+         <lastmod>2024-09-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/getting-started/configurations/environment-variables/</loc>
+         <lastmod>2024-09-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/getting-started/configurations/serverless-framework/</loc>
+         <lastmod>2024-09-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/prologue/contribution-guide/</loc>
+         <lastmod>2024-09-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/prologue/release-notes/</loc>
+         <lastmod>2024-09-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/security/iam-role/</loc>
+         <lastmod>2024-09-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://reflex-media.github.io/lesgo-docs/2.1.0/security/vpc/</loc>
+         <lastmod>2024-09-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
