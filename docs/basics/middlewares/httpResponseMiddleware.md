@@ -4,4 +4,4 @@ This middleware formats success and error responses. This is already nested with
 
 ## Usage
 
-See [HttpMiddleware](httpMiddleware.md) for usage info.
+See [HttpMiddleware](../middlewares/httpMiddleware.md) for usage info.

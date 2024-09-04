@@ -102,5 +102,5 @@ The error response will be formatted in this way
 - [@middy/http-event-normalizer](https://middy.js.org/docs/middlewares/http-event-normalizer)
 - [@middy/http-header-normalizer](https://middy.js.org/docs/middlewares/http-header-normalizer)
 - [@middy/http-json-body-parser](https://middy.js.org/docs/middlewares/http-json-body-parser)
-- [lesgo/middlewares/disconnectOpenConnectionsMiddleware]
-- [lesgo/middlewares/httpResponseMiddleware](httpResponseMiddleware.md)
+- [lesgo/middlewares/disconnectMiddleware](../middlewares/disconnectMiddleware.md)
+- [lesgo/middlewares/httpResponseMiddleware](../middlewares/httpResponseMiddleware.md)

@@ -1,12 +1,36 @@
 # Verify JWT Middleware
 
-This middleware reads the Authorization header and attaches the decoded JWT to the AWS API Gateway Event, and should be used for HTTP endpoints where authorization is required.
+This middleware reads the `Authorization` header and attaches the decoded JWT to the AWS API Gateway Event, and should be used for HTTP endpoints where authorization is required.
 
-The decoded JWT will be attached to the APIGatewayProxyEvent.jwt field.
+The decoded JWT will be attached to the `APIGatewayProxyEvent.jwt` field.
+
+## Configuration
+
+The following JWT environment variables must be added to the respective environment files.
+
+```bash
+# Comma-delimited secret keys. If kid is being used, separate them with ":" i.e.; kid1:secret1,kid2:secret2
+LESGO_JWT_SECRET_KEYS=
+
+# JWT algorithm used to sign / verify the token
+LESGO_JWT_ALGORITHM=HS256
+
+# Time to expire upon creation
+LESGO_JWT_EXPIRESIN=1h
+
+# Issuer claim
+LESGO_JWT_ISSUER=lesgo-dev
+
+# Audience claim
+LESGO_JWT_AUDIENCE=lesgo-dev
+
+# Set to true to verify claims.
+LESGO_JWT_VALIDATE_CLAIMS=true
+```
 
 ## Usage
 
-```ts
+```typescript
 import middy from '@middy/core';
 import { APIGatewayProxyEvent } from 'aws-lambda';
 import { httpMiddleware, verifyJwtMiddleware } from 'lesgo/middlewares';

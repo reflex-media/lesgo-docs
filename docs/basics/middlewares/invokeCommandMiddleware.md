@@ -7,6 +7,7 @@ This middleware will be used for Invoke Command functions.
 ```typescript
 import middy from '@middy/core';
 import { APIGatewayProxyEvent } from 'aws-lambda';
+import { invokeCommandMiddleware } from 'lesgo/middlewares';
 
 const commandHandler = async (event: APIGatewayProxyEvent) => {
   // Some code logic

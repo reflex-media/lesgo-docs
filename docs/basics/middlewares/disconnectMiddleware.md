@@ -4,6 +4,8 @@ This middleware disconnects any open connections to resources. Be sure to includ
 
 ## Usage
 
+Currently Lesgo! Framework supports disconnect for AWS RDS Proxy and AWS ElastiCache Redis instances. You may create your own disconnect functions and attach them to the same `disconnectMiddleware()`.
+
 ### Disconnect RDS Aurora MySQL Proxy Client
 
 ```typescript
@@ -27,4 +29,10 @@ export const handler = middy()
   .handler(functionHandler);
 
 export default handler;
+```
+
+### Disconnect ElastiCache Redis Client
+
+```typescript
+...
 ```

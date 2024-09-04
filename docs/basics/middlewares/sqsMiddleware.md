@@ -43,4 +43,4 @@ export default handler;
 
 - [@middy/do-not-wait-for-empty-event-loop](https://middy.js.org/docs/middlewares/do-not-wait-for-empty-event-loop)
 - [@middy/http-event-normalizer](https://middy.js.org/docs/middlewares/http-event-normalizer)
-- lesgo/middlewares/disconnectOpenConnectionsMiddleware
+- [lesgo/middlewares/disconnectMiddleware](../middlewares/disconnectMiddleware.md)
