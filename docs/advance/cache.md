@@ -8,7 +8,7 @@ In order to start using cache (via AWS ElastiCache - Redis), set it up directly 
 
 !!! info "ElastiCache requires VPC"
 
-    AWS ElastiCache must exists within a VPC. [Learn more](../../security/vpc) on setting up VPC for your microservice.
+    AWS ElastiCache must exists within a VPC. [Learn more](../../security/vpc.md) on setting up VPC for your microservice.
 
 ## Configuration
 

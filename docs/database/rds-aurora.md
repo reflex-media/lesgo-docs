@@ -21,9 +21,9 @@ LESGO_AWS_RDS_AURORA_MYSQL_PROXY_DB_CREDENTIALS_SECRET_ID=my_dbProxyCredentials
 
     It is strongly recommended to store secret keys via AWS Key Management Service (AWS KMS). Ensure the following database credentials are supplied in the KMS Store: `host`, `username`, `password`.
 
-!!! important "RDS Proxy"
+## RDS Proxy
 
-    Lesgo! utilizes the RDS Proxy to manage connections to your database. This is important for serverless architecture to prevent each running instance from creating their own connection, eventually exhausting the databse connection limit.
+Lesgo! utilizes the RDS Proxy to manage connections to your database. This is important for serverless architecture to prevent each running instance from creating their own connection, eventually exhausting the databse connection limit.
 
 ## Resource Creation
 
@@ -55,224 +55,118 @@ It is important to ensure your database connection is terminated once it is no l
 
 However, this is inefficient for serverless architecture. As such, it is important to terminate the connection once it is no longer required.
 
-To terminate the RDS Proxy Connection, call the `disconnectDb` and attach it to the `disconnectMiddleware()` middleware.
+To terminate the RDS Proxy Connection, call the `disconnectDb()` and attach it to the `disconnectMiddleware()` middleware.
 
 See [disconnectMiddleware](../basics/middlewares/disconnectMiddleware.md) for usage.
 
-## Running Database Queries
+## Sample Database Queries
 
-### Retrieving All Rows
+### Retrieving all records
 
-`db.select()` will return a promised array of objects.
+```typescript
+import { query } from 'lesgo/utils/db/mysql/proxy';
 
-```js
-db.select(
-  sql: String,
-  sqlParams: Object,
-  connectionOpts?: Object = {}
-);
+type Movie = {
+  id: number;
+  name: string;
+}
+
+const tableName = 'movies';
+const sql = `SELECT * FROM ${tableName} ORDER BY id DESC`;
+
+const resp = (await query(sql)) as Movie[] | [];
+return resp;
+
+/**
+ * [
+ *   {
+ *     "id": 1,
+ *     "name": "Spider-Man"
+ *   }
+ * ]
+ */
 ```
 
-**Usage**
+### Retrieving a single record
 
-```js
-import db from "Utils/db";
+```typescript
+import { query } from 'lesgo/utils/db/mysql/proxy';
 
-const data = await db.select(
-  "SELECT * FROM users WHERE is_deleted = :isDeleted",
-  {
-    isDeleted: 0,
-  }
-);
+type Movie = {
+  id: number;
+  name: string;
+}
+
+const tableName = 'movies';
+const sql = `SELECT * FROM ${tableName} WHERE id = ?`;
+const movieId = 5;
+const queryParams = [movieId]
+
+const resp = (await query(sql, queryParams)) as Movie[] | [];
+return resp[0];
+
+/**
+ * {
+ *   "id": 5,
+ *   "name": "Deadpool"
+ * }
+ */
 ```
 
-### Retrieving a Single Row
+### Inserting record
 
-`db.selectFirst()` will return a promised object of a single record.
+```typescript
+import { query } from 'lesgo/utils/db/mysql/proxy';
+import { getCurrentTimestamp, formatUnixTimestamp } from 'lesgo/utils';
 
-```js
-db.selectFirst(
-  sql: String,
-  sqlParams: Object,
-  connectionOpts?: Object = {}
-);
-```
+const tableName = 'movies';
+const sql = `INSERT INTO ${tableName} (name, createdAt, updatedAt, deletedAt) VALUES (?, ?, ?, ?)`;
 
-**Usage**
-
-```js
-import db from "Utils/db";
-
-const data = await db.selectFirst("SELECT * FROM users WHERE id = :id", {
-  id: 1,
-});
-```
-
-### Retrieving Paginated Rows
-
-`db.selectPaginate()` will return a promised object with pagination data and itemized rows.
-
-```js
-db.selectPaginate(
-  sql: String,
-  sqlParams: Object,
-  perPage?: Number = 10,
-  currentPage?: Number = 1,
-  total?: Number = null,
-  connectionOpts?: Object = {}
-);
-```
-
-!!! note
-
-    When `total` is not provided, `db.selectPaginate()` will run 2 separate queries to first fetch all the record count, followed by the actual query with `OFFSET` and `LIMIT`. It is strongly advisable to pass along the `total` for best performance.
-
-**Usage**
-
-```js
-import db from "Utils/db";
-
-const data = await db.selectPaginate(
-  "SELECT * FROM users WHERE is_deleted = :isDeleted",
-  {
-    isDeleted: 0,
-  },
-  {
-    perPage: 1,
-    currentPage: 1,
-    total: 25,
-  }
-);
-```
-
-### Inserting a Single Record
-
-`db.insert()` will insert a new record and return only the newly inserted primary key.
-
-```js
-db.insert(
-  sql: String,
-  sqlParams: Object,
-  connectionOpts?: Object = {}
-);
-```
-
-**Usage**
-
-```js
-import db from "Utils/db";
-
-const insertId = await db.insert(
-  "INSERT INTO users(username,email) VALUES (:username, :email)",
-  {
-    username: "John",
-    email: "john@mail.com",
-  }
-);
-```
-
-A much better approach to inserting records is to first validate the fields and then inserting it with `Utils/prepSQLInsertParams`.
-
-```js
-import prepSQLInsertParams from "Utils/prepSQLInsertParams";
-import validateFields from "Utils/validateFields";
-import db from "Utils/db";
-
-const validFields = [
-  { key: "username", type: "string", required: true },
-  { key: "email", type: "string", required: true },
-];
-
-let validated = validateFields({ ...params }, validFields);
-
-const { insertColumns, insertValues, insertFields } = prepSQLInsertParams(
-  validated,
-  validFields
-);
-
-await db.insert(
-  `INSERT INTO users(${insertColumns}) VALUES(${insertValues})`,
-  insertFields
-);
-```
-
-Learn more about [Utils/validateFields](../advance/helpers.md#field-validator) and [Utils/prepSQLInsertParams](../advance/helpers.md#prep-insert-sql-parameter).
-
-### Updating an Existing Record
-
-`db.update()` will update an existing record and throw an Error if no record found for update.
-
-```js
-db.update(
-  sql: String,
-  sqlParams: Object,
-  connectionOpts?: Object = {}
-);
-```
-
-**Usage**
-
-```js
-import db from "Utils/db";
-
-const insertId = await db.update(
-  "UPDATE users SET username=:username, email=:email, updated_at=now()) WHERE id=:id",
-  {
-    id: 1,
-    username: "John",
-    email: "john@mail.com",
-  }
-);
-```
-
-As with insert, updatating an existing record is best done with `Utils/prepSQLUpdateParams`.
-
-```js
-import prepSQLUpdateParams from "Utils/prepSQLUpdateParams";
-import validateFields from "Utils/validateFields";
-import db from "Utils/db";
-
-const validFields = [
-  { key: "username", type: "string", required: true },
-  { key: "email", type: "string", required: true },
-];
-
-const params = {
-  username: "John",
-  email: "john@mail.com",
+const dateTimeNow = formatUnixTimestamp(getCurrentTimestamp());
+const data = {
+  name: 'Ironman',
+  createdAt: dateTimeNow,
+  updatedAt: dateTimeNow,
+  deletedAt: null,
 };
+const queryParams = [
+  data.name,
+  data.createdAt,
+  data.updatedAt,
+  data.deletedAt
+]
 
-let validated = validateFields(params, validFields);
-
-const { updateColumnValues, wherePrimaryKey, updateFields } =
-  prepSQLUpdateParams(validated, validFields);
-
-await db.update(
-  `UPDATE users SET ${updateColumnValues}, updated_at=NOW() WHERE ${wherePrimaryKey}`,
-  updateFields
-);
+await query(sql, queryParams);
 ```
 
-Learn more about [Utils/prepSQLUpdateParams](../advance/helpers.md#prep-update-sql-parameter).
+### Updating record
 
-### Raw Query
+```typescript
+import { query } from 'lesgo/utils/db/mysql/proxy';
+import { getCurrentTimestamp, formatUnixTimestamp, isEmpty } from 'lesgo/utils';
 
-All of the above executes `db.query()`. You may also execute your queries directly and get a raw response.
+const dataToUpdate = {
+  name: 'Ironman 2'
+}
 
-```js
-db.query(
-  sql: String,
-  sqlParams: Object,
-  connectionOpts?: Object = {}
-);
-```
+const dateTimeNow = formatUnixTimestamp(getCurrentTimestamp());
 
-**Usage**
-
-```js
-import db from "Utils/db";
-
-const data = await db.query("SELECT * FROM users WHERE id = :id", {
-  id: 1,
+const sqlSet: string[] = [];
+const preparedValues: UpdateMovieModelInputKey[] = [];
+Object.keys(dataToUpdate).forEach(key => {
+  if (!isEmpty(params[key])) {
+    sqlSet.push(`${key} = ?`);
+    preparedValues.push(params[key]);
+  }
 });
+
+sqlSet.push(`updatedAt = ?`);
+preparedValues.push(dateTimeNow);
+
+preparedValues.push(id);
+
+const tableName = 'movies';
+const sql = `UPDATE ${tableName} SET ${sqlSet.join(',')} WHERE id = ?`;
+
+await query(sql, preparedValues);
 ```
