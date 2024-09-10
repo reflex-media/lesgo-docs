@@ -36,3 +36,11 @@ For example, the **HttpMiddleware** consists of the following middlewares:
 ## Custom Middlewares
 
 You can write your own custom middleware with [Middy](https://www.npmjs.com/package/middy#writing-a-middleware).
+
+## Middleware Ordering
+
+Middy implements the classic onion-like middleware pattern, with some peculiar details.
+
+The first `middleware.before()` will always be executed first with its `middleware.after()` being the last in that order.
+
+See [https://middy.js.org/docs/intro/how-it-works/](https://middy.js.org/docs/intro/how-it-works/) for more info.
